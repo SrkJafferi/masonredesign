@@ -1,0 +1,52 @@
+import { getSiteUrl } from "@/config/env";
+
+export const siteConfig = {
+  name: "MASOM",
+  legalName: "Midwest Association of Shia Organized Muslims",
+  title: "MASOM – Midwest Association of Shia Organized Muslims: Official Website",
+  locale: "en-US",
+  ogLocale: "en_US",
+  url: getSiteUrl(),
+  legacyOrigin: "https://masom.com",
+  contact: {
+    phone: "(773) 283-9718",
+    phoneHref: "tel:+17732839718",
+    email: "secretary@masom.com",
+    address: {
+      street: "4353 West Lawrence Avenue",
+      city: "Chicago",
+      region: "IL",
+      postalCode: "60630",
+      country: "US",
+      full: "4353 West Lawrence Avenue, Chicago, IL 60630",
+      lines: ["4353 West Lawrence Avenue", "Chicago, IL 60630"],
+      mapUrl:
+        "https://www.google.com/maps/place/4353+W+Lawrence+Ave,+Chicago,+IL+60630,+USA/@41.967852,-87.739688,17z/data=!4m5!3m4!1s0x880fcc2d48ef0251:0xf12ee185a1fe53f8!8m2!3d41.967852!4d-87.7374993?hl=en",
+    },
+  },
+  assets: {
+    logoDark: { src: "/brand/headlogon4.webp", width: 910, height: 270 },
+    logoLight: { src: "/brand/logomobilefoot.webp", width: 500, height: 132 },
+    logoCompact: { src: "/brand/logomobilefoot-300x79.png", width: 300, height: 79 },
+    qrCode: { src: "/brand/qr-code-masom.webp", width: 500, height: 500 },
+  },
+  social: {
+    facebook: "https://www.facebook.com/share/18Bg8qJvu9/?mibextid=wwXIfr",
+    instagram:
+      "https://www.instagram.com/imambargahmasom?igsh=d21ycWQxYzFuN3Zn&utm_source=qr",
+    youtube: "https://www.youtube.com/channel/UCLE_Z6NZIg05Zzz1tn209sg",
+    whatsapp: "https://chat.whatsapp.com/LbReeM8ts7VJoC7yMOPqSI",
+  },
+  links: {
+    donate: "/donate",
+    constitution: "https://masom.com/org/masomByLaws.pdf",
+    newsletterArchive:
+      "https://us13.campaign-archive.com/home/?u=01dfc250f2762204df48c0230&id=06a230bfd1",
+  },
+  copyright: {
+    holder: "MASOM Imambargah",
+    notice: "All rights reserved.",
+  },
+} as const;
+
+export type SiteConfig = typeof siteConfig;

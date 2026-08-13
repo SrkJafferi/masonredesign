@@ -1,0 +1,2059 @@
+
+
+<!DOCTYPE html>
+<html lang="en-US" class="no-js scheme_default">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+			
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="format-detection" content="telephone=no">
+		<link rel="profile" href="//gmpg.org/xfn/11">
+		
+		<title>MASOM &#8211; Midwest Association of Shia Organized Muslims: Official Website</title>
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<link rel='dns-prefetch' href='//ajax.googleapis.com' />
+<link rel='dns-prefetch' href='//code.jquery.com' />
+<link rel='dns-prefetch' href='//cdn.jsdelivr.net' />
+
+<link rel="alternate" type="application/rss+xml" title="MASOM - Midwest Association of Shia Organized Muslims: Official Website &raquo; Feed" href="https://masom.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="MASOM - Midwest Association of Shia Organized Muslims: Official Website &raquo; Comments Feed" href="https://masom.com/comments/feed/" />
+<link id='omgf-preload-0' rel='preload' href='https://masom.com/wp-content/uploads/omgf/alhambra-font-google_fonts/pt-sans-normal-latin-ext-400.woff2' as='font' type='font/woff2' crossorigin />
+<link id='omgf-preload-1' rel='preload' href='https://masom.com/wp-content/uploads/omgf/alhambra-font-google_fonts/pt-sans-normal-latin-400.woff2' as='font' type='font/woff2' crossorigin />
+<link id='omgf-preload-2' rel='preload' href='https://masom.com/wp-content/uploads/omgf/alhambra-font-google_fonts/pt-sans-normal-latin-ext-700.woff2' as='font' type='font/woff2' crossorigin />
+<link id='omgf-preload-3' rel='preload' href='https://masom.com/wp-content/uploads/omgf/alhambra-font-google_fonts/pt-sans-normal-latin-700.woff2' as='font' type='font/woff2' crossorigin />
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='timetable-style-css'  href='https://masom.com/wp-content/cache/min/1/wp-content/plugins/daily-prayer-time-for-mosques/Assets/css/styles-af196727f012cb1d54ffcbd996f7d5ba.css' type='text/css' media='all' />
+<style type='text/css'  data-wpacu-inline-css-file='1'>
+/*
+Theme Name:   Verge Framework Child Theme
+Description: Verge Framework is a base for Verge Design projects. We use a set of default settings to create your website with clean code from the ground up on a solid framework encompassing the least amount of files possible, properly enqueued in the relevant places for a fast and stable website.
+Author: Verge Design
+Author URI: http://vergedesign.co.uk
+Template: vergeFramework
+*/
+/*(wpacu)(at)import url(/wp-content/plugins/daily-prayer-time-for-mosques/Models/../Assets/css/../css/vergestyles.css);*/
+/* Fonts start here */
+.dpt-horizontal-wrapper.customStyles .dpt-heading {
+  font-size: 0;
+}
+
+.dpt-horizontal-wrapper.customStyles .dpt-heading h3, .dpt-horizontal-wrapper.customStyles .dpt-heading p {
+  display: inline-block;
+  width: 50%;
+  margin: 5px 0;
+}
+
+.dpt-horizontal-wrapper.customStyles .dpt-heading p {
+  text-align: right;
+  font-size: 14px;
+}
+
+.dpt-horizontal-wrapper.customStyles .dpt-wrapper-container {
+  background-color: #eeeeee;
+  text-align: center;
+  font-size: 0;
+}
+
+.dpt-horizontal-wrapper.customStyles .dpt-wrapper-container .prayer-time {
+  width: calc(100%/6);
+  height: 90px;
+  display: inline-table;
+  border-right: 1px solid #e2e2e2;
+  padding: 15px 0;
+}
+
+.dpt-horizontal-wrapper.customStyles .dpt-wrapper-container .prayer-time:last-child {
+  border-right: 0;
+}
+
+.dpt-horizontal-wrapper.customStyles .dpt-wrapper-container .prayer-time.highlight {
+  background-color: #a9b9c9;
+}
+
+.dpt-horizontal-wrapper.customStyles .dpt-wrapper-container .prayer-time h3 {
+  text-align: center;
+  margin: 10px;
+  font-size: 18px;
+}
+
+.dpt-horizontal-wrapper.customStyles .dpt-wrapper-container .prayer-time div {
+  text-align: center;
+  margin: 5px;
+  font-size: 14px;
+}
+
+.dpt-horizontal-wrapper.customStyles .dpt-announcement {
+  background-color: #d60000;
+  padding: 10px;
+}
+
+.dpt-horizontal-wrapper.customStyles .dpt-announcement h3 {
+  margin: 0;
+  font-size: 14px;
+  color: white;
+  text-align: center;
+}
+
+@media only screen and (max-width: 767px) {
+  .dpt-horizontal-wrapper.customStyles .dpt-wrapper-container {
+    overflow-x: scroll;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  .dpt-horizontal-wrapper.customStyles .dpt-wrapper-container .prayer-time {
+    width: 100px;
+  }
+  .dpt-horizontal-wrapper.customStyles .dpt-wrapper-container .prayer-time h3 {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .dpt-horizontal-wrapper.customStyles .dpt-heading h3, .dpt-horizontal-wrapper.customStyles .dpt-heading p {
+    display: block;
+    width: 100%;
+  }
+  .dpt-horizontal-wrapper.customStyles .dpt-heading p {
+    text-align: left;
+  }
+}
+</style>
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='bootstrap-select-css'  href='https://masom.com/wp-content/cache/min/1/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min-a23c2d65ea8df5a2614f997e8990d3c7.css' type='text/css' media='all' />
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='pro-news-tickerpw_pl_fontawesome-css'  href='https://masom.com/wp-content/cache/min/1/wp-content/cache/asset-cleanup/css/item/pro-news-tickerpw_pl_fontawesome-v7324d4b5b3b2e83a674a39d081b10f1cf8f5f70a-f4b5043e3b8f6673b53066dfd79bed6a.css' type='text/css' media='all' />
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='pro-news-tickerpw_pl_public-css'  href='https://masom.com/wp-content/cache/min/1/wp-content/plugins/PW-Pro-News-Ticker-For-VC/css/public-bc24067cfe47e0b09c55f32340c70d50.css' type='text/css' media='all' />
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='pro-news-tickerpw_pl_bxslider-css'  href='https://masom.com/wp-content/cache/min/1/wp-content/plugins/PW-Pro-News-Ticker-For-VC/css/bx-slider/jquery.bxslider-2ac75f169be42164ec4d1c2530180fb4.css' type='text/css' media='all' />
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='pro-news-tickerpw_pl_magnific_popup-css'  href='https://masom.com/wp-content/cache/min/1/wp-content/plugins/PW-Pro-News-Ticker-For-VC/css/magnific-popup/magnific-popup-32d2eb632b89e8156029fdfd0c18888b.css' type='text/css' media='all' />
+<style type='text/css'  data-wpacu-inline-css-file='1'>
+/*Plugin CSS*/
+.pl-vertical-ticker .pl-bloading{
+	display:block;
+	max-width:100%;
+	padding:5px 0;
+}
+.pl-marquee .pl-slider-slide{
+	display:inline-block;
+	
+}
+.pl-marquee .pl-slider-slide > div{
+	margin:0 10px;	
+}
+.pl-ticker-content-cnt.pl-marquee{
+	padding-right:30px!important
+}
+.pl-marquee.up-direction .pl-slider-slide, .pl-marquee.down-direction .pl-slider-slide{
+	display:inline-block;
+	margin-bottom:15px;	
+	width:100%;
+}
+.pl-ticker-cnt.pl-vertical-ticker .pl-ticker-content-cnt.pl-marquee{
+	padding:15px!important;
+}
+.pl-ticker-cnt.pl-vertical-ticker .pl-ticker-content-cnt.pl-marquee .pl-slider-slide,
+.pl-ticker-cnt.pl-vertical-ticker .pl-ticker-content-cnt.pl-marquee .pl-slider-slide .pl-vitem-item{
+	margin-left:0!important;
+	margin-right:0!important;
+}
+.pl-ticker-cnt.pl-vertical-ticker .pl-ticker-content-cnt.pl-marquee.right-direction .pl-slider-slide,
+.pl-ticker-cnt.pl-vertical-ticker .pl-ticker-content-cnt.pl-marquee.left-direction .pl-slider-slide{
+	margin-left:10px!important;
+	margin-right:10px!important;
+}
+.str_wrap {
+	overflow:hidden;
+	/*zoom:1;*/
+	height:30px;
+	width:100%;
+	font-size:12px;
+	line-height:16px;
+	position:relative;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	user-select: none;  
+	background:none;
+	white-space:nowrap;
+}
+
+.str_wrap.str_active {
+	background:none;
+}
+.str_move { 
+	white-space:nowrap;
+	position:absolute; 
+	top:0; 
+	left:0;
+	cursor:move;
+}
+.str_move_clone {
+	display:inline-block;
+	/*display:inline;
+	zoom:1;*/
+	vertical-align:top;
+	position:absolute; 
+	left:100%;
+	top:0;
+}
+.str_vertical .str_move_clone {
+	left:0;
+	top:100%;
+}
+.str_down .str_move_clone {
+	left:0;
+	bottom:100%;
+}
+.str_vertical .str_move,
+.str_down .str_move {
+	white-space:normal;
+	width:100%;
+}
+.str_static .str_move,
+.no_drag .str_move,
+.noStop .str_move{
+	cursor:inherit;
+}
+.str_wrap img {
+	max-width:none !important;	
+}
+</style>
+<style type='text/css'  data-wpacu-inline-css-file='1'>
+.us-fullwidth{
+	position:relative; top:0;
+	-webkit-transition: all 0.2s ease-out;-moz-transition: all 0.2s ease-out;-o-transition: all 0.2s ease-out;-ms-transition: all 0.2s ease-out;
+}
+</style>
+<style type='text/css'  data-wpacu-inline-css-file='1'>
+.wpcf7 .screen-reader-response {
+	position: absolute;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+	height: 1px;
+	width: 1px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.wpcf7 form .wpcf7-response-output {
+	margin: 2em 0.5em 1em;
+	padding: 0.2em 1em;
+	border: 2px solid #00a0d2; /* Blue */
+}
+
+.wpcf7 form.init .wpcf7-response-output {
+	display: none;
+}
+
+.wpcf7 form.sent .wpcf7-response-output {
+	border-color: #46b450; /* Green */
+}
+
+.wpcf7 form.failed .wpcf7-response-output,
+.wpcf7 form.aborted .wpcf7-response-output {
+	border-color: #dc3232; /* Red */
+}
+
+.wpcf7 form.spam .wpcf7-response-output {
+	border-color: #f56e28; /* Orange */
+}
+
+.wpcf7 form.invalid .wpcf7-response-output,
+.wpcf7 form.unaccepted .wpcf7-response-output {
+	border-color: #ffb900; /* Yellow */
+}
+
+.wpcf7-form-control-wrap {
+	position: relative;
+}
+
+.wpcf7-not-valid-tip {
+	color: #dc3232;
+	font-size: 1em;
+	font-weight: normal;
+	display: block;
+}
+
+.use-floating-validation-tip .wpcf7-not-valid-tip {
+	position: absolute;
+	top: 20%;
+	left: 20%;
+	z-index: 100;
+	border: 1px solid #dc3232;
+	background: #fff;
+	padding: .2em .8em;
+}
+
+span.wpcf7-list-item {
+	display: inline-block;
+	margin: 0 0 0 1em;
+}
+
+span.wpcf7-list-item-label::before,
+span.wpcf7-list-item-label::after {
+	content: " ";
+}
+
+div.wpcf7 .ajax-loader {
+	visibility: hidden;
+	display: inline-block;
+	background-image: url(data:image/gif;base64,R0lGODlhEAAQAPQAAP///3d3d/r6+pSUlL29vXp6eouLi+jo6NDQ0IKCgrW1ta2trfDw8MfHx+Dg4J2dnaSkpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAAFUCAgjmRpnqUwFGwhKoRgqq2YFMaRGjWA8AbZiIBbjQQ8AmmFUJEQhQGJhaKOrCksgEla+KIkYvC6SJKQOISoNSYdeIk1ayA8ExTyeR3F749CACH5BAkKAAAALAAAAAAQABAAAAVoICCKR9KMaCoaxeCoqEAkRX3AwMHWxQIIjJSAZWgUEgzBwCBAEQpMwIDwY1FHgwJCtOW2UDWYIDyqNVVkUbYr6CK+o2eUMKgWrqKhj0FrEM8jQQALPFA3MAc8CQSAMA5ZBjgqDQmHIyEAIfkECQoAAAAsAAAAABAAEAAABWAgII4j85Ao2hRIKgrEUBQJLaSHMe8zgQo6Q8sxS7RIhILhBkgumCTZsXkACBC+0cwF2GoLLoFXREDcDlkAojBICRaFLDCOQtQKjmsQSubtDFU/NXcDBHwkaw1cKQ8MiyEAIfkECQoAAAAsAAAAABAAEAAABVIgII5kaZ6AIJQCMRTFQKiDQx4GrBfGa4uCnAEhQuRgPwCBtwK+kCNFgjh6QlFYgGO7baJ2CxIioSDpwqNggWCGDVVGphly3BkOpXDrKfNm/4AhACH5BAkKAAAALAAAAAAQABAAAAVgICCOZGmeqEAMRTEQwskYbV0Yx7kYSIzQhtgoBxCKBDQCIOcoLBimRiFhSABYU5gIgW01pLUBYkRItAYAqrlhYiwKjiWAcDMWY8QjsCf4DewiBzQ2N1AmKlgvgCiMjSQhACH5BAkKAAAALAAAAAAQABAAAAVfICCOZGmeqEgUxUAIpkA0AMKyxkEiSZEIsJqhYAg+boUFSTAkiBiNHks3sg1ILAfBiS10gyqCg0UaFBCkwy3RYKiIYMAC+RAxiQgYsJdAjw5DN2gILzEEZgVcKYuMJiEAOwAAAAAAAAAAAA==);
+	width: 16px;
+	height: 16px;
+	border: none;
+	padding: 0;
+	margin: 0 0 0 4px;
+	vertical-align: middle;
+}
+
+div.wpcf7 .ajax-loader.is-active {
+	visibility: visible;
+}
+
+div.wpcf7 div.ajax-error {
+	display: none;
+}
+
+div.wpcf7 .placeheld {
+	color: #888;
+}
+
+div.wpcf7 input[type="file"] {
+	cursor: pointer;
+}
+
+div.wpcf7 input[type="file"]:disabled {
+	cursor: default;
+}
+
+div.wpcf7 .wpcf7-submit:disabled {
+	cursor: not-allowed;
+}
+
+.wpcf7 input[type="url"],
+.wpcf7 input[type="email"],
+.wpcf7 input[type="tel"] {
+	direction: ltr;
+}
+
+</style>
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='rs-plugin-settings-css'  href='https://masom.com/wp-content/cache/min/1/wp-content/cache/asset-cleanup/css/item/rs-plugin-settings-v88ca0ab46b4538934d5ccb70a06c7ad210f66ed8-fdaee75b260a0185e07e74c2f95f8f75.css' type='text/css' media='all' />
+<style id='rs-plugin-settings-inline-css' type='text/css'>
+#rs-demo-id {}
+</style>
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='trx_addons-icons-css'  href='https://masom.com/wp-content/cache/min/1/wp-content/cache/asset-cleanup/css/item/trx_addons-icons-vaeee02d0eae95e1b9e32e174fd1ab81693aea471-de01317f73dd8c6ba098ec76d5296db7.css' type='text/css' media='all' />
+<link   property="stylesheet" rel='stylesheet' id='swiperslider-css'  href='https://masom.com/wp-content/plugins/trx_addons/js/swiper/swiper.min.css' type='text/css' media='all' />
+<link   property="stylesheet" rel='stylesheet' id='magnific-popup-css'  href='https://masom.com/wp-content/plugins/trx_addons/js/magnific/magnific-popup.min.css' type='text/css' media='all' />
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='trx_addons-css'  href='https://masom.com/wp-content/cache/min/1/wp-content/plugins/trx_addons/css/trx_addons-abd3966c9d793c1f9f013a25dd936f0b.css' type='text/css' media='all' />
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='trx_addons-animation-css'  href='https://masom.com/wp-content/cache/min/1/wp-content/plugins/trx_addons/css/trx_addons.animation-7494e0d5d9ae3652deb7a762ac6537cd.css' type='text/css' media='all' />
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='xllentech-english-islamic-calendar-css'  href='https://masom.com/wp-content/cache/min/1/wp-content/plugins/xllentech-english-islamic-calendar/public/css/xllentech-english-islamic-calendar-public-9191e6227eab6aa060035513baac4075.css' type='text/css' media='all' />
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='evcal_cal_default-css'  href='https://masom.com/wp-content/cache/min/1/wp-content/plugins/eventON/assets/css/eventon_styles-f20a117776049c6e293a52504fadc611.css' type='text/css' media='all' />
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='evo_font_icons-css'  href='https://masom.com/wp-content/cache/min/1/wp-content/cache/asset-cleanup/css/item/evo_font_icons-v651178f1cea20eea60d559b36a750ab483b30717-963ec6a156debe1778c733da21bc64d0.css' type='text/css' media='all' />
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='eventon_dynamic_styles-css'  href='https://masom.com/wp-content/cache/min/1/wp-content/plugins/eventON/assets/css/eventon_dynamic_styles-cbd12b876744d46812cba4032960d519.css' type='text/css' media='all' />
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='tablepress-default-css'  href='https://masom.com/wp-content/cache/min/1/wp-content/cache/asset-cleanup/css/item/tablepress-default-vebcb7c32b0f45393e3c4529c01203c3eea631a65-6bf0e922482056b31aa6084a36ae2dc5.css' type='text/css' media='all' />
+<style type='text/css'  data-wpacu-inline-css-file='1'>
+/* Eventon event lists styles */
+/* @version 0.1 */
+.ajde_evcal_calendar.evoEL .calendar_header{min-height: auto}
+.ajde_evcal_calendar.evoEL .eventon_events_list .eventon_list_event{}
+.ajde_evcal_calendar.evoEL #evcal_list.sepmonths{border:none;}
+.ajde_evcal_calendar.evoEL #evcal_list.sepmonths .sep_month_events{    border-right: 1px solid #e5e5e5;}
+.ajde_evcal_calendar.evoEL #eventon_loadbar_section{border-bottom:none;}
+</style>
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='js_composer_front-css'  href='https://masom.com/wp-content/cache/min/1/wp-content/cache/asset-cleanup/css/item/js_composer_front-v83e03542631eb43c41932ba39ff248ca2735f7d2-512e037d04f816725fa3e28f5de331a7.css' type='text/css' media='all' />
+<style type='text/css'  data-wpacu-inline-css-file='1'>
+/*!/wp-content/themes/masom/css/font-face/alhambra/stylesheet.css*//*! Generated by Font Squirrel (https://www.fontsquirrel.com) on July 20, 2017 */
+
+
+
+@font-face{font-family:'alhambra_deepregular';src:url(/wp-content/themes/masom/css/font-face/alhambra/alhad___-webfont.woff2) format('woff2'),
+url(/wp-content/themes/masom/css/font-face/alhambra/alhad___-webfont.woff) format('woff');font-weight:normal;font-style:normal;font-display:swap;}
+
+
+
+
+@font-face{font-family:'alhambra';src:url(/wp-content/themes/masom/css/font-face/alhambra/alhambra.woff2) format('woff2'),
+url(/wp-content/themes/masom/css/font-face/alhambra/alhambra.woff) format('woff');font-weight:normal;font-style:normal;font-display:swap;}
+</style>
+<style type='text/css'  data-wpacu-inline-css-file='1'>
+/*!/wp-content/uploads/omgf/alhambra-font-google_fonts/alhambra-font-google_fonts.css*//**
+ * Auto Generated by OMGF
+ * @author: Daan van den Bergh
+ * @url: https://daan.dev
+ */
+
+@font-face{font-family:'PT Sans';font-style:normal;font-weight:400;font-display:swap;src:url(https://masom.com/wp-content/uploads/omgf/alhambra-font-google_fonts/pt-sans-normal-latin-ext-400.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'PT Sans';font-style:normal;font-weight:400;font-display:swap;src:url(https://masom.com/wp-content/uploads/omgf/alhambra-font-google_fonts/pt-sans-normal-latin-400.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'PT Sans';font-style:normal;font-weight:700;font-display:swap;src:url(https://masom.com/wp-content/uploads/omgf/alhambra-font-google_fonts/pt-sans-normal-latin-ext-700.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'PT Sans';font-style:normal;font-weight:700;font-display:swap;src:url(https://masom.com/wp-content/uploads/omgf/alhambra-font-google_fonts/pt-sans-normal-latin-700.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+</style>
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='fontello-icons-css'  href='https://masom.com/wp-content/cache/min/1/wp-content/cache/asset-cleanup/css/item/fontello-icons-v430ecdcba1659580b62f33c838f06e2555e6a131-0d17d230bb01a63aff08b4a662695790.css' type='text/css' media='all' />
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='alhambra-main-css'  href='https://masom.com/wp-content/cache/min/1/wp-content/themes/masom/style-907a543f5cc3807f1b177db673a3cef4.css' type='text/css' media='all' />
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='alhambra-styles-css'  href='https://masom.com/wp-content/cache/min/1/wp-content/themes/masom/css/__styles-6fec022834af5b4b80a5db513af0f0bf.css' type='text/css' media='all' />
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='alhambra-colors-css'  href='https://masom.com/wp-content/cache/min/1/wp-content/themes/masom/css/__colors-9ad0f4f761042735e1e0254f4c06fa19.css' type='text/css' media='all' />
+<link   property="stylesheet" rel='stylesheet' id='mediaelement-css'  href='https://masom.com/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.13-9993131' type='text/css' media='all' />
+<link   property="stylesheet" rel='stylesheet' id='wp-mediaelement-css'  href='https://masom.com/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=5.4.10' type='text/css' media='all' />
+<link data-minify="1"   property="stylesheet" rel='stylesheet' id='alhambra-responsive-css'  href='https://masom.com/wp-content/cache/min/1/wp-content/themes/masom/css/responsive-a631ca4235000c136198fa69e247e329.css' type='text/css' media='all' />
+<script   type='text/javascript' src='https://masom.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script data-minify="1"   type='text/javascript' defer='defer' src='https://masom.com/wp-content/cache/min/1/ajax/libs/popper.js/1.12.9/umd/popper.min-74caa943ac313a055f462cb6b778ed82.js'></script>
+<script data-minify="1"   type='text/javascript' src='https://masom.com/wp-content/cache/min/1/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min-828f4503c7dca2fec259227e91e253cc.js'></script>
+<script data-minify="1"   type='text/javascript' defer='defer' src='https://masom.com/wp-content/cache/min/1/ajax/libs/jquery.blockUI/2.70/jquery.blockUI-892430abdc40e35c3dd893473acef701.js'></script>
+<script data-minify="1"   type='text/javascript' src='https://masom.com/wp-content/cache/min/1/wp-content/plugins/PW-Pro-News-Ticker-For-VC/js/bx-slider/jquery.bxslider-591ec4c459de1f4baac58fdb8ef1d6ce.js'></script>
+<script data-minify="1"   type='text/javascript' src='https://masom.com/wp-content/cache/min/1/wp-content/plugins/PW-Pro-News-Ticker-For-VC/js/magnific-popup/jquery.magnific-popup-88e40936681f27b7fc6ff55d496867c3.js'></script>
+<script data-minify="1"   type='text/javascript' src='https://masom.com/wp-content/cache/min/1/wp-content/plugins/PW-Pro-News-Ticker-For-VC/js/marquee/imarquee-b2f7061f0e2e645447da4eb60f816e4f.js'></script>
+<script   type='text/javascript' src='https://masom.com/wp-content/plugins/revslider/public/assets/js/rbtools.min.js?ver=6.0'></script>
+<script   type='text/javascript' src='https://masom.com/wp-content/plugins/revslider/public/assets/js/rs6.min.js?ver=6.2.2'></script>
+<link rel='https://api.w.org/' href='https://masom.com/wp-json/' />
+<link rel="canonical" href="https://masom.com/" />
+<link rel='shortlink' href='https://masom.com/' />
+<meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress."/>
+<meta name="generator" content="Powered by Slider Revolution 6.2.2 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface." />
+<script type="text/javascript">function setREVStartSize(e){			
+			try {								
+				var pw = document.getElementById(e.c).parentNode.offsetWidth,
+					newh;
+				pw = pw===0 || isNaN(pw) ? window.innerWidth : pw;
+				e.tabw = e.tabw===undefined ? 0 : parseInt(e.tabw);
+				e.thumbw = e.thumbw===undefined ? 0 : parseInt(e.thumbw);
+				e.tabh = e.tabh===undefined ? 0 : parseInt(e.tabh);
+				e.thumbh = e.thumbh===undefined ? 0 : parseInt(e.thumbh);
+				e.tabhide = e.tabhide===undefined ? 0 : parseInt(e.tabhide);
+				e.thumbhide = e.thumbhide===undefined ? 0 : parseInt(e.thumbhide);
+				e.mh = e.mh===undefined || e.mh=="" || e.mh==="auto" ? 0 : parseInt(e.mh,0);		
+				if(e.layout==="fullscreen" || e.l==="fullscreen") 						
+					newh = Math.max(e.mh,window.innerHeight);				
+				else{					
+					e.gw = Array.isArray(e.gw) ? e.gw : [e.gw];
+					for (var i in e.rl) if (e.gw[i]===undefined || e.gw[i]===0) e.gw[i] = e.gw[i-1];					
+					e.gh = e.el===undefined || e.el==="" || (Array.isArray(e.el) && e.el.length==0)? e.gh : e.el;
+					e.gh = Array.isArray(e.gh) ? e.gh : [e.gh];
+					for (var i in e.rl) if (e.gh[i]===undefined || e.gh[i]===0) e.gh[i] = e.gh[i-1];
+										
+					var nl = new Array(e.rl.length),
+						ix = 0,						
+						sl;					
+					e.tabw = e.tabhide>=pw ? 0 : e.tabw;
+					e.thumbw = e.thumbhide>=pw ? 0 : e.thumbw;
+					e.tabh = e.tabhide>=pw ? 0 : e.tabh;
+					e.thumbh = e.thumbhide>=pw ? 0 : e.thumbh;					
+					for (var i in e.rl) nl[i] = e.rl[i]<window.innerWidth ? 0 : e.rl[i];
+					sl = nl[0];									
+					for (var i in nl) if (sl>nl[i] && nl[i]>0) { sl = nl[i]; ix=i;}															
+					var m = pw>(e.gw[ix]+e.tabw+e.thumbw) ? 1 : (pw-(e.tabw+e.thumbw)) / (e.gw[ix]);					
+
+					newh =  (e.type==="carousel" && e.justify==="true" ? e.gh[ix] : (e.gh[ix] * m)) + (e.tabh + e.thumbh);
+				}			
+				
+				if(window.rs_init_css===undefined) window.rs_init_css = document.head.appendChild(document.createElement("style"));					
+				document.getElementById(e.c).height = newh;
+				window.rs_init_css.innerHTML += "#"+e.c+"_wrapper { height: "+newh+"px }";				
+			} catch(e){
+				console.log("Failure at Presize of Slider:" + e)
+			}					   
+		  };</script>
+		<style type="text/css" id="wp-custom-css">
+			.single-donation .sc_donations_form_amount_label {
+    display: inline-block;
+    margin-right: 1.15em;
+    margin-left: 0.2em;
+    padding-left: 1.2em;
+	margin-bottom:5px;
+	font-weight:bold;
+	color:green;
+	font-size:17px;
+}
+.single-donation .sc_donations_form_field input.sc_donations_form_amount {
+    min-height: 2em;
+		font-size:17px;
+	font-weight:bold;
+}
+.single-donation .sc_donations_form_field.sc_donations_form_field_amount {
+    margin-bottom: 1.4em;font-size:17px;
+	font-weight:bold;
+}
+.single-donation .sc_donations_form_field label.sc_donations_form_label {
+    margin-bottom: 0.5em;
+	font-size:16px;
+	font-weight:bold;
+	padding-top:5px;
+}
+
+.select_container select:not(.esg-sorting-select):not([class*="trx_addons_attrib_"]) {
+    visibility: ;
+	font-size:16px;
+	padding-top:10px;
+padding-bottom:10px;
+	max-width:359px;
+	font-weight:bold;
+	color:#fff;	
+}
+.scheme_default .select_container select {
+    color: #ffffff;
+    background: #38383c !important;
+}
+p.monthHeading {
+    float: left;
+	line-height:50px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+span.printIcon {
+    float: right;
+	display:none;
+    cursor: pointer;
+}
+.evo_cal_above span {
+    color: #ffffff;
+    background-color: #000000;
+}
+#evcal_list .eventon_list_event p.no_events {
+    padding: 10px;
+    font-size: 15px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+	    color: #000000;
+}
+.ajde_evcal_calendar #evcal_head.calendar_header #evcal_cur, .ajde_evcal_calendar .evcal_month_line p {
+    color: #b3b3b3;
+	font-size:30px;
+}
+.jumuah{
+		font-size:20px;
+	padding:20px;    font-weight: bold;line-height:45px;
+	color:red;
+}
+table.dptTimetable {
+    margin-top: 5px;
+    width: 100%;
+    border: 0px solid green;
+    border-collapse: collapse;
+	
+}
+.table.dptTimetable th.highlight, tr.highlight, td.highlight {
+    background-color: #008a12;
+    color: #ffffff;
+    font-weight: bold;
+}
+.select_container select:not(.esg-sorting-select):not([class*="trx_addons_attrib_"]) {
+    visibility: visible;
+font-size:17px;
+	font-weight:bold;
+	color:#ffffff;
+}
+.scheme_default fieldset legend {
+    color: #27272b;
+    font-size: 18px;
+    background-color: #ffffff;
+	margin-top:10px;
+	margin-left:-28px;
+}
+.scheme_dark .sc_layouts_row_type_narrow .sc_layouts_item_icon, .scheme_dark.sc_layouts_row_type_narrow .sc_layouts_item_icon {
+    color: #fff;
+}
+.scheme_dark .sc_layouts_row_type_narrow .sc_layouts_item_details_line1, .scheme_dark .sc_layouts_row_type_narrow .sc_layouts_item_details_line2, .scheme_dark.sc_layouts_row_type_narrow .sc_layouts_item_details_line1, .scheme_dark.sc_layouts_row_type_narrow .sc_layouts_item_details_line2 {
+    color: #fff;
+}
+.xllentech-islamic-today {
+    font-weight: 700;
+    font-size: 17px;
+	margin-top:-10px;    
+	color: #000
+
+}
+.sc_layouts_row_type_compact .sc_layouts_logo img {
+    max-height: 80px;
+}
+@media (max-width: 1262px)
+.sc_layouts_row, .sc_layouts_row input[type="text"], .sc_layouts_item_details_line2 {
+    font-size: 14px;
+    line-height: 101.54%;
+}
+.scheme_default .sc_layouts_row, .scheme_default.sc_layouts_row {
+    color: #27272b;	
+		padding-top:0px;
+		padding-bottom:0px;
+    background-color: #ffffff;
+}
+.top_panel > .vc_row:nth-child(3) > .wpb_column {
+    z-index: 8;
+		margin-top:20px;
+		padding-bottom:10px;
+}
+.sc_layouts_row_type_compact .sc_layouts_logo img {
+    max-height: 70px;
+		margin-top:0px;
+}
+.sc_layouts_menu_mobile_button {
+    display: ;
+			margin-top:10px;
+			margin-left:55px;
+
+}
+.evoau_submission_form #evoau_form p #evoau_submit, body a.evoAU_form_trigger_btn, body .evoau_submission_form .msub_row a, body .evcal_btn.evoau, body .evoau_submission_form.loginneeded .evcal_btn {
+    color: #ffffff;
+	padding-top:22px;
+	padding-bottom:22px;
+	padding-left:30px;
+		padding-right:30px;
+	font-size:17px;
+    background-color: #307FE2;
+}
+.datenew {
+    color: #000000;
+}
+.scheme_default .sc_layouts_row_type_compact .sc_layouts_item a:not(.sc_button):not(.button), .scheme_default.sc_layouts_row_type_compact .sc_layouts_item a:not(.sc_button):not(.button) {
+    color: #ffffff;		   
+
+
+}
+.sc_layouts_menu_nav>li, .sc_layouts_menu_nav>li>a {
+    font-family: "PT Sans",sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+	    color: #ffffff; 
+
+}
+.sc_layouts_menu.inited {
+    overflow: visible;
+    visibility: visible;
+    max-height: none;
+	    padding-top: 10px;
+    padding-bottom: -10px;
+
+	width:100%;
+}
+.sc_layouts_menu_nav {
+    text-align: left;
+    vertical-align: middle;
+    padding-left: 0 !important;
+		width:100%;
+
+}
+.sc_layouts_menu_nav {
+    text-align: left;
+    vertical-align: middle;
+    padding-left: 0 !important;		width:100%;
+
+}
+.sc_layouts_menu {
+    position: relative;
+    z-index: 1000;
+    overflow: hidden;
+    visibility: hidden;
+    max-height: 3em;		width:100%;
+
+}
+.scheme_default .sc_layouts_menu_nav>li.current-menu-item>a, .scheme_default .sc_layouts_menu_nav>li.current-menu-parent>a, .scheme_default .sc_layouts_menu_nav>li.current-menu-ancestor>a {
+    color: #ffffff !important;
+	
+}
+.scheme_default .sc_blogger.sc_blogger_default .sc_blogger_item .sc_blogger_item_excerpt .sc_blogger_item_button.sc_item_button .sc_button.sc_button_default {
+    background-color: #B7B09C;
+    color: #ffffff;
+}
+.tablepress {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    margin-bottom: 1em;
+    border: none;
+}
+.x-board td span.dpt_start, td span.dpt_jamah {
+    font-size: 17px;
+}
+.scheme_dark.vc_section[data-vc-full-width="true"], .scheme_dark.wpb_row[data-vc-full-width="true"], .scheme_dark.wpb_column>.vc_column-inner>.wpb_wrapper, .scheme_dark.wpb_text_column {
+    background-color: #0e0d12;
+	border-bottom: 8px solid #B7B09C; 
+}
+.sc_blogger_plain .sc_blogger_item .sc_blogger_item_title {
+    margin: 0.65em 0 0.80em;
+	font-size:23px;
+}
+.ajde_evcal_calendar .calendar_header .evo_j_dates .legend a.set {
+    color: #ffffff;
+    background-color: #307FE2;
+}
+.eventon_events_list .eventon_list_event .evcal_desc span.evo_above_title span.featured, .evo_pop_body .evcal_desc span.evo_above_title span.featured {
+    color: #ffffff;
+    background-color: #307FE2;
+}
+.eventon_events_list .eventon_list_event .evcal_desc span.evo_above_title span, .evo_pop_body .evcal_desc span.evo_above_title span {
+    color: #ffffff;
+    background-color: #5CB8B2;
+}
+.sc_layouts_row_type_narrow .sc_layouts_column_align_left .sc_layouts_item:last-child {
+    padding-right: 1.5em;
+    border-right: 0px solid;
+}
+.sc_layouts_row_type_narrow .sc_layouts_item {
+    font-size: 0.9285em;
+    line-height: 1.4615em;
+    letter-spacing: 0.4px;
+    font-weight: 400;
+    padding-top: 1.15em!important;
+    padding-bottom: 1.2em!important;
+    padding-left: 1.2em;
+    margin-left: 1em!important;
+    border-left: 0px solid;
+    margin: 0 0 0 1.5em!important;
+}
+table.dptTimetable th.tableHeading {
+    background-color: #5CB8B2;
+    color: #fff;
+    font-size: 17px;
+	font-weight:normal;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.scheme_dark .sc_layouts_row_type_narrow .socials_wrap .social_item .social_icon, .scheme_dark.sc_layouts_row_type_narrow .socials_wrap .social_item .social_icon {
+    background-color: ;
+    color: #ebe6d8;	overflow:transparent;
+	background:transparent;
+	line-height: 20px;
+		font-weight:normal;
+}
+.scheme_default .sc_layouts_row_type_narrow .sc_layouts_item .socials_wrap a {
+    border-color: #fff;
+	
+}
+.sc_layouts_row_type_narrow .socials_wrap .social_item .social_icon {
+    width: auto;
+    height: auto;
+    line-height: ;
+    font-size: 21px;
+    -webkit-border-radius: 0;
+    -ms-border-radius: 0;
+    border-radius: 0;
+	overflow:transparent;
+	background:transparent;
+}
+.wpcf7-form .cf7_form_type_1_container input[type="text"], .wpcf7-form .cf7_form_type_1_container input[type="email"] {
+    width: 100%;
+	color:#000;
+	    background-color: #000;
+}
+.wpcf7-form active .cf7_form_type_1_container input[type="text"], .wpcf7-form .cf7_form_type_1_container input[type="email"] {
+    width: 100%;
+	color:#000;
+	    background-color: #000;
+}
+.wpcf7-form focus .cf7_form_type_1_container input[type="text"], .wpcf7-form .cf7_form_type_1_container input[type="email"] {
+    width: 100%;
+	color:#000;
+}
+.wpcf7-form .cf7_form_type_1_container input[type="text"], .wpcf7-form .cf7_form_type_1_container input[type="email"] {
+    width: 100%;
+}
+.wpcf7-form .cf7_form_type_1_container input[type="text"], .wpcf7-form .cf7_form_type_1_container input[type="email"] {
+    width: 100%;	    background-color: #fff;
+		color:#000;
+}
+.wpcf7-form .cf7_form_type_1_container .column-1_2 .wpcf7-text, .wpcf7-form .cf7_form_type_1_container .column-1_1 .wpcf7-textarea {
+    width: 100%;
+	font-weight:600;font-size:17px;
+}
+.scheme_dark div.esg-pagination .esg-pagination-button, .scheme_dark .page_links > a, .scheme_dark .comments_pagination .page-numbers, .scheme_dark .nav-links .page-numbers {
+    color: #ffffff;
+    background-color: #919499;
+}
+.sc_layouts_menu_nav > li.menu-item-has-children > a::after {
+  content: "" !important;
+  position: absolute;
+  top: 50%;
+  right: 1em;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 6px solid #fff;
+}
+		</style>
+		<style type="text/css" data-type="vc_shortcodes-custom-css">.vc_custom_1595606811495{margin-top: -10px !important;}.vc_custom_1603886787494{margin-top: 20px !important;}.vc_custom_1597345641459{margin-top: 10px !important;margin-bottom: 30px !important;}.vc_custom_1594938307348{margin-top: 6px !important;}.vc_custom_1771105126953{margin-bottom: -20px !important;padding-top: 40px !important;background-image: url(https://masom.com/wp-content/uploads/2020/08/ylive2.jpg?id=2003) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1780953215647{margin-top: -30px !important;padding-top: 50px !important;padding-bottom: 30px !important;background-color: #5cb8b2 !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1780953232048{margin-top: -30px !important;padding-top: 50px !important;padding-bottom: 20px !important;background-color: #5cb8b2 !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1780985479751{margin-top: -15px !important;padding-top: 100px !important;padding-bottom: 110px !important;background-color: #ffffff !important;}.vc_custom_1597093893040{margin-top: 0px !important;padding-top: 30px !important;background-image: url(https://masom.com/wp-content/uploads/2020/07/allah-1835630_640.jpg?id=1102) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1597952739660{padding-bottom: 10px !important;}.vc_custom_1619386679638{padding-bottom: 10px !important;}.vc_custom_1780977495694{padding-bottom: 40px !important;background-image: url(https://masom.com/wp-content/uploads/2026/06/islamic-imam-husayn-shrine-01-2.webp?id=3839) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1781018756366{padding-top: 100px !important;padding-bottom: 55px !important;}.vc_custom_1645893618894{padding-bottom: 40px !important;background-image: url(https://masom.com/wp-content/uploads/2020/08/sas224.jpg?id=1894) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1781018736135{padding-top: 100px !important;padding-bottom: 55px !important;}.vc_custom_1594992414290{padding-bottom: 40px !important;background-image: url(https://masom.com/wp-content/uploads/2020/07/allah-1835630_640.jpg?id=1102) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1781018749493{padding-top: 100px !important;padding-bottom: 55px !important;}.vc_custom_1597745232465{margin-bottom: 35px !important;}.vc_custom_1597746065193{margin-bottom: 120px !important;}.vc_custom_1780985442005{padding-bottom: 20px !important;}.vc_custom_1597083278670{margin-top: 0px !important;margin-bottom: 0px !important;}.vc_custom_1780985446461{padding-bottom: 20px !important;}.vc_custom_1594818929716{margin-top: 0px !important;margin-bottom: 0px !important;}.vc_custom_1594818945138{margin-top: 0px !important;margin-bottom: 0px !important;}.vc_custom_1780985451141{padding-bottom: 20px !important;}.vc_custom_1597083210257{margin-top: 0px !important;margin-bottom: 0px !important;}.vc_custom_1597093718723{background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1597093519171{padding-top: 10px !important;}</style><noscript><style> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript><style type="text/css">html { margin-top: 0 !important; }</style><noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript><link rel="preload"
+      as="image"
+      href="https://masom.com/wp-content/uploads/2020/07/menu003.jpg"
+      fetchpriority="high">
+<script data-minify="1" type='text/javascript' src='https://masom.com/wp-content/cache/min/1/wp-content/themes/masom/js/SalaatTimes-49941ad7b824bebcf2b980f61550f208.js'></script>
+<script data-minify="1" type='text/javascript' src='https://masom.com/wp-content/cache/min/1/wp-content/themes/masom/js/SalaatTimesHelper1-c367e5e3cdc4c0eb1104168b39e27a61.js'></script>
+<link data-minify="1" rel="stylesheet" href="https://masom.com/wp-content/cache/min/1/ajax/libs/font-awesome/5.15.4/css/all.min-ac996b29644f7f96bcdaea8f08c422cb.css">
+<script type="text/javascript">
+var OFF = false;
+
+function turnOnAdhaanAutoPlay(){
+	OFF = false;
+}
+
+function addZero(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
+
+function playAdhaan(region){ // <<< do not edit or remove this line!
+
+	// Get today's prayer times ("h:mm")
+	var fajr=mytime(region,1);
+	var zuhr=mytime(region,3);
+	var maghrib=mytime(region,5);
+
+	// Get current time
+	var d=new Date();
+	var hrs= parseInt(d.getHours());
+	var mins = addZero(d.getMinutes());
+
+	// Check if it's midday or morning
+	if ( hrs > 11 && hrs < 24 ) {   // ZUHR OR MAGHRIB
+		if (hrs != 12) {
+			hrs = hrs - 12;		// Convert away from military hrs
+		}
+
+		var current_time = String(hrs) + ":" + String(mins);
+
+		if (current_time == zuhr || current_time == maghrib){
+			if (document.getElementById('adhaan').paused == true && !OFF) {
+				document.getElementById('adhaan').play();
+				OFF = true; // Prevents adhaan from playing again immediately if paused.
+			}
+		}
+	} else {
+		// Fajr
+		var current_time = String(hrs) + ":" + String(mins);
+		if (current_time == fajr){
+			// If adhaan is not already playing and autoplay is on.
+			if (document.getElementById('adhaan').paused == true && !OFF) {
+				document.getElementById('adhaan').play();
+				OFF = true;
+			}
+		}
+	}
+}
+
+</script>
+</head>
+
+<body data-rsssl=1 class="home page-template-default page page-id-346 frontpage body_tag scheme_default blog_mode_front body_style_wide  is_stream blog_style_excerpt sidebar_hide expand_content remove_margins header_style_header-custom-402 header_position_default menu_style_top no_layout wpb-js-composer js-comp-ver-6.2.0 vc_responsive">
+
+    
+	
+	<div class="body_wrap">
+
+		<div class="page_wrap"><header class="top_panel top_panel_custom top_panel_custom_402 top_panel_custom_header without_bg_image scheme_default"><div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true" class="vc_row wpb_row vc_row-fluid vc_custom_1596413204342 sc_layouts_row sc_layouts_row_type_narrow scheme_dark"><div class="wpb_column vc_column_container vc_col-sm-12 vc_hidden-sm vc_hidden-xs sc_layouts_column sc_layouts_column_align_center sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div id="sc_content_750243728"
+		class="sc_content color_style_default sc_content_default sc_content_width_1_1 sc_float_center"><div class="sc_content_container"><div class="vc_row wpb_row vc_inner vc_row-fluid vc_row-o-equal-height vc_row-o-content-middle vc_row-flex"><div class="wpb_column vc_column_container vc_col-sm-6 sc_layouts_column sc_layouts_column_align_left sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="sc_layouts_item sc_layouts_hide_on_mobile sc_layouts_hide_on_tablet"><div id="sc_layouts_iconed_text_712035069" class="sc_layouts_iconed_text hide_on_tablet hide_on_mobile"><a href="tel:+17732839718" class="sc_layouts_item_link sc_layouts_iconed_text_link"><span class="sc_layouts_item_icon sc_layouts_iconed_text_icon icon-phone"></span><span class="sc_layouts_item_details sc_layouts_iconed_text_details"><span class="sc_layouts_item_details_line2 sc_layouts_iconed_text_line2">(773) 283-9718</span></span></a></div></div><div class="sc_layouts_item sc_layouts_hide_on_mobile sc_layouts_hide_on_tablet"><div id="sc_layouts_iconed_text_1918300076" class="sc_layouts_iconed_text hide_on_tablet hide_on_mobile"><a href="https://www.google.com/maps/place/4353+W+Lawrence+Ave,+Chicago,+IL+60630,+USA/@41.967852,-87.739688,17z/data=!4m5!3m4!1s0x880fcc2d48ef0251:0xf12ee185a1fe53f8!8m2!3d41.967852!4d-87.7374993?hl=en" class="sc_layouts_item_link sc_layouts_iconed_text_link"><span class="sc_layouts_item_icon sc_layouts_iconed_text_icon icon-location"></span><span class="sc_layouts_item_details sc_layouts_iconed_text_details"><span class="sc_layouts_item_details_line2 sc_layouts_iconed_text_line2">4353 West Lawrence Avenue Chicago</span></span></a></div></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-6 sc_layouts_column sc_layouts_column_align_center sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="sc_layouts_item sc_layouts_hide_on_mobile sc_layouts_hide_on_tablet"><div id="sc_layouts_container_1683334427" class="sc_layouts_container hide_on_tablet hide_on_mobile sc_align_left">
+	<div class="wpb_text_column wpb_content_element  vc_custom_1597926908872" >
+		<div class="wpb_wrapper">
+			
+
+		</div>
+	</div>
+</div></div><div class="sc_layouts_item sc_layouts_hide_on_mobile"><div  id="sc_socials_1659881215" 
+		class="sc_socials hide_on_mobile sc_socials_default sc_align_none"><div class="socials_wrap"><a target="_blank" href="https://www.youtube.com/channel/UCLE_Z6NZIg05Zzz1tn209sg" class="social_item social_item_style_icons social_item_type_icons"><span class="social_icon social_youtube"><span class="icon-youtube"></span></span></a><a target="_blank" href="https://www.facebook.com/share/18Bg8qJvu9/?mibextid=wwXIfr" class="social_item social_item_style_icons social_item_type_icons"><span class="social_icon social_facebook"><span class="icon-facebook"></span></span></a><a target="_blank" href="https://www.instagram.com/imambargahmasom?igsh=d21ycWQxYzFuN3Zn&#038;utm_source=qr" class="social_item social_item_style_icons social_item_type_icons"><span class="social_icon social_instagramm"><span class="icon-instagramm"></span></span></a></div></div></div><div class="sc_layouts_item sc_layouts_hide_on_mobile sc_layouts_hide_on_tablet"><div id="sc_layouts_container_1710950617" class="sc_layouts_container hide_on_tablet hide_on_mobile sc_align_right  vc_custom_1597168569904"><div class="vc_btn3-container vc_btn3-right" ><a style="background-color:#307fe2; color:#ffffff;" class="vc_general vc_btn3 vc_btn3-size-sm vc_btn3-shape-rounded vc_btn3-style-custom" href="/donate" title="">DONATE NOW</a></div></div></div></div></div></div></div></div></div></div></div></div></div><div class="vc_row-full-width vc_clearfix"></div><div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true" class="vc_row wpb_row vc_row-fluid vc_custom_1597780260678 vc_row-has-fill sc_layouts_row sc_layouts_row_type_narrow scheme_dark"><div class="wpb_column vc_column_container vc_col-sm-12 vc_hidden-lg vc_hidden-md vc_col-has-fill sc_layouts_column sc_layouts_column_align_center sc_layouts_column_icons_position_left"><div class="vc_column-inner vc_custom_1597780436541"><div class="wpb_wrapper"><div id="sc_content_1136097056"
+		class="sc_content color_style_default sc_content_default sc_content_width_1_1 sc_float_center  vc_custom_1597776562282"><div class="sc_content_container"><div class="vc_row wpb_row vc_inner vc_row-fluid vc_custom_1597776104491 vc_row-has-fill vc_row-o-equal-height vc_row-o-content-middle vc_row-flex"><div class="wpb_column vc_column_container vc_col-sm-12 vc_col-has-fill sc_layouts_column sc_layouts_column_align_center sc_layouts_column_icons_position_left"><div class="vc_column-inner vc_custom_1597775458391"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element  vc_custom_1597780125151" >
+		<div class="wpb_wrapper">
+			<table style="background-color: #2e2e35;" border="0" width="100%" cellspacing="0" cellpadding="0" bgcolor="#2e2e35">
+<tbody>
+<tr style="background-color: #2e2e35;" bgcolor="#2e2e35">
+<td style="text-align: left; color: #ffffff; background-color: #2e2e35; pading-top: 0px; margin-bottom: -21px;" bgcolor="#2e2e35">
+<table id="tablepress-4" class="tablepress tablepress-id-4">
+<tbody>
+<tr class="row-1">
+	<td class="column-1"><div id="sc_socials_1561180995" class="sc_socials sc_socials_default sc_align_center  vc_custom_1597767887770" style="margin-bottom: -5px;margin-left: -36px;margin-top: -11px"><div class="socials_wrap"><a target="_blank" href="https://www.youtube.com/channel/UCLE_Z6NZIg05Zzz1tn209sg" class="social_item social_item_style_icons social_item_type_icons" rel="noopener noreferrer"><span class="social_icon social_youtube"><span class="icon-youtube"></span></span></a><a target="_blank" href="https://www.facebook.com/share/18Bg8qJvu9/?mibextid=wwXIfr" class="social_item social_item_style_icons social_item_type_icons" rel="noopener noreferrer"><span class="social_icon social_facebook"><span class="icon-facebook"></span></span></a><a target="_blank" href="https://www.instagram.com/imambargahmasom?igsh=d21ycWQxYzFuN3Zn&amp;utm_source=qr" class="social_item social_item_style_icons social_item_type_icons" rel="noopener noreferrer"><span class="social_icon social_instagramm"><span class="icon-instagramm"></span></span></a></div></div></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td style="background-color: #2e2e35; text-align: right;">
+<div class="" style="background-color: #2e2e35;"><a class="vc_general vc_btn3 vc_btn3-size-xs vc_btn3-shape-rounded vc_btn3-style-custom" style="background-color: #307fe2; color: #ffffff; margin-top: -10px;" title="" href="/donate">DONATE NOW</a></div>
+</td>
+</tr>
+</tbody>
+</table>
+
+		</div>
+	</div>
+</div></div></div></div></div></div></div></div></div></div><div class="vc_row-full-width vc_clearfix"></div><div class="vc_row wpb_row vc_row-fluid vc_custom_1597702640765 sc_layouts_row sc_layouts_row_type_compact"><div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column sc_layouts_column_align_center sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div id="sc_content_179299062"
+		class="sc_content color_style_default sc_content_default sc_content_width_1_1 sc_float_center"><div class="sc_content_container"><div class="vc_row wpb_row vc_inner vc_row-fluid vc_row-o-equal-height vc_row-o-content-middle vc_row-flex"><div class="wpb_column vc_column_container vc_col-sm-3 vc_hidden-sm vc_hidden-xs sc_layouts_column sc_layouts_column_align_left sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="sc_layouts_item"><a href="#" id="sc_layouts_logo_697861379" class="sc_layouts_logo sc_layouts_logo_default"><img class="logo_image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20910%20270'%3E%3C/svg%3E" alt="" width="910" height="270" style="max-height:82px;" data-lazy-src="https://masom.com/wp-content/uploads/2020/07/headlogon4.webp"><noscript><img class="logo_image" src="https://masom.com/wp-content/uploads/2020/07/headlogon4.webp" alt="" width="910" height="270" style="max-height:82px;"></noscript></a></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-9 vc_hidden-sm vc_hidden-xs vc_col-has-fill sc_layouts_column sc_layouts_column_align_right sc_layouts_column_icons_position_left"><div class="vc_column-inner vc_custom_1596524983462"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element  vc_custom_1768413097123" >
+		<div class="wpb_wrapper">
+			<table style="padding: 2px;" border="0" width="80%" cellspacing="0" cellpadding="0" align="right" bgcolor="#FFFFFF">
+<tbody>
+<tr>
+<td style="background-color: #ffffff; text-align: left; margin-bottom: -22px; line-height: 0px; padding-bottom: 15px;" colspan="3" bgcolor="#FFFFFF">
+<h6 style="text-align: left; font-size: 19px; color: #000000; text-decoration: normal; line-height: 0px; margin-bottom: -22px; padding-bottom: 15px;">Chicagoland prayer timings</h6>
+</td>
+<td style="background-color: #ffffff; text-align: right; line-height: 12px;" colspan="2" bgcolor="#FFFFFF"><a href="/hijricalendar2026/"><span style="text-align: right;"><div class="widget widget_xllentech_islamic_today_plugin">				<div class='xllentech-islamic-today'>
+					<span class=''>
+				
+					Aug-11-2026					</span>
+				
+					(<span class='datenew'>27-Safar-1448</span>)
+				</div>
+			</div></span></a></td>
+</tr>
+<tr>
+<td style="background-color: #ffffff; text-align: center;" bgcolor="#FFFFFF">
+<div align="center">
+<h6 style="padding: 0px; text-align: center; font-size: 20px; background-color: #; color: #5cb8b2;">Fajr<br />
+<span style="padding: 0px; text-align: center; font-size: 17px; color: #000000; line-height: 28px;"><span class='dpt_jamah'>4:28 AM</span></span></h6>
+</div>
+</td>
+<td style="background-color: #ffffff; text-align: center;" bgcolor="#FFFFFF">
+<div style="border-left: 5px solid #B7B09C; background-color: #ffffff;" align="center">
+<h6 style="padding: 0px; text-align: center; font-size: 20px; color: #5cb8b2; padding-left: 18px;">Sunrise<br />
+<span style="padding: 0px; text-align: center; font-size: 17px; color: #000000; line-height: 28px;"><span class='dpt_sunrise'>5:55 AM</span></span></h6>
+</div>
+</td>
+<td style="background-color: #ffffff; text-align: center;" bgcolor="#FFFFFF">
+<div style="border-left: 5px solid #B7B09C; background-color: #ffffff;" align="center">
+<h6 style="padding: 0px; text-align: center; font-size: 20px; color: #5cb8b2; padding-left: 20px;">Zohar<br />
+<span style="padding: 0px; text-align: center; font-size: 17px; color: #000000; line-height: 28px;"><span class='dpt_jamah'>12:55 PM</span></span></h6>
+</div>
+</td>
+<td style="background-color: #ffffff; text-align: center;" bgcolor="#FFFFFF">
+<div style="border-left: 5px solid #B7B09C; background-color: #ffffff;" align="center">
+<h6 style="padding: 0px; text-align: center; font-size: 20px; color: #5cb8b2; padding-left: 18px;">Maghrib<br />
+<span style="padding: 0px; text-align: center; font-size: 17px; color: #000000; line-height: 28px;"><span class='dpt_jamah'>8:13 PM</span></span></h6>
+</div>
+</td>
+<td style="background-color: #ffffff; text-align: center;" bgcolor="#FFFFFF">
+<div style="border-left: 5px solid #B7B09C; background-color: #ffffff;" align="center">
+<h6 style="padding: 0px; text-align: right; font-size: 20px; color: #5cb8b2;">Midnight<br />
+<span style="padding: 0px; text-align: right; font-size: 17px; color: #000000; line-height: 28px;"><span class='dpt_jamah'>12:09 AM</span></span></h6>
+</div>
+</td>
+</tr>
+<tr>
+<td style="background-color: #ffffff; text-align: center;" bgcolor="#FFFFFF"></td>
+<td style="background-color: #ffffff; text-align: center;" bgcolor="#FFFFFF"></td>
+<td style="background-color: #ffffff; text-align: center;" bgcolor="#FFFFFF"></td>
+<td style="background-color: #ffffff; text-align: center;" colspan="2" bgcolor="#FFFFFF">
+<h6 style="text-align: right; font-size: 19px; color: #000000; text-decoration: normal; line-height: 0px; margin-bottom: -25px; padding-bottom: 10px;"><span style="color: #3366ff;"><a style="color: #3366ff;" href="/hijricalendar2026/">Hijri Calendar</a></span></h6>
+</td>
+</tr>
+</tbody>
+</table>
+
+		</div>
+	</div>
+</div></div></div></div><div class="vc_row wpb_row vc_inner vc_row-fluid vc_custom_1597781540548 vc_row-o-equal-height vc_row-o-content-middle vc_row-flex"><div class="wpb_column vc_column_container vc_col-sm-2 vc_col-lg-offset-0 vc_hidden-lg vc_hidden-md sc_layouts_column sc_layouts_column_align_left sc_layouts_column_icons_position_left"><div class="vc_column-inner vc_custom_1597955468263"><div class="wpb_wrapper"><div class="sc_layouts_item"><a href="#" id="sc_layouts_logo_1848744547" class="sc_layouts_logo sc_layouts_logo_default"><img class="logo_image" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20910%20270'%3E%3C/svg%3E" alt="" width="910" height="270" style="max-height:82px;" data-lazy-src="https://masom.com/wp-content/uploads/2020/07/headlogon4.webp"><noscript><img class="logo_image" src="https://masom.com/wp-content/uploads/2020/07/headlogon4.webp" alt="" width="910" height="270" style="max-height:82px;"></noscript></a></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-10 vc_hidden-lg vc_hidden-md sc_layouts_column sc_layouts_column_align_right sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element  vc_custom_1597956392404" >
+		<div class="wpb_wrapper">
+			
+
+		</div>
+	</div>
+<div class="sc_layouts_item"><nav class="sc_layouts_menu sc_layouts_menu_default menu_hover_fade_box hide_on_mobile  vc_custom_1597956085134" id="sc_layouts_menu_96547196" data-animation-in="fadeInUpSmall" data-animation-out="fadeOutDownSmall"		><ul id="menu-main-menu" class="sc_layouts_menu_nav"><li id="menu-item-1914" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-1914"><a href="/" aria-current="page"><span>Home</span></a></li><li id="menu-item-304" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-304"><a href="#"><span>About Us</span></a>
+<ul class="sub-menu"><li id="menu-item-1407" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1407"><a href="/our-mission"><span>Our Mission</span></a></li><li id="menu-item-1406" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1406"><a href="/our-members"><span>Our Committee</span></a></li><li id="menu-item-1373" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1373"><a href="/adminpanel"><span>Members Portal</span></a></li></ul>
+</li><li id="menu-item-874" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-874"><a href="#"><span>Our Services</span></a>
+<ul class="sub-menu"><li id="menu-item-860" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-860"><a href="/Funeral-services"><span>Funeral services</span></a></li><li id="menu-item-876" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-876"><a href="/MIS"><span>MASOM Islamic School</span></a></li><li id="menu-item-861" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-861"><a href="#"><span>Matrimonial services</span></a></li><li id="menu-item-877" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-877"><a href="/youth-activities/"><span>Youth Activities</span></a></li><li id="menu-item-862" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-862"><a href="/Wadi-e-MASOM"><span>Wadi-e-MASOM</span></a></li><li id="menu-item-878" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-878"><a href="#"><span>MASOM Online Shop</span></a></li></ul>
+</li><li id="menu-item-277" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-277"><a href="#"><span>Events</span></a>
+<ul class="sub-menu"><li id="menu-item-1157" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1157"><a href="/hijricalendar2026/"><span>Hijri Prayer Calendar</span></a></li><li id="menu-item-1158" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1158"><a href="/events-schedule"><span>Program Calendar</span></a></li></ul>
+</li><li id="menu-item-863" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-863"><a href="/forms"><span>Online Forms</span></a>
+<ul class="sub-menu"><li id="menu-item-1247" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1247"><a href="/forms"><span>Online Forms</span></a></li><li id="menu-item-864" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-864"><a href="#"><span>Membership Form</span></a></li><li id="menu-item-865" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-865"><a href="#"><span>Application for Private Program</span></a></li><li id="menu-item-1588" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1588"><a href="#"><span>Sura-Fatiha Request</span></a></li></ul>
+</li><li id="menu-item-1284" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1284"><a href="#"><span>Multimedia</span></a>
+<ul class="sub-menu"><li id="menu-item-1285" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1285"><a href="/photo-gallery"><span>Photo Gallery</span></a></li><li id="menu-item-1286" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1286"><a href="/videos"><span>Videos</span></a></li></ul>
+</li><li id="menu-item-1915" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1915"><a href="/contacts"><span>Contact Us</span></a></li></ul></nav><div class="sc_layouts_iconed_text sc_layouts_menu_mobile_button">
+		<a class="sc_layouts_item_link sc_layouts_iconed_text_link" href="#">
+			<span class="sc_layouts_item_icon sc_layouts_iconed_text_icon trx_addons_icon-menu"></span>
+		</a>
+	</div></div></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-12 vc_hidden-lg vc_hidden-md vc_hidden-sm vc_hidden-xs sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div></div></div></div></div></div></div><div class="vc_row wpb_row vc_row-fluid vc_custom_1645893960984 vc_row-has-fill sc_layouts_row sc_layouts_row_type_compact sc_layouts_row_fixed sc_layouts_hide_on_tablet sc_layouts_hide_on_mobile"><div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column sc_layouts_column_align_center sc_layouts_column_icons_position_left"><div class="vc_column-inner vc_custom_1597081325690"><div class="wpb_wrapper"><div id="sc_content_1510678011"
+		class="sc_content color_style_default sc_content_default sc_content_width_1_1 sc_float_center sc_align_center  vc_custom_1597081251270"><div class="sc_content_container"><div class="vc_row wpb_row vc_inner vc_row-fluid vc_row-o-equal-height vc_row-o-content-middle vc_row-flex"><div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column sc_layouts_column_align_center sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="sc_layouts_item sc_layouts_hide_on_mobile"><nav class="sc_layouts_menu sc_layouts_menu_default menu_hover_fade_box hide_on_mobile" id="sc_layouts_menu_1418587553" data-animation-in="fadeInUpSmall" data-animation-out="fadeOutDownSmall"		><ul id="menu-main-menu" class="sc_layouts_menu_nav"><li id="menu-item-1914" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-1914"><a href="/" aria-current="page"><span>Home</span></a></li><li id="menu-item-304" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-304"><a href="#"><span>About Us</span></a>
+<ul class="sub-menu"><li id="menu-item-1407" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1407"><a href="/our-mission"><span>Our Mission</span></a></li><li id="menu-item-1406" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1406"><a href="/our-members"><span>Our Committee</span></a></li><li id="menu-item-1373" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1373"><a href="/adminpanel"><span>Members Portal</span></a></li></ul>
+</li><li id="menu-item-874" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-874"><a href="#"><span>Our Services</span></a>
+<ul class="sub-menu"><li id="menu-item-860" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-860"><a href="/Funeral-services"><span>Funeral services</span></a></li><li id="menu-item-876" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-876"><a href="/MIS"><span>MASOM Islamic School</span></a></li><li id="menu-item-861" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-861"><a href="#"><span>Matrimonial services</span></a></li><li id="menu-item-877" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-877"><a href="/youth-activities/"><span>Youth Activities</span></a></li><li id="menu-item-862" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-862"><a href="/Wadi-e-MASOM"><span>Wadi-e-MASOM</span></a></li><li id="menu-item-878" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-878"><a href="#"><span>MASOM Online Shop</span></a></li></ul>
+</li><li id="menu-item-277" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-277"><a href="#"><span>Events</span></a>
+<ul class="sub-menu"><li id="menu-item-1157" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1157"><a href="/hijricalendar2026/"><span>Hijri Prayer Calendar</span></a></li><li id="menu-item-1158" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1158"><a href="/events-schedule"><span>Program Calendar</span></a></li></ul>
+</li><li id="menu-item-863" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-863"><a href="/forms"><span>Online Forms</span></a>
+<ul class="sub-menu"><li id="menu-item-1247" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1247"><a href="/forms"><span>Online Forms</span></a></li><li id="menu-item-864" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-864"><a href="#"><span>Membership Form</span></a></li><li id="menu-item-865" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-865"><a href="#"><span>Application for Private Program</span></a></li><li id="menu-item-1588" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1588"><a href="#"><span>Sura-Fatiha Request</span></a></li></ul>
+</li><li id="menu-item-1284" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1284"><a href="#"><span>Multimedia</span></a>
+<ul class="sub-menu"><li id="menu-item-1285" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1285"><a href="/photo-gallery"><span>Photo Gallery</span></a></li><li id="menu-item-1286" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1286"><a href="/videos"><span>Videos</span></a></li></ul>
+</li><li id="menu-item-1915" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1915"><a href="/contacts"><span>Contact Us</span></a></li></ul></nav></div></div></div></div></div></div></div></div></div></div></div></header><div class="menu_mobile_overlay"></div>
+<div class="menu_mobile menu_mobile_fullscreen scheme_dark">
+	<div class="menu_mobile_inner">
+		<a class="menu_mobile_close icon-cancel"></a><a class="sc_layouts_logo" style:"height:90px" href="https://masom.com/"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20300%2079'%3E%3C/svg%3E" alt="logo" width="300" height="79" data-lazy-src="https://masom.com/wp-content/uploads/2017/06/logomobilefoot-300x79.png"><noscript><img src="https://masom.com/wp-content/uploads/2017/06/logomobilefoot-300x79.png" alt="logo" width="300" height="79"></noscript></a><nav class="menu_mobile_nav_area"><ul id="menu_mobile-main-menu" class=""><li id="menu_mobile-item-1914" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-1914"><a href="/" aria-current="page"><span>Home</span></a></li><li id="menu_mobile-item-304" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-304"><a href="#"><span>About Us</span></a>
+<ul class="sub-menu"><li id="menu_mobile-item-1407" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1407"><a href="/our-mission"><span>Our Mission</span></a></li><li id="menu_mobile-item-1406" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1406"><a href="/our-members"><span>Our Committee</span></a></li><li id="menu_mobile-item-1373" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1373"><a href="/adminpanel"><span>Members Portal</span></a></li></ul>
+</li><li id="menu_mobile-item-874" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-874"><a href="#"><span>Our Services</span></a>
+<ul class="sub-menu"><li id="menu_mobile-item-860" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-860"><a href="/Funeral-services"><span>Funeral services</span></a></li><li id="menu_mobile-item-876" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-876"><a href="/MIS"><span>MASOM Islamic School</span></a></li><li id="menu_mobile-item-861" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-861"><a href="#"><span>Matrimonial services</span></a></li><li id="menu_mobile-item-877" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-877"><a href="/youth-activities/"><span>Youth Activities</span></a></li><li id="menu_mobile-item-862" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-862"><a href="/Wadi-e-MASOM"><span>Wadi-e-MASOM</span></a></li><li id="menu_mobile-item-878" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-878"><a href="#"><span>MASOM Online Shop</span></a></li></ul>
+</li><li id="menu_mobile-item-277" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-277"><a href="#"><span>Events</span></a>
+<ul class="sub-menu"><li id="menu_mobile-item-1157" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1157"><a href="/hijricalendar2026/"><span>Hijri Prayer Calendar</span></a></li><li id="menu_mobile-item-1158" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1158"><a href="/events-schedule"><span>Program Calendar</span></a></li></ul>
+</li><li id="menu_mobile-item-863" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-863"><a href="/forms"><span>Online Forms</span></a>
+<ul class="sub-menu"><li id="menu_mobile-item-1247" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1247"><a href="/forms"><span>Online Forms</span></a></li><li id="menu_mobile-item-864" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-864"><a href="#"><span>Membership Form</span></a></li><li id="menu_mobile-item-865" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-865"><a href="#"><span>Application for Private Program</span></a></li><li id="menu_mobile-item-1588" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1588"><a href="#"><span>Sura-Fatiha Request</span></a></li></ul>
+</li><li id="menu_mobile-item-1284" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1284"><a href="#"><span>Multimedia</span></a>
+<ul class="sub-menu"><li id="menu_mobile-item-1285" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1285"><a href="/photo-gallery"><span>Photo Gallery</span></a></li><li id="menu_mobile-item-1286" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1286"><a href="/videos"><span>Videos</span></a></li></ul>
+</li><li id="menu_mobile-item-1915" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1915"><a href="/contacts"><span>Contact Us</span></a></li></ul></nav>	</div>
+</div>
+
+			<div class="page_content_wrap scheme_default">
+
+								<div class="content_wrap">
+				
+									
+
+					<div class="content">
+										
+
+<article id="post-346" class="post_item_single post_type_page post-346 page type-page status-publish hentry">
+
+	
+	<div class="post_content entry-content">
+		<div class="vc_row wpb_row vc_row-fluid vc_custom_1595606811495"><div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="wpb_revslider_element wpb_content_element">			<script type="text/javascript" src="//masom.com/wp-content/plugins/revslider/public/assets/js/rbtools.min.js?rev=6.2.2"></script>
+			<script type="text/javascript" src="//masom.com/wp-content/plugins/revslider/public/assets/js/rs6.min.js?rev=6.2.2"></script>
+
+			<p class="rs-p-wp-fix"></p>
+			<rs-module-wrap id="rev_slider_5_1_wrapper" data-source="gallery" style="background:transparent;padding:0;margin:0px auto;margin-top:0;margin-bottom:0;">
+				<rs-module id="rev_slider_5_1" style="display:none;" data-version="6.2.2">
+					<rs-slides>
+						<rs-slide data-key="rs-40" data-title="Slide" data-thumb="//masom.com/wp-content/uploads/2020/07/IMG_1395-100x50.jpg" data-anim="ei:d;eo:d;s:600;r:0;t:fade;sl:d;">
+							<img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201024%20683'%3E%3C/svg%3E" title="IMG_1395" width="1024" height="683" class="rev-slidebg" data-no-retina data-lazy-src="//masom.com/wp-content/uploads/2020/07/IMG_1395.jpg"><noscript><img src="//masom.com/wp-content/uploads/2020/07/IMG_1395.jpg" title="IMG_1395" width="1024" height="683" class="rev-slidebg" data-no-retina></noscript>
+						</rs-slide>
+						<rs-slide data-key="rs-49" data-title="Slide" data-thumb="//masom.com/wp-content/uploads/2020/07/IMG_1351-scaled-100x50.jpg" data-anim="ei:d;eo:d;s:600;r:0;t:fade;sl:d;">
+							<img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%202560%201707'%3E%3C/svg%3E" title="IMG_1351" width="2560" height="1707" class="rev-slidebg" data-no-retina data-lazy-src="//masom.com/wp-content/uploads/2020/07/IMG_1351-scaled.jpg"><noscript><img src="//masom.com/wp-content/uploads/2020/07/IMG_1351-scaled.jpg" title="IMG_1351" width="2560" height="1707" class="rev-slidebg" data-no-retina></noscript>
+						</rs-slide>
+						<rs-slide data-key="rs-57" data-title="Slide" data-thumb="//masom.com/wp-content/uploads/2020/07/WhatsApp-Image-2026-06-21-at-2.11.38-PM-100x50.jpeg" data-anim="ei:d;eo:d;s:600;r:0;t:fade;sl:d;">
+							<img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201600%20900'%3E%3C/svg%3E" title="WhatsApp Image 2026-06-21 at 2.11.38 PM" width="1600" height="900" class="rev-slidebg" data-no-retina data-lazy-src="//masom.com/wp-content/uploads/2020/07/WhatsApp-Image-2026-06-21-at-2.11.38-PM.jpeg"><noscript><img src="//masom.com/wp-content/uploads/2020/07/WhatsApp-Image-2026-06-21-at-2.11.38-PM.jpeg" title="WhatsApp Image 2026-06-21 at 2.11.38 PM" width="1600" height="900" class="rev-slidebg" data-no-retina></noscript>
+						</rs-slide>
+						<rs-slide data-key="rs-52" data-title="Slide" data-anim="ei:d;eo:d;s:600;r:0;t:fade;sl:d;">
+							<img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201920%201080'%3E%3C/svg%3E" width="1920" height="1080" class="rev-slidebg" data-no-retina data-lazy-src="//cdn.jsdelivr.net/gh/SrkJafferi/masom@main/imam-mehdi-1-1024x541-1.webp"><noscript><img src="//cdn.jsdelivr.net/gh/SrkJafferi/masom@main/imam-mehdi-1-1024x541-1.webp" width="1920" height="1080" class="rev-slidebg" data-no-retina></noscript>
+						</rs-slide>
+					</rs-slides>
+					<rs-static-layers></rs-static-layers>
+					<rs-progress style="height: 4px; background: linear-gradient(rgba(183,176,156,1) 0%, rgba(215,215,215,1) 100%);"></rs-progress>
+				</rs-module>
+				<script type="text/javascript">
+					setREVStartSize({c: 'rev_slider_5_1',rl:[1240,1024,778,480],el:[540,768,360,280],gw:[1400,1024,778,480],gh:[540,768,360,280],type:'standard',justify:'',layout:'fullwidth',mh:"0"});
+					var	revapi5,
+						tpj;
+					jQuery(function() {
+						tpj = jQuery;
+						if(tpj("#rev_slider_5_1").revolution == undefined){
+							revslider_showDoubleJqueryError("#rev_slider_5_1");
+						}else{
+							revapi5 = tpj("#rev_slider_5_1").show().revolution({
+								jsFileLocation:"//masom.com/wp-content/plugins/revslider/public/assets/js/",
+								sliderLayout:"fullwidth",
+								duration:"7000ms",
+								visibilityLevels:"1240,1024,778,480",
+								gridwidth:"1400,1024,778,480",
+								gridheight:"540,768,360,280",
+								hideLayerAtLimit:770,
+								spinner:"spinner0",
+								editorheight:"540,768,360,280",
+								responsiveLevels:"1240,1024,778,480",
+								navigation: {
+									mouseScrollNavigation:false,
+									onHoverStop:false,
+									touch: {
+										touchenabled:true,
+										touchOnDesktop:true
+									},
+									arrows: {
+										enable:true,
+										tmp:"<div class=\"tp-title-wrap\">  	<div class=\"tp-arr-imgholder\"></div> </div>",
+										style:"zeus",
+										animDelay:"700ms",
+										left: {
+											h_offset:10
+										},
+										right: {
+											h_offset:10
+										}
+									},
+									bullets: {
+										enable:true,
+										tmp:"<span class=\"tp-bullet-inner\"></span>",
+										style:"uranus",
+										hide_onmobile:true,
+										hide_under:769,
+										v_offset:29,
+										space:15,
+										container:"layergrid"
+									}
+								},
+								fallbacks: {
+									allowHTML5AutoPlayOnAndroid:true
+								},
+							});
+						}
+						
+					});
+				</script>
+				<script>
+					var htmlDivCss = unescape("%23rev_slider_5_1_wrapper%20.zeus.tparrows%20%7B%0A%20%20cursor%3Apointer%3B%0A%20%20min-width%3A70px%3B%0A%20%20min-height%3A70px%3B%0A%20%20position%3Aabsolute%3B%0A%20%20display%3Ablock%3B%0A%20%20z-index%3A1000%3B%0A%20%20border-radius%3A50%25%3B%20%20%20%0A%20%20overflow%3Ahidden%3B%0A%20%20background%3Argba%280%2C0%2C0%2C0.1%29%3B%0A%7D%0A%0A%23rev_slider_5_1_wrapper%20.zeus.tparrows%3Abefore%20%7B%0A%20%20font-family%3A%20%27revicons%27%3B%0A%20%20font-size%3A20px%3B%0A%20%20color%3A%23ffffff%3B%0A%20%20display%3Ablock%3B%0A%20%20line-height%3A%2070px%3B%0A%20%20text-align%3A%20center%3B%20%20%20%20%0A%20%20z-index%3A2%3B%0A%20%20position%3Arelative%3B%0A%7D%0A%23rev_slider_5_1_wrapper%20.zeus.tparrows.tp-leftarrow%3Abefore%20%7B%0A%20%20content%3A%20%27%5Ce824%27%3B%0A%7D%0A%23rev_slider_5_1_wrapper%20.zeus.tparrows.tp-rightarrow%3Abefore%20%7B%0A%20%20content%3A%20%27%5Ce825%27%3B%0A%7D%0A%0A%23rev_slider_5_1_wrapper%20.zeus%20.tp-title-wrap%20%7B%0A%20%20background%3Argba%280%2C0%2C0%2C0.5%29%3B%0A%20%20width%3A100%25%3B%0A%20%20height%3A100%25%3B%0A%20%20top%3A0px%3B%0A%20%20left%3A0px%3B%0A%20%20position%3Aabsolute%3B%0A%20%20opacity%3A0%3B%0A%20%20transform%3Ascale%280%29%3B%0A%20%20-webkit-transform%3Ascale%280%29%3B%0A%20%20%20transition%3A%20all%200.3s%3B%0A%20%20-webkit-transition%3Aall%200.3s%3B%0A%20%20-moz-transition%3Aall%200.3s%3B%0A%20%20%20border-radius%3A50%25%3B%0A%20%7D%0A%23rev_slider_5_1_wrapper%20.zeus%20.tp-arr-imgholder%20%7B%0A%20%20width%3A100%25%3B%0A%20%20height%3A100%25%3B%0A%20%20position%3Aabsolute%3B%0A%20%20top%3A0px%3B%0A%20%20left%3A0px%3B%0A%20%20background-position%3Acenter%20center%3B%0A%20%20background-size%3Acover%3B%0A%20%20border-radius%3A50%25%3B%0A%20%20transform%3Atranslatex%28-100%25%29%3B%0A%20%20-webkit-transform%3Atranslatex%28-100%25%29%3B%0A%20%20%20transition%3A%20all%200.3s%3B%0A%20%20-webkit-transition%3Aall%200.3s%3B%0A%20%20-moz-transition%3Aall%200.3s%3B%0A%0A%20%7D%0A%23rev_slider_5_1_wrapper%20.zeus.tp-rightarrow%20.tp-arr-imgholder%20%7B%0A%20%20%20%20transform%3Atranslatex%28100%25%29%3B%0A%20%20-webkit-transform%3Atranslatex%28100%25%29%3B%0A%20%20%20%20%20%20%7D%0A%23rev_slider_5_1_wrapper%20.zeus.tparrows%3Ahover%20.tp-arr-imgholder%20%7B%0A%20%20transform%3Atranslatex%280%29%3B%0A%20%20-webkit-transform%3Atranslatex%280%29%3B%0A%20%20opacity%3A1%3B%0A%7D%0A%20%20%20%20%20%20%0A%23rev_slider_5_1_wrapper%20.zeus.tparrows%3Ahover%20.tp-title-wrap%20%7B%0A%20%20transform%3Ascale%281%29%3B%0A%20%20-webkit-transform%3Ascale%281%29%3B%0A%20%20opacity%3A1%3B%0A%7D%0A%20%0A%23rev_slider_5_1_wrapper%20.uranus%20.tp-bullet%7B%0A%20%20border-radius%3A%2050%25%3B%0A%20%20box-shadow%3A%200%200%200%202px%20rgba%28255%2C255%2C255%2C0%29%3B%0A%20%20-webkit-transition%3A%20box-shadow%200.3s%20ease%3B%0A%20%20transition%3A%20box-shadow%200.3s%20ease%3B%0A%20%20background%3Atransparent%3B%0A%20%20width%3A15px%3B%0A%20%20height%3A15px%3B%0A%7D%0A%23rev_slider_5_1_wrapper%20.uranus%20.tp-bullet.selected%2C%0A%23rev_slider_5_1_wrapper%20.uranus%20.tp-bullet%3Ahover%20%7B%0A%20%20box-shadow%3A%200%200%200%202px%20rgba%28255%2C255%2C255%2C1%29%3B%0A%20%20border%3Anone%3B%0A%20%20border-radius%3A%2050%25%3B%0A%20%20background%3Atransparent%3B%0A%7D%0A%0A%23rev_slider_5_1_wrapper%20.uranus%20.tp-bullet-inner%20%7B%0A%20%20-webkit-transition%3A%20background-color%200.3s%20ease%2C%20-webkit-transform%200.3s%20ease%3B%0A%20%20transition%3A%20background-color%200.3s%20ease%2C%20transform%200.3s%20ease%3B%0A%20%20top%3A%200%3B%0A%20%20left%3A%200%3B%0A%20%20width%3A%20100%25%3B%0A%20%20height%3A%20100%25%3B%0A%20%20outline%3A%20none%3B%0A%20%20border-radius%3A%2050%25%3B%0A%20%20background-color%3A%20rgba%28255%2C255%2C255%2C0%29%3B%0A%20%20background-color%3A%20rgba%28255%2C255%2C255%2C0.3%29%3B%0A%20%20text-indent%3A%20-999em%3B%0A%20%20cursor%3A%20pointer%3B%0A%20%20position%3A%20absolute%3B%0A%7D%0A%0A%23rev_slider_5_1_wrapper%20.uranus%20.tp-bullet.selected%20.tp-bullet-inner%2C%0A%23rev_slider_5_1_wrapper%20.uranus%20.tp-bullet%3Ahover%20.tp-bullet-inner%7B%0A%20transform%3A%20scale%280.4%29%3B%0A%20-webkit-transform%3A%20scale%280.4%29%3B%0A%20background-color%3Argba%28255%2C255%2C255%2C1%29%3B%0A%7D%0A");
+					var htmlDiv = document.getElementById('rs-plugin-settings-inline-css');
+					if(htmlDiv) {
+						htmlDiv.innerHTML = htmlDiv.innerHTML + htmlDivCss;
+					}else{
+						var htmlDiv = document.createElement('div');
+						htmlDiv.innerHTML = '<style>' + htmlDivCss + '</style>';
+						document.getElementsByTagName('head')[0].appendChild(htmlDiv.childNodes[0]);
+					}
+				</script>
+				<script>
+					var htmlDivCss = unescape("%0A%0A%0A%0A%0A%0A%0A%0A");
+					var htmlDiv = document.getElementById('rs-plugin-settings-inline-css');
+					if(htmlDiv) {
+						htmlDiv.innerHTML = htmlDiv.innerHTML + htmlDivCss;
+					}else{
+						var htmlDiv = document.createElement('div');
+						htmlDiv.innerHTML = '<style>' + htmlDivCss + '</style>';
+						document.getElementsByTagName('head')[0].appendChild(htmlDiv.childNodes[0]);
+					}
+				</script>
+			</rs-module-wrap>
+			
+</div></div></div></div></div><div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true" class="vc_row wpb_row vc_row-fluid vc_custom_1603886787494"><div class="wpb_column vc_column_container vc_col-sm-12 vc_hidden-lg vc_hidden-md sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element " >
+		<div class="wpb_wrapper">
+			<table style="padding: 2px;" border="0" width="100%" cellspacing="0" cellpadding="0" align="center" bgcolor="#FFFFFF">
+<tbody>
+<tr>
+<td style="background-color: #ffffff; text-align: center; margin-bottom: -30px; line-height: 0px; padding-bottom: px;" colspan="2" bgcolor="#FFFFFF" height="10"></td>
+</tr>
+<tr>
+<td style="background-color: #ffffff; text-align: center; margin-bottom: -30px; line-height: 0px; padding-bottom: px;" colspan="2" bgcolor="#FFFFFF" height="5"><a href="/hijricalendar2026/"><span style="text-align: center; font-size: 18px;"><div class="widget widget_xllentech_islamic_today_plugin">				<div class='xllentech-islamic-today'>
+					<span class=''>
+				
+					Aug-11-2026					</span>
+				
+					(<span class='datenew'>27-Safar-1448</span>)
+				</div>
+			</div></span></a></td>
+</tr>
+<tr>
+<td style="background-color: #ffffff; text-align: center; margin-bottom: px; line-height: 0px; padding-bottom: px;" colspan="2" bgcolor="#FFFFFF" height="20">
+<h6 style="text-align: center; font-size: 18px; color: #000000; text-decoration: normal; line-height: 20px; margin-bottom: -18px; padding-bottom: 10px;">Chicagoland prayer timings</h6>
+</td>
+</tr>
+<tr>
+<td style="background-color: #ffffff; text-align: center; margin-bottom: -35px; line-height: 0px; padding-bottom: px;" colspan="2" bgcolor="#FFFFFF" height="12"></td>
+</tr>
+<tr style="background-color: #f4fffe;">
+<td style="background-color: #f4fffe; text-align: center;" bgcolor="#f4fffe">
+<div align="center">
+<h6 style="padding: 0px; text-align: center; font-size: 19px; background-color: #; color: #5cb8b2;">Fajr</h6>
+</div>
+</td>
+<td style="background-color: #f4fffe; text-align: center;" bgcolor="#f4fffe"><span style="padding: 0px; text-align: center; font-size: 18px; color: #000000; line-height: 28px; font-weight: 600;"><span class='dpt_jamah'>4:28 AM</span></span></td>
+</tr>
+<tr style="background-color: #f5f5f5; text-align: center;" bgcolor="#FFFFFF">
+<td style="background-color: #f5f5f5; text-align: center;" bgcolor="#FFFFFF">
+<div style="background-color: #f5f5f5;" align="center">
+<h6 style="padding: 0px; text-align: center; font-size: 19px; color: #5cb8b2;">Sunrise</h6>
+</div>
+</td>
+<td style="background-color: #f5f5f5; text-align: center;" bgcolor="#f5f5f5"><span style="padding: 0px; text-align: center; font-size: 18px; color: #000000; line-height: 28px; font-weight: 600;"><span class='dpt_sunrise'>5:55 AM</span></span></td>
+</tr>
+<tr style="background-color: #f4fffe;">
+<td style="background-color: #f4fffe; text-align: center;" bgcolor="#f4fffe">
+<div style="background-color: #f4fffe;" align="center">
+<h6 style="padding: 0px; text-align: center; font-size: 19px; color: #5cb8b2;">Zohar</h6>
+</div>
+</td>
+<td style="background-color: #f4fffe; text-align: center;" bgcolor="#f4fffe"><span style="padding: 0px; text-align: center; font-size: 18px; color: #000000; line-height: 28px; font-weight: 600;"><span class='dpt_jamah'>12:55 PM</span></span></td>
+</tr>
+<tr style="background-color: #f5f5f5;">
+<td style="background-color: #f5f5f5; text-align: center;" bgcolor="#f5f5f5">
+<div style="background-color: #f5f5f5;" align="center">
+<h6 style="padding: 0px; text-align: center; font-size: 19px; color: #5cb8b2;">Maghrib</h6>
+</div>
+</td>
+<td style="background-color: #f5f5f5; text-align: center;" bgcolor="#f5f5f5"><span style="padding: 0px; text-align: center; font-size: 18px; color: #000000; line-height: 28px; font-weight: 600;"><span class='dpt_jamah'>8:13 PM</span></span></td>
+</tr>
+<tr style="background-color: #f4fffe; text-align: center;" bgcolor="#f4fffe">
+<td style="background-color: #f4fffe; text-align: center;" bgcolor="#f4fffe">
+<div style="background-color: #f4fffe;" align="center">
+<h6 style="text-align: center; font-size: 19px; color: #5cb8b2;">Midnight</h6>
+</div>
+</td>
+<td style="background-color: #f4fffe; text-align: center;" bgcolor="#f4fffe"><span style="padding: 0px; text-align: center; font-size: 18px; color: #000000; line-height: 28px; font-weight: 600;"><span class='dpt_jamah'>12:09 AM</span></span></td>
+</tr>
+<tr>
+<td style="background-color: #ffffff; text-align: center;" colspan="2" bgcolor="#FFFFFF">
+<h6 style="text-align: center; font-size: 19px; color: #000000; text-decoration: normal; line-height: 38px; margin-bottom: 5px; padding-bottom: px;"><span style="color: #3366ff;"><a style="color: #3366ff;" href="/hijricalendar2026/">Hijri Calendar</a></span></h6>
+</td>
+</tr>
+</tbody>
+</table>
+
+		</div>
+	</div>
+</div></div></div></div><div class="vc_row-full-width vc_clearfix"></div><div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-4 sc_layouts_column_icons_position_left"><div class="vc_column-inner vc_custom_1597952739660"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element " >
+		<div class="wpb_wrapper">
+			<div class="sc_item_button sc_button_wrap sc_align_center"><a href="https://us13.campaign-archive.com/home/?u=01dfc250f2762204df48c0230&#038;id=06a230bfd1" id="sc_button_1704839541" class="sc_button color_style_default sc_button_default sc_button_size_normal sc_button_icon_left"><span class="sc_button_text sc_align_center"><span class="sc_button_title"> Email Announcements </span></span></a></div></p>
+
+		</div>
+	</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-4 sc_layouts_column_icons_position_left"><div class="vc_column-inner vc_custom_1619386679638"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element " >
+		<div class="wpb_wrapper">
+			
+
+		</div>
+	</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-4 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element " >
+		<div class="wpb_wrapper">
+			<div class="sc_item_button sc_button_wrap sc_align_center"><a href="https://chat.whatsapp.com/LbReeM8ts7VJoC7yMOPqSI" id="sc_button_767227283" class="sc_button color_style_default sc_button_default sc_button_size_normal sc_button_icon_left"><span class="sc_button_text sc_align_center"><span class="sc_button_title">Join Our Whats App Events Group</span></span></a></div></p>
+
+		</div>
+	</div>
+</div></div></div></div><div class="vc_row wpb_row vc_row-fluid vc_custom_1597345641459"><div class="wpb_column vc_column_container vc_col-sm-4 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div id="sc_content_851155827"
+		class="sc_content color_style_default sc_content_default sc_content_width_100p sc_float_center  vc_custom_1780977495694"><div class="sc_content_container">
+	<div class="wpb_text_column wpb_content_element  vc_custom_1781018756366" >
+		<div class="wpb_wrapper">
+			<p style="text-align: center;"><a href="/events-schedule"><strong><span style="color: #ffffff; font-size: 19px;">UPCOMING PROGRAMS</span></strong></a></p>
+
+		</div>
+	</div>
+</div></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-4 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div id="sc_content_2033028865"
+		class="sc_content color_style_default sc_content_default sc_content_width_100p sc_float_center  vc_custom_1645893618894"><div class="sc_content_container">
+	<div class="wpb_text_column wpb_content_element  vc_custom_1781018736135" >
+		<div class="wpb_wrapper">
+			<p style="text-align: center;"><a href="https://masom.com/hijricalendar2026/"><strong><span style="color: #ffffff; font-size: 19px;">HIJRI CALENDAR</span></strong></a></p>
+
+		</div>
+	</div>
+</div></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-4 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div id="sc_content_881260586"
+		class="sc_content color_style_default sc_content_default sc_content_width_100p sc_float_center  vc_custom_1594992414290"><div class="sc_content_container">
+	<div class="wpb_text_column wpb_content_element  vc_custom_1781018749493" >
+		<div class="wpb_wrapper">
+			<p style="text-align: center;"><a href="/MIS"><strong><span style="color: #ffffff; font-size: 19px;">MASOM ISLAMIC SCHOOL</span></strong></a></p>
+
+		</div>
+	</div>
+</div></div></div></div></div></div><div class="vc_row wpb_row vc_row-fluid vc_custom_1594938307348"><div class="wpb_column vc_column_container vc_col-sm-8 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="sc_blogger color_style_default sc_blogger_default"><div class="sc_blogger_columns_wrap sc_item_columns trx_addons_columns_wrap columns_padding_bottom"><div class="trx_addons_column-1_2"><div class="sc_blogger_item post_format_standard post-90 post type-post status-publish format-standard has-post-thumbnail hentry category-community-guides category-uncategorized tag-chicagoland tag-masom tag-shia-community"><div class="post_featured with_thumb hover_icon sc_blogger_item_featured"><img width="1" height="1" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" class="attachment-alhambra-thumb-med-thumb size-alhambra-thumb-med-thumb wp-post-image" alt="WADI-E-MASOMShia Cemetery" data-lazy-src="https://masom.com/wp-content/uploads/2017/06/spain-4522800_1280-370x247-1.webp" /><noscript><img width="1" height="1" src="https://masom.com/wp-content/uploads/2017/06/spain-4522800_1280-370x247-1.webp" class="attachment-alhambra-thumb-med-thumb size-alhambra-thumb-med-thumb wp-post-image" alt="WADI-E-MASOMShia Cemetery" /></noscript><div class="mask"></div><div class="icons"><a href="https://masom.com/wadi-e-masom-shia-cemetery/" aria-hidden="true" class="icon-eye-empty"></a></div></div><div class="sc_blogger_item_content entry-content"><div class="sc_blogger_item_header entry-header"><h5 class="sc_blogger_item_title entry-title"><a href="https://masom.com/wadi-e-masom-shia-cemetery/" rel="bookmark">WADI-E-MASOM<br>Shia Cemetery</a></h5><div class="post_meta"></div></div><div class="sc_blogger_item_excerpt">
+				<div class="sc_blogger_item_excerpt_text">
+					...
+				</div>
+				<div class="sc_blogger_item_button sc_item_button"><a href="https://masom.com/wadi-e-masom-shia-cemetery/" class="sc_button sc_button_default">Read more</a></div></div></div></div></div>
+
+<div class="trx_addons_column-1_2"><div class="sc_blogger_item post_format_standard post-92 post type-post status-publish format-standard has-post-thumbnail hentry category-community-guides category-uncategorized tag-chicagoland tag-masom tag-prayer tag-sawab-e-jariah"><div class="post_featured with_thumb hover_icon sc_blogger_item_featured"><img width="1" height="1" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201%201'%3E%3C/svg%3E" class="attachment-alhambra-thumb-med-thumb size-alhambra-thumb-med-thumb wp-post-image" alt="DEDICATION PLAQUESSawab-e-Jariah" data-lazy-src="https://masom.com/wp-content/uploads/2017/06/Untitled-2-370x246-1.webp" /><noscript><img width="1" height="1" src="https://masom.com/wp-content/uploads/2017/06/Untitled-2-370x246-1.webp" class="attachment-alhambra-thumb-med-thumb size-alhambra-thumb-med-thumb wp-post-image" alt="DEDICATION PLAQUESSawab-e-Jariah" /></noscript><div class="mask"></div><div class="icons"><a href="https://masom.com/dedication-plaques/" aria-hidden="true" class="icon-eye-empty"></a></div></div><div class="sc_blogger_item_content entry-content"><div class="sc_blogger_item_header entry-header"><h5 class="sc_blogger_item_title entry-title"><a href="https://masom.com/dedication-plaques/" rel="bookmark">DEDICATION PLAQUES<br>Sawab-e-Jariah</a></h5><div class="post_meta"></div></div><div class="sc_blogger_item_excerpt">
+				<div class="sc_blogger_item_excerpt_text">
+					A Sawab-e-Jariah towards all who have passed us Surah-e-Fateha offered after every Salat, Dua, Praye...
+				</div>
+				<div class="sc_blogger_item_button sc_item_button"><a href="https://masom.com/dedication-plaques/" class="sc_button sc_button_default">Read more</a></div></div></div></div></div>
+
+</div></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-4 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="sc_blogger color_style_default sc_blogger_plain"><div class="sc_blogger_content sc_item_content"><div data-bg="https://masom.com/wp-content/uploads/2020/07/abdulrasheed-480909_640.jpg" class="sc_blogger_item post_format_standard post-1019 page type-page status-publish has-post-thumbnail hentry rocket-lazyload" style=""><div class="sc_blogger_item_content entry-content"><div class="post_meta"></div><h5 style="padding-top:10px;padding-bottom:10px" class="sc_blogger_item_title entry-title"><a href="https://masom.com/forms/" rel="bookmark">Masom Online Forms</a></h5><div class="post_meta"></div></div></div><div data-bg="https://masom.com/wp-content/uploads/2026/05/ancient-21886_640.webp" class="sc_blogger_item post_format_standard post-1808 page type-page status-publish has-post-thumbnail hentry rocket-lazyload" style=""><div class="sc_blogger_item_content entry-content"><div class="post_meta"></div><h5 style="padding-top:10px;padding-bottom:10px" class="sc_blogger_item_title entry-title"><a href="https://masom.com/sura-fatiha/" rel="bookmark">Sura-Fatiha Request</a></h5><div class="post_meta"></div></div></div><div data-bg="https://masom.com/wp-content/uploads/2026/05/books-1617327_640-1.webp" class="sc_blogger_item post_format_standard post-1041 page type-page status-publish has-post-thumbnail hentry rocket-lazyload" style=""><div class="sc_blogger_item_content entry-content"><div class="post_meta"></div><h5 style="padding-top:10px;padding-bottom:10px" class="sc_blogger_item_title entry-title"><a href="https://masom.com/youth-activities/" rel="bookmark">Youth Activities</a></h5><div class="post_meta"></div></div></div><div data-bg="https://masom.com/wp-content/uploads/2020/07/subscribe-3534409_640.jpg" class="sc_blogger_item post_format_standard post-1036 page type-page status-publish has-post-thumbnail hentry rocket-lazyload" style=""><div class="sc_blogger_item_content entry-content"><div class="post_meta"></div><h5 style="padding-top:10px;padding-bottom:10px" class="sc_blogger_item_title entry-title"><a href="https://masom.com/members-login/" rel="bookmark">Members Login</a></h5><div class="post_meta"></div></div></div></div></div></div></div></div></div><div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="vc_empty_space"   style="height: 3em"><span class="vc_empty_space_inner"></span></div></div></div></div></div><div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true" class="vc_row wpb_row vc_row-fluid vc_custom_1780953215647 vc_row-has-fill scheme_dark"><div class="wpb_column vc_column_container vc_col-sm-12 vc_hidden-sm vc_hidden-xs sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div id="sc_content_827235690"
+		class="sc_content color_style_default sc_content_default sc_content_width_70p sc_float_center sc_align_center"><div class="sc_content_container"><div id="sc_title_1615365771"
+		class="sc_title color_style_default sc_title_default"><h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">Upcoming Programs</h2></div>
+	<div class="wpb_text_column wpb_content_element " >
+		<div class="wpb_wrapper">
+			<div id='evcal_calendar_239' class='ajde_evcal_calendar boxy boxstyle0 box_3 ajax_loading_cal' ><div id='evcal_head' class='calendar_header ' ><div class='evo_cal_above'><span class='evo-search'></span><span class='evo-jumper-btn'>Jump Months</span><span class='evo-gototoday-btn' style='display:none' data-mo='8' data-yr='2026' data-dy=''>Current Month</span></div><div class='evo_cal_above_content'><div class='evo_j_container' style='display:block'>
+						<div class='evo_j_months evo_j_dates' data-val='m'>
+							<div class='legend evo_jumper_months'><a data-val='1'  title='january' >january</a><a data-val='2'  title='february' >february</a><a data-val='3'  title='march' >march</a><a data-val='4'  title='april' >april</a><a data-val='5'  title='may' >may</a><a data-val='6'  title='june' >june</a><a data-val='7'  title='july' >july</a><a data-val='8' class="current set" title='august' >august</a><a data-val='9'  title='september' >september</a><a data-val='10'  title='october' >october</a><a data-val='11'  title='november' >november</a><a data-val='12'  title='december' >december</a></div><div class='clear'></div></div>
+						
+						<div class='evo_j_years evo_j_dates' data-val='y'>
+							<p class='legend'><a data-val="2024">2024</a><a data-val="2025">2025</a><a class='current set' data-val="2026">2026</a><a data-val="2027">2027</a><a data-val="2028">2028</a></p><div class='clear'></div>
+						</div>
+					</div>					
+				<div class='evo_search_bar evo_hidden'>
+					<div class='evo_search_bar_in' >
+						<input type="text" placeholder='Search Events' data-role="none"/>
+						<a class="evosr_search_btn"><i class="fa fa-search"></i></a>
+					</div>
+				</div>
+
+			</div><p id='evcal_cur' class='evo_month_title'> august, 2026</p><p class='evo_arrows right'><span id='evcal_prev' class='evcal_arrows evcal_btn_prev' ><i></i></span><span id='evcal_next' class='evcal_arrows evcal_btn_next' ><i></i></span></p><div class='clear'></div></div><div id='eventon_loadbar_section'><div id='eventon_loadbar'></div></div><div class='evo_ajax_load_events'><span></span><span></span><span></span></div><div id='evcal_list' class='eventon_events_list '>			<div class='clear'></div>
+			</div>
+			<div class='clear'></div>
+					 	<div id='evcal_footer' class='evo_bottom' style='display:none'>
+		 		<div class='evo_cal_data'  data-sc='{"accord":"no","cal_id":"","cal_init_nonajax":"no","calendar_type":"default","etc_override":"no","evc_open":"no","event_count":"30","event_location":"all","event_order":"ASC","event_organizer":"all","event_past_future":"all","event_tag":"all","event_type":"all","event_type_2":"all","event_type_3":"all","event_type_4":"all","event_type_5":"all","eventtop_style":0,"exp_jumper":"yes","exp_so":"no","filter_relationship":"AND","filter_show_set_only":"no","filter_type":"default","filters":"yes","fixed_month":"8","fixed_year":"2026","focus_end_date_range":"1788220799","focus_start_date_range":"1785542400","ft_event_priority":"no","hide_arrows":"no","hide_empty_months":"no","hide_end_time":"no","hide_ft":"no","hide_month_headers":"no","hide_mult_occur":"no","hide_past":"no","hide_past_by":"ee","hide_so":"no","ics":"no","jumper":"yes","jumper_count":5,"jumper_offset":"0","lang":"L1","layout_changer":"no","mapformat":"roadmap","mapiconurl":"","maps_load":"no","mapscroll":"false","mapzoom":"18","members_only":"no","ml_priority":"no","month_incre":0,"number_of_months":"1","only_ft":"no","pec":"","s":"","search":"","search_all":"no","sep_month":"no","show_et_ft_img":"no","show_limit":"no","show_limit_ajax":"no","show_limit_paged":1,"show_limit_redir":"","show_repeats":"no","show_upcoming":0,"show_year":"no","sort_by":"sort_date","tile_bg":"1","tile_bg_size":"full","tile_count":"3","tile_height":"250","tile_style":0,"tiles":"yes","ux_val":"0","view_switcher":"no","wpml_l1":"","wpml_l2":"","wpml_l3":"","yl_priority":"no","start_range":"today","end_range":"2024\/12\/30","fixed_day":"1","_cver":"2.9"}' data-od='{"lang_no_events":"No Events"}'></div>
+		 		<div class='evo_cal_events' data-events=""></div>
+		 	</div>
+				
+			
+						</div>
+			
+
+		</div>
+	</div>
+</div></div></div></div></div></div><div class="vc_row-full-width vc_clearfix"></div><div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true" class="vc_row wpb_row vc_row-fluid vc_custom_1780953232048 vc_row-has-fill scheme_dark"><div class="wpb_column vc_column_container vc_col-sm-12 vc_hidden-lg vc_hidden-md sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div id="sc_content_1515701473"
+		class="sc_content color_style_default sc_content_default sc_content_width_70p sc_float_center sc_align_center"><div class="sc_content_container"><div id="sc_title_141577835"
+		class="sc_title color_style_default sc_title_default"><h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">Upcoming Programs</h2></div>
+	<div class="wpb_text_column wpb_content_element " >
+		<div class="wpb_wrapper">
+			<div id='evcal_calendar_873' class='list_cal ajde_evcal_calendar boxy boxstyle0 box_3 ' ><div id='evcal_head' class='calendar_header ' ><div class='evo_cal_above'><span class='evo-search'></span><span class='evo-gototoday-btn' style='display:none' data-mo='8' data-yr='2026' data-dy=''>Current Month</span></div><div class='evo_cal_above_content'>					
+				<div class='evo_search_bar evo_hidden'>
+					<div class='evo_search_bar_in' >
+						<input type="text" placeholder='Search Events' data-role="none"/>
+						<a class="evosr_search_btn"><i class="fa fa-search"></i></a>
+					</div>
+				</div>
+
+			</div><div class='clear'></div></div><div id='eventon_loadbar_section'><div id='eventon_loadbar'></div></div><div id='evcal_list' class='eventon_events_list sep_months evcal_list_month'><div class='evcal_month_line' data-d='eml_8_2026'><p>august</p></div><div class='sep_month_events ' data-d='eml_8_2026'><div style="height: 250px;" id="event_3918_0" class="eventon_list_event evo_eventtop scheduled  event hasbgimg event_3918_0" data-event_id="3918" data-ri="0r" data-time="1786478400-1786489200" data-colr="#5cb8b2" itemscope itemtype='http://schema.org/Event'><div class="evo_event_schema" style="display:none" ><a itemprop='url'  href='https://masom.com/events/3918/'></a><meta itemprop='image' content="https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-4.59.39-PM1.jpeg" /><meta itemprop='startDate' content="2026-8-11T20:00-5:00" /><meta itemprop='endDate' content="2026-8-11T23:00-5:00" /><meta itemprop='eventStatus' content="https://schema.org/EventScheduled" /><item style="display:none" itemprop="eventAttendanceMode" itemscope itemtype="https://schema.org/OfflineEventAttendanceMode"></item><script type="application/ld+json">{"@context": "http://schema.org","@type": "Event",
+					"@id": "event_3918_0",
+					"eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+					"name": "",
+					"url": "https://masom.com/events/3918/",
+					"startDate": "2026-8-11T20:00-5:00",
+					"endDate": "2026-8-11T23:00-5:00",
+					"image":"https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-4.59.39-PM1.jpeg", 
+					"description":"''","eventStatus":"https://schema.org/EventScheduled"}</script></div>
+				<p class="desc_trig_outter" style="background-image: url(https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-4.59.39-PM1.jpeg); background-color:#5cb8b2;"><a data-gmap_status="null" data-exlk="0" id="evc_17864784003918" class="desc_trig sin_val evcal_list_a" data-ux_val="3"  ><span class='evcal_cblock ' data-bgcolor='#5cb8b2' data-smon='august' data-syr='2026'><span class='evo_start '><em class='year'>2026</em><em class='day'>tue</em><em class='date'>11</em><em class='month'>aug</em><em class='time'>8:00 PM</em></span><span class='evo_end only_time'><em class='time'>11:00 PM</em></span><em class='clear'></em></span><span class='evcal_desc evo_info '  ><span class='evo_above_title'></span><span class='evcal_desc2 evcal_event_title' itemprop='name'></span><span class='evo_below_title'></span><span class='evcal_desc_info' ><em class='evcal_time'>8:00 PM - 11:00 PM</em> </span><span class='evcal_desc3'></span></span><em class='clear'></em></a></p><div class='event_description evcal_eventcard ' style="display:none"><div class='evo_metarow_directimg'><img class='evo_event_main_img' src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-lazy-src="https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-4.59.39-PM1.jpeg" /><noscript><img class='evo_event_main_img' src='https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-4.59.39-PM1.jpeg' /></noscript></div><div class='evo_metarow_time evorow evcal_evdata_row bordb evcal_evrow_sm '>
+								<span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>
+								<div class='evcal_evdata_cell'>							
+									<h3 class='evo_h3'><span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>Time</h3><p>(Tuesday) 8:00 PM - 11:00 PM</p>
+								</div>
+							</div>							<div class='evo_metarow_ICS evorow bordb evcal_evdata_row'>
+								<span class="evcal_evdata_icons"><i class="fa fa-calendar"></i></span>
+								<div class='evcal_evdata_cell'>
+									<p><a href='https://masom.com/wp-admin/admin-ajax.php?action=eventon_ics_download&amp;event_id=3918&amp;ri=0' class='evo_ics_nCal' title='Add to your calendar'>Calendar</a><a href='//www.google.com/calendar/event?action=TEMPLATE&amp;text=&amp;dates=20260812T010000Z/20260812T040000Z&amp;details=&amp;location= - ' target='_blank' class='evo_ics_gCal' title='Add to google calendar'>GoogleCal</a></p>	
+								</div>
+							</div>
+							<div class='evo_card_row_end evcal_close' title='Close'></div></div><div class='clear end'></div></div><div style="height: 250px;" id="event_3920_0" class="eventon_list_event evo_eventtop scheduled  event hasbgimg event_3920_0" data-event_id="3920" data-ri="0r" data-time="1786564800-1786575600" data-colr="#5cb8b2" itemscope itemtype='http://schema.org/Event'><div class="evo_event_schema" style="display:none" ><a itemprop='url'  href='https://masom.com/events/3920/'></a><meta itemprop='image' content="https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-4.59.39-PM2.jpeg" /><meta itemprop='startDate' content="2026-8-12T20:00-5:00" /><meta itemprop='endDate' content="2026-8-12T23:00-5:00" /><meta itemprop='eventStatus' content="https://schema.org/EventScheduled" /><item style="display:none" itemprop="eventAttendanceMode" itemscope itemtype="https://schema.org/OfflineEventAttendanceMode"></item><script type="application/ld+json">{"@context": "http://schema.org","@type": "Event",
+					"@id": "event_3920_0",
+					"eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+					"name": "",
+					"url": "https://masom.com/events/3920/",
+					"startDate": "2026-8-12T20:00-5:00",
+					"endDate": "2026-8-12T23:00-5:00",
+					"image":"https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-4.59.39-PM2.jpeg", 
+					"description":"''","eventStatus":"https://schema.org/EventScheduled"}</script></div>
+				<p class="desc_trig_outter" style="background-image: url(https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-4.59.39-PM2.jpeg); background-color:#5cb8b2;"><a data-gmap_status="null" data-exlk="0" id="evc_17865648003920" class="desc_trig sin_val evcal_list_a" data-ux_val="3"  ><span class='evcal_cblock ' data-bgcolor='#5cb8b2' data-smon='august' data-syr='2026'><span class='evo_start '><em class='year'>2026</em><em class='day'>wed</em><em class='date'>12</em><em class='month'>aug</em><em class='time'>8:00 PM</em></span><span class='evo_end only_time'><em class='time'>11:00 PM</em></span><em class='clear'></em></span><span class='evcal_desc evo_info '  ><span class='evo_above_title'></span><span class='evcal_desc2 evcal_event_title' itemprop='name'></span><span class='evo_below_title'></span><span class='evcal_desc_info' ><em class='evcal_time'>8:00 PM - 11:00 PM</em> </span><span class='evcal_desc3'></span></span><em class='clear'></em></a></p><div class='event_description evcal_eventcard ' style="display:none"><div class='evo_metarow_directimg'><img class='evo_event_main_img' src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-lazy-src="https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-4.59.39-PM2.jpeg" /><noscript><img class='evo_event_main_img' src='https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-4.59.39-PM2.jpeg' /></noscript></div><div class='evo_metarow_time evorow evcal_evdata_row bordb evcal_evrow_sm '>
+								<span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>
+								<div class='evcal_evdata_cell'>							
+									<h3 class='evo_h3'><span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>Time</h3><p>(Wednesday) 8:00 PM - 11:00 PM</p>
+								</div>
+							</div>							<div class='evo_metarow_ICS evorow bordb evcal_evdata_row'>
+								<span class="evcal_evdata_icons"><i class="fa fa-calendar"></i></span>
+								<div class='evcal_evdata_cell'>
+									<p><a href='https://masom.com/wp-admin/admin-ajax.php?action=eventon_ics_download&amp;event_id=3920&amp;ri=0' class='evo_ics_nCal' title='Add to your calendar'>Calendar</a><a href='//www.google.com/calendar/event?action=TEMPLATE&amp;text=&amp;dates=20260813T010000Z/20260813T040000Z&amp;details=&amp;location= - ' target='_blank' class='evo_ics_gCal' title='Add to google calendar'>GoogleCal</a></p>	
+								</div>
+							</div>
+							<div class='evo_card_row_end evcal_close' title='Close'></div></div><div class='clear end'></div></div><div style="height: 250px;" id="event_3922_0" class="eventon_list_event evo_eventtop scheduled  event hasbgimg event_3922_0" data-event_id="3922" data-ri="0r" data-time="1786651200-1786658400" data-colr="#5cb8b2" itemscope itemtype='http://schema.org/Event'><div class="evo_event_schema" style="display:none" ><a itemprop='url'  href='https://masom.com/events/3922/'></a><meta itemprop='image' content="https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-5.30.49-PM.jpeg" /><meta itemprop='startDate' content="2026-8-13T20:00-5:00" /><meta itemprop='endDate' content="2026-8-13T22:00-5:00" /><meta itemprop='eventStatus' content="https://schema.org/EventScheduled" /><item style="display:none" itemprop="eventAttendanceMode" itemscope itemtype="https://schema.org/OfflineEventAttendanceMode"></item><script type="application/ld+json">{"@context": "http://schema.org","@type": "Event",
+					"@id": "event_3922_0",
+					"eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+					"name": "",
+					"url": "https://masom.com/events/3922/",
+					"startDate": "2026-8-13T20:00-5:00",
+					"endDate": "2026-8-13T22:00-5:00",
+					"image":"https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-5.30.49-PM.jpeg", 
+					"description":"''","eventStatus":"https://schema.org/EventScheduled"}</script></div>
+				<p class="desc_trig_outter" style="background-image: url(https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-5.30.49-PM.jpeg); background-color:#5cb8b2;"><a data-gmap_status="null" data-exlk="0" id="evc_17866512003922" class="event_repeat desc_trig sin_val evcal_list_a" data-ux_val="3"  ><span class='evcal_cblock ' data-bgcolor='#5cb8b2' data-smon='august' data-syr='2026'><span class='evo_start '><em class='year'>2026</em><em class='day'>thu</em><em class='date'>13</em><em class='month'>aug</em><em class='time'>8:00 PM</em></span><span class='evo_end only_time'><em class='time'>10:00 PM</em></span><em class='clear'></em></span><span class='evcal_desc evo_info '  ><span class='evo_above_title'></span><span class='evcal_desc2 evcal_event_title' itemprop='name'></span><span class='evo_below_title'></span><span class='evcal_desc_info' ><em class='evcal_time'>8:00 PM - 10:00 PM</em> </span><span class='evcal_desc3'></span></span><em class='clear'></em></a></p><div class='event_description evcal_eventcard ' style="display:none"><div class='evo_metarow_directimg'><img class='evo_event_main_img' src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-lazy-src="https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-5.30.49-PM.jpeg" /><noscript><img class='evo_event_main_img' src='https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-5.30.49-PM.jpeg' /></noscript></div><div class='evo_metarow_time evorow evcal_evdata_row bordb evcal_evrow_sm '>
+								<span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>
+								<div class='evcal_evdata_cell'>							
+									<h3 class='evo_h3'><span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>Time</h3><p>(Thursday) 8:00 PM - 10:00 PM</p>
+								</div>
+							</div>							<div class='evo_metarow_ICS evorow bordb evcal_evdata_row'>
+								<span class="evcal_evdata_icons"><i class="fa fa-calendar"></i></span>
+								<div class='evcal_evdata_cell'>
+									<p><a href='https://masom.com/wp-admin/admin-ajax.php?action=eventon_ics_download&amp;event_id=3922&amp;ri=0' class='evo_ics_nCal' title='Add to your calendar'>Calendar</a><a href='//www.google.com/calendar/event?action=TEMPLATE&amp;text=&amp;dates=20260814T010000Z/20260814T030000Z&amp;details=&amp;location= - ' target='_blank' class='evo_ics_gCal' title='Add to google calendar'>GoogleCal</a></p>	
+								</div>
+							</div>
+							<div class='evo_card_row_end evcal_close' title='Close'></div></div><div class='clear end'></div></div><div style="height: 250px;" id="event_3925_0" class="eventon_list_event evo_eventtop scheduled  event hasbgimg event_3925_0" data-event_id="3925" data-ri="0r" data-time="1786712400-1786716000" data-colr="#5cb8b2" itemscope itemtype='http://schema.org/Event'><div class="evo_event_schema" style="display:none" ><a itemprop='url'  href='https://masom.com/events/friday-prayers/'></a><meta itemprop='image' content="https://masom.com/wp-content/uploads/2026/08/Screenshot-2026-08-11-134835.jpg" /><meta itemprop='startDate' content="2026-8-14T13:00-5:00" /><meta itemprop='endDate' content="2026-8-14T14:00-5:00" /><meta itemprop='eventStatus' content="https://schema.org/EventScheduled" /><item style="display:none" itemprop="eventAttendanceMode" itemscope itemtype="https://schema.org/OfflineEventAttendanceMode"></item><script type="application/ld+json">{"@context": "http://schema.org","@type": "Event",
+					"@id": "event_3925_0",
+					"eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+					"name": "Friday Prayers",
+					"url": "https://masom.com/events/friday-prayers/",
+					"startDate": "2026-8-14T13:00-5:00",
+					"endDate": "2026-8-14T14:00-5:00",
+					"image":"https://masom.com/wp-content/uploads/2026/08/Screenshot-2026-08-11-134835.jpg", 
+					"description":"'Friday Prayers'","eventStatus":"https://schema.org/EventScheduled"}</script></div>
+				<p class="desc_trig_outter" style="background-image: url(https://masom.com/wp-content/uploads/2026/08/Screenshot-2026-08-11-134835.jpg); background-color:#5cb8b2;"><a data-gmap_status="null" data-exlk="0" id="evc_17867124003925" class="event_repeat desc_trig sin_val evcal_list_a" data-ux_val="3"  ><span class='evcal_cblock ' data-bgcolor='#5cb8b2' data-smon='august' data-syr='2026'><span class='evo_start '><em class='year'>2026</em><em class='day'>fri</em><em class='date'>14</em><em class='month'>aug</em><em class='time'>1:00 PM</em></span><span class='evo_end only_time'><em class='time'>2:00 PM</em></span><em class='clear'></em></span><span class='evcal_desc evo_info '  ><span class='evo_above_title'></span><span class='evcal_desc2 evcal_event_title' itemprop='name'>Friday Prayers</span><span class='evo_below_title'></span><span class='evcal_desc_info' ><em class='evcal_time'>1:00 PM - 2:00 PM</em> </span><span class='evcal_desc3'></span></span><em class='clear'></em></a></p><div class='event_description evcal_eventcard ' style="display:none"><div class='evo_metarow_directimg'><img class='evo_event_main_img' src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-lazy-src="https://masom.com/wp-content/uploads/2026/08/Screenshot-2026-08-11-134835.jpg" /><noscript><img class='evo_event_main_img' src='https://masom.com/wp-content/uploads/2026/08/Screenshot-2026-08-11-134835.jpg' /></noscript></div><div class='evo_metarow_time evorow evcal_evdata_row bordb evcal_evrow_sm '>
+								<span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>
+								<div class='evcal_evdata_cell'>							
+									<h3 class='evo_h3'><span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>Time</h3><p>(Friday) 1:00 PM - 2:00 PM</p>
+								</div>
+							</div>							<div class='evo_metarow_ICS evorow bordb evcal_evdata_row'>
+								<span class="evcal_evdata_icons"><i class="fa fa-calendar"></i></span>
+								<div class='evcal_evdata_cell'>
+									<p><a href='https://masom.com/wp-admin/admin-ajax.php?action=eventon_ics_download&amp;event_id=3925&amp;ri=0' class='evo_ics_nCal' title='Add to your calendar'>Calendar</a><a href='//www.google.com/calendar/event?action=TEMPLATE&amp;text=Friday+Prayers&amp;dates=20260814T180000Z/20260814T190000Z&amp;details=Friday+Prayers&amp;location= - ' target='_blank' class='evo_ics_gCal' title='Add to google calendar'>GoogleCal</a></p>	
+								</div>
+							</div>
+							<div class='evo_card_row_end evcal_close' title='Close'></div></div><div class='clear end'></div></div><div style="height: 250px;" id="event_3922_1" class="eventon_list_event evo_eventtop scheduled  event hasbgimg event_3922_1" data-event_id="3922" data-ri="1r" data-time="1786737600-1786744800" data-colr="#5cb8b2" itemscope itemtype='http://schema.org/Event'><div class="evo_event_schema" style="display:none" ><a itemprop='url'  href='https://masom.com/events/3922/var/ri-1.l-L1'></a><meta itemprop='image' content="https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-5.30.49-PM.jpeg" /><meta itemprop='startDate' content="2026-8-14T20:00-5:00" /><meta itemprop='endDate' content="2026-8-14T22:00-5:00" /><meta itemprop='eventStatus' content="https://schema.org/EventScheduled" /><item style="display:none" itemprop="eventAttendanceMode" itemscope itemtype="https://schema.org/OfflineEventAttendanceMode"></item><script type="application/ld+json">{"@context": "http://schema.org","@type": "Event",
+					"@id": "event_3922_1",
+					"eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+					"name": "",
+					"url": "https://masom.com/events/3922/var/ri-1.l-L1",
+					"startDate": "2026-8-14T20:00-5:00",
+					"endDate": "2026-8-14T22:00-5:00",
+					"image":"https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-5.30.49-PM.jpeg", 
+					"description":"''","eventStatus":"https://schema.org/EventScheduled"}</script></div>
+				<p class="desc_trig_outter" style="background-image: url(https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-5.30.49-PM.jpeg); background-color:#5cb8b2;"><a data-gmap_status="null" data-exlk="0" id="evc_17867376003922" class="event_repeat desc_trig sin_val evcal_list_a" data-ux_val="3"  ><span class='evcal_cblock ' data-bgcolor='#5cb8b2' data-smon='august' data-syr='2026'><span class='evo_start '><em class='year'>2026</em><em class='day'>fri</em><em class='date'>14</em><em class='month'>aug</em><em class='time'>8:00 PM</em></span><span class='evo_end only_time'><em class='time'>10:00 PM</em></span><em class='clear'></em></span><span class='evcal_desc evo_info '  ><span class='evo_above_title'></span><span class='evcal_desc2 evcal_event_title' itemprop='name'></span><span class='evo_below_title'></span><span class='evcal_desc_info' ><em class='evcal_time'>8:00 PM - 10:00 PM</em> </span><span class='evcal_desc3'></span></span><em class='clear'></em></a></p><div class='event_description evcal_eventcard ' style="display:none"><div class='evo_metarow_directimg'><img class='evo_event_main_img' src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-lazy-src="https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-5.30.49-PM.jpeg" /><noscript><img class='evo_event_main_img' src='https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-5.30.49-PM.jpeg' /></noscript></div><div class='evo_metarow_time evorow evcal_evdata_row bordb evcal_evrow_sm '>
+								<span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>
+								<div class='evcal_evdata_cell'>							
+									<h3 class='evo_h3'><span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>Time</h3><p>(Friday) 8:00 PM - 10:00 PM</p>
+								</div>
+							</div>							<div class='evo_metarow_ICS evorow bordb evcal_evdata_row'>
+								<span class="evcal_evdata_icons"><i class="fa fa-calendar"></i></span>
+								<div class='evcal_evdata_cell'>
+									<p><a href='https://masom.com/wp-admin/admin-ajax.php?action=eventon_ics_download&amp;event_id=3922&amp;ri=1' class='evo_ics_nCal' title='Add to your calendar'>Calendar</a><a href='//www.google.com/calendar/event?action=TEMPLATE&amp;text=&amp;dates=20260815T010000Z/20260815T030000Z&amp;details=&amp;location= - ' target='_blank' class='evo_ics_gCal' title='Add to google calendar'>GoogleCal</a></p>	
+								</div>
+							</div>
+							<div class='evo_card_row_end evcal_close' title='Close'></div></div><div class='clear end'></div></div><div style="height: 250px;" id="event_3922_2" class="eventon_list_event evo_eventtop scheduled  event hasbgimg event_3922_2" data-event_id="3922" data-ri="2r" data-time="1786824000-1786831200" data-colr="#5cb8b2" itemscope itemtype='http://schema.org/Event'><div class="evo_event_schema" style="display:none" ><a itemprop='url'  href='https://masom.com/events/3922/var/ri-2.l-L1'></a><meta itemprop='image' content="https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-5.30.49-PM.jpeg" /><meta itemprop='startDate' content="2026-8-15T20:00-5:00" /><meta itemprop='endDate' content="2026-8-15T22:00-5:00" /><meta itemprop='eventStatus' content="https://schema.org/EventScheduled" /><item style="display:none" itemprop="eventAttendanceMode" itemscope itemtype="https://schema.org/OfflineEventAttendanceMode"></item><script type="application/ld+json">{"@context": "http://schema.org","@type": "Event",
+					"@id": "event_3922_2",
+					"eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+					"name": "",
+					"url": "https://masom.com/events/3922/var/ri-2.l-L1",
+					"startDate": "2026-8-15T20:00-5:00",
+					"endDate": "2026-8-15T22:00-5:00",
+					"image":"https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-5.30.49-PM.jpeg", 
+					"description":"''","eventStatus":"https://schema.org/EventScheduled"}</script></div>
+				<p class="desc_trig_outter" style="background-image: url(https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-5.30.49-PM.jpeg); background-color:#5cb8b2;"><a data-gmap_status="null" data-exlk="0" id="evc_17868240003922" class="event_repeat desc_trig sin_val evcal_list_a" data-ux_val="3"  ><span class='evcal_cblock ' data-bgcolor='#5cb8b2' data-smon='august' data-syr='2026'><span class='evo_start '><em class='year'>2026</em><em class='day'>sat</em><em class='date'>15</em><em class='month'>aug</em><em class='time'>8:00 PM</em></span><span class='evo_end only_time'><em class='time'>10:00 PM</em></span><em class='clear'></em></span><span class='evcal_desc evo_info '  ><span class='evo_above_title'></span><span class='evcal_desc2 evcal_event_title' itemprop='name'></span><span class='evo_below_title'></span><span class='evcal_desc_info' ><em class='evcal_time'>8:00 PM - 10:00 PM</em> </span><span class='evcal_desc3'></span></span><em class='clear'></em></a></p><div class='event_description evcal_eventcard ' style="display:none"><div class='evo_metarow_directimg'><img class='evo_event_main_img' src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-lazy-src="https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-5.30.49-PM.jpeg" /><noscript><img class='evo_event_main_img' src='https://masom.com/wp-content/uploads/2026/08/WhatsApp-Image-2026-08-06-at-5.30.49-PM.jpeg' /></noscript></div><div class='evo_metarow_time evorow evcal_evdata_row bordb evcal_evrow_sm '>
+								<span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>
+								<div class='evcal_evdata_cell'>							
+									<h3 class='evo_h3'><span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>Time</h3><p>(Saturday) 8:00 PM - 10:00 PM</p>
+								</div>
+							</div>							<div class='evo_metarow_ICS evorow bordb evcal_evdata_row'>
+								<span class="evcal_evdata_icons"><i class="fa fa-calendar"></i></span>
+								<div class='evcal_evdata_cell'>
+									<p><a href='https://masom.com/wp-admin/admin-ajax.php?action=eventon_ics_download&amp;event_id=3922&amp;ri=2' class='evo_ics_nCal' title='Add to your calendar'>Calendar</a><a href='//www.google.com/calendar/event?action=TEMPLATE&amp;text=&amp;dates=20260816T010000Z/20260816T030000Z&amp;details=&amp;location= - ' target='_blank' class='evo_ics_gCal' title='Add to google calendar'>GoogleCal</a></p>	
+								</div>
+							</div>
+							<div class='evo_card_row_end evcal_close' title='Close'></div></div><div class='clear end'></div></div><div style="height: 250px;" id="event_3924_0" class="eventon_list_event evo_eventtop scheduled  event hasbgimg event_3924_0" data-event_id="3924" data-ri="0r" data-time="1787256000-1787263200" data-colr="#5cb8b2" itemscope itemtype='http://schema.org/Event'><div class="evo_event_schema" style="display:none" ><a itemprop='url'  href='https://masom.com/events/3924/'></a><meta itemprop='image' content="https://masom.com/wp-content/uploads/revslider/home1/5ef9ae506ff41-imamhussain.webp" /><meta itemprop='startDate' content="2026-8-20T20:00-5:00" /><meta itemprop='endDate' content="2026-8-20T22:00-5:00" /><meta itemprop='eventStatus' content="https://schema.org/EventScheduled" /><item style="display:none" itemprop="eventAttendanceMode" itemscope itemtype="https://schema.org/OfflineEventAttendanceMode"></item><script type="application/ld+json">{"@context": "http://schema.org","@type": "Event",
+					"@id": "event_3924_0",
+					"eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+					"name": "Alwidai Majalis e Ayyam E Aza",
+					"url": "https://masom.com/events/3924/",
+					"startDate": "2026-8-20T20:00-5:00",
+					"endDate": "2026-8-20T22:00-5:00",
+					"image":"https://masom.com/wp-content/uploads/revslider/home1/5ef9ae506ff41-imamhussain.jpg", 
+					"description":"'Alwidai Majalis e Ayyam E Aza'","eventStatus":"https://schema.org/EventScheduled"}</script></div>
+				<p class="desc_trig_outter" style="background-image: url(https://masom.com/wp-content/uploads/revslider/home1/5ef9ae506ff41-imamhussain.jpg); background-color:#5cb8b2;"><a data-gmap_status="null" data-exlk="0" id="evc_17872560003924" class="event_repeat desc_trig sin_val evcal_list_a" data-ux_val="3"  ><span class='evcal_cblock ' data-bgcolor='#5cb8b2' data-smon='august' data-syr='2026'><span class='evo_start '><em class='year'>2026</em><em class='day'>thu</em><em class='date'>20</em><em class='month'>aug</em><em class='time'>8:00 PM</em></span><span class='evo_end only_time'><em class='time'>10:00 PM</em></span><em class='clear'></em></span><span class='evcal_desc evo_info '  ><span class='evo_above_title'></span><span class='evcal_desc2 evcal_event_title' itemprop='name'>Alwidai Majalis e Ayyam E Aza</span><span class='evo_below_title'></span><span class='evcal_desc_info' ><em class='evcal_time'>8:00 PM - 10:00 PM</em> </span><span class='evcal_desc3'></span></span><em class='clear'></em></a></p><div class='event_description evcal_eventcard ' style="display:none"><div class='evo_metarow_directimg'><img class='evo_event_main_img' src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-lazy-src="https://masom.com/wp-content/uploads/revslider/home1/5ef9ae506ff41-imamhussain.webp" /><noscript><img class='evo_event_main_img' src="https://masom.com/wp-content/uploads/revslider/home1/5ef9ae506ff41-imamhussain.webp" /></noscript></div><div class='evo_metarow_time evorow evcal_evdata_row bordb evcal_evrow_sm '>
+								<span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>
+								<div class='evcal_evdata_cell'>							
+									<h3 class='evo_h3'><span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>Time</h3><p>(Thursday) 8:00 PM - 10:00 PM</p>
+								</div>
+							</div>							<div class='evo_metarow_ICS evorow bordb evcal_evdata_row'>
+								<span class="evcal_evdata_icons"><i class="fa fa-calendar"></i></span>
+								<div class='evcal_evdata_cell'>
+									<p><a href='https://masom.com/wp-admin/admin-ajax.php?action=eventon_ics_download&amp;event_id=3924&amp;ri=0' class='evo_ics_nCal' title='Add to your calendar'>Calendar</a><a href='//www.google.com/calendar/event?action=TEMPLATE&amp;text=Alwidai+Majalis+e+Ayyam+E+Aza&amp;dates=20260821T010000Z/20260821T030000Z&amp;details=Alwidai+Majalis+e+Ayyam+E+Aza&amp;location= - ' target='_blank' class='evo_ics_gCal' title='Add to google calendar'>GoogleCal</a></p>	
+								</div>
+							</div>
+							<div class='evo_card_row_end evcal_close' title='Close'></div></div><div class='clear end'></div></div><div style="height: 250px;" id="event_3925_1" class="eventon_list_event evo_eventtop scheduled  event hasbgimg event_3925_1" data-event_id="3925" data-ri="1r" data-time="1787317200-1787320800" data-colr="#5cb8b2" itemscope itemtype='http://schema.org/Event'><div class="evo_event_schema" style="display:none" ><a itemprop='url'  href='https://masom.com/events/friday-prayers/var/ri-1.l-L1'></a><meta itemprop='image' content="https://masom.com/wp-content/uploads/2026/08/Screenshot-2026-08-11-134835.jpg" /><meta itemprop='startDate' content="2026-8-21T13:00-5:00" /><meta itemprop='endDate' content="2026-8-21T14:00-5:00" /><meta itemprop='eventStatus' content="https://schema.org/EventScheduled" /><item style="display:none" itemprop="eventAttendanceMode" itemscope itemtype="https://schema.org/OfflineEventAttendanceMode"></item><script type="application/ld+json">{"@context": "http://schema.org","@type": "Event",
+					"@id": "event_3925_1",
+					"eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+					"name": "Friday Prayers",
+					"url": "https://masom.com/events/friday-prayers/var/ri-1.l-L1",
+					"startDate": "2026-8-21T13:00-5:00",
+					"endDate": "2026-8-21T14:00-5:00",
+					"image":"https://masom.com/wp-content/uploads/2026/08/Screenshot-2026-08-11-134835.jpg", 
+					"description":"'Friday Prayers'","eventStatus":"https://schema.org/EventScheduled"}</script></div>
+				<p class="desc_trig_outter" style="background-image: url(https://masom.com/wp-content/uploads/2026/08/Screenshot-2026-08-11-134835.jpg); background-color:#5cb8b2;"><a data-gmap_status="null" data-exlk="0" id="evc_17873172003925" class="event_repeat desc_trig sin_val evcal_list_a" data-ux_val="3"  ><span class='evcal_cblock ' data-bgcolor='#5cb8b2' data-smon='august' data-syr='2026'><span class='evo_start '><em class='year'>2026</em><em class='day'>fri</em><em class='date'>21</em><em class='month'>aug</em><em class='time'>1:00 PM</em></span><span class='evo_end only_time'><em class='time'>2:00 PM</em></span><em class='clear'></em></span><span class='evcal_desc evo_info '  ><span class='evo_above_title'></span><span class='evcal_desc2 evcal_event_title' itemprop='name'>Friday Prayers</span><span class='evo_below_title'></span><span class='evcal_desc_info' ><em class='evcal_time'>1:00 PM - 2:00 PM</em> </span><span class='evcal_desc3'></span></span><em class='clear'></em></a></p><div class='event_description evcal_eventcard ' style="display:none"><div class='evo_metarow_directimg'><img class='evo_event_main_img' src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-lazy-src="https://masom.com/wp-content/uploads/2026/08/Screenshot-2026-08-11-134835.jpg" /><noscript><img class='evo_event_main_img' src='https://masom.com/wp-content/uploads/2026/08/Screenshot-2026-08-11-134835.jpg' /></noscript></div><div class='evo_metarow_time evorow evcal_evdata_row bordb evcal_evrow_sm '>
+								<span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>
+								<div class='evcal_evdata_cell'>							
+									<h3 class='evo_h3'><span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>Time</h3><p>(Friday) 1:00 PM - 2:00 PM</p>
+								</div>
+							</div>							<div class='evo_metarow_ICS evorow bordb evcal_evdata_row'>
+								<span class="evcal_evdata_icons"><i class="fa fa-calendar"></i></span>
+								<div class='evcal_evdata_cell'>
+									<p><a href='https://masom.com/wp-admin/admin-ajax.php?action=eventon_ics_download&amp;event_id=3925&amp;ri=1' class='evo_ics_nCal' title='Add to your calendar'>Calendar</a><a href='//www.google.com/calendar/event?action=TEMPLATE&amp;text=Friday+Prayers&amp;dates=20260821T180000Z/20260821T190000Z&amp;details=Friday+Prayers&amp;location= - ' target='_blank' class='evo_ics_gCal' title='Add to google calendar'>GoogleCal</a></p>	
+								</div>
+							</div>
+							<div class='evo_card_row_end evcal_close' title='Close'></div></div><div class='clear end'></div></div><div style="height: 250px;" id="event_3924_1" class="eventon_list_event evo_eventtop scheduled  event hasbgimg event_3924_1" data-event_id="3924" data-ri="1r" data-time="1787342400-1787349600" data-colr="#5cb8b2" itemscope itemtype='http://schema.org/Event'><div class="evo_event_schema" style="display:none" ><a itemprop='url'  href='https://masom.com/events/3924/var/ri-1.l-L1'></a><meta itemprop='image' content="https://masom.com/wp-content/uploads/revslider/home1/5ef9ae506ff41-imamhussain.webp" /><meta itemprop='startDate' content="2026-8-21T20:00-5:00" /><meta itemprop='endDate' content="2026-8-21T22:00-5:00" /><meta itemprop='eventStatus' content="https://schema.org/EventScheduled" /><item style="display:none" itemprop="eventAttendanceMode" itemscope itemtype="https://schema.org/OfflineEventAttendanceMode"></item><script type="application/ld+json">{"@context": "http://schema.org","@type": "Event",
+					"@id": "event_3924_1",
+					"eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+					"name": "Alwidai Majalis e Ayyam E Aza",
+					"url": "https://masom.com/events/3924/var/ri-1.l-L1",
+					"startDate": "2026-8-21T20:00-5:00",
+					"endDate": "2026-8-21T22:00-5:00",
+					"image":"https://masom.com/wp-content/uploads/revslider/home1/5ef9ae506ff41-imamhussain.jpg", 
+					"description":"'Alwidai Majalis e Ayyam E Aza'","eventStatus":"https://schema.org/EventScheduled"}</script></div>
+				<p class="desc_trig_outter" style="background-image: url(https://masom.com/wp-content/uploads/revslider/home1/5ef9ae506ff41-imamhussain.jpg); background-color:#5cb8b2;"><a data-gmap_status="null" data-exlk="0" id="evc_17873424003924" class="event_repeat desc_trig sin_val evcal_list_a" data-ux_val="3"  ><span class='evcal_cblock ' data-bgcolor='#5cb8b2' data-smon='august' data-syr='2026'><span class='evo_start '><em class='year'>2026</em><em class='day'>fri</em><em class='date'>21</em><em class='month'>aug</em><em class='time'>8:00 PM</em></span><span class='evo_end only_time'><em class='time'>10:00 PM</em></span><em class='clear'></em></span><span class='evcal_desc evo_info '  ><span class='evo_above_title'></span><span class='evcal_desc2 evcal_event_title' itemprop='name'>Alwidai Majalis e Ayyam E Aza</span><span class='evo_below_title'></span><span class='evcal_desc_info' ><em class='evcal_time'>8:00 PM - 10:00 PM</em> </span><span class='evcal_desc3'></span></span><em class='clear'></em></a></p><div class='event_description evcal_eventcard ' style="display:none"><div class='evo_metarow_directimg'><img class='evo_event_main_img' src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-lazy-src="https://masom.com/wp-content/uploads/revslider/home1/5ef9ae506ff41-imamhussain.webp" /><noscript><img class='evo_event_main_img' src="https://masom.com/wp-content/uploads/revslider/home1/5ef9ae506ff41-imamhussain.webp" /></noscript></div><div class='evo_metarow_time evorow evcal_evdata_row bordb evcal_evrow_sm '>
+								<span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>
+								<div class='evcal_evdata_cell'>							
+									<h3 class='evo_h3'><span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>Time</h3><p>(Friday) 8:00 PM - 10:00 PM</p>
+								</div>
+							</div>							<div class='evo_metarow_ICS evorow bordb evcal_evdata_row'>
+								<span class="evcal_evdata_icons"><i class="fa fa-calendar"></i></span>
+								<div class='evcal_evdata_cell'>
+									<p><a href='https://masom.com/wp-admin/admin-ajax.php?action=eventon_ics_download&amp;event_id=3924&amp;ri=1' class='evo_ics_nCal' title='Add to your calendar'>Calendar</a><a href='//www.google.com/calendar/event?action=TEMPLATE&amp;text=Alwidai+Majalis+e+Ayyam+E+Aza&amp;dates=20260822T010000Z/20260822T030000Z&amp;details=Alwidai+Majalis+e+Ayyam+E+Aza&amp;location= - ' target='_blank' class='evo_ics_gCal' title='Add to google calendar'>GoogleCal</a></p>	
+								</div>
+							</div>
+							<div class='evo_card_row_end evcal_close' title='Close'></div></div><div class='clear end'></div></div><div style="display:none; height: 250px;" id="event_3924_2" class="eventon_list_event evo_eventtop scheduled  event evSL hasbgimg event_3924_2" data-event_id="3924" data-ri="2r" data-time="1787428800-1787436000" data-colr="#5cb8b2" itemscope itemtype='http://schema.org/Event'><div class="evo_event_schema" style="display:none" ><a itemprop='url'  href='https://masom.com/events/3924/var/ri-2.l-L1'></a><meta itemprop='image' content="https://masom.com/wp-content/uploads/revslider/home1/5ef9ae506ff41-imamhussain.webp" /><meta itemprop='startDate' content="2026-8-22T20:00-5:00" /><meta itemprop='endDate' content="2026-8-22T22:00-5:00" /><meta itemprop='eventStatus' content="https://schema.org/EventScheduled" /><item style="display:none" itemprop="eventAttendanceMode" itemscope itemtype="https://schema.org/OfflineEventAttendanceMode"></item><script type="application/ld+json">{"@context": "http://schema.org","@type": "Event",
+					"@id": "event_3924_2",
+					"eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+					"name": "Alwidai Majalis e Ayyam E Aza",
+					"url": "https://masom.com/events/3924/var/ri-2.l-L1",
+					"startDate": "2026-8-22T20:00-5:00",
+					"endDate": "2026-8-22T22:00-5:00",
+					"image":"https://masom.com/wp-content/uploads/revslider/home1/5ef9ae506ff41-imamhussain.jpg", 
+					"description":"'Alwidai Majalis e Ayyam E Aza'","eventStatus":"https://schema.org/EventScheduled"}</script></div>
+				<p class="desc_trig_outter" style="background-image: url(https://masom.com/wp-content/uploads/revslider/home1/5ef9ae506ff41-imamhussain.jpg); background-color:#5cb8b2;"><a data-gmap_status="null" data-exlk="0" id="evc_17874288003924" class="event_repeat desc_trig sin_val evcal_list_a" data-ux_val="3"  ><span class='evcal_cblock ' data-bgcolor='#5cb8b2' data-smon='august' data-syr='2026'><span class='evo_start '><em class='year'>2026</em><em class='day'>sat</em><em class='date'>22</em><em class='month'>aug</em><em class='time'>8:00 PM</em></span><span class='evo_end only_time'><em class='time'>10:00 PM</em></span><em class='clear'></em></span><span class='evcal_desc evo_info '  ><span class='evo_above_title'></span><span class='evcal_desc2 evcal_event_title' itemprop='name'>Alwidai Majalis e Ayyam E Aza</span><span class='evo_below_title'></span><span class='evcal_desc_info' ><em class='evcal_time'>8:00 PM - 10:00 PM</em> </span><span class='evcal_desc3'></span></span><em class='clear'></em></a></p><div class='event_description evcal_eventcard ' style="display:none"><div class='evo_metarow_directimg'><img class='evo_event_main_img' src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-lazy-src="https://masom.com/wp-content/uploads/revslider/home1/5ef9ae506ff41-imamhussain.webp" /><noscript><img class='evo_event_main_img' src="https://masom.com/wp-content/uploads/revslider/home1/5ef9ae506ff41-imamhussain.webp" /></noscript></div><div class='evo_metarow_time evorow evcal_evdata_row bordb evcal_evrow_sm '>
+								<span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>
+								<div class='evcal_evdata_cell'>							
+									<h3 class='evo_h3'><span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>Time</h3><p>(Saturday) 8:00 PM - 10:00 PM</p>
+								</div>
+							</div>							<div class='evo_metarow_ICS evorow bordb evcal_evdata_row'>
+								<span class="evcal_evdata_icons"><i class="fa fa-calendar"></i></span>
+								<div class='evcal_evdata_cell'>
+									<p><a href='https://masom.com/wp-admin/admin-ajax.php?action=eventon_ics_download&amp;event_id=3924&amp;ri=2' class='evo_ics_nCal' title='Add to your calendar'>Calendar</a><a href='//www.google.com/calendar/event?action=TEMPLATE&amp;text=Alwidai+Majalis+e+Ayyam+E+Aza&amp;dates=20260823T010000Z/20260823T030000Z&amp;details=Alwidai+Majalis+e+Ayyam+E+Aza&amp;location= - ' target='_blank' class='evo_ics_gCal' title='Add to google calendar'>GoogleCal</a></p>	
+								</div>
+							</div>
+							<div class='evo_card_row_end evcal_close' title='Close'></div></div><div class='clear end'></div></div><div style="display:none; height: 250px;" id="event_3925_2" class="eventon_list_event evo_eventtop scheduled  event evSL hasbgimg event_3925_2" data-event_id="3925" data-ri="2r" data-time="1787922000-1787925600" data-colr="#5cb8b2" itemscope itemtype='http://schema.org/Event'><div class="evo_event_schema" style="display:none" ><a itemprop='url'  href='https://masom.com/events/friday-prayers/var/ri-2.l-L1'></a><meta itemprop='image' content="https://masom.com/wp-content/uploads/2026/08/Screenshot-2026-08-11-134835.jpg" /><meta itemprop='startDate' content="2026-8-28T13:00-5:00" /><meta itemprop='endDate' content="2026-8-28T14:00-5:00" /><meta itemprop='eventStatus' content="https://schema.org/EventScheduled" /><item style="display:none" itemprop="eventAttendanceMode" itemscope itemtype="https://schema.org/OfflineEventAttendanceMode"></item><script type="application/ld+json">{"@context": "http://schema.org","@type": "Event",
+					"@id": "event_3925_2",
+					"eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+					"name": "Friday Prayers",
+					"url": "https://masom.com/events/friday-prayers/var/ri-2.l-L1",
+					"startDate": "2026-8-28T13:00-5:00",
+					"endDate": "2026-8-28T14:00-5:00",
+					"image":"https://masom.com/wp-content/uploads/2026/08/Screenshot-2026-08-11-134835.jpg", 
+					"description":"'Friday Prayers'","eventStatus":"https://schema.org/EventScheduled"}</script></div>
+				<p class="desc_trig_outter" style="background-image: url(https://masom.com/wp-content/uploads/2026/08/Screenshot-2026-08-11-134835.jpg); background-color:#5cb8b2;"><a data-gmap_status="null" data-exlk="0" id="evc_17879220003925" class="event_repeat desc_trig sin_val evcal_list_a" data-ux_val="3"  ><span class='evcal_cblock ' data-bgcolor='#5cb8b2' data-smon='august' data-syr='2026'><span class='evo_start '><em class='year'>2026</em><em class='day'>fri</em><em class='date'>28</em><em class='month'>aug</em><em class='time'>1:00 PM</em></span><span class='evo_end only_time'><em class='time'>2:00 PM</em></span><em class='clear'></em></span><span class='evcal_desc evo_info '  ><span class='evo_above_title'></span><span class='evcal_desc2 evcal_event_title' itemprop='name'>Friday Prayers</span><span class='evo_below_title'></span><span class='evcal_desc_info' ><em class='evcal_time'>1:00 PM - 2:00 PM</em> </span><span class='evcal_desc3'></span></span><em class='clear'></em></a></p><div class='event_description evcal_eventcard ' style="display:none"><div class='evo_metarow_directimg'><img class='evo_event_main_img' src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-lazy-src="https://masom.com/wp-content/uploads/2026/08/Screenshot-2026-08-11-134835.jpg" /><noscript><img class='evo_event_main_img' src='https://masom.com/wp-content/uploads/2026/08/Screenshot-2026-08-11-134835.jpg' /></noscript></div><div class='evo_metarow_time evorow evcal_evdata_row bordb evcal_evrow_sm '>
+								<span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>
+								<div class='evcal_evdata_cell'>							
+									<h3 class='evo_h3'><span class='evcal_evdata_icons'><i class='fa fa-clock'></i></span>Time</h3><p>(Friday) 1:00 PM - 2:00 PM</p>
+								</div>
+							</div>							<div class='evo_metarow_ICS evorow bordb evcal_evdata_row'>
+								<span class="evcal_evdata_icons"><i class="fa fa-calendar"></i></span>
+								<div class='evcal_evdata_cell'>
+									<p><a href='https://masom.com/wp-admin/admin-ajax.php?action=eventon_ics_download&amp;event_id=3925&amp;ri=2' class='evo_ics_nCal' title='Add to your calendar'>Calendar</a><a href='//www.google.com/calendar/event?action=TEMPLATE&amp;text=Friday+Prayers&amp;dates=20260828T180000Z/20260828T190000Z&amp;details=Friday+Prayers&amp;location= - ' target='_blank' class='evo_ics_gCal' title='Add to google calendar'>GoogleCal</a></p>	
+								</div>
+							</div>
+							<div class='evo_card_row_end evcal_close' title='Close'></div></div><div class='clear end'></div></div><div class="evoShow_more_events" style="height:250px"><span>Show More Events</span></div></div>			<div class='clear'></div>
+			</div>
+			<div class='clear'></div>
+					 	<div id='evcal_footer' class='evo_bottom' style='display:none'>
+		 		<div class='evo_cal_data'  data-sc='{"accord":"no","cal_id":"","cal_init_nonajax":"no","calendar_type":"list","etc_override":"no","evc_open":"no","event_count":"9","event_location":"all","event_order":"ASC","event_organizer":"all","event_past_future":"all","event_tag":"all","event_type":"all","event_type_2":"all","event_type_3":"all","event_type_4":"all","event_type_5":"all","eventtop_style":0,"exp_jumper":"yes","exp_so":"no","filter_relationship":"AND","filter_show_set_only":"no","filter_type":"default","filters":"yes","fixed_month":"8","fixed_year":"2026","focus_end_date_range":"1788220799","focus_start_date_range":"1785542400","ft_event_priority":"no","hide_arrows":"no","hide_empty_months":"no","hide_end_time":"no","hide_ft":"no","hide_month_headers":"no","hide_mult_occur":"no","hide_past":"no","hide_past_by":"ee","hide_so":"no","ics":"no","jumper":"yes","jumper_count":5,"jumper_offset":"0","lang":"L1","layout_changer":"no","mapformat":"roadmap","mapiconurl":"","maps_load":"no","mapscroll":"false","mapzoom":"18","members_only":"no","ml_priority":"no","month_incre":0,"number_of_months":"1\u2033","only_ft":"no","pec":"","s":"","search":"","search_all":"no","sep_month":"yes","show_et_ft_img":"no","show_limit":"yes","show_limit_ajax":"no","show_limit_paged":1,"show_limit_redir":"","show_repeats":"no","show_upcoming":0,"show_year":"no","sort_by":"sort_date","tile_bg":"1","tile_bg_size":"full","tile_count":"3","tile_height":"250","tile_style":0,"tiles":"yes","ux_val":"0","view_switcher":"no","wpml_l1":"","wpml_l2":"","wpml_l3":"","yl_priority":"no","start_range":"today","end_range":"2024\/12\/30","fixed_day":"1","_cver":"2.9"}' data-od='{"lang_no_events":"No Events"}'></div>
+		 		<div class='evo_cal_events' data-events=""></div>
+		 	</div>
+				
+			
+						</div>
+			
+
+		</div>
+	</div>
+</div></div></div></div></div></div><div class="vc_row-full-width vc_clearfix"></div><div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true" class="vc_row wpb_row vc_row-fluid vc_custom_1780985479751 vc_row-has-fill"><div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div id="sc_title_525157948"
+		class="sc_title color_style_default sc_title_default"><h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default">Stay in Touch</h2><div class="sc_item_descr sc_title_descr sc_align_center"><p>Our Contacts</p>
+</div></div><div class="vc_empty_space  hide_on_mobile"   style="height: 2em"><span class="vc_empty_space_inner"></span></div><div id="sc_content_506427961"
+		class="sc_content color_style_default sc_content_default sc_content_width_80p sc_float_center sc_align_center"><div class="sc_content_container"><div class="vc_row wpb_row vc_inner vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-4 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_raw_code wpb_content_element wpb_raw_html vc_custom_1780985442005" >
+		<div class="wpb_wrapper">
+			<i class="fas fa-mobile-alt" style="font-size:42px; color: rgb(92, 184, 178);"></i>
+		</div>
+	</div>
+<h6 style="font-size: 24px;text-align: center" class="vc_custom_heading vc_custom_1597083278670" ><a href="tel:+17732839718">(773) 283-9718</a></h6><div class="vc_empty_space"   style="height: 2px"><span class="vc_empty_space_inner"></span></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-4 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_raw_code wpb_content_element wpb_raw_html vc_custom_1780985446461" >
+		<div class="wpb_wrapper">
+			<i class="fas fa-map-marked-alt" style="font-size:42px; color: rgb(92, 184, 178);"></i>
+		</div>
+	</div>
+<h6 style="font-size: 23px;text-align: center" class="vc_custom_heading vc_custom_1594818929716" >4353 West Lawrence Avenue</h6><p style="font-size: 22px;text-align: center" class="vc_custom_heading vc_custom_1594818945138" >Chicago, IL 60630</p></div></div></div><div class="wpb_column vc_column_container vc_col-sm-4 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_raw_code wpb_content_element wpb_raw_html vc_custom_1780985451141" >
+		<div class="wpb_wrapper">
+			<i class="fas fa-envelope" style="font-size:42px; color: rgb(92, 184, 178);"></i>
+		</div>
+	</div>
+<h6 style="font-size: 24px;text-align: center" class="vc_custom_heading vc_custom_1597083210257" ><a href="/cdn-cgi/l/email-protection#87f4e2e4f5e2f3e6f5fec7eae6f4e8eaa9e4e8ea"><span class="__cf_email__" data-cfemail="295a4c4a5b4c5d485b506944485a4644074a4644">[email&#160;protected]</span></a></h6><div class="vc_empty_space"   style="height: 2px"><span class="vc_empty_space_inner"></span></div></div></div></div></div></div></div></div></div></div></div><div class="vc_row-full-width vc_clearfix"></div><div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true" class="vc_row wpb_row vc_row-fluid vc_custom_1597093893040 vc_row-has-fill vc_row-no-padding vc_row-o-equal-height vc_row-flex scheme_dark"><div class="wpb_column vc_column_container vc_col-sm-6 vc_col-has-fill sc_layouts_column_icons_position_left"><div class="vc_column-inner vc_custom_1597093718723"><div class="wpb_wrapper"><div class="vc_empty_space"   style="height: 1.35em"><span class="vc_empty_space_inner"></span></div><div id="sc_content_783208902"
+		class="sc_content color_style_default sc_content_default sc_float_center sc_align_center"><div class="sc_content_container"><div id="sc_title_1218713195"
+		class="sc_title color_style_default sc_title_default  vc_custom_1597093519171"><h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default sc_item_title_tag">Get The latest Updates</h2><div class="sc_item_descr sc_title_descr sc_align_center"><p>Subscribe To Our Newsletter</p>
+</div></div></div></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-6 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div id="sc_content_1828591476"
+		class="sc_content color_style_default sc_content_default sc_float_center sc_align_center sc_padding_medium"><div class="sc_content_container">
+	<div class="wpb_text_column wpb_content_element " >
+		<div class="wpb_wrapper">
+			<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>(function() {
+	window.mc4wp = window.mc4wp || {
+		listeners: [],
+		forms: {
+			on: function(evt, cb) {
+				window.mc4wp.listeners.push(
+					{
+						event   : evt,
+						callback: cb
+					}
+				);
+			}
+		}
+	}
+})();
+</script><form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-564" method="post" data-id="564" data-name="" ><div class="mc4wp-form-fields"><p>
+<input type="email" name="EMAIL" placeholder="your email" required />
+	<input type="submit" value="subscribe" />
+</p>
+<p class="terms_agree_checkbox_wrap">  	
+    <label class="terms_agree_checkbox"> 
+      <input name="AGREE_TO_TERMS" type="checkbox" value="1" required="">
+      I agree that my submitted data is being collected and stored.
+  </label>
+</p></div><label style="display: none !important;">Leave this field empty if you're human: <input type="text" name="_mc4wp_honeypot" value="" tabindex="-1" autocomplete="off" /></label><input type="hidden" name="_mc4wp_timestamp" value="1786474808" /><input type="hidden" name="_mc4wp_form_id" value="564" /><input type="hidden" name="_mc4wp_form_element_id" value="mc4wp-form-1" /><div class="mc4wp-response"></div></form>
+
+		</div>
+	</div>
+</div></div></div></div></div></div><div class="vc_row-full-width vc_clearfix"></div>
+	</div>
+
+	
+</article>
+				
+					</div>
+
+					</div>			</div>
+
+			<footer class="footer_wrap footer_custom footer_custom_357 footer_custom_footer scheme_dark">
+	<div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true" class="vc_row wpb_row vc_row-fluid vc_custom_1595971627226 vc_row-has-fill sc_layouts_row sc_layouts_row_type_normal"><div class="wpb_column vc_column_container vc_col-sm-12 vc_col-has-fill sc_layouts_column_icons_position_left"><div class="vc_column-inner vc_custom_1595971633687"><div class="wpb_wrapper"><div id="sc_content_364573418"
+		class="sc_content color_style_default sc_content_default sc_content_width_90p sc_float_center"><div class="sc_content_container"><div class="vc_row wpb_row vc_inner vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-3 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="sc_layouts_item"><div id="widget_contacts_1422881456" class="widget_area sc_widget_contacts vc_widget_contacts wpb_content_element  vc_custom_1601745698289"><aside id="widget_contacts_1422881456_widget" class="widget widget_contacts"><div class="contacts_wrap"><div class="contacts_logo"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20500%20132'%3E%3C/svg%3E" alt="" width="500" height="132" data-lazy-src="https://masom.com/wp-content/uploads/2017/06/logomobilefoot.webp"><noscript><img src="https://masom.com/wp-content/uploads/2017/06/logomobilefoot.webp" alt="" width="500" height="132"></noscript></div><div class="contacts_socials socials_wrap"><a target="_blank" href="https://www.facebook.com/share/18Bg8qJvu9/?mibextid=wwXIfr" class="social_item social_item_style_icons social_item_type_icons"><span class="social_icon social_facebook"><span class="icon-facebook"></span></span></a><a target="_blank" href="https://www.youtube.com/channel/UCLE_Z6NZIg05Zzz1tn209sg" class="social_item social_item_style_icons social_item_type_icons"><span class="social_icon social_youtube"><span class="icon-youtube"></span></span></a><a target="_blank" href="https://www.instagram.com/imambargahmasom?igsh=d21ycWQxYzFuN3Zn&#038;utm_source=qr" class="social_item social_item_style_icons social_item_type_icons"><span class="social_icon social_instagramm"><span class="icon-instagramm"></span></span></a><a target="_blank" href="/cdn-cgi/l/email-protection#f98a9c9a8b9c8d988b80b994988a9694d79a9694" class="social_item social_item_style_icons social_item_type_icons"><span class="social_icon social_mail-empty"><span class="icon-mail-empty"></span></span></a></div></div></aside></div></div><div class="sc_layouts_item"><div id="sc_layouts_container_824409163" class="sc_layouts_container sc_align_left  vc_custom_1597743970099">
+	<div class="wpb_text_column wpb_content_element " >
+		<div class="wpb_wrapper">
+			<p><a href="#"><img class="" style="margin-top: 0px; height: 64px; width: 64px;" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" data-lazy-src="https://masom.com/wp-content/uploads/2020/07/qr-code-masom.webp" /><noscript><img class="" style="margin-top: 0px; height: 64px; width: 64px;" src="https://masom.com/wp-content/uploads/2020/07/qr-code-masom.webp" /></noscript></a></p>
+
+		</div>
+	</div>
+</div></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-3 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div  class="vc_wp_custommenu wpb_content_element"><div class="widget widget_nav_menu"><h2 class="widgettitle">Administration</h2><div class="menu-administration-container"><ul id="menu-administration" class="menu"><li id="menu-item-855" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-855"><a href="/our-mission">Our Mission</a></li>
+<li id="menu-item-857" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-857"><a href="/our-members">Our Executive Committee</a></li>
+<li id="menu-item-856" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-856"><a href="https://masom.com/org/masomByLaws.pdf">Our Constitution</a></li>
+<li id="menu-item-851" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-851"><a href="/MIS">MASOM Islamic School</a></li>
+<li id="menu-item-852" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-852"><a href="/forms">Online Forms</a></li>
+</ul></div></div></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-3 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div  class="vc_wp_custommenu wpb_content_element"><div class="widget widget_nav_menu"><h2 class="widgettitle">Useful Links</h2><div class="menu-useful-links-container"><ul id="menu-useful-links" class="menu"><li id="menu-item-843" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-843"><a href="/hijricalendar2025/">Hijri Prayer Calendar</a></li>
+<li id="menu-item-841" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-841"><a href="/events-schedule">Program Calendar</a></li>
+<li id="menu-item-842" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-842"><a href="/Sura-Fatiha">Sura-Fatiha Request</a></li>
+<li id="menu-item-844" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-844"><a href="#">Multimedia</a></li>
+<li id="menu-item-1288" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1288"><a href="https://masom.com/contacts/">Contact Us</a></li>
+</ul></div></div></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-3 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div  class="vc_wp_text wpb_content_element"><div class="widget widget_text"><h2 class="widgettitle">Contact Us</h2>			<div class="textwidget"></div>
+		</div></div><div class="sc_layouts_item"><div id="sc_layouts_iconed_text_1733933785" class="sc_layouts_iconed_text"><a href="tel:+17732839718" class="sc_layouts_item_link sc_layouts_iconed_text_link"><span class="sc_layouts_item_icon sc_layouts_iconed_text_icon icon-phone-1"></span><span class="sc_layouts_item_details sc_layouts_iconed_text_details"><span class="sc_layouts_item_details_line1 sc_layouts_iconed_text_line1">(773) 283-9718</span></span></a></div></div><div class="sc_layouts_item"><div id="sc_layouts_iconed_text_719433337" class="sc_layouts_iconed_text"><a href="https://www.google.com/maps/place/4353+W+Lawrence+Ave,+Chicago,+IL+60630,+USA/@41.967852,-87.739688,17z/data=!4m5!3m4!1s0x880fcc2d48ef0251:0xf12ee185a1fe53f8!8m2!3d41.967852!4d-87.7374993?hl=en" class="sc_layouts_item_link sc_layouts_iconed_text_link"><span class="sc_layouts_item_icon sc_layouts_iconed_text_icon icon-map-1"></span><span class="sc_layouts_item_details sc_layouts_iconed_text_details"><span class="sc_layouts_item_details_line1 sc_layouts_iconed_text_line1">4353 West Lawrence Avenue</span><span class="sc_layouts_item_details_line2 sc_layouts_iconed_text_line2">Chicago, IL 60630</span></span></a></div></div></div></div></div></div></div></div></div></div></div></div><div class="vc_row-full-width vc_clearfix"></div><div class="vc_row wpb_row vc_row-fluid vc_custom_1597929514967 vc_row-has-fill sc_layouts_row sc_layouts_row_type_compact"><div class="wpb_column vc_column_container vc_col-sm-12 vc_col-has-fill sc_layouts_column sc_layouts_column_align_center sc_layouts_column_icons_position_left"><div class="vc_column-inner vc_custom_1597444399305"><div class="wpb_wrapper"><div id="sc_content_602169851"
+		class="sc_content color_style_default sc_content_default sc_content_width_1_1 sc_float_center"><div class="sc_content_container"><div  class="vc_wp_text wpb_content_element"><div class="widget widget_text">			<div class="textwidget"><p><a href="/" target="_blank" rel="noopener noreferrer">MASOM Imambargah ©</a> 2026 All rights reserved.</p>
+</div>
+		</div></div></div></div></div></div></div></div><div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column_icons_position_left"><div class="vc_column-inner vc_custom_1597929461496"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element " >
+		<div class="wpb_wrapper">
+			<p><div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><form style='display:none' class='pw_ticker_form_53'><input name='pw_atts' value=
+				'{"ticker_height":"44","ticker_pos":"pl-fixed-wrapper pl-fix-bottom","title_text":"Updates:","title_width":"70","show_sharing":"show_sharing","social_icons":"share_facebook,share_twitter","carousel_effect":"marquee","scroll_amount":"50","title_background":"#5cb8b2","title_font":"inherit,16,#ffffff","title_layout":"pl-ticker-title-l3","content_background":"#e8e8e8","content_font":"inherit,17,#3a3a3a,#307fe2","icon_background":"#307fe2","icon_color":"#ffffff","pw_query":"size:10|order_by:date|order:DESC|post_type:cpt_sermons"}' /><input name='pw_rand_id' value=
+				'53' /></form>
+<div class="main-ticker-wrapper main-ticker-53  pl-fixed-wrapper pl-fix-bottom pl-ltr-ticker hide_toggle ">
+	 <div class="main-ticker-cnt main-ticker-cnt-53">
+	<div class="pl-ticker-cnt pl-horizontal-ticker pl-timer-disable pl-ticker-hide-nav">
+			<div class="pl-ticker-title-cnt pl-ticker-title-l3">
+				<div class="pl-ticker-title pl-ticker-title-53">Updates:</div>
+			</div>
+		<div class="pl-bloading pl-bloading-53"><i class="fa fa-circle-o-notch fa-spin"></i></div>
+		<div class="pl-ticker-content-cnt pl-ticker-content-cnt-53 pl-marquee left-direction"   style="display:none">
+		<div class="pl-slick-53 pl-slider-cnt " data-slider-id="53" >
+					<div class="pl-slider-slide"  >
+						<div class="pl-ticker-content-item">
+							
+							<div class="pl-title">
+										<div class="pl-share-cnt">
+											<i class="fa fa-share-alt"></i>
+											<div class="pl-share-icons">
+															<a href="https://www.facebook.com/sharer/sharer.php?u=https://masom.com/sermons/markazi-arbaeen-procession-downtown-chicago-on-sunday-august-9th-2026-from-10-am-to-1-pm-from-300-e-balbo-drive-chicago/"><i class="fa fa-facebook"></i></a>
+															<a href="https://twitter.com/share?url=https://masom.com/sermons/markazi-arbaeen-procession-downtown-chicago-on-sunday-august-9th-2026-from-10-am-to-1-pm-from-300-e-balbo-drive-chicago/"><i class="fa fa-twitter"></i></a>
+											</div>
+										</div>	
+									<a href="https://masom.com/sermons/markazi-arbaeen-procession-downtown-chicago-on-sunday-august-9th-2026-from-10-am-to-1-pm-from-300-e-balbo-drive-chicago/"  target="_self">Markazi Arbaeen Procession (Downtown Chicago) on Sunday, August 9th 2026 from 10 am to 1 pm from 300 E Balbo Drive, Chicago. </a>
+							</div>
+						</div>
+					</div>	
+					<div class="pl-slider-slide"  >
+						<div class="pl-ticker-content-item">
+							
+							<div class="pl-title">
+										<div class="pl-share-cnt">
+											<i class="fa fa-share-alt"></i>
+											<div class="pl-share-icons">
+															<a href="https://www.facebook.com/sharer/sharer.php?u=https://masom.com/sermons/ashra-e-awaal-moharram-1448-hj-majalis-will-start-from-monday-june-15th-till-sunday-june-27th-2026-at-845-pm-addressed-by-moulana-salman-abedi-urdu-and-syed-hasan-rizvi-english/"><i class="fa fa-facebook"></i></a>
+															<a href="https://twitter.com/share?url=https://masom.com/sermons/ashra-e-awaal-moharram-1448-hj-majalis-will-start-from-monday-june-15th-till-sunday-june-27th-2026-at-845-pm-addressed-by-moulana-salman-abedi-urdu-and-syed-hasan-rizvi-english/"><i class="fa fa-twitter"></i></a>
+											</div>
+										</div>	
+									<a href="https://masom.com/sermons/ashra-e-awaal-moharram-1448-hj-majalis-will-start-from-monday-june-15th-till-sunday-june-27th-2026-at-845-pm-addressed-by-moulana-salman-abedi-urdu-and-syed-hasan-rizvi-english/"  target="_self">Majalis e Ayyam e Aza will continue at MASOM from Thursday July 23 to Tuesday July 28.     Majalis e Aza will be addressed in Urdu by: Moulana Raza Hussain Rizvi. </a>
+							</div>
+						</div>
+					</div>	
+					<div class="pl-slider-slide"  >
+						<div class="pl-ticker-content-item">
+							
+							<div class="pl-title">
+										<div class="pl-share-cnt">
+											<i class="fa fa-share-alt"></i>
+											<div class="pl-share-icons">
+															<a href="https://www.facebook.com/sharer/sharer.php?u=https://masom.com/sermons/for-more-information-regarding-masom-s-programs-please-contact-br-hashim-imam-at-773-787-7786/"><i class="fa fa-facebook"></i></a>
+															<a href="https://twitter.com/share?url=https://masom.com/sermons/for-more-information-regarding-masom-s-programs-please-contact-br-hashim-imam-at-773-787-7786/"><i class="fa fa-twitter"></i></a>
+											</div>
+										</div>	
+									<a href="https://masom.com/sermons/for-more-information-regarding-masom-s-programs-please-contact-br-hashim-imam-at-773-787-7786/"  target="_self">For more info on MASOM Programs, Please contact Secretary of MASOM at 773 787 6238 &#8211; To Sponsor Taburuk, Please contact at 773 310 3020 </a>
+							</div>
+						</div>
+					</div>	
+					<div class="pl-slider-slide"  >
+						<div class="pl-ticker-content-item">
+							
+							<div class="pl-title">
+										<div class="pl-share-cnt">
+											<i class="fa fa-share-alt"></i>
+											<div class="pl-share-icons">
+															<a href="https://www.facebook.com/sharer/sharer.php?u=https://masom.com/sermons/jashan-e-wiladat-imam-hassan-askari-a-s-will-be-celebrated-at-masom-on-saturday-november-5th-2022-after-salat-e-maghrabain-at-730-pm-addressed-by-maulana-syed-raza-mehdi-naqvi/"><i class="fa fa-facebook"></i></a>
+															<a href="https://twitter.com/share?url=https://masom.com/sermons/jashan-e-wiladat-imam-hassan-askari-a-s-will-be-celebrated-at-masom-on-saturday-november-5th-2022-after-salat-e-maghrabain-at-730-pm-addressed-by-maulana-syed-raza-mehdi-naqvi/"><i class="fa fa-twitter"></i></a>
+											</div>
+										</div>	
+									<a href="https://masom.com/sermons/jashan-e-wiladat-imam-hassan-askari-a-s-will-be-celebrated-at-masom-on-saturday-november-5th-2022-after-salat-e-maghrabain-at-730-pm-addressed-by-maulana-syed-raza-mehdi-naqvi/"  target="_self">For your Zelle/Quickpay donations use email: <span class="__cf_email__" data-cfemail="6b2f04050a1f0e2b060a18040645080406">[email&#160;protected]</span> or Mail checks to MASOM: 4353 W Lawrence Ave, Chicago 60630 • </a>
+							</div>
+						</div>
+					</div>	
+					<div class="pl-slider-slide"  >
+						<div class="pl-ticker-content-item">
+							
+							<div class="pl-title">
+										<div class="pl-share-cnt">
+											<i class="fa fa-share-alt"></i>
+											<div class="pl-share-icons">
+															<a href="https://www.facebook.com/sharer/sharer.php?u=https://masom.com/sermons/please-join-the-following-whatsapp-group-link-for-masom-programs-notification-https-chat-whatsapp-com-gfu26wyyn6cjy65iv4xotq/"><i class="fa fa-facebook"></i></a>
+															<a href="https://twitter.com/share?url=https://masom.com/sermons/please-join-the-following-whatsapp-group-link-for-masom-programs-notification-https-chat-whatsapp-com-gfu26wyyn6cjy65iv4xotq/"><i class="fa fa-twitter"></i></a>
+											</div>
+										</div>	
+									<a href="https://masom.com/sermons/please-join-the-following-whatsapp-group-link-for-masom-programs-notification-https-chat-whatsapp-com-gfu26wyyn6cjy65iv4xotq/"  target="_self">To Join MASOM WhatsApp Event Notifications, Please join via following link: https://chat.whatsapp.com/GFU26wYYN6CJy65iV4XoTq </a>
+							</div>
+						</div>
+					</div>	
+					<div class="pl-slider-slide"  >
+						<div class="pl-ticker-content-item">
+							
+							<div class="pl-title">
+										<div class="pl-share-cnt">
+											<i class="fa fa-share-alt"></i>
+											<div class="pl-share-icons">
+															<a href="https://www.facebook.com/sharer/sharer.php?u=https://masom.com/sermons/regular-shab-e-jumma-program-starts-at-745-pm-with-tilawat-e-quran-e-kareen-and-dua-e-kumail-followed-by-namaz-e-maghrabain-at-prime-time/"><i class="fa fa-facebook"></i></a>
+															<a href="https://twitter.com/share?url=https://masom.com/sermons/regular-shab-e-jumma-program-starts-at-745-pm-with-tilawat-e-quran-e-kareen-and-dua-e-kumail-followed-by-namaz-e-maghrabain-at-prime-time/"><i class="fa fa-twitter"></i></a>
+											</div>
+										</div>	
+									<a href="https://masom.com/sermons/regular-shab-e-jumma-program-starts-at-745-pm-with-tilawat-e-quran-e-kareen-and-dua-e-kumail-followed-by-namaz-e-maghrabain-at-prime-time/"  target="_self">Weekly Shab-e-Jumma Program on Every Thursday at 7:00 PM  &#8211; Weekly Friday prayers starts at Prime time (Namaz e Zohr) </a>
+							</div>
+						</div>
+					</div>		
+					</div>
+				</div>		 
+			</div>
+		</div>
+    </div> 
+	
+	<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript">
+				var myInterval_53;
+				
+				//jQuery(document).ready(function() {	
+				jQuery(window).load(function() {
+
+					function general_interval_build(rand_id){
+
+						clearInterval(myInterval_53);
+						myInterval_53 =setInterval(function () {
+							
+							if(jQuery("html").find(".pl-filter-item-53")>1)
+							{
+								jQuery(".pl-filter-item-53").find(".pw_active_filter").trigger("click");
+							}
+							else{
+								general_interval_build("53");
+							}
+							
+						},600000);
+						
+						var pdata = {
+							action: "pw_fetch_ticker_cat_items",
+							postdata: jQuery(".pw_ticker_form_"+rand_id).serialize()+"&cat_id=no_cat",
+							nonce: "f5da49cd54",
+						};
+						
+						jQuery(".pl-ticker-content-cnt-53").html("<div class='pl-ticker-loading'><i class='fa fa-circle-o-notch fa-spin'></i></div>");
+						jQuery.ajax ({
+							type: "POST",
+							url : "https://masom.com/wp-admin/admin-ajax.php",
+							data:  pdata,
+							dataType: "html",
+							success : function(resp){
+								//confirm(resp);
+								
+								var datas=resp.split("@#");
+								jQuery(".pl-ticker-content-cnt-53").html(datas[0]);
+								jQuery(".pl-time-hour-53").html(datas[1]);
+								//confirm(resp);
+								apply_js();
+							}
+						});
+						
+					}
+					
+					
+
+					jQuery(".pl-filter-item-53").find("li").click(function(){	
+						var cat_id=jQuery(this).attr("data-tax-id");
+						var rand_id=jQuery(this).attr("data-id");
+						
+						jQuery(this).siblings(".pw_active_filter").removeClass("pw_active_filter");
+						jQuery(this).addClass("pw_active_filter");
+						
+						//Change title of ticker after click on filters
+							if(jQuery(this).attr("data-item")==="all")
+							var title=jQuery(this).attr("data-title");
+else
+						var title=jQuery(this).html();
+						jQuery(".pl-ticker-title-53").html(title);
+
+						var pdata = {
+							action: "pw_fetch_ticker_cat_items",
+							postdata: jQuery(".pw_ticker_form_"+rand_id).serialize()+"&cat_id="+cat_id,
+							nonce: "f5da49cd54",
+						};
+						
+						jQuery(".pl-ticker-content-cnt-53").html("<div class='pl-ticker-loading'><i class='fa fa-circle-o-notch fa-spin'></i></div>");
+						jQuery.ajax ({
+							type: "POST",
+							url : "https://masom.com/wp-admin/admin-ajax.php",
+							data:  pdata,
+							dataType: "html",
+							success : function(resp){
+								//confirm(resp);
+								
+								var datas=resp.split("@#");
+								
+								
+								jQuery(".pl-ticker-content-cnt-53").html(datas[0]);
+								jQuery(".pl-time-hour-53").html(datas[1]);
+								//confirm(resp);
+								apply_js();
+							}
+						});
+					});
+					
+					
+				function apply_js(){
+								//jQuery(".main-ticker-53").show();
+								jQuery(".pl-ticker-content-cnt-53").show();
+								jQuery(".pl-bloading-53").hide();
+								jQuery(".pl-slick-53").liMarquee({
+									direction:"left",	
+									loop:-1,			
+									scrolldelay: 0,		
+									scrollamount:50,	
+									circular: true,		
+									drag: false,
+									
+								});
+						
+				}
+				
+				apply_js();
+				});
+			</script>
+	</div></div></div></div><div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div></div></p>
+
+		</div>
+	</div>
+</div></div></div></div></footer>
+
+		</div>
+
+	</div>
+
+	
+					
+		<script>(function() {function maybePrefixUrlField() {
+	if (this.value.trim() !== '' && this.value.indexOf('http') !== 0) {
+		this.value = "http://" + this.value;
+	}
+}
+
+var urlFields = document.querySelectorAll('.mc4wp-form input[type="url"]');
+if (urlFields) {
+	for (var j=0; j < urlFields.length; j++) {
+		urlFields[j].addEventListener('blur', maybePrefixUrlField);
+	}
+}
+})();</script>		<script type="text/javascript">
+		if(typeof revslider_showDoubleJqueryError === "undefined") {
+			function revslider_showDoubleJqueryError(sliderID) {
+				var err = "<div class='rs_error_message_box'>";
+				err += "<div class='rs_error_message_oops'>Oops...</div>";
+				err += "<div class='rs_error_message_content'>";
+				err += "You have some jquery.js library include that comes after the Slider Revolution files js inclusion.<br>";
+				err += "To fix this, you can:<br>&nbsp;&nbsp;&nbsp; 1. Set 'Module General Options' -> 'Advanced' -> 'jQuery & OutPut Filters' -> 'Put JS to Body' to on";
+				err += "<br>&nbsp;&nbsp;&nbsp; 2. Find the double jQuery.js inclusion and remove it";
+				err += "</div>";
+			err += "</div>";
+				jQuery(sliderID).show().html(err);
+			}
+		}
+		</script>
+<div id='evo_global_data' data-d='{"calendars":[]}'></div><div class='evo_lightboxes' style='display:block'>					<div class='evo_lightbox eventcard eventon_events_list' id='' >
+						<div class="evo_content_in">													
+							<div class="evo_content_inin">
+								<div class="evo_lightbox_content">
+									<a class='evolbclose '>X</a>
+									<div class='evo_lightbox_body eventon_list_event evo_pop_body evcal_eventcard'> </div>
+								</div>
+							</div>							
+						</div>
+					</div>
+					</div><style type='text/css'  data-wpacu-inline-css-file='1'>
+.us-fullwidth{
+	position:relative; top:0;
+	-webkit-transition: all 0.2s ease-out;-moz-transition: all 0.2s ease-out;-o-transition: all 0.2s ease-out;-ms-transition: all 0.2s ease-out;
+}
+</style>
+<style id='pw-custom-css-inline-css' type='text/css'>
+
+				/*Heading Main Color*/
+				.main-ticker-53 .pl-ticker-cnt {
+					border-style:solid;
+					border-top-width:0px;
+					border-right-width:0px;
+					border-bottom-width:0px;
+					border-left-width:0px;
+					
+					border-color:#dddddd;
+					
+				}
+				
+				.main-ticker-53 .pl-ticker-close i{
+					background-color: #444;
+					color:#fff;
+				}
+				
+				.main-ticker-53 .pl-ticker-title-cnt {
+					height:44px;
+				}
+				
+				.main-ticker-53 .pl-title-time{
+					line-height:44px;
+				}
+				
+				.main-ticker-53 .pl-ticker-title-cnt{
+					background-color: #5cb8b2;
+					color:#ffffff;
+					font-size:16px;
+				}
+				
+				.main-ticker-53 .pl-ticker-title-cnt.pl-ticker-title-l4:before,
+				.main-ticker-53 .pl-ticker-title-cnt.pl-ticker-title-l5:before{
+					border-color: transparent transparent transparent #5cb8b2;
+				}
+				.main-ticker-53 .pl-ticker-title-cnt.pl-ticker-title-l5:before{
+					border-width: 22px 0 22px 25px;
+				}
+				.main-ticker-53 .pl-ticker-title-cnt.pl-ticker-title-l6:before,
+				.main-ticker-53 .pl-ticker-title-cnt.pl-ticker-title-l7:before{
+					height: 44px;
+				}
+				.main-ticker-53 .pl-ticker-title-cnt.pl-ticker-title-l6:before,
+				.main-ticker-53 .pl-ticker-title-cnt.pl-ticker-title-l7:before{
+					background-color:#5cb8b2;
+				}
+				.main-ticker-53 .pl-title-menu li {
+					background-color: #5cb8b2;
+					color:#ffffff;
+					border-color:#ffffff;
+				}
+				.main-ticker-53 .pl-ticker-title-cnt {
+					width:70px;
+				}
+				.main-ticker-53 .pl-title-time{
+					background-color: #333333;
+					color:#f5f5f5;
+					font-size:15px;
+				}
+				.main-ticker-53 .pl-ticker-cnt{
+					background-color: #e8e8e8;
+				}
+				
+				.main-ticker-53 .pl-ticker-cnt .pl-title a , 
+				.main-ticker-53 .pl-ticker-cnt .pl-title{
+					color:#3a3a3a;
+					font-size:17px;
+				}
+				.main-ticker-53 .pl-ticker-cnt .pl-title a:hover,
+				.main-ticker-53 .pl-ticker-cnt .pl-title:hover{
+					color:#307fe2;
+				}
+				.main-ticker-53 .pl-ticker-loading , 
+				.main-ticker-53 .pl-bloading {
+					color:#307fe2;
+				}
+				.main-ticker-53 .pl-ticker-cnt .pl-date span,
+				.main-ticker-53 .pl-ticker-cnt .pl-share-cnt i.fa-share-alt ,
+				.main-ticker-53 .pl-ticker-cnt .pl-share-cnt .pl-share-icons,
+				.main-ticker-53 .pl-ticker-cnt .pl-quick-cnt i.fa-file-text-o,
+				.main-ticker-53 .pl-vitem-item .pl-zoom-quick-btn > a{
+					color:#ffffff;
+					background-color:#307fe2;
+				}
+				.main-ticker-53 .pl-ticker-cnt .pl-share-cnt .pl-share-icons i{
+					color:#ffffff;
+				}
+				.main-ticker-53 .pl-ticker-cnt  .pl-ticker-img img{
+					border-color:#307fe2;
+				}
+				
+				/*Meta Styles*/
+				.main-ticker-53 .pl-ticker-cnt .pl-meta .pl-meta-item , 
+				.main-ticker-53 .pl-ticker-cnt .pl-meta .pl-meta-item a,
+				.main-ticker-53 .pl-ticker-cnt .pl-meta .pl-meta-item .meta-text,
+				.main-ticker-53 .pl-ticker-cnt .pl-excerpt,
+				.main-ticker-53 .pl-ticker-cnt .pl-excerpt p
+				{
+					color:#f5f5f5;
+				}
+				.main-ticker-53 .pl-ticker-cnt .pl-meta .pl-meta-item i{
+					color:#f5f5f5;
+				} 
+				.main-ticker-53 .pl-ticker-cnt .pl-meta .pl-meta-item a:hover, 
+				.main-ticker-53 .pl-ticker-cnt .pl-meta .pl-meta-item:hover i
+				{
+					color:#f5f5f5;
+				}
+				.main-ticker-53 .bx-controls-direction a{
+					background-color: #444;
+					color:#fff;
+				}
+				
+</style>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var timetable_params = {"ajaxurl":"https:\/\/masom.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script data-minify="1"   type='text/javascript' src='https://masom.com/wp-content/cache/min/1/wp-content/plugins/daily-prayer-time-for-mosques/Assets/js/dpt-4f11f0dd3537e83b4bab47b08a7c0c57.js'></script>
+<script   type='text/javascript' src='https://masom.com/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4'></script>
+<script   type='text/javascript' src='https://masom.com/wp-includes/js/jquery/ui/widget.min.js?ver=1.11.4'></script>
+<script   type='text/javascript' src='https://masom.com/wp-includes/js/jquery/ui/mouse.min.js?ver=1.11.4'></script>
+<script   type='text/javascript' src='https://masom.com/wp-includes/js/jquery/ui/resizable.min.js?ver=1.11.4'></script>
+<script   type='text/javascript' src='https://masom.com/wp-includes/js/jquery/ui/draggable.min.js?ver=1.11.4'></script>
+<script   type='text/javascript' src='https://masom.com/wp-includes/js/jquery/ui/button.min.js?ver=1.11.4'></script>
+<script   type='text/javascript' src='https://masom.com/wp-includes/js/jquery/ui/position.min.js?ver=1.11.4'></script>
+<script   type='text/javascript' src='https://masom.com/wp-includes/js/jquery/ui/dialog.min.js?ver=1.11.4'></script>
+<script data-minify="1"   type='text/javascript' src='https://masom.com/wp-content/cache/min/1/wp-content/cache/asset-cleanup/js/item/swiperslider-vbc503cc3d5480832e2c40d027cc84fdb911450bb-c0f95323880c4d5a7925f9d7cc1176f8.js'></script>
+<script   type='text/javascript' defer='defer' src='https://masom.com/wp-content/plugins/trx_addons/js/magnific/jquery.magnific-popup.min.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var TRX_ADDONS_STORAGE = {"ajax_url":"https:\/\/masom.com\/wp-admin\/admin-ajax.php","ajax_nonce":"cb8d9af635","site_url":"https:\/\/masom.com","post_id":"346","vc_edit_mode":"0","popup_engine":"none","animate_inner_links":"0","user_logged_in":"0","email_mask":"^([a-zA-Z0-9_\\-]+\\.)*[a-zA-Z0-9_\\-]+@[a-z0-9_\\-]+(\\.[a-z0-9_\\-]+)*\\.[a-z]{2,6}$","msg_ajax_error":"Invalid server answer!","msg_magnific_loading":"Loading image","msg_magnific_error":"Error loading image","msg_error_like":"Error saving your like! Please, try again later.","msg_field_name_empty":"The name can't be empty","msg_field_email_empty":"Too short (or empty) email address","msg_field_email_not_valid":"Invalid email address","msg_field_text_empty":"The message text can't be empty","msg_search_error":"Search error! Try again later.","msg_send_complete":"Send message complete!","msg_send_error":"Transmit failed!","ajax_views":"","menu_cache":[".menu_mobile_inner > nav > ul"],"login_via_ajax":"0","msg_login_empty":"The Login field can't be empty","msg_login_long":"The Login field is too long","msg_password_empty":"The password can't be empty and shorter then 4 characters","msg_password_long":"The password is too long","msg_login_success":"Login success! The page should be reloaded in 3 sec.","msg_login_error":"Login failed!","msg_not_agree":"Please, read and check 'Terms and Conditions'","msg_email_long":"E-mail address is too long","msg_email_not_valid":"E-mail address is invalid","msg_password_not_equal":"The passwords in both fields are not equal","msg_registration_success":"Registration success! Please log in!","msg_registration_error":"Registration failed!","msg_sc_googlemap_not_avail":"Googlemap service is not available","msg_sc_googlemap_geocoder_error":"Error while geocode address"};
+/* ]]> */
+</script>
+<script data-minify="1"   type='text/javascript' src='https://masom.com/wp-content/cache/min/1/wp-content/plugins/trx_addons/js/trx_addons-3a8836a42cf9eb41a818f7d438b41af2.js'></script>
+<script data-minify="1"   type='text/javascript' src='https://masom.com/wp-content/cache/min/1/wp-content/plugins/trx_addons/components/cpt/layouts/shortcodes/menu/superfish-78df0a88f22edab42e31ada7d979cf40.js'></script>
+<script data-minify="1"   type='text/javascript' defer='defer' src='https://masom.com/wp-content/cache/min/1/wp-content/plugins/eventON/assets/js/eventon_functions-173e0fab9c87181a85265cdcda3b1dab.js'></script>
+<script data-minify="1"   type='text/javascript' defer='defer' src='https://masom.com/wp-content/cache/min/1/wp-content/plugins/eventON/assets/js/lib/jquery.easing.1.3-d5b422afa9670236ddaa7bf5c873438d.js'></script>
+<script data-minify="1"   type='text/javascript' defer='defer' src='https://masom.com/wp-content/cache/min/1/wp-content/plugins/eventON/assets/js/lib/handlebars-9af83e7947e30577d0328791a71f7002.js'></script>
+<script   type='text/javascript' defer='defer' src='https://masom.com/wp-content/plugins/eventON/assets/js/lib/moment.min.js?ver=2.9'></script>
+<script   type='text/javascript' defer='defer' src='//masom.com/wp-content/plugins/eventON/assets/js/lib/jquery.mobile.min.js?ver=2.9'></script>
+<script   type='text/javascript' defer='defer' src='//masom.com/wp-content/plugins/eventON/assets/js/lib/jquery.mousewheel.min.js?ver=2.9'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var the_ajax_script = {"ajaxurl":"https:\/\/masom.com\/wp-admin\/admin-ajax.php","rurl":"https:\/\/masom.com\/wp-json\/","postnonce":"4ceb041678","ajax_method":"ajax"};
+/* ]]> */
+</script>
+<script data-minify="1"   type='text/javascript' defer='defer' src='https://masom.com/wp-content/cache/min/1/wp-content/plugins/eventON/assets/js/eventon_script-4c0150bd2bd0f791222d5b0cf2835608.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var ALHAMBRA_STORAGE = {"ajax_url":"https:\/\/masom.com\/wp-admin\/admin-ajax.php","ajax_nonce":"cb8d9af635","site_url":"https:\/\/masom.com","theme_url":"https:\/\/masom.com\/wp-content\/themes\/masom","site_scheme":"scheme_default","user_logged_in":"","mobile_layout_width":"767","mobile_device":"","menu_side_stretch":"","menu_side_icons":"1","background_video":"","use_mediaelements":"1","comment_maxlength":"1000","admin_mode":"","email_mask":"^([a-zA-Z0-9_\\-]+\\.)*[a-zA-Z0-9_\\-]+@[a-z0-9_\\-]+(\\.[a-z0-9_\\-]+)*\\.[a-z]{2,6}$","strings":{"ajax_error":"Invalid server answer!","error_global":"Error data validation!","name_empty":"The name can&#039;t be empty","name_long":"Too long name","email_empty":"Too short (or empty) email address","email_long":"Too long email address","email_not_valid":"Invalid email address","text_empty":"The message text can&#039;t be empty","text_long":"Too long message text"},"alter_link_color":"#60b9b7","button_hover":"default"};
+/* ]]> */
+</script>
+<script data-minify="1"   type='text/javascript' src='https://masom.com/wp-content/cache/min/1/wp-content/themes/masom/js/__scripts-ab0c60d623dffe471731849ebe09b81d.js'></script>
+<script   type='text/javascript'>
+var mejsL10n = {"language":"en","strings":{"mejs.download-file":"Download File","mejs.install-flash":"You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https:\/\/get.adobe.com\/flashplayer\/","mejs.fullscreen":"Fullscreen","mejs.play":"Play","mejs.pause":"Pause","mejs.time-slider":"Time Slider","mejs.time-help-text":"Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.","mejs.live-broadcast":"Live Broadcast","mejs.volume-help-text":"Use Up\/Down Arrow keys to increase or decrease volume.","mejs.unmute":"Unmute","mejs.mute":"Mute","mejs.volume-slider":"Volume Slider","mejs.video-player":"Video Player","mejs.audio-player":"Audio Player","mejs.captions-subtitles":"Captions\/Subtitles","mejs.captions-chapters":"Chapters","mejs.none":"None","mejs.afrikaans":"Afrikaans","mejs.albanian":"Albanian","mejs.arabic":"Arabic","mejs.belarusian":"Belarusian","mejs.bulgarian":"Bulgarian","mejs.catalan":"Catalan","mejs.chinese":"Chinese","mejs.chinese-simplified":"Chinese (Simplified)","mejs.chinese-traditional":"Chinese (Traditional)","mejs.croatian":"Croatian","mejs.czech":"Czech","mejs.danish":"Danish","mejs.dutch":"Dutch","mejs.english":"English","mejs.estonian":"Estonian","mejs.filipino":"Filipino","mejs.finnish":"Finnish","mejs.french":"French","mejs.galician":"Galician","mejs.german":"German","mejs.greek":"Greek","mejs.haitian-creole":"Haitian Creole","mejs.hebrew":"Hebrew","mejs.hindi":"Hindi","mejs.hungarian":"Hungarian","mejs.icelandic":"Icelandic","mejs.indonesian":"Indonesian","mejs.irish":"Irish","mejs.italian":"Italian","mejs.japanese":"Japanese","mejs.korean":"Korean","mejs.latvian":"Latvian","mejs.lithuanian":"Lithuanian","mejs.macedonian":"Macedonian","mejs.malay":"Malay","mejs.maltese":"Maltese","mejs.norwegian":"Norwegian","mejs.persian":"Persian","mejs.polish":"Polish","mejs.portuguese":"Portuguese","mejs.romanian":"Romanian","mejs.russian":"Russian","mejs.serbian":"Serbian","mejs.slovak":"Slovak","mejs.slovenian":"Slovenian","mejs.spanish":"Spanish","mejs.swahili":"Swahili","mejs.swedish":"Swedish","mejs.tagalog":"Tagalog","mejs.thai":"Thai","mejs.turkish":"Turkish","mejs.ukrainian":"Ukrainian","mejs.vietnamese":"Vietnamese","mejs.welsh":"Welsh","mejs.yiddish":"Yiddish"}};
+</script>
+<script   type='text/javascript' src='https://masom.com/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=4.2.13-9993131'></script>
+<script   type='text/javascript' src='https://masom.com/wp-includes/js/mediaelement/mediaelement-migrate.min.js?ver=5.4.10'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpmejsSettings = {"pluginPath":"\/wp-includes\/js\/mediaelement\/","classPrefix":"mejs-","stretching":"responsive"};
+/* ]]> */
+</script>
+<script   type='text/javascript' src='https://masom.com/wp-includes/js/mediaelement/wp-mediaelement.min.js?ver=5.4.10'></script>
+<script   type='text/javascript' src='https://masom.com/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js?ver=6.2.0'></script>
+<script data-minify="1"   type='text/javascript' src='https://masom.com/wp-content/cache/min/1/wp-content/cache/asset-cleanup/js/item/mc4wp-forms-api-ve38378c5b16f43a68090e070ead841b2fd5746ee-dd11467bc5a512b1d36a6f75dab8d40b.js'></script>
+<style type="text/css" id="trx_addons-inline-styles-inline-css">.vc_custom_1596413204342{margin-bottom: -20px !important;}.vc_custom_1597780260678{margin-bottom: 5px !important;background-color: #2e2e35 !important;}.vc_custom_1597702640765{margin-bottom: 10px !important;}.vc_custom_1645893960984{margin-bottom: -2px !important;padding-bottom: -20px !important;background-color: #5cb8b2 !important;}.vc_custom_1597168569904{margin-top: -7px !important;margin-bottom: -28px !important;}.vc_custom_1597926908872{margin-top: -7px !important;margin-bottom: -7px !important;padding-right: 5px !important;padding-left: 5px !important;}.vc_custom_1597780436541{margin-top: -7px !important;margin-bottom: -3px !important;padding-bottom: -8px !important;background-color: #2e2e35 !important;}.vc_custom_1597776562282{background-color: #2e2e35 !important;}.vc_custom_1597776104491{margin-bottom: -17px !important;background-color: #2e2e35 !important;}.vc_custom_1597775458391{background-color: #2e2e35 !important;}.vc_custom_1597780125151{background-color: #000000 !important;}.vc_custom_1597781540548{margin-bottom: 10px !important;}.vc_custom_1596524983462{background-color: #ffffff !important;}.vc_custom_1768413097123{background-color: #ffffff !important;border-radius: 10px !important;}.vc_custom_1597955468263{margin-left: -10px !important;}.vc_custom_1597956392404{margin-bottom: -24px !important;margin-left: -42px !important;}.vc_custom_1597956085134{margin-top: -45px !important;padding-left: 5px !important;}.vc_custom_1597081325690{margin-top: -16px !important;}.vc_custom_1597081251270{margin-top: -5px !important;margin-bottom: -11px !important;}.vc_custom_1595971627226{padding-top: 40px !important;background-color: #0e0d12 !important;}.vc_custom_1597929514967{margin-top: -39px !important;margin-bottom: -27px !important;padding-bottom: 4px !important;background-color: #0e0d12 !important;}.vc_custom_1595971633687{background-color: #0e0d12 !important;}.vc_custom_1601745698289{margin-top: -5px !important;}.vc_custom_1597743970099{margin-top: -21px !important;}.vc_custom_1597444399305{background-color: #0e0d12 !important;}.vc_custom_1597929461496{padding-bottom: 4px !important;}</style><script>window.lazyLoadOptions={elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){return}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){return}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://masom.com/wp-content/plugins/wp-rocket/assets/js/lazyload/16.1/lazyload.min.js"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"bc760821ca0e4be2b23d71c4c1bc1c92","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1786474808 -->

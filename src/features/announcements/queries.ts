@@ -1,0 +1,80 @@
+import "server-only";
+
+import { logCmsError } from "@/lib/cms/logging";
+import { createSupabasePublicClient } from "@/lib/supabase/public";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+
+import type { AnnouncementAdminItem, AnnouncementRow, AnnouncementView } from "./types";
+
+/** Within its scheduling window right now? (Defense-in-depth over the RLS policy.) */
+function isLive(row: Pick<AnnouncementRow, "starts_at" | "expires_at">): boolean {
+  const now = Date.now();
+  if (row.starts_at && new Date(row.starts_at).getTime() > now) return false;
+  if (row.expires_at && new Date(row.expires_at).getTime() <= now) return false;
+  return true;
+}
+
+function toView(row: AnnouncementRow): AnnouncementView {
+  const href = row.link_url;
+  return {
+    id: row.id,
+    message: row.message,
+    href,
+    linkLabel: href ? (row.link_label ?? "Learn more") : null,
+  };
+}
+
+/**
+ * Public announcements for the ticker. Returns only active, in-window rows.
+ * There is intentionally NO local fallback — the ticker is a new feature, so
+ * an empty result simply hides it on the homepage.
+ */
+export async function getActiveAnnouncements(): Promise<AnnouncementView[]> {
+  try {
+    const supabase = createSupabasePublicClient();
+    const { data, error } = await supabase
+      .from("announcements")
+      .select("*")
+      .eq("is_active", true)
+      .order("sort_order", { ascending: true })
+      .order("created_at", { ascending: false });
+
+    if (error) throw error;
+
+    return ((data as AnnouncementRow[] | null) ?? []).filter(isLive).map(toView);
+  } catch (error) {
+    logCmsError("announcements:getActive", error);
+    return [];
+  }
+}
+
+/** Admin: every announcement, ordered for the manager table. */
+export async function getAllAnnouncements(): Promise<AnnouncementAdminItem[]> {
+  const supabase = await createSupabaseServerClient();
+  const { data, error } = await supabase
+    .from("announcements")
+    .select("*")
+    .order("sort_order", { ascending: true })
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    logCmsError("announcements:getAll", error);
+    return [];
+  }
+  return (data as AnnouncementRow[] | null) ?? [];
+}
+
+export async function getAnnouncementById(id: string): Promise<AnnouncementRow | null> {
+  const supabase = await createSupabaseServerClient();
+  const { data, error } = await supabase
+    .from("announcements")
+    .select("*")
+    .eq("id", id)
+    .maybeSingle();
+
+  if (error) {
+    logCmsError("announcements:getById", error);
+    return null;
+  }
+  return (data as AnnouncementRow | null) ?? null;
+}
