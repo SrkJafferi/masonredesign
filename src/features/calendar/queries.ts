@@ -1,6 +1,7 @@
 import "server-only";
 
 import { prayerTimeLabels } from "@/features/prayer-calendar/config";
+import { formatStoredTime } from "@/features/prayer-calendar/lib/next-prayer";
 import type { DailyPrayerTimings, PrayerTimeSlot } from "@/features/prayer-calendar/types";
 import { logCmsError } from "@/lib/cms/logging";
 import { createSupabasePublicClient } from "@/lib/supabase/public";
@@ -71,7 +72,9 @@ function buildSlots(row: CalendarDayRow | undefined): PrayerTimeSlot[] {
   return publicTimingOrder.map((key) => ({
     key,
     label: prayerTimeLabels[key],
-    time: row ? (row[key] ?? null) : null,
+    // Stored values use the compact "4:31a" / "12:55p" form; expand to
+    // "4:31 AM" / "12:55 PM" everywhere the public UI shows them.
+    time: row ? (row[key] ? formatStoredTime(row[key]) : null) : null,
   }));
 }
 
