@@ -17,8 +17,8 @@ export const YOUTUBE_CHANNEL_STREAMS_URL =
  */
 export const YOUTUBE_REVALIDATE_SECONDS = 3600;
 
-/** Maximum number of streams fetched per eventType (live/completed/upcoming). */
-export const YOUTUBE_MAX_RESULTS = 8;
+/** Maximum number of streams fetched (live/upcoming search + uploads playlist). */
+export const YOUTUBE_MAX_RESULTS = 10;
 
 /**
  * Reads the server-only YouTube Data API key. Refuses to run in the browser so
