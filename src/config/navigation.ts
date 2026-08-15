@@ -8,7 +8,7 @@ export const mainNavigation: NavItem[] = [
     children: [
       { label: "Our Mission", href: "/our-mission" },
       { label: "Our Committee", href: "/our-members" },
-      { label: "Members Portal", href: "/coming-soon" },
+      { label: "Members Portal", href: "/admin/login" },
     ],
   },
   {

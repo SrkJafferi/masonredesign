@@ -1,6 +1,7 @@
 import { ExternalLinkIcon, MailIcon, MapPinIcon, PhoneIcon } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
+import { ParallaxBackground } from "@/components/website/parallax-background";
 import { Reveal } from "@/components/website/reveal";
 import { siteConfig } from "@/config/site";
 import { ContactForm } from "@/features/contacts/components/contact-form";
@@ -20,8 +21,13 @@ export default function ContactsPage() {
     <>
       {/* Page hero */}
       <section className="relative isolate overflow-hidden bg-ink-900 py-20 sm:py-24 lg:py-28">
+        <ParallaxBackground
+          src="https://images.pexels.com/photos/7428026/pexels-photo-7428026.jpeg?auto=compress&cs=tinysrgb&w=1920"
+          opacity="opacity-50"
+        />
+        <div className="absolute inset-0 bg-ink-900/70" />
         <div
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(92,184,178,0.14),transparent_60%)]"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(92,184,178,0.12),transparent_60%)]"
           aria-hidden="true"
         />
         <div
