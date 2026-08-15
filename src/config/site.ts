@@ -35,6 +35,13 @@ export const siteConfig = {
     logoLight: { src: "/brand/logomobilefoot.webp", width: 500, height: 132 },
     logoCompact: { src: "/brand/logomobilefoot-300x79.png", width: 300, height: 79 },
     qrCode: { src: "/brand/qr-code-masom.webp", width: 500, height: 500 },
+    /** Dedicated social preview image (1200x630), built from the official
+     * MASOM logo on the brand dark background. Relative path — Next resolves
+     * it against metadataBase so production URLs use the deployed domain. */
+    ogImage: "/og-image.png",
+    /** Favicon + Apple touch icon (re-encoded from the official artwork). */
+    favicon: "/favicon.png",
+    appleTouchIcon: "/apple-touch-icon.png",
   },
   social: {
     facebook: "https://www.facebook.com/share/18Bg8qJvu9/?mibextid=wwXIfr",

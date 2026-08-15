@@ -24,16 +24,26 @@ export const metadata: Metadata = {
   },
   applicationName: siteConfig.name,
   alternates: { canonical: "/" },
+  icons: {
+    icon: { url: siteConfig.assets.favicon, type: "image/png" },
+    apple: { url: siteConfig.assets.appleTouchIcon },
+  },
   openGraph: {
     type: "website",
     url: "/",
     siteName: siteConfig.name,
     title: siteConfig.title,
+    description:
+      "MASOM — Midwest Association of Shia Organized Muslims: an Imambargah in Chicago serving the community with majalis, programs, an Islamic school, funeral services and Wadi-e-MASOM.",
     locale: siteConfig.ogLocale,
+    images: [{ url: siteConfig.assets.ogImage, width: 1200, height: 630, alt: "MASOM — Midwest Association of Shia Organized Muslims" }],
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.title,
+    description:
+      "MASOM — Midwest Association of Shia Organized Muslims: an Imambargah in Chicago serving the community with majalis, programs, an Islamic school, funeral services and Wadi-e-MASOM.",
+    images: [siteConfig.assets.ogImage],
   },
   robots: {
     index: true,
