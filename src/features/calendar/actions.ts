@@ -3,17 +3,20 @@
 import { revalidatePath } from "next/cache";
 
 import { requireAdmin } from "@/features/auth/guard";
+import { logAdminActivity } from "@/lib/cms/activity";
 import { logCmsError } from "@/lib/cms/logging";
 import type { ActionResult } from "@/lib/cms/validation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
-import { calendarBasePath } from "./config";
+import { calendarBasePath, hijriMonthName } from "./config";
+import { createHijriToGregorian } from "./hijri";
 import {
   calendarDayFormSchema,
   calendarEventFormSchema,
   hijriMonthFormSchema,
   hijriOverrideFormSchema,
 } from "./schema";
+import type { HijriMonthRow, HijriOverrideRow } from "./types";
 
 // Every calendar mutation touches the admin module, the public calendar page,
 // and the homepage (whose header bar shows today's timings).
@@ -64,6 +67,7 @@ export async function createCalendarDay(
     logCmsError("calendar:day:create", error);
     return { status: "error", message: "Could not save the day. A row for that date may already exist." };
   }
+  await logAdminActivity("calendar", "created", parsed.data.gregorian_date, `Prayer timings for ${parsed.data.gregorian_date}`);
   revalidateCalendar();
   return { status: "success", message: "Day timings saved." };
 }
@@ -86,6 +90,7 @@ export async function updateCalendarDay(
     logCmsError("calendar:day:update", error);
     return { status: "error", message: "Could not update the day. Please try again." };
   }
+  await logAdminActivity("calendar", "updated", gregorian_date, `Prayer timings for ${gregorian_date}`);
   revalidateCalendar();
   return { status: "success", message: "Day timings updated." };
 }
@@ -106,6 +111,7 @@ export async function deleteCalendarDay(
     logCmsError("calendar:day:delete", error);
     return { status: "error", message: "Could not delete the day. Please try again." };
   }
+  await logAdminActivity("calendar", "deleted", date, `Prayer timings for ${date}`);
   revalidateCalendar();
   return { status: "success", message: "Day deleted." };
 }
@@ -131,11 +137,21 @@ export async function createHijriMonth(
   if (!parsed.success) return invalid(parsed.error);
 
   const supabase = await createSupabaseServerClient();
-  const { error } = await supabase.from("hijri_months").insert(parsed.data);
+  const { data: inserted, error } = await supabase
+    .from("hijri_months")
+    .insert(parsed.data)
+    .select("id")
+    .single();
   if (error) {
     logCmsError("calendar:month:create", error);
     return { status: "error", message: "Could not save the month boundary. It may duplicate an existing one." };
   }
+  await logAdminActivity(
+    "calendar",
+    "created",
+    inserted?.id ?? null,
+    `${hijriMonthName(parsed.data.hijri_month)} ${parsed.data.hijri_year} boundary`, 
+  );
   revalidateCalendar();
   return { status: "success", message: "Month boundary saved." };
 }
@@ -156,6 +172,12 @@ export async function updateHijriMonth(
     logCmsError("calendar:month:update", error);
     return { status: "error", message: "Could not update the month boundary. Please try again." };
   }
+  await logAdminActivity(
+    "calendar",
+    "updated",
+    id,
+    `${hijriMonthName(parsed.data.hijri_month)} ${parsed.data.hijri_year} boundary`,
+  );
   revalidateCalendar();
   return { status: "success", message: "Month boundary updated." };
 }
@@ -174,6 +196,7 @@ export async function deleteHijriMonth(
     logCmsError("calendar:month:delete", error);
     return { status: "error", message: "Could not delete the month boundary. Please try again." };
   }
+  await logAdminActivity("calendar", "deleted", id, "Hijri month boundary");
   revalidateCalendar();
   return { status: "success", message: "Month boundary deleted." };
 }
@@ -206,6 +229,7 @@ export async function createHijriOverride(
     logCmsError("calendar:override:create", error);
     return { status: "error", message: "Could not save the override. One may already exist for that date." };
   }
+  await logAdminActivity("calendar", "created", parsed.data.gregorian_date, `Hijri override for ${parsed.data.gregorian_date}`);
   revalidateCalendar();
   return { status: "success", message: "Hijri override saved." };
 }
@@ -228,6 +252,7 @@ export async function updateHijriOverride(
     logCmsError("calendar:override:update", error);
     return { status: "error", message: "Could not update the override. Please try again." };
   }
+  await logAdminActivity("calendar", "updated", gregorian_date, `Hijri override for ${gregorian_date}`);
   revalidateCalendar();
   return { status: "success", message: "Hijri override updated." };
 }
@@ -247,21 +272,59 @@ export async function deleteHijriOverride(
     logCmsError("calendar:override:delete", error);
     return { status: "error", message: "Could not delete the override. Please try again." };
   }
+  await logAdminActivity("calendar", "deleted", date, `Hijri override for ${date}`);
   revalidateCalendar();
   return { status: "success", message: "Hijri override deleted." };
 }
 
 // ===========================================================================
-// calendar_events — keyed by uuid id.
+// calendar_events — keyed by uuid id, anchored to an authoritative Hijri date.
 // ===========================================================================
 function parseEventForm(formData: FormData) {
   return calendarEventFormSchema.safeParse({
-    event_date: formData.get("event_date") ?? "",
+    hijri_year: formData.get("hijri_year") ?? "",
+    hijri_month: formData.get("hijri_month") ?? "",
+    hijri_day: formData.get("hijri_day") ?? "",
     title: formData.get("title") ?? "",
     description: formData.get("description") ?? "",
     category: formData.get("category") ?? "",
     is_active: formData.get("is_active"),
     sort_order: formData.get("sort_order") ?? "0",
+  });
+}
+
+/**
+ * Derives the current Gregorian date for a Hijri identity from the live month
+ * boundaries + overrides. Returns null when no boundary resolves it (e.g. an
+ * unpublished month with no earlier boundary), in which case the form should
+ * be rejected rather than saving a fabricated date.
+ */
+async function resolveEventGregorianDate(data: {
+  hijri_year: number;
+  hijri_month: number;
+  hijri_day: number;
+}): Promise<string | null> {
+  const supabase = await createSupabaseServerClient();
+  const [monthsRes, overridesRes] = await Promise.all([
+    supabase.from("hijri_months").select("*"),
+    supabase.from("hijri_overrides").select("*"),
+  ]);
+  if (monthsRes.error) {
+    logCmsError("calendar:event:resolve:months", monthsRes.error);
+    return null;
+  }
+  if (overridesRes.error) {
+    logCmsError("calendar:event:resolve:overrides", overridesRes.error);
+    return null;
+  }
+  const toGregorian = createHijriToGregorian(
+    (monthsRes.data as HijriMonthRow[] | null) ?? [],
+    (overridesRes.data as HijriOverrideRow[] | null) ?? [],
+  );
+  return toGregorian({
+    year: data.hijri_year,
+    month: data.hijri_month,
+    day: data.hijri_day,
   });
 }
 
@@ -273,12 +336,26 @@ export async function createCalendarEvent(
   const parsed = parseEventForm(formData);
   if (!parsed.success) return invalid(parsed.error);
 
+  const event_date = await resolveEventGregorianDate(parsed.data);
+  if (!event_date) {
+    return {
+      status: "error",
+      message:
+        "Could not resolve a Gregorian date for this Hijri date. Check that the month's boundary is published.",
+    };
+  }
+
   const supabase = await createSupabaseServerClient();
-  const { error } = await supabase.from("calendar_events").insert(parsed.data);
+  const { data: inserted, error } = await supabase
+    .from("calendar_events")
+    .insert({ ...parsed.data, event_date })
+    .select("id")
+    .single();
   if (error) {
     logCmsError("calendar:event:create", error);
     return { status: "error", message: "Could not save the event. Please try again." };
   }
+  await logAdminActivity("calendar", "created", inserted?.id ?? null, parsed.data.title);
   revalidateCalendar();
   return { status: "success", message: "Event added." };
 }
@@ -293,12 +370,25 @@ export async function updateCalendarEvent(
   const parsed = parseEventForm(formData);
   if (!parsed.success) return invalid(parsed.error);
 
+  const event_date = await resolveEventGregorianDate(parsed.data);
+  if (!event_date) {
+    return {
+      status: "error",
+      message:
+        "Could not resolve a Gregorian date for this Hijri date. Check that the month's boundary is published.",
+    };
+  }
+
   const supabase = await createSupabaseServerClient();
-  const { error } = await supabase.from("calendar_events").update(parsed.data).eq("id", id);
+  const { error } = await supabase
+    .from("calendar_events")
+    .update({ ...parsed.data, event_date })
+    .eq("id", id);
   if (error) {
     logCmsError("calendar:event:update", error);
     return { status: "error", message: "Could not update the event. Please try again." };
   }
+  await logAdminActivity("calendar", "updated", id, parsed.data.title);
   revalidateCalendar();
   return { status: "success", message: "Event updated." };
 }
@@ -317,6 +407,7 @@ export async function deleteCalendarEvent(
     logCmsError("calendar:event:delete", error);
     return { status: "error", message: "Could not delete the event. Please try again." };
   }
+  await logAdminActivity("calendar", "deleted", id, undefined);
   revalidateCalendar();
   return { status: "success", message: "Event deleted." };
 }

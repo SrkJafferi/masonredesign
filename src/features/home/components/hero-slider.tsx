@@ -25,6 +25,18 @@ export function HeroSlider({ slides }: HeroSliderProps) {
   const [index, setIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isInteracting, setIsInteracting] = useState(false);
+  // Slides whose image failed to load (e.g. a broken external CDN URL) fall
+  // back to a branded placeholder instead of breaking the slider.
+  const [failed, setFailed] = useState<ReadonlySet<string>>(() => new Set());
+
+  const markFailed = useCallback((id: string) => {
+    setFailed((prev) => {
+      if (prev.has(id)) return prev;
+      const next = new Set(prev);
+      next.add(id);
+      return next;
+    });
+  }, []);
 
   const goTo = useCallback(
     (next: number) => setIndex(((next % count) + count) % count),
@@ -86,14 +98,37 @@ export function HeroSlider({ slides }: HeroSliderProps) {
                   ease: "linear",
                 }}
               >
-                <Image
-                  src={slide.src}
-                  alt={slide.alt}
-                  fill
-                  priority={i === 0}
-                  sizes="100vw"
-                  className="object-cover object-center"
-                />
+                {failed.has(slide.id) ? (
+                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-brand-700 via-brand-800 to-ink-900">
+                    <p className="max-w-md px-6 text-center text-lg font-medium text-white/90 sm:text-xl">
+                      {slide.alt || "MASOM"}
+                    </p>
+                  </div>
+                ) : slide.external ? (
+                  // External https images come from arbitrary validated hosts,
+                  // so they are rendered with a responsive <img> instead of
+                  // next/image (no remotePatterns entry per domain).
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={slide.src}
+                    alt={slide.alt}
+                    loading={i === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    referrerPolicy="no-referrer"
+                    className="absolute inset-0 h-full w-full object-cover object-center"
+                    onError={() => markFailed(slide.id)}
+                  />
+                ) : (
+                  <Image
+                    src={slide.src}
+                    alt={slide.alt}
+                    fill
+                    priority={i === 0}
+                    sizes="100vw"
+                    className="object-cover object-center"
+                    onError={() => markFailed(slide.id)}
+                  />
+                )}
               </motion.div>
               <div className="absolute inset-0 bg-gradient-to-t from-ink-900/85 via-ink-900/25 to-ink-900/40" />
               {slide.href ? (

@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 
 import { loginSchema } from "@/features/auth/schema";
+import { recordAdminLogin } from "@/lib/auth/login-audit";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export type LoginState = {
@@ -41,6 +42,10 @@ export async function signInAction(
     // Keep the message generic — do not reveal whether the email exists.
     return { error: "Incorrect email or password." };
   }
+
+  // Audit the successful sign-in (IP/geo/time) — best-effort, never blocks.
+  // The security-definer RPC only records rows for actual admins.
+  await recordAdminLogin();
 
   redirect(safeRedirectTo(formData.get("redirectTo")));
 }

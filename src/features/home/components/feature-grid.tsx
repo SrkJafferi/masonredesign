@@ -26,7 +26,7 @@ export function FeatureGrid() {
                 alt=""
                 fill
                 sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
-                className="object-cover transition-transform duration-[900ms] ease-brand group-hover:scale-110"
+                className="object-cover transition-transform duration-[900ms] ease-brand group-hover:scale-[1.05]"
               />
               <div className="absolute inset-0 bg-brand-600/70 mix-blend-multiply transition-colors duration-300 group-hover:bg-brand-600/60" />
               <div className="absolute inset-0 bg-gradient-to-t from-ink-900/40 to-transparent" />
@@ -54,7 +54,7 @@ export function FeatureGrid() {
                     alt={`${item.title} ${item.subtitle}`}
                     fill
                     sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
-                    className="object-cover transition-transform duration-[900ms] ease-brand group-hover:scale-105"
+                    className="object-cover transition-transform duration-[900ms] ease-brand group-hover:scale-[1.03]"
                   />
                 </Link>
                 <div className="flex flex-1 flex-col p-6">
@@ -100,7 +100,7 @@ export function FeatureGrid() {
                   alt=""
                   fill
                   sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
-                  className="object-cover transition-transform duration-[900ms] ease-brand group-hover:scale-110"
+                  className="object-cover transition-transform duration-[900ms] ease-brand group-hover:scale-[1.05]"
                 />
                 <div className="absolute inset-0 bg-ink-900/70 transition-colors duration-300 group-hover:bg-ink-900/60" />
                 <span className="relative flex w-full items-center justify-between gap-3 px-5">

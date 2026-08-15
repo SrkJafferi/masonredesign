@@ -1,6 +1,7 @@
 import { CalendarView } from "@/features/calendar/components/calendar-view";
-import { calendarBasePath, calendarYear } from "@/features/calendar/config";
-import { getCalendarMonths } from "@/features/calendar/queries";
+import { calendarBasePath, calendarPdfUrl, calendarYear } from "@/features/calendar/config";
+import { getCalendarMonth } from "@/features/calendar/queries";
+import type { CalendarMonthView } from "@/features/calendar/types";
 import { createMetadata } from "@/lib/seo/metadata";
 
 export const metadata = createMetadata({
@@ -23,10 +24,47 @@ function chicagoTodayISO(): string {
   }).format(new Date());
 }
 
-export default async function HijriCalendarPage() {
-  const months = await getCalendarMonths(calendarYear);
+/** Current Gregorian month (1-12) in MASOM's local timezone (Chicago). */
+function chicagoCurrentMonth(): number {
+  return Number(
+    new Intl.DateTimeFormat("en-US", {
+      timeZone: "America/Chicago",
+      month: "numeric",
+    }).format(new Date()),
+  );
+}
+
+/** Parses the ?month= URL parameter; falls back to the current month on any
+ * missing or out-of-range value. */
+function resolveMonthParam(raw: string | string[] | undefined, fallback: number): number {
+  const value = typeof raw === "string" ? Number.parseInt(raw, 10) : NaN;
+  return Number.isInteger(value) && value >= 1 && value <= 12 ? value : fallback;
+}
+
+function emptyMonth(year: number, month: number): CalendarMonthView {
+  const monthLabel = new Date(Date.UTC(year, month - 1, 1)).toLocaleDateString("en-US", {
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+  return { year, month, monthLabel, days: [] };
+}
+
+export default async function HijriCalendarPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ month?: string | string[] }>;
+}) {
+  const params = await searchParams;
+  const selectedMonth = resolveMonthParam(params.month, chicagoCurrentMonth());
+  const monthView = (await getCalendarMonth(calendarYear, selectedMonth)) ?? emptyMonth(calendarYear, selectedMonth);
 
   return (
-    <CalendarView year={calendarYear} months={months} todayISO={chicagoTodayISO()} />
+    <CalendarView
+      year={calendarYear}
+      month={monthView}
+      todayISO={chicagoTodayISO()}
+      pdfUrl={calendarPdfUrl}
+    />
   );
 }

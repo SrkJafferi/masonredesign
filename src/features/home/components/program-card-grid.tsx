@@ -1,0 +1,210 @@
+"use client";
+
+import Image from "next/image";
+import {
+  ArrowUpRightIcon,
+  CalendarDaysIcon,
+  CalendarPlusIcon,
+  ClockIcon,
+  MapPinIcon,
+  XIcon,
+} from "lucide-react";
+import { Dialog as DialogPrimitive } from "radix-ui";
+
+import { Reveal } from "@/components/website/reveal";
+import { titleCase } from "@/lib/format/title-case";
+import type { ProgramCard } from "@/features/programs/types";
+
+/** Parses an ISO date as UTC so the displayed day never drifts across timezones. */
+function formatProgramDate(iso: string) {
+  const [year, month, day] = iso.split("-").map(Number);
+  const utc = new Date(Date.UTC(year, month - 1, day));
+  return {
+    day,
+    year,
+    month: utc.toLocaleDateString("en-US", { month: "short", timeZone: "UTC" }),
+    weekday: utc.toLocaleDateString("en-US", { weekday: "long", timeZone: "UTC" }),
+  };
+}
+
+/** Fallback title for poster-only programs so the modal header is never empty. */
+function fallbackTitle(date: ReturnType<typeof formatProgramDate>) {
+  return `MASOM Program — ${date.month} ${date.day}, ${date.year}`;
+}
+
+/**
+ * Builds a reliable "Add to Google Calendar" link from the available program
+ * data. The public card model exposes times only as a display label, so the
+ * event is added as an all-day entry for its date rather than guessing a time
+ * fragment.
+ */
+function buildGoogleCalendarUrl(program: ProgramCard): string {
+  const date = program.startDate.replace(/-/g, "");
+  const params = new URLSearchParams({
+    action: "TEMPLATE",
+    text: program.title ?? "MASOM Program",
+    dates: `${date}/${date}`,
+    details: program.description ?? "",
+    location: program.location ?? "",
+  });
+  return `https://calendar.google.com/calendar/render?${params.toString()}`;
+}
+
+type ProgramCardGridProps = {
+  programs: ProgramCard[];
+};
+
+export function ProgramCardGrid({ programs }: ProgramCardGridProps) {
+  return (
+    <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+      {programs.map((program, index) => (
+        <Reveal as="li" key={program.id} delay={(index % 3) * 0.08}>
+          <ProgramDialog program={program} />
+        </Reveal>
+      ))}
+    </ul>
+  );
+}
+
+export function ProgramDialog({ program }: { program: ProgramCard }) {
+  const { day, month, weekday, year } = formatProgramDate(program.startDate);
+  const displayTitle = program.title ? titleCase(program.title) : fallbackTitle({ day, month, weekday, year });
+
+  return (
+    <DialogPrimitive.Root>
+      <DialogPrimitive.Trigger asChild>
+        <button
+          type="button"
+          className="group flex h-full w-full flex-col overflow-hidden rounded-2xl bg-white text-left shadow-card transition-all duration-300 outline-none cursor-pointer hover:-translate-y-1 hover:shadow-elevated focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-500"
+        >
+          <div className="relative aspect-[2/3] w-full shrink-0 overflow-hidden">
+            {program.posterSrc ? (
+              <Image
+                src={program.posterSrc}
+                alt={displayTitle}
+                fill
+                sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw"
+                className="object-cover object-center transition-transform duration-[900ms] ease-brand group-hover:scale-[1.03]"
+              />
+            ) : (
+              <div className="flex h-full w-full items-center justify-center bg-brand-100 text-brand-500">
+                <CalendarDaysIcon className="size-12" aria-hidden />
+              </div>
+            )}
+            <div className="absolute top-3 left-3 flex flex-col items-center rounded-xl bg-white/95 px-3 py-1.5 text-center shadow-sm backdrop-blur-sm">
+              <span className="text-lg leading-none font-extrabold text-ink-900">{day}</span>
+              <span className="text-[0.6rem] font-bold tracking-widest text-brand-600 uppercase">
+                {month}
+              </span>
+            </div>
+          </div>
+
+          <div className="flex flex-1 flex-col p-3.5 sm:p-4">
+            <p className="text-[0.65rem] font-bold tracking-[0.16em] text-brand-600 uppercase sm:text-xs">
+              {weekday}
+            </p>
+            {program.title ? (
+              <span className="mt-1 line-clamp-2 text-sm font-bold text-foreground transition-colors duration-200 group-hover:text-brand-600 sm:text-base">
+                {displayTitle}
+              </span>
+            ) : null}
+            {program.timeLabel ? (
+              <p className="mt-auto flex items-center gap-1.5 pt-2 text-xs text-muted-foreground sm:text-sm">
+                <ClockIcon className="size-3.5 text-brand-500 sm:size-4" />
+                {program.timeLabel}
+              </p>
+            ) : null}
+          </div>
+        </button>
+      </DialogPrimitive.Trigger>
+
+      <DialogPrimitive.Portal>
+        <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-ink-900/60 backdrop-blur-sm data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0 motion-reduce:animate-none" />
+        <DialogPrimitive.Content
+          className="fixed top-1/2 left-1/2 z-50 flex max-h-[90vh] w-[calc(100%-2rem)] max-w-2xl -translate-x-1/2 -translate-y-1/2 flex-col overflow-y-auto rounded-2xl bg-white shadow-elevated ring-1 ring-ink-900/10 outline-none data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 motion-reduce:animate-none"
+        >
+          <div className="sticky top-0 z-10 flex justify-end bg-gradient-to-b from-white/90 to-transparent px-3 pt-3 pb-4">
+            <DialogPrimitive.Close
+              aria-label="Close program details"
+              className="grid size-9 place-items-center rounded-full bg-white/90 text-ink-600 shadow-sm backdrop-blur-sm transition-colors outline-none hover:bg-white hover:text-ink-900 focus-visible:ring-2 focus-visible:ring-brand-500"
+            >
+              <XIcon className="size-5" />
+            </DialogPrimitive.Close>
+          </div>
+
+          <div className="flex flex-col gap-4 px-6 pb-6 sm:px-8 sm:pb-8">
+            <div className="relative flex h-[45vh] w-full items-center justify-center bg-sand-100/60 sm:h-[60vh]">
+              {program.posterSrc ? (
+                <Image
+                  src={program.posterSrc}
+                  alt={displayTitle}
+                  fill
+                  sizes="(min-width: 640px) 42rem, 90vw"
+                  className="object-contain p-3"
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center bg-brand-100 text-brand-500">
+                  <CalendarDaysIcon className="size-16" aria-hidden />
+                </div>
+              )}
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <DialogPrimitive.Title className="font-heading text-xl font-bold text-ink-900 sm:text-2xl">
+                {displayTitle}
+              </DialogPrimitive.Title>
+
+              <p className="text-xs font-bold tracking-[0.18em] text-brand-600 uppercase">
+                {weekday}, {month} {day}, {year}
+              </p>
+
+              <div className="flex flex-col gap-2 text-sm text-ink-600">
+                {program.timeLabel ? (
+                  <div className="flex items-center gap-2">
+                    <ClockIcon className="size-4 shrink-0 text-brand-500" aria-hidden />
+                    {program.timeLabel}
+                  </div>
+                ) : null}
+                {program.location ? (
+                  <div className="flex items-center gap-2">
+                    <MapPinIcon className="size-4 shrink-0 text-brand-500" aria-hidden />
+                    {program.location}
+                  </div>
+                ) : null}
+              </div>
+
+              {program.description ? (
+                <DialogPrimitive.Description className="mt-1 border-t border-sand-100 pt-4 text-sm leading-relaxed text-ink-600">
+                  {program.description}
+                </DialogPrimitive.Description>
+              ) : null}
+
+              <div className="mt-2 flex flex-wrap items-center gap-2.5">
+                {program.linkUrl ? (
+                  <a
+                    href={program.linkUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-cta-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-cta-600 focus-visible:ring-2 focus-visible:ring-cta-500 focus-visible:ring-offset-2 focus-visible:outline-none"
+                  >
+                    View Event Page
+                    <ArrowUpRightIcon className="size-4" aria-hidden />
+                  </a>
+                ) : null}
+                <a
+                  href={buildGoogleCalendarUrl(program)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-sand-300 px-4 py-2 text-sm font-semibold text-ink-700 transition-colors hover:border-brand-400 hover:text-brand-600 focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:outline-none"
+                >
+                  <CalendarPlusIcon className="size-4 text-brand-500" aria-hidden />
+                  Add to Google Calendar
+                </a>
+              </div>
+            </div>
+          </div>
+        </DialogPrimitive.Content>
+      </DialogPrimitive.Portal>
+    </DialogPrimitive.Root>
+  );
+}

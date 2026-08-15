@@ -44,7 +44,10 @@ export type HijriOverrideAdminItem = HijriOverrideRow;
 
 export type CalendarEventRow = {
   id: string;
-  event_date: string; // "YYYY-MM-DD"
+  event_date: string; // "YYYY-MM-DD" (derived cache, kept for compatibility)
+  hijri_year: number | null; // authoritative Hijri anchor
+  hijri_month: number | null; // 1-12
+  hijri_day: number | null; // 1-30
   title: string;
   description: string | null;
   category: string | null;
@@ -53,7 +56,14 @@ export type CalendarEventRow = {
   created_at: string;
   updated_at: string;
 };
-export type CalendarEventAdminItem = CalendarEventRow;
+export type CalendarEventAdminItem = CalendarEventRow & {
+  /** The Gregorian date derived live from the Hijri anchor + current month
+   * boundaries. Always present for display; falls back to event_date when the
+   * Hijri anchor is missing. */
+  derived_gregorian_date: string;
+  /** Whether the schema has the Hijri anchor columns (migration applied). */
+  hijri_anchored: boolean;
+};
 
 // ---------------------------------------------------------------------------
 // Resolved / display models consumed by the public calendar UI.

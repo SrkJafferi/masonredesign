@@ -27,10 +27,6 @@ const POSTER_ALWIDAI: ImageAsset = {
   height: 630,
 };
 
-// Program Calendar destination — the exact existing route. Kept in one place so a
-// future Supabase Programs Manager can point each event at its own permalink.
-const PROGRAMS_HREF = "/events-schedule";
-
 /**
  * Local typed program data mirroring the live EventON listing. This is a static
  * snapshot only — the shape is intentionally simple so it can later be replaced
@@ -44,7 +40,6 @@ export const upcomingPrograms: ProgramEvent[] = [
     startTime: "8:00 PM",
     endTime: "11:00 PM",
     image: POSTER_AUG_11,
-    href: PROGRAMS_HREF,
   },
   {
     id: "2026-08-12-majalis",
@@ -53,7 +48,6 @@ export const upcomingPrograms: ProgramEvent[] = [
     startTime: "8:00 PM",
     endTime: "11:00 PM",
     image: POSTER_AUG_12,
-    href: PROGRAMS_HREF,
   },
   {
     id: "2026-08-13-majalis",
@@ -62,7 +56,6 @@ export const upcomingPrograms: ProgramEvent[] = [
     startTime: "8:00 PM",
     endTime: "10:00 PM",
     image: POSTER_MAJALIS,
-    href: PROGRAMS_HREF,
   },
   {
     id: "2026-08-14-friday",
@@ -71,7 +64,7 @@ export const upcomingPrograms: ProgramEvent[] = [
     startTime: "1:00 PM",
     endTime: "2:00 PM",
     image: POSTER_FRIDAY,
-    href: PROGRAMS_HREF,
+    location: "MASOM Imambargah",
   },
   {
     id: "2026-08-14-majalis",
@@ -80,7 +73,6 @@ export const upcomingPrograms: ProgramEvent[] = [
     startTime: "8:00 PM",
     endTime: "10:00 PM",
     image: POSTER_MAJALIS,
-    href: PROGRAMS_HREF,
   },
   {
     id: "2026-08-15-majalis",
@@ -89,7 +81,6 @@ export const upcomingPrograms: ProgramEvent[] = [
     startTime: "8:00 PM",
     endTime: "10:00 PM",
     image: POSTER_MAJALIS,
-    href: PROGRAMS_HREF,
   },
   {
     id: "2026-08-20-alwidai",
@@ -98,7 +89,6 @@ export const upcomingPrograms: ProgramEvent[] = [
     startTime: "8:00 PM",
     endTime: "10:00 PM",
     image: POSTER_ALWIDAI,
-    href: PROGRAMS_HREF,
   },
   {
     id: "2026-08-21-friday",
@@ -107,7 +97,7 @@ export const upcomingPrograms: ProgramEvent[] = [
     startTime: "1:00 PM",
     endTime: "2:00 PM",
     image: POSTER_FRIDAY,
-    href: PROGRAMS_HREF,
+    location: "MASOM Imambargah",
   },
   {
     id: "2026-08-21-alwidai",
@@ -116,6 +106,5 @@ export const upcomingPrograms: ProgramEvent[] = [
     startTime: "8:00 PM",
     endTime: "10:00 PM",
     image: POSTER_ALWIDAI,
-    href: PROGRAMS_HREF,
   },
 ];

@@ -40,3 +40,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# supabase cli local state
+supabase/.temp/
+supabase/**/.temp/
+
+# freebuff local tooling (logs, preview state, local db)
+.freebuff/

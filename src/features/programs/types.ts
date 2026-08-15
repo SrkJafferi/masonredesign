@@ -18,12 +18,14 @@ export type ProgramRow = {
 /** Admin list row with a resolved poster preview URL. */
 export type ProgramAdminItem = ProgramRow & { previewUrl: string | null };
 
-/** Public display model consumed by the Upcoming Programs grid. */
+/** Public display model consumed by the Upcoming Programs grid + modal. */
 export type ProgramCard = {
   id: string;
   title: string | null;
   startDate: string; // ISO "YYYY-MM-DD"; component formats UTC-safe
   timeLabel: string | null; // "8:00 PM – 10:00 PM" | "8:00 PM" | null
   posterSrc: string | null;
-  href: string;
+  description: string | null;
+  location: string | null;
+  linkUrl: string | null;
 };

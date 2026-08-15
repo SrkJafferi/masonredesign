@@ -3,6 +3,8 @@ import { ExternalLinkIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { AdminNav } from "@/components/admin/admin-nav";
+import { AdminThemeToggle } from "@/components/admin/admin-theme";
+import { NavigationProgress } from "@/components/admin/navigation-progress";
 import { SignOutButton } from "@/components/admin/sign-out-button";
 import { requireAdmin } from "@/features/auth/guard";
 
@@ -15,6 +17,7 @@ export default async function AdminDashboardLayout({
 
   return (
     <div className="min-h-screen bg-muted/30">
+      <NavigationProgress />
       <header className="border-b border-border/60 bg-card">
         <div className="container-page flex flex-wrap items-center justify-between gap-3 py-3">
           <div className="flex items-center gap-3">
@@ -38,6 +41,7 @@ export default async function AdminDashboardLayout({
             <span className="hidden max-w-[180px] truncate text-sm text-muted-foreground md:inline">
               {user.email}
             </span>
+            <AdminThemeToggle />
             <SignOutButton />
           </div>
         </div>

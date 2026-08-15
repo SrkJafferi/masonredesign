@@ -3,7 +3,9 @@
 import { revalidatePath } from "next/cache";
 
 import { requireAdmin } from "@/features/auth/guard";
+import { logAdminActivity } from "@/lib/cms/activity";
 import { logCmsError } from "@/lib/cms/logging";
+import { getAnnouncementById } from "./queries";
 import type { ActionResult } from "@/lib/cms/validation";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
@@ -41,15 +43,19 @@ export async function createAnnouncement(
   }
 
   const supabase = await createSupabaseServerClient();
-  const { error } = await supabase.from("announcements").insert({
-    message: parsed.data.message,
-    link_url: parsed.data.link_url,
-    link_label: parsed.data.link_label,
-    is_active: parsed.data.is_active,
-    starts_at: parsed.data.starts_at,
-    expires_at: parsed.data.expires_at,
-    sort_order: parsed.data.sort_order,
-  });
+  const { data: inserted, error } = await supabase
+    .from("announcements")
+    .insert({
+      message: parsed.data.message,
+      link_url: parsed.data.link_url,
+      link_label: parsed.data.link_label,
+      is_active: parsed.data.is_active,
+      starts_at: parsed.data.starts_at,
+      expires_at: parsed.data.expires_at,
+      sort_order: parsed.data.sort_order,
+    })
+    .select("id")
+    .single();
 
   if (error) {
     logCmsError("announcements:create", error);
@@ -58,6 +64,13 @@ export async function createAnnouncement(
       message: "Could not save the announcement. Please try again.",
     };
   }
+
+  await logAdminActivity(
+    "announcement",
+    "created",
+    inserted?.id ?? null,
+    parsed.data.message.slice(0, 80),
+  );
 
   revalidateAnnouncements();
   return { status: "success", message: "Announcement added." };
@@ -73,6 +86,8 @@ export async function updateAnnouncement(
   if (typeof id !== "string" || id.length === 0) {
     return { status: "error", message: "Missing announcement id." };
   }
+
+  const existing = await getAnnouncementById(id);
 
   const parsed = parseAnnouncementForm(formData);
   if (!parsed.success) {
@@ -104,6 +119,19 @@ export async function updateAnnouncement(
     };
   }
 
+  const action =
+    existing && existing.is_active !== parsed.data.is_active
+      ? parsed.data.is_active
+        ? "activated"
+        : "deactivated"
+      : "updated";
+  await logAdminActivity(
+    "announcement",
+    action,
+    id,
+    parsed.data.message.slice(0, 80),
+  );
+
   revalidateAnnouncements();
   return { status: "success", message: "Announcement updated." };
 }
@@ -129,6 +157,8 @@ export async function deleteAnnouncement(
       message: "Could not delete the announcement. Please try again.",
     };
   }
+
+  await logAdminActivity("announcement", "deleted", id, undefined);
 
   revalidateAnnouncements();
   return { status: "success", message: "Announcement deleted." };

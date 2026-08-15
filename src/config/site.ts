@@ -22,6 +22,12 @@ export const siteConfig = {
       lines: ["4353 West Lawrence Avenue", "Chicago, IL 60630"],
       mapUrl:
         "https://www.google.com/maps/place/4353+W+Lawrence+Ave,+Chicago,+IL+60630,+USA/@41.967852,-87.739688,17z/data=!4m5!3m4!1s0x880fcc2d48ef0251:0xf12ee185a1fe53f8!8m2!3d41.967852!4d-87.7374993?hl=en",
+      /** Public Google Maps link used for the "Get Directions" / "Open in
+       * Google Maps" calls to action. */
+      mapsLink: "https://maps.app.goo.gl/cgDdRUN1wkEiXba59",
+      /** Keyless Google Maps embed (output=embed) centred on the Imambargah. */
+      mapEmbedUrl:
+        "https://www.google.com/maps?q=41.9678899,-87.7374608&hl=en&z=16&output=embed",
     },
   },
   assets: {
@@ -38,7 +44,7 @@ export const siteConfig = {
     whatsapp: "https://chat.whatsapp.com/LbReeM8ts7VJoC7yMOPqSI",
   },
   links: {
-    donate: "/donate",
+    donate: "/coming-soon",
     constitution: "https://masom.com/org/masomByLaws.pdf",
     newsletterArchive:
       "https://us13.campaign-archive.com/home/?u=01dfc250f2762204df48c0230&id=06a230bfd1",

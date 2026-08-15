@@ -11,7 +11,23 @@ export function toDayNumber(iso: string): number {
   return Math.floor(Date.UTC(year, month - 1, day) / 86_400_000);
 }
 
+/** Inverse of {@link toDayNumber}: "YYYY-MM-DD" for a whole-day number. */
+function fromDayNumber(dayNumber: number): string {
+  return new Date(dayNumber * 86_400_000).toISOString().slice(0, 10);
+}
+
 export type HijriResolver = (gregorianISO: string) => HijriDate | null;
+
+/**
+ * Inverse of {@link HijriResolver}: maps an authoritative Hijri identity
+ * (year/month/day) back to the Gregorian "YYYY-MM-DD" it currently resolves to.
+ * The mapping is pure boundary arithmetic plus overrides — no baked-in shifts.
+ */
+export type HijriToGregorian = (hijri: {
+  year: number;
+  month: number;
+  day: number;
+}) => string | null;
 
 type MonthBoundary = Pick<
   HijriMonthRow,
@@ -73,5 +89,78 @@ export function createHijriResolver(
       monthName: hijriMonthName(match.hijri_month),
       source: "derived",
     };
+  };
+}
+
+/**
+ * Builds the inverse engine: given an authoritative Hijri date
+ * (hijri_year / hijri_month / hijri_day) it returns the Gregorian "YYYY-MM-DD"
+ * that the current month boundaries resolve it to.
+ *
+ * Rules:
+ *   1. If an override row exists for that exact Hijri day, its gregorian_date
+ *      wins (mirrors the forward resolver's override rule).
+ *   2. Otherwise the date is `hijri_months.gregorian_start + (hijri_day - 1)`
+ *      for the matching (hijri_year, hijri_month) row.
+ *   3. If no boundary row exists for that month (e.g. a yet-unpublished month),
+ *      the previous published boundary is used to count forward, so events never
+ *      disappear just because a month is temporarily unpublished.
+ *
+ * This is what makes events "hijri-anchored": moving a row in `hijri_months`
+ * automatically moves every event anchored to that Hijri month.
+ */
+export function createHijriToGregorian(
+  months: MonthBoundary[],
+  overrides: Override[] = [],
+): HijriToGregorian {
+  const byMonth = new Map<string, { year: number; month: number; start: number }>();
+  for (const m of months) {
+    byMonth.set(`${m.hijri_year}-${m.hijri_month}`, {
+      year: m.hijri_year,
+      month: m.hijri_month,
+      start: toDayNumber(m.gregorian_start),
+    });
+  }
+
+  const overrideMap = new Map(
+    overrides.map(
+      (o) =>
+        [
+          `${o.hijri_year}-${o.hijri_month}-${o.hijri_day}`,
+          o.gregorian_date,
+        ] as const,
+    ),
+  );
+
+  return ({ year, month, day }) => {
+    const overrideDate = overrideMap.get(`${year}-${month}-${day}`);
+    if (overrideDate) return overrideDate;
+
+    let boundary = byMonth.get(`${year}-${month}`);
+    let elapsedDays = 0;
+    if (!boundary) {
+      // Fall back to the most recent published boundary strictly before the
+      // requested month, then count forward through alternating month lengths
+      // (odd months = 30 days, even months = 29). This keeps events anchored
+      // even while a month boundary is temporarily unpublished.
+      const target = year * 12 + (month - 1);
+      let candidate: { year: number; month: number; start: number } | null = null;
+      let candidateIndex = -1;
+      for (const b of byMonth.values()) {
+        const idx = b.year * 12 + (b.month - 1);
+        if (idx < target && idx > candidateIndex) {
+          candidate = b;
+          candidateIndex = idx;
+        }
+      }
+      if (!candidate) return null;
+      boundary = candidate;
+      for (let i = candidateIndex; i < target; i++) {
+        const monthNum = (i % 12) + 1; // months are numbered 1..12
+        elapsedDays += monthNum % 2 === 1 ? 30 : 29;
+      }
+    }
+
+    return fromDayNumber(boundary.start + elapsedDays + (day - 1));
   };
 }

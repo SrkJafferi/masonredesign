@@ -79,10 +79,14 @@ export const hijriOverrideFormSchema = z.object({
 export type HijriOverrideFormValues = z.infer<typeof hijriOverrideFormSchema>;
 
 // ---------------------------------------------------------------------------
-// calendar_events — an Islamic event on a Gregorian date.
+// calendar_events — an Islamic event anchored to an authoritative Hijri date.
+// The Gregorian date is derived live from the current hijri_months boundaries,
+// so it is NOT part of the form (it is computed server-side).
 // ---------------------------------------------------------------------------
 export const calendarEventFormSchema = z.object({
-  event_date: requiredDate,
+  hijri_year: hijriYear,
+  hijri_month: hijriMonth,
+  hijri_day: hijriDay,
   title: requiredText(200),
   description: optionalText(2000),
   category: optionalText(60),

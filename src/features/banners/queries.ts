@@ -10,12 +10,35 @@ import type { BannerAdminItem, BannerRow, HeroBanner } from "./types";
 
 const BUCKET = CMS_BUCKETS.banners;
 
+/**
+ * Effective image src for a banner row. Storage rows resolve through the
+ * bucket; external rows return the approved URL as-is. Defensive defaults
+ * (missing image_source column -> "storage") keep this working against a
+ * database that has not yet received the external-source migration.
+ */
+function bannerSrc(
+  row: Pick<BannerRow, "image_source" | "image_path" | "external_url">,
+): string | null {
+  const source = row.image_source ?? "storage";
+  if (source === "external") {
+    return row.external_url || null;
+  }
+  return resolveImageSrc(BUCKET, row.image_path);
+}
+
 function toHeroBanner(
-  row: Pick<BannerRow, "id" | "image_path" | "image_alt" | "link_url">,
+  row: Pick<BannerRow, "id" | "image_source" | "image_path" | "external_url" | "image_alt" | "link_url">,
 ): HeroBanner | null {
-  const src = resolveImageSrc(BUCKET, row.image_path);
+  const src = bannerSrc(row);
   if (!src) return null;
-  return { id: row.id, src, alt: row.image_alt ?? "", href: row.link_url };
+  const source = row.image_source ?? "storage";
+  return {
+    id: row.id,
+    src,
+    alt: row.image_alt ?? "",
+    href: row.link_url,
+    external: source === "external",
+  };
 }
 
 /** Real Phase 3 banners, used until the CMS holds active rows. */
@@ -25,6 +48,7 @@ function fallbackBanners(): HeroBanner[] {
     src: slide.image.src,
     alt: slide.alt,
     href: null,
+    external: false,
   }));
 }
 
@@ -38,7 +62,7 @@ export async function getActiveBanners(): Promise<HeroBanner[]> {
     const supabase = createSupabasePublicClient();
     const { data, error } = await supabase
       .from("banners")
-      .select("id, image_path, image_alt, link_url")
+      .select("id, image_source, image_path, external_url, image_alt, link_url")
       .eq("is_active", true)
       .order("sort_order", { ascending: true });
 
@@ -72,8 +96,11 @@ export async function getAllBanners(): Promise<BannerAdminItem[]> {
   }
 
   return (data ?? []).map((row) => {
-    const banner = row as BannerRow;
-    return { ...banner, previewUrl: resolveImageSrc(BUCKET, banner.image_path) };
+    const banner = {
+      ...(row as BannerRow),
+      image_source: ((row as BannerRow).image_source ?? "storage") as BannerRow["image_source"],
+    };
+    return { ...banner, previewUrl: bannerSrc(banner) };
   });
 }
 

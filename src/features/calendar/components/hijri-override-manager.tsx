@@ -41,6 +41,8 @@ type DialogState =
   | { mode: "edit"; override: HijriOverrideAdminItem }
   | null;
 
+type OverrideAction = typeof createHijriOverride;
+
 function formatDate(iso: string): string {
   const [year, month, day] = iso.split("-").map(Number);
   return new Date(Date.UTC(year, month - 1, day)).toLocaleDateString("en-US", {
@@ -52,10 +54,17 @@ function formatDate(iso: string): string {
   });
 }
 
-function OverrideDialog({ state, onClose }: { state: DialogState; onClose: () => void }) {
-  const isEdit = state?.mode === "edit";
-  const override = isEdit ? state.override : null;
-  const action = isEdit ? updateHijriOverride : createHijriOverride;
+function OverrideForm({
+  isEdit,
+  override,
+  action,
+  onClose,
+}: {
+  isEdit: boolean;
+  override: HijriOverrideAdminItem | null;
+  action: OverrideAction;
+  onClose: () => void;
+}) {
   const [result, formAction] = useActionState(action, idleResult);
 
   useEffect(() => {
@@ -63,16 +72,7 @@ function OverrideDialog({ state, onClose }: { state: DialogState; onClose: () =>
   }, [result, onClose]);
 
   return (
-    <Dialog open={state !== null} onOpenChange={(open) => (open ? null : onClose())}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle>{isEdit ? "Edit Hijri override" : "Add Hijri override"}</DialogTitle>
-          <DialogDescription>
-            Forces an exact Hijri date for one Gregorian day (a visible +1/-1 correction).
-          </DialogDescription>
-        </DialogHeader>
-
-        <form action={formAction} className="space-y-4" key={override?.gregorian_date ?? "create"}>
+    <form action={formAction} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="gregorian_date">Gregorian date</Label>
             <Input
@@ -164,7 +164,32 @@ function OverrideDialog({ state, onClose }: { state: DialogState; onClose: () =>
               {isEdit ? "Save changes" : "Add override"}
             </SubmitButton>
           </DialogFooter>
-        </form>
+    </form>
+  );
+}
+
+function OverrideDialog({ state, onClose }: { state: DialogState; onClose: () => void }) {
+  const isEdit = state?.mode === "edit";
+  const override = isEdit ? state.override : null;
+  const action = isEdit ? updateHijriOverride : createHijriOverride;
+
+  return (
+    <Dialog open={state !== null} onOpenChange={(open) => (open ? null : onClose())}>
+      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle>{isEdit ? "Edit Hijri override" : "Add Hijri override"}</DialogTitle>
+          <DialogDescription>
+            Forces an exact Hijri date for one Gregorian day (a visible +1/-1 correction).
+          </DialogDescription>
+        </DialogHeader>
+
+        <OverrideForm
+          key={override?.gregorian_date ?? "create"}
+          isEdit={isEdit}
+          override={override}
+          action={action}
+          onClose={onClose}
+        />
       </DialogContent>
     </Dialog>
   );

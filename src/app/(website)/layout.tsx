@@ -1,5 +1,6 @@
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { CustomCursor } from "@/components/website/custom-cursor";
 
 export default function WebsiteLayout({
   children,
@@ -13,6 +14,7 @@ export default function WebsiteLayout({
         {children}
       </main>
       <SiteFooter />
+      <CustomCursor />
     </div>
   );
 }

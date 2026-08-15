@@ -1,10 +1,13 @@
-import { MapPinIcon } from "lucide-react";
+import { DownloadIcon, FileTextIcon, MapPinIcon } from "lucide-react";
 
 import { Container } from "@/components/layout/container";
 import { publicTimingOrder } from "@/features/calendar/config";
+import { NextPrayerCard } from "@/features/prayer-calendar/components/next-prayer-card";
 import { prayerTimeLabels } from "@/features/prayer-calendar/config";
 import type { CalendarMonthView } from "@/features/calendar/types";
 import { cn } from "@/lib/utils";
+
+import { MonthSelector } from "./month-selector";
 
 /** Tailwind classes for an event badge, chosen by its category. */
 function categoryClass(category: string | null): string {
@@ -44,10 +47,17 @@ function MonthSection({
   const hijriRange = hijriRangeLabel(month);
 
   return (
-    <section id={`month-${month.month}`} className="scroll-mt-24">
+    <section
+      id={`month-${month.month}`}
+      aria-labelledby={`month-heading-${month.month}`}
+      className="scroll-mt-24"
+    >
       <div className="overflow-hidden rounded-2xl border border-border/60 bg-card shadow-card">
         <header className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-border/60 bg-brand-50 px-5 py-4">
-          <h2 className="text-lg font-bold text-foreground sm:text-xl">
+          <h2
+            id={`month-heading-${month.month}`}
+            className="text-lg font-bold text-foreground sm:text-xl"
+          >
             {month.monthLabel}
           </h2>
           {hijriRange ? (
@@ -57,6 +67,9 @@ function MonthSection({
 
         <div className="overflow-x-auto">
           <table className="w-full min-w-[46rem] border-collapse text-sm">
+            <caption className="sr-only">
+              {month.monthLabel} — prayer timings, Hijri dates and Islamic events
+            </caption>
             <thead>
               <tr className="border-b border-border/60 text-left text-xs font-semibold tracking-wide text-muted-foreground uppercase">
                 <th className="px-3 py-2.5">Date</th>
@@ -81,7 +94,7 @@ function MonthSection({
                       "border-b border-border/40 transition-colors last:border-0 hover:bg-muted/40",
                       isFriday && "bg-brand-50/40",
                       hasEvents && "bg-sand-100/40",
-                      isToday && "bg-brand-100/70 ring-1 ring-inset ring-brand-500/40",
+                      isToday && "bg-brand-100/70 font-bold ring-1 ring-inset ring-brand-500/40",
                     )}
                   >
                     <td className="px-3 py-2.5 whitespace-nowrap">
@@ -103,7 +116,9 @@ function MonthSection({
                     <td className="px-3 py-2.5 whitespace-nowrap text-foreground">
                       {day.hijri ? (
                         <span className="tabular-nums">
-                          {day.hijri.day}{" "}
+                          <span className={isToday ? "font-bold" : "font-semibold"}>
+                            {day.hijri.day}
+                          </span>{" "}
                           <span className="text-muted-foreground">{day.hijri.monthName}</span>
                         </span>
                       ) : (
@@ -120,7 +135,7 @@ function MonthSection({
                     ))}
                     <td className="px-3 py-2.5">
                       {hasEvents ? (
-                        <ul className="flex flex-col gap-1">
+                        <ul className="flex min-w-0 flex-col gap-1">
                           {day.events.map((event) => (
                             <li key={event.id} className="flex items-start gap-2">
                               <span
@@ -131,7 +146,9 @@ function MonthSection({
                               >
                                 {event.category ?? "Event"}
                               </span>
-                              <span className="text-sm text-foreground">{event.title}</span>
+                              <span className="min-w-0 text-sm text-foreground">
+                                {event.title}
+                              </span>
                             </li>
                           ))}
                         </ul>
@@ -150,17 +167,31 @@ function MonthSection({
   );
 }
 
+function EmptyState() {
+  return (
+    <div className="rounded-2xl border border-dashed border-border bg-card p-12 text-center">
+      <p className="text-sm text-muted-foreground">
+        This month&apos;s calendar has not been published yet. Please check back soon.
+      </p>
+    </div>
+  );
+}
+
 export function CalendarView({
   year,
-  months,
+  month,
   todayISO,
+  pdfUrl,
 }: {
   year: number;
-  months: CalendarMonthView[];
+  /** The single Gregorian month to display. */
+  month: CalendarMonthView;
   todayISO: string;
+  /** Stable URL of the official yearly PDF. */
+  pdfUrl: string;
 }) {
-  const hasData = months.some((month) =>
-    month.days.some((day) => day.hijri || day.events.length > 0 || day.timings.some((slot) => slot.time)),
+  const hasData = month.days.some(
+    (day) => day.hijri || day.events.length > 0 || day.timings.some((slot) => slot.time),
   );
 
   return (
@@ -170,9 +201,20 @@ export function CalendarView({
           <p className="text-sm font-semibold tracking-wide text-brand-700 uppercase">
             Chicagoland
           </p>
-          <h1 className="mt-2 text-3xl font-bold text-foreground sm:text-4xl">
-            Hijri Calendar {year}
-          </h1>
+          <div className="mt-2 flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
+            <h1 className="text-3xl font-bold text-foreground sm:text-4xl">
+              Hijri Calendar {year}
+            </h1>
+            <a
+              href={pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl bg-brand-500 px-4 py-2.5 text-sm font-semibold text-white shadow-card transition-colors hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+            >
+              <FileTextIcon aria-hidden="true" className="size-4" />
+              View Official {year} Calendar PDF
+            </a>
+          </div>
           <p className="mt-3 max-w-2xl text-base text-muted-foreground">
             Daily prayer timings, Hijri dates and Islamic events for the MASOM community.
             Timings are maintained by MASOM and shown exactly as published.
@@ -184,36 +226,28 @@ export function CalendarView({
         </Container>
       </div>
 
-      <Container className="space-y-8">
-        {/* Month navigation — plain anchor links, no client JS required. */}
-        <nav
-          aria-label="Jump to month"
-          className="sticky top-0 z-10 -mx-4 flex gap-1 overflow-x-auto bg-background/95 px-4 py-3 backdrop-blur supports-[backdrop-filter]:bg-background/80"
-        >
-          {months.map((month) => (
-            <a
-              key={month.month}
-              href={`#month-${month.month}`}
-              className="rounded-lg px-3 py-1.5 text-sm font-medium whitespace-nowrap text-muted-foreground transition-colors hover:bg-brand-50 hover:text-brand-700"
-            >
-              {month.monthLabel.split(" ")[0]}
-            </a>
-          ))}
-        </nav>
+      <Container className="space-y-6">
+        {/* Live upcoming-prayer card (uses only today's + tomorrow's rows). */}
+        <NextPrayerCard />
 
-        {hasData ? (
-          <div className="space-y-8">
-            {months.map((month) => (
-              <MonthSection key={month.month} month={month} todayISO={todayISO} />
-            ))}
+        {/* Month selector toolbar */}
+        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+          <div className="flex flex-wrap items-center gap-3">
+            <MonthSelector selectedMonth={month.month} />
+            <a
+              href={`/api/calendar/export?year=${year}&month=${month.month}&v=2`}
+              className="inline-flex items-center gap-2 rounded-xl border border-brand-500/40 bg-card px-4 py-2.5 text-sm font-semibold text-brand-700 shadow-card transition-colors hover:border-brand-500 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+            >
+              <DownloadIcon aria-hidden="true" className="size-4" />
+              Export {month.monthLabel} PDF
+            </a>
           </div>
-        ) : (
-          <div className="rounded-2xl border border-dashed border-border bg-card p-12 text-center">
-            <p className="text-sm text-muted-foreground">
-              The {year} calendar has not been published yet. Please check back soon.
-            </p>
-          </div>
-        )}
+          <p className="text-sm text-muted-foreground">
+            Showing {month.monthLabel} — use the selector to browse the {year} calendar.
+          </p>
+        </div>
+
+        {hasData ? <MonthSection month={month} todayISO={todayISO} /> : <EmptyState />}
       </Container>
     </div>
   );

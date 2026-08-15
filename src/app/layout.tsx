@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { PT_Sans } from "next/font/google";
 
 import { JsonLd } from "@/components/seo/json-ld";
+import { BackToTop } from "@/components/website/back-to-top";
+import { PageLoader } from "@/components/website/page-loader";
 import { siteConfig } from "@/config/site";
 import { createOrganizationSchema, createWebSiteSchema } from "@/lib/seo/structured-data";
 
@@ -49,8 +51,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // suppressHydrationWarning: the admin-only theme script may add `.dark` to
+  // <html> before hydration; this silences that expected mismatch. It has no
+  // effect on the public site (which never applies `.dark`).
   return (
-    <html lang={siteConfig.locale} className={ptSans.variable}>
+    <html lang={siteConfig.locale} className={ptSans.variable} suppressHydrationWarning>
       <body>
         <a
           href="#main-content"
@@ -58,7 +63,9 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <PageLoader />
         {children}
+        <BackToTop />
         <JsonLd data={createOrganizationSchema()} />
         <JsonLd data={createWebSiteSchema()} />
       </body>

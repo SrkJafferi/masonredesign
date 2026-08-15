@@ -33,7 +33,7 @@ import {
   deleteCalendarEvent,
   updateCalendarEvent,
 } from "@/features/calendar/actions";
-import { eventCategories } from "@/features/calendar/config";
+import { eventCategories, hijriMonthName } from "@/features/calendar/config";
 import type { CalendarEventAdminItem } from "@/features/calendar/types";
 import { idleResult } from "@/lib/cms/validation";
 
@@ -41,6 +41,8 @@ type DialogState =
   | { mode: "create" }
   | { mode: "edit"; event: CalendarEventAdminItem }
   | null;
+
+type EventAction = typeof createCalendarEvent;
 
 const MONTH_NAMES = [
   "All months",
@@ -68,10 +70,22 @@ function formatDate(iso: string): string {
   });
 }
 
-function EventDialog({ state, onClose }: { state: DialogState; onClose: () => void }) {
-  const isEdit = state?.mode === "edit";
-  const event = isEdit ? state.event : null;
-  const action = isEdit ? updateCalendarEvent : createCalendarEvent;
+function formatHijri(event: CalendarEventAdminItem): string {
+  if (!event.hijri_year || !event.hijri_month || !event.hijri_day) return "—";
+  return `${event.hijri_day} ${hijriMonthName(event.hijri_month)} ${event.hijri_year} AH`;
+}
+
+function EventForm({
+  isEdit,
+  event,
+  action,
+  onClose,
+}: {
+  isEdit: boolean;
+  event: CalendarEventAdminItem | null;
+  action: EventAction;
+  onClose: () => void;
+}) {
   const [result, formAction] = useActionState(action, idleResult);
 
   useEffect(() => {
@@ -79,17 +93,58 @@ function EventDialog({ state, onClose }: { state: DialogState; onClose: () => vo
   }, [result, onClose]);
 
   return (
-    <Dialog open={state !== null} onOpenChange={(open) => (open ? null : onClose())}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-lg">
-        <DialogHeader>
-          <DialogTitle>{isEdit ? "Edit event" : "Add event"}</DialogTitle>
-          <DialogDescription>
-            Islamic events. Several events can share the same day.
-          </DialogDescription>
-        </DialogHeader>
-
-        <form action={formAction} className="space-y-4" key={event?.id ?? "create"}>
+    <form action={formAction} className="space-y-4">
           {isEdit ? <input type="hidden" name="id" value={event!.id} /> : null}
+
+          <div className="grid grid-cols-3 gap-3">
+            <div className="space-y-2">
+              <Label htmlFor="hijri_year">Hijri year</Label>
+              <Input
+                id="hijri_year"
+                name="hijri_year"
+                type="number"
+                min={1}
+                defaultValue={event?.hijri_year ?? 1448}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="hijri_month">Hijri month</Label>
+              <select
+                id="hijri_month"
+                name="hijri_month"
+                defaultValue={event?.hijri_month ?? 1}
+                className="h-9 w-full rounded-lg border border-input bg-background px-3 text-sm"
+                required
+              >
+                {Array.from({ length: 12 }, (_, index) => index + 1).map((month) => (
+                  <option key={month} value={month}>
+                    {hijriMonthName(month)}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="hijri_day">Hijri day</Label>
+              <Input
+                id="hijri_day"
+                name="hijri_day"
+                type="number"
+                min={1}
+                max={30}
+                defaultValue={event?.hijri_day ?? 1}
+                required
+              />
+            </div>
+          </div>
+
+          <div className="rounded-lg border border-dashed border-border bg-muted/40 px-3 py-2 text-xs text-muted-foreground">
+            Gregorian date:{" "}
+            <span className="font-medium text-foreground">
+              {isEdit && event ? formatDate(event.derived_gregorian_date) : "derived from the Hijri date"}
+            </span>
+            {" "}— changes automatically when a month boundary moves.
+          </div>
 
           <div className="space-y-2">
             <Label htmlFor="title">Title</Label>
@@ -102,32 +157,20 @@ function EventDialog({ state, onClose }: { state: DialogState; onClose: () => vo
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
-            <div className="space-y-2">
-              <Label htmlFor="event_date">Date</Label>
-              <Input
-                id="event_date"
-                name="event_date"
-                type="date"
-                defaultValue={event?.event_date ?? ""}
-                required
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="category">Category (optional)</Label>
-              <Input
-                id="category"
-                name="category"
-                list="event-categories"
-                defaultValue={event?.category ?? ""}
-                placeholder="Wiladat, Martyrdom…"
-              />
-              <datalist id="event-categories">
-                {eventCategories.map((category) => (
-                  <option key={category} value={category} />
-                ))}
-              </datalist>
-            </div>
+          <div className="space-y-2">
+            <Label htmlFor="category">Category (optional)</Label>
+            <Input
+              id="category"
+              name="category"
+              list="event-categories"
+              defaultValue={event?.category ?? ""}
+              placeholder="Wiladat, Martyrdom…"
+            />
+            <datalist id="event-categories">
+              {eventCategories.map((category) => (
+                <option key={category} value={category} />
+              ))}
+            </datalist>
           </div>
 
           <div className="space-y-2">
@@ -177,7 +220,32 @@ function EventDialog({ state, onClose }: { state: DialogState; onClose: () => vo
               {isEdit ? "Save changes" : "Add event"}
             </SubmitButton>
           </DialogFooter>
-        </form>
+    </form>
+  );
+}
+
+function EventDialog({ state, onClose }: { state: DialogState; onClose: () => void }) {
+  const isEdit = state?.mode === "edit";
+  const event = isEdit ? state.event : null;
+  const action = isEdit ? updateCalendarEvent : createCalendarEvent;
+
+  return (
+    <Dialog open={state !== null} onOpenChange={(open) => (open ? null : onClose())}>
+      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-lg">
+        <DialogHeader>
+          <DialogTitle>{isEdit ? "Edit event" : "Add event"}</DialogTitle>
+          <DialogDescription>
+            Islamic events. Several events can share the same day.
+          </DialogDescription>
+        </DialogHeader>
+
+        <EventForm
+          key={event?.id ?? "create"}
+          isEdit={isEdit}
+          event={event}
+          action={action}
+          onClose={onClose}
+        />
       </DialogContent>
     </Dialog>
   );
@@ -191,7 +259,7 @@ export function EventManager({ events }: { events: CalendarEventAdminItem[] }) {
     () =>
       events.filter((event) => {
         if (month === 0) return true;
-        return Number(event.event_date.split("-")[1]) === month;
+        return Number(event.derived_gregorian_date.split("-")[1]) === month;
       }),
     [events, month],
   );
@@ -237,9 +305,10 @@ export function EventManager({ events }: { events: CalendarEventAdminItem[] }) {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-32">Date</TableHead>
+                <TableHead className="w-36">Date</TableHead>
+                <TableHead className="w-36">Hijri</TableHead>
                 <TableHead>Title</TableHead>
-                <TableHead className="w-32">Category</TableHead>
+                <TableHead className="w-28">Category</TableHead>
                 <TableHead className="w-24">Status</TableHead>
                 <TableHead className="w-24 text-right">Actions</TableHead>
               </TableRow>
@@ -248,7 +317,10 @@ export function EventManager({ events }: { events: CalendarEventAdminItem[] }) {
               {visibleEvents.map((event) => (
                 <TableRow key={event.id}>
                   <TableCell className="font-medium text-foreground">
-                    {formatDate(event.event_date)}
+                    {formatDate(event.derived_gregorian_date)}
+                  </TableCell>
+                  <TableCell className="text-sm text-muted-foreground">
+                    {formatHijri(event)}
                   </TableCell>
                   <TableCell>
                     <p className="max-w-md font-medium text-foreground">{event.title}</p>

@@ -7,7 +7,11 @@ import { createSupabasePublicClient } from "@/lib/supabase/public";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 import { publicTimingOrder } from "./config";
-import { createHijriResolver, type HijriResolver } from "./hijri";
+import {
+  createHijriResolver,
+  createHijriToGregorian,
+  type HijriResolver,
+} from "./hijri";
 import type {
   CalendarDayAdminItem,
   CalendarDayRow,
@@ -71,6 +75,47 @@ function buildSlots(row: CalendarDayRow | undefined): PrayerTimeSlot[] {
   }));
 }
 
+/**
+ * Groups active events by the Gregorian day they resolve to.
+ *
+ * When the Hijri anchor columns exist (migration applied) each event's date is
+ * derived LIVE from its authoritative hijri identity + the current month
+ * boundaries and overrides — the cached `event_date` is ignored because it goes
+ * stale the moment an admin moves a month boundary. Before the migration, the
+ * schema has no hijri columns, so events fall back to the cached `event_date`.
+ */
+function buildEventMap(
+  events: CalendarEventRow[],
+  months: HijriMonthRow[],
+  overrides: HijriOverrideRow[],
+): Map<string, CalendarEventRow[]> {
+  const hijriAnchored = events.length === 0 || "hijri_year" in events[0];
+  const eventMap = new Map<string, CalendarEventRow[]>();
+  const toGregorian = createHijriToGregorian(months, overrides);
+
+  for (const event of events) {
+    let date: string | null = null;
+    if (
+      hijriAnchored &&
+      event.hijri_year !== null &&
+      event.hijri_month !== null &&
+      event.hijri_day !== null
+    ) {
+      date = toGregorian({
+        year: event.hijri_year,
+        month: event.hijri_month,
+        day: event.hijri_day,
+      });
+    }
+    if (!date) date = event.event_date;
+
+    const list = eventMap.get(date) ?? [];
+    list.push(event);
+    eventMap.set(date, list);
+  }
+  return eventMap;
+}
+
 // ---------------------------------------------------------------------------
 // Public reads (anon client — keeps pages statically renderable).
 // ---------------------------------------------------------------------------
@@ -102,12 +147,14 @@ export async function getCalendarMonths(year: number): Promise<CalendarMonthView
         .eq("is_published", true)
         .gte("gregorian_date", start)
         .lte("gregorian_date", end),
+      // Fetch ALL published active events (87 rows total) and derive each
+      // event's Gregorian date server-side from its Hijri anchor + current
+      // boundaries. Filtering on the cached event_date would miss events the
+      // moment a boundary moves; the view only emits the days in range.
       supabase
         .from("calendar_events")
         .select("*")
         .eq("is_active", true)
-        .gte("event_date", start)
-        .lte("event_date", end)
         .order("sort_order", { ascending: true })
         .order("created_at", { ascending: true }),
     ]);
@@ -122,12 +169,7 @@ export async function getCalendarMonths(year: number): Promise<CalendarMonthView
     const events = (eventsRes.data as CalendarEventRow[] | null) ?? [];
 
     const dayMap = new Map(days.map((row) => [row.gregorian_date, row] as const));
-    const eventMap = new Map<string, CalendarEventRow[]>();
-    for (const event of events) {
-      const list = eventMap.get(event.event_date) ?? [];
-      list.push(event);
-      eventMap.set(event.event_date, list);
-    }
+    const eventMap = buildEventMap(events, months, overrides);
 
     const resolve: HijriResolver = createHijriResolver(months, overrides);
 
@@ -165,6 +207,96 @@ export async function getCalendarMonths(year: number): Promise<CalendarMonthView
   } catch (error) {
     logCmsError("calendar:getMonths", error);
     return [];
+  }
+}
+
+/**
+ * A single Gregorian month of the calendar: every day in that month with its
+ * timings, resolved Hijri date and merged events. Returns null when the month
+ * is out of range. Only the selected month's rows are fetched — never the whole
+ * year — so the initial page does not ship 365 calendar rows to the browser.
+ */
+export async function getCalendarMonth(
+  year: number,
+  month: number,
+): Promise<CalendarMonthView | null> {
+  if (month < 1 || month > 12) return null;
+
+  try {
+    const supabase = createSupabasePublicClient();
+    const start = `${year}-${pad(month)}-01`;
+    const end = `${year}-${pad(month)}-${pad(daysInMonth(year, month))}`;
+
+    const [daysRes, monthsRes, overridesRes, eventsRes] = await Promise.all([
+      supabase
+        .from("calendar_days")
+        .select("*")
+        .eq("is_published", true)
+        .gte("gregorian_date", start)
+        .lte("gregorian_date", end),
+      // Fetch ALL month boundaries (13 rows): resolving early-January needs the
+      // boundary that started in the previous December.
+      supabase.from("hijri_months").select("*").eq("is_published", true),
+      supabase
+        .from("hijri_overrides")
+        .select("*")
+        .eq("is_published", true)
+        .gte("gregorian_date", start)
+        .lte("gregorian_date", end),
+      // Fetch ALL published active events and derive their Gregorian dates
+      // server-side from Hijri anchors (see getCalendarMonths). Only events
+      // that resolve into the requested month are emitted below, so the browser
+      // still only receives the selected month's rows.
+      supabase
+        .from("calendar_events")
+        .select("*")
+        .eq("is_active", true)
+        .order("sort_order", { ascending: true })
+        .order("created_at", { ascending: true }),
+    ]);
+
+    for (const res of [daysRes, monthsRes, overridesRes, eventsRes]) {
+      if (res.error) throw res.error;
+    }
+
+    const days = (daysRes.data as CalendarDayRow[] | null) ?? [];
+    const months = (monthsRes.data as HijriMonthRow[] | null) ?? [];
+    const overrides = (overridesRes.data as HijriOverrideRow[] | null) ?? [];
+    const events = (eventsRes.data as CalendarEventRow[] | null) ?? [];
+
+    const dayMap = new Map(days.map((row) => [row.gregorian_date, row] as const));
+    const eventMap = buildEventMap(events, months, overrides);
+
+    const resolve: HijriResolver = createHijriResolver(months, overrides);
+    const total = daysInMonth(year, month);
+    const monthLabel = new Date(Date.UTC(year, month - 1, 1)).toLocaleDateString("en-US", {
+      month: "long",
+      year: "numeric",
+      timeZone: "UTC",
+    });
+
+    const dayViews = [];
+    for (let day = 1; day <= total; day += 1) {
+      const date = isoDate(year, month, day);
+      dayViews.push({
+        date,
+        gregorianDay: day,
+        weekday: weekdayOf(date),
+        hijri: resolve(date),
+        timings: buildSlots(dayMap.get(date)),
+        events: (eventMap.get(date) ?? []).map((event) => ({
+          id: event.id,
+          title: event.title,
+          description: event.description,
+          category: event.category,
+        })),
+      });
+    }
+
+    return { year, month, monthLabel, days: dayViews };
+  } catch (error) {
+    logCmsError("calendar:getMonth", error);
+    return null;
   }
 }
 
@@ -281,15 +413,54 @@ export async function getAllHijriOverrides(): Promise<HijriOverrideAdminItem[]> 
 
 export async function getAllCalendarEvents(): Promise<CalendarEventAdminItem[]> {
   const supabase = await createSupabaseServerClient();
-  const { data, error } = await supabase
-    .from("calendar_events")
-    .select("*")
-    .order("event_date", { ascending: true })
-    .order("sort_order", { ascending: true });
+  const [eventsRes, monthsRes, overridesRes] = await Promise.all([
+    supabase
+      .from("calendar_events")
+      .select("*")
+      .order("event_date", { ascending: true })
+      .order("sort_order", { ascending: true }),
+    supabase.from("hijri_months").select("*"),
+    supabase.from("hijri_overrides").select("*"),
+  ]);
 
-  if (error) {
-    logCmsError("calendar:getAllEvents", error);
+  if (eventsRes.error) {
+    logCmsError("calendar:getAllEvents", eventsRes.error);
     return [];
   }
-  return (data as CalendarEventRow[] | null) ?? [];
+  if (monthsRes.error) {
+    logCmsError("calendar:getAllEvents:months", monthsRes.error);
+    return [];
+  }
+  if (overridesRes.error) {
+    logCmsError("calendar:getAllEvents:overrides", overridesRes.error);
+    return [];
+  }
+
+  const events = (eventsRes.data as CalendarEventRow[] | null) ?? [];
+  const months = (monthsRes.data as HijriMonthRow[] | null) ?? [];
+  const overrides = (overridesRes.data as HijriOverrideRow[] | null) ?? [];
+
+  const hijriAnchored = events.length === 0 || "hijri_year" in events[0];
+  const toGregorian = createHijriToGregorian(months, overrides);
+
+  return events.map((event) => {
+    let derived: string | null = null;
+    if (
+      hijriAnchored &&
+      event.hijri_year !== null &&
+      event.hijri_month !== null &&
+      event.hijri_day !== null
+    ) {
+      derived = toGregorian({
+        year: event.hijri_year,
+        month: event.hijri_month,
+        day: event.hijri_day,
+      });
+    }
+    return {
+      ...event,
+      derived_gregorian_date: derived ?? event.event_date,
+      hijri_anchored: hijriAnchored,
+    };
+  });
 }

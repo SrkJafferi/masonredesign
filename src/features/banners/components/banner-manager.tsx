@@ -29,38 +29,90 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { createBanner, deleteBanner, updateBanner } from "@/features/banners/actions";
-import type { BannerAdminItem } from "@/features/banners/types";
-import { idleResult } from "@/lib/cms/validation";
+import type { BannerAdminItem, BannerImageSource } from "@/features/banners/types";
+import { idleResult, isValidExternalImageUrl } from "@/lib/cms/validation";
+import { cn } from "@/lib/utils";
 
 type DialogState = { mode: "create" } | { mode: "edit"; banner: BannerAdminItem } | null;
 
-function BannerDialog({ state, onClose }: { state: DialogState; onClose: () => void }) {
-  const isEdit = state?.mode === "edit";
-  const banner = isEdit ? state.banner : null;
-  const action = isEdit ? updateBanner : createBanner;
+type BannerAction = typeof createBanner;
+
+function SourcePicker({
+  value,
+  onChange,
+}: {
+  value: BannerImageSource;
+  onChange: (source: BannerImageSource) => void;
+}) {
+  const option = (source: BannerImageSource, label: string) => (
+    <button
+      type="button"
+      aria-pressed={value === source}
+      onClick={() => onChange(source)}
+      className={cn(
+        "rounded-md px-3 py-1.5 text-sm font-medium transition-colors focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none",
+        value === source
+          ? "bg-background text-foreground shadow-sm"
+          : "text-muted-foreground hover:text-foreground",
+      )}
+    >
+      {label}
+    </button>
+  );
+
+  return (
+    <div
+      role="group"
+      aria-label="Banner image source"
+      className="grid grid-cols-2 gap-1 rounded-lg border border-border bg-muted/40 p-1"
+    >
+      {option("storage", "Upload image")}
+      {option("external", "External image URL")}
+    </div>
+  );
+}
+
+function BannerForm({
+  isEdit,
+  banner,
+  action,
+  onClose,
+}: {
+  isEdit: boolean;
+  banner: BannerAdminItem | null;
+  action: BannerAction;
+  onClose: () => void;
+}) {
   const [result, formAction] = useActionState(action, idleResult);
+  const [source, setSource] = useState<BannerImageSource>(
+    banner?.image_source ?? "storage",
+  );
+  const [externalUrl, setExternalUrl] = useState(
+    banner?.image_source === "external" ? (banner.external_url ?? "") : "",
+  );
+  const [externalBroken, setExternalBroken] = useState(false);
 
   useEffect(() => {
     if (result.status === "success") onClose();
   }, [result, onClose]);
 
+  const externalValid =
+    externalUrl.trim() === "" || isValidExternalImageUrl(externalUrl.trim());
+
   return (
-    <Dialog open={state !== null} onOpenChange={(open) => (open ? null : onClose())}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-lg">
-        <DialogHeader>
-          <DialogTitle>{isEdit ? "Edit banner" : "Add banner"}</DialogTitle>
-          <DialogDescription>
-            Banners appear in the homepage hero slider, ordered by sort order.
-          </DialogDescription>
-        </DialogHeader>
+    <form action={formAction} className="space-y-4">
+      {isEdit ? <input type="hidden" name="id" value={banner!.id} /> : null}
+      <input type="hidden" name="image_source" value={source} />
 
-        <form action={formAction} className="space-y-4" key={banner?.id ?? "create"}>
-          {isEdit ? <input type="hidden" name="id" value={banner!.id} /> : null}
+      <div className="space-y-2">
+        <Label htmlFor={source === "storage" ? "image" : "external_url"}>
+          Banner image {isEdit ? "(leave empty to keep current)" : ""}
+        </Label>
 
-          <div className="space-y-2">
-            <Label htmlFor="image">
-              Banner image {isEdit ? "(leave empty to keep current)" : "(required)"}
-            </Label>
+        <SourcePicker value={source} onChange={setSource} />
+
+        {source === "storage" ? (
+          <>
             {isEdit && banner?.previewUrl ? (
               <AdminThumb
                 src={banner.previewUrl}
@@ -75,77 +127,146 @@ function BannerDialog({ state, onClose }: { state: DialogState; onClose: () => v
               accept="image/png,image/jpeg,image/webp"
               required={!isEdit}
             />
-            <p className="text-xs text-muted-foreground">
-              JPEG, PNG or WebP · up to 5 MB.
-            </p>
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="image_alt">Image description (for accessibility)</Label>
+            <p className="text-xs text-muted-foreground">JPEG, PNG or WebP · up to 5 MB.</p>
+          </>
+        ) : (
+          <>
+            {externalUrl.trim() !== "" ? (
+              externalBroken ? (
+                <div className="flex h-20 w-32 items-center justify-center rounded-md border border-dashed border-border bg-muted/50 px-2 text-center text-xs text-muted-foreground">
+                  Image could not be loaded
+                </div>
+              ) : (
+                // Plain img: preview only, loaded directly from the approved CDN.
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={externalUrl}
+                  alt=""
+                  onError={() => setExternalBroken(true)}
+                  className="h-20 w-32 rounded-md border border-border/60 bg-muted object-cover"
+                />
+              )
+            ) : null}
             <Input
-              id="image_alt"
-              name="image_alt"
-              defaultValue={banner?.image_alt ?? ""}
-              placeholder="e.g. MASOM community gathering"
-              required
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="title">Title (optional)</Label>
-            <Input id="title" name="title" defaultValue={banner?.title ?? ""} />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="link_url">Link URL (optional)</Label>
-            <Input
-              id="link_url"
-              name="link_url"
+              id="external_url"
+              name="external_url"
               type="url"
               inputMode="url"
               placeholder="https://…"
-              defaultValue={banner?.link_url ?? ""}
+              value={externalUrl}
+              onChange={(event) => {
+                setExternalUrl(event.target.value);
+                setExternalBroken(false);
+              }}
+              aria-invalid={!externalValid}
+              aria-describedby="external_url_hint"
             />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="sort_order">Sort order</Label>
-            <Input
-              id="sort_order"
-              name="sort_order"
-              type="number"
-              min={0}
-              defaultValue={banner?.sort_order ?? 0}
-              className="w-28"
-            />
-          </div>
-
-          <div className="flex items-center gap-3">
-            <Switch
-              id="is_active"
-              name="is_active"
-              defaultChecked={banner ? banner.is_active : true}
-            />
-            <Label htmlFor="is_active">Active (show on the website)</Label>
-          </div>
-
-          {result.status === "error" ? (
-            <p role="alert" className="text-sm font-medium text-destructive">
-              {result.message}
+            <p
+              id="external_url_hint"
+              className={cn(
+                "text-xs",
+                externalValid ? "text-muted-foreground" : "font-medium text-destructive",
+              )}
+            >
+              {externalValid
+                ? "Any valid HTTPS image URL is allowed."
+                : "Enter a valid HTTPS image URL."}
             </p>
-          ) : null}
+          </>
+        )}
+      </div>
 
-          <DialogFooter>
-            <DialogClose asChild>
-              <Button type="button" variant="outline">
-                Cancel
-              </Button>
-            </DialogClose>
-            <SubmitButton pendingLabel="Saving…">
-              {isEdit ? "Save changes" : "Add banner"}
-            </SubmitButton>
-          </DialogFooter>
-        </form>
+      <div className="space-y-2">
+        <Label htmlFor="image_alt">Image description (for accessibility)</Label>
+        <Input
+          id="image_alt"
+          name="image_alt"
+          defaultValue={banner?.image_alt ?? ""}
+          placeholder="e.g. MASOM community gathering"
+          required
+        />
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="title">Title (optional)</Label>
+        <Input id="title" name="title" defaultValue={banner?.title ?? ""} />
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="link_url">Link URL (optional)</Label>
+        <Input
+          id="link_url"
+          name="link_url"
+          type="url"
+          inputMode="url"
+          placeholder="https://…"
+          defaultValue={banner?.link_url ?? ""}
+        />
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="sort_order">Sort order</Label>
+        <Input
+          id="sort_order"
+          name="sort_order"
+          type="number"
+          min={0}
+          defaultValue={banner?.sort_order ?? 0}
+          className="w-28"
+        />
+      </div>
+
+      <div className="flex items-center gap-3">
+        <Switch
+          id="is_active"
+          name="is_active"
+          defaultChecked={banner ? banner.is_active : true}
+        />
+        <Label htmlFor="is_active">Active (show on the website)</Label>
+      </div>
+
+      {result.status === "error" ? (
+        <p role="alert" className="text-sm font-medium text-destructive">
+          {result.message}
+        </p>
+      ) : null}
+
+      <DialogFooter>
+        <DialogClose asChild>
+          <Button type="button" variant="outline">
+            Cancel
+          </Button>
+        </DialogClose>
+        <SubmitButton pendingLabel="Saving…">
+          {isEdit ? "Save changes" : "Add banner"}
+        </SubmitButton>
+      </DialogFooter>
+    </form>
+  );
+}
+
+function BannerDialog({ state, onClose }: { state: DialogState; onClose: () => void }) {
+  const isEdit = state?.mode === "edit";
+  const banner = isEdit ? state.banner : null;
+  const action = isEdit ? updateBanner : createBanner;
+
+  return (
+    <Dialog open={state !== null} onOpenChange={(open) => (open ? null : onClose())}>
+      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-lg">
+        <DialogHeader>
+          <DialogTitle>{isEdit ? "Edit banner" : "Add banner"}</DialogTitle>
+          <DialogDescription>
+            Banners appear in the homepage hero slider, ordered by sort order.
+          </DialogDescription>
+        </DialogHeader>
+
+        <BannerForm
+          key={banner?.id ?? "create"}
+          isEdit={isEdit}
+          banner={banner}
+          action={action}
+          onClose={onClose}
+        />
       </DialogContent>
     </Dialog>
   );
@@ -192,7 +313,11 @@ export function BannerManager({ banners }: { banners: BannerAdminItem[] }) {
               {banners.map((banner) => (
                 <TableRow key={banner.id}>
                   <TableCell>
-                    <AdminThumb src={banner.previewUrl} alt={banner.image_alt} />
+                    <AdminThumb
+                      src={banner.previewUrl}
+                      alt={banner.image_alt}
+                      external={banner.image_source === "external"}
+                    />
                   </TableCell>
                   <TableCell>
                     <p className="font-medium text-foreground">

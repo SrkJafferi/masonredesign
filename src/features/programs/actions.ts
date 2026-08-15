@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 
 import { requireAdmin } from "@/features/auth/guard";
+import { logAdminActivity } from "@/lib/cms/activity";
 import { logCmsError } from "@/lib/cms/logging";
 import type { ActionResult } from "@/lib/cms/validation";
 import { CMS_BUCKETS, deleteImage, uploadImage } from "@/lib/media/storage";
@@ -16,6 +17,7 @@ const BUCKET = CMS_BUCKETS.programs;
 function revalidatePrograms() {
   revalidatePath("/admin/programs");
   revalidatePath("/");
+  revalidatePath("/events-schedule");
 }
 
 function parseProgramForm(formData: FormData) {
@@ -58,25 +60,31 @@ export async function createProgram(
   }
 
   const supabase = await createSupabaseServerClient();
-  const { error } = await supabase.from("programs").insert({
-    title: parsed.data.title,
-    description: parsed.data.description,
-    poster_path: posterPath,
-    start_date: parsed.data.start_date,
-    end_date: parsed.data.end_date,
-    start_time: parsed.data.start_time,
-    end_time: parsed.data.end_time,
-    location: parsed.data.location,
-    link_url: parsed.data.link_url,
-    is_published: parsed.data.is_published,
-    sort_order: parsed.data.sort_order,
-  });
+  const { data: inserted, error } = await supabase
+    .from("programs")
+    .insert({
+      title: parsed.data.title,
+      description: parsed.data.description,
+      poster_path: posterPath,
+      start_date: parsed.data.start_date,
+      end_date: parsed.data.end_date,
+      start_time: parsed.data.start_time,
+      end_time: parsed.data.end_time,
+      location: parsed.data.location,
+      link_url: parsed.data.link_url,
+      is_published: parsed.data.is_published,
+      sort_order: parsed.data.sort_order,
+    })
+    .select("id")
+    .single();
 
   if (error) {
     if (posterPath) await deleteImage(BUCKET, posterPath);
     logCmsError("programs:create", error);
     return { status: "error", message: "Could not save the program. Please try again." };
   }
+
+  await logAdminActivity("program", "created", inserted?.id ?? null, parsed.data.title);
 
   revalidatePrograms();
   return { status: "success", message: "Program added." };
@@ -148,6 +156,14 @@ export async function updateProgram(
 
   if (previousPath) await deleteImage(BUCKET, previousPath);
 
+  const action =
+    existing.is_published === parsed.data.is_published
+      ? "updated"
+      : parsed.data.is_published
+        ? "published"
+        : "unpublished";
+  await logAdminActivity("program", action, id, parsed.data.title);
+
   revalidatePrograms();
   return { status: "success", message: "Program updated." };
 }
@@ -177,6 +193,13 @@ export async function deleteProgram(
   }
 
   if (existing) await deleteImage(BUCKET, existing.poster_path);
+
+  await logAdminActivity(
+    "program",
+    "deleted",
+    id,
+    existing ? existing.title : undefined,
+  );
 
   revalidatePrograms();
   return { status: "success", message: "Program deleted." };

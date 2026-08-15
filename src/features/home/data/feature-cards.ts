@@ -32,8 +32,10 @@ export const featureHighlights: FeatureHighlight[] = [
     id: "wadi-e-masom",
     title: "WADI-E-MASOM",
     subtitle: "Shia Cemetery",
+    excerpt:
+      "MASOM's dedicated Shia cemetery serving our community with dignity, care and respect.",
     href: "/wadi-e-masom-shia-cemetery",
-    image: { src: "/features/wadi-e-masom.webp", width: 370, height: 247 },
+    image: { src: "/features/wadiyemasom.avif", width: 370, height: 247 },
   },
   {
     id: "dedication-plaques",
@@ -69,7 +71,7 @@ export const featureQuickLinks: FeatureQuickLink[] = [
   {
     id: "members-login",
     title: "Members Login",
-    href: "/members-login",
+    href: "/admin/login",
     image: { src: "/features/members-login.jpg", width: 640, height: 412 },
   },
 ];

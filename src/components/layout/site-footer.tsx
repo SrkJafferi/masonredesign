@@ -64,7 +64,7 @@ export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-ink-900 text-white/75">
+    <footer className="border-t-[5px] border-sand-400 bg-ink-900 text-white/75">
       <Container className="grid gap-10 pt-10 pb-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
         <div className="space-y-5">
           <BrandLogo variant="light" imageClassName="h-12 w-auto lg:h-14" />

@@ -56,3 +56,6 @@ export const calendarYear = 2026;
 
 /** Canonical public route for the calendar (legacy-compatible). */
 export const calendarBasePath = "/hijricalendar2026";
+
+/** Stable public URL of the official MASOM yearly calendar PDF. */
+export const calendarPdfUrl = "/masom-calendar-2026.pdf";

@@ -1,7 +1,13 @@
+export type BannerImageSource = "storage" | "external";
+
 export type BannerRow = {
   id: string;
   title: string | null;
-  image_path: string;
+  /** Storage object path — only for image_source === "storage" (nullable). */
+  image_path: string | null;
+  image_source: BannerImageSource;
+  /** Approved external https URL — only for image_source === "external". */
+  external_url: string | null;
   image_alt: string;
   link_url: string | null;
   sort_order: number;
@@ -19,4 +25,10 @@ export type HeroBanner = {
   src: string;
   alt: string;
   href: string | null;
+  /**
+   * True when src is an external https URL. External images are rendered with
+   * a plain responsive <img> (arbitrary validated hosts), while storage/local
+   * images keep using next/image optimization.
+   */
+  external: boolean;
 };

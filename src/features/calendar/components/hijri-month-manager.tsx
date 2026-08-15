@@ -41,6 +41,8 @@ type DialogState =
   | { mode: "edit"; month: HijriMonthAdminItem }
   | null;
 
+type MonthAction = typeof createHijriMonth;
+
 function formatDate(iso: string): string {
   const [year, month, day] = iso.split("-").map(Number);
   return new Date(Date.UTC(year, month - 1, day)).toLocaleDateString("en-US", {
@@ -52,10 +54,17 @@ function formatDate(iso: string): string {
   });
 }
 
-function MonthDialog({ state, onClose }: { state: DialogState; onClose: () => void }) {
-  const isEdit = state?.mode === "edit";
-  const month = isEdit ? state.month : null;
-  const action = isEdit ? updateHijriMonth : createHijriMonth;
+function MonthForm({
+  isEdit,
+  month,
+  action,
+  onClose,
+}: {
+  isEdit: boolean;
+  month: HijriMonthAdminItem | null;
+  action: MonthAction;
+  onClose: () => void;
+}) {
   const [result, formAction] = useActionState(action, idleResult);
 
   useEffect(() => {
@@ -63,16 +72,7 @@ function MonthDialog({ state, onClose }: { state: DialogState; onClose: () => vo
   }, [result, onClose]);
 
   return (
-    <Dialog open={state !== null} onOpenChange={(open) => (open ? null : onClose())}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-md">
-        <DialogHeader>
-          <DialogTitle>{isEdit ? "Edit month boundary" : "Add month boundary"}</DialogTitle>
-          <DialogDescription>
-            The Gregorian date on which this Hijri month begins.
-          </DialogDescription>
-        </DialogHeader>
-
-        <form action={formAction} className="space-y-4" key={month?.id ?? "create"}>
+    <form action={formAction} className="space-y-4">
           {isEdit ? <input type="hidden" name="id" value={month!.id} /> : null}
 
           <div className="space-y-2">
@@ -140,7 +140,32 @@ function MonthDialog({ state, onClose }: { state: DialogState; onClose: () => vo
               {isEdit ? "Save changes" : "Add boundary"}
             </SubmitButton>
           </DialogFooter>
-        </form>
+    </form>
+  );
+}
+
+function MonthDialog({ state, onClose }: { state: DialogState; onClose: () => void }) {
+  const isEdit = state?.mode === "edit";
+  const month = isEdit ? state.month : null;
+  const action = isEdit ? updateHijriMonth : createHijriMonth;
+
+  return (
+    <Dialog open={state !== null} onOpenChange={(open) => (open ? null : onClose())}>
+      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle>{isEdit ? "Edit month boundary" : "Add month boundary"}</DialogTitle>
+          <DialogDescription>
+            The Gregorian date on which this Hijri month begins.
+          </DialogDescription>
+        </DialogHeader>
+
+        <MonthForm
+          key={month?.id ?? "create"}
+          isEdit={isEdit}
+          month={month}
+          action={action}
+          onClose={onClose}
+        />
       </DialogContent>
     </Dialog>
   );

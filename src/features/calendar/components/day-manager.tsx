@@ -40,6 +40,8 @@ type DialogState =
   | { mode: "edit"; day: CalendarDayAdminItem }
   | null;
 
+type DayAction = typeof createCalendarDay;
+
 const MONTH_NAMES = [
   "January",
   "February",
@@ -76,10 +78,17 @@ function formatDate(iso: string): string {
   });
 }
 
-function DayDialog({ state, onClose }: { state: DialogState; onClose: () => void }) {
-  const isEdit = state?.mode === "edit";
-  const day = isEdit ? state.day : null;
-  const action = isEdit ? updateCalendarDay : createCalendarDay;
+function DayForm({
+  isEdit,
+  day,
+  action,
+  onClose,
+}: {
+  isEdit: boolean;
+  day: CalendarDayAdminItem | null;
+  action: DayAction;
+  onClose: () => void;
+}) {
   const [result, formAction] = useActionState(action, idleResult);
 
   useEffect(() => {
@@ -87,16 +96,7 @@ function DayDialog({ state, onClose }: { state: DialogState; onClose: () => void
   }, [result, onClose]);
 
   return (
-    <Dialog open={state !== null} onOpenChange={(open) => (open ? null : onClose())}>
-      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-lg">
-        <DialogHeader>
-          <DialogTitle>{isEdit ? "Edit day timings" : "Add a day"}</DialogTitle>
-          <DialogDescription>
-            Enter times exactly as printed, e.g. “5:55a” or “1:01p”.
-          </DialogDescription>
-        </DialogHeader>
-
-        <form action={formAction} className="space-y-4" key={day?.gregorian_date ?? "create"}>
+    <form action={formAction} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="gregorian_date">Date</Label>
             <Input
@@ -157,7 +157,32 @@ function DayDialog({ state, onClose }: { state: DialogState; onClose: () => void
               {isEdit ? "Save changes" : "Add day"}
             </SubmitButton>
           </DialogFooter>
-        </form>
+    </form>
+  );
+}
+
+function DayDialog({ state, onClose }: { state: DialogState; onClose: () => void }) {
+  const isEdit = state?.mode === "edit";
+  const day = isEdit ? state.day : null;
+  const action = isEdit ? updateCalendarDay : createCalendarDay;
+
+  return (
+    <Dialog open={state !== null} onOpenChange={(open) => (open ? null : onClose())}>
+      <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-lg">
+        <DialogHeader>
+          <DialogTitle>{isEdit ? "Edit day timings" : "Add a day"}</DialogTitle>
+          <DialogDescription>
+            Enter times exactly as printed, e.g. “5:55a” or “1:01p”.
+          </DialogDescription>
+        </DialogHeader>
+
+        <DayForm
+          key={day?.gregorian_date ?? "create"}
+          isEdit={isEdit}
+          day={day}
+          action={action}
+          onClose={onClose}
+        />
       </DialogContent>
     </Dialog>
   );

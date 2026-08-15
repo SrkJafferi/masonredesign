@@ -49,5 +49,8 @@ export type ProgramEvent = {
   startTime: string;
   endTime: string;
   image: ImageAsset;
-  href: string;
+  /** Optional details surfaced in the program modal when the CMS provides them. */
+  description?: string | null;
+  location?: string | null;
+  linkUrl?: string | null;
 };

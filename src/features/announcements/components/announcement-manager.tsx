@@ -37,7 +37,11 @@ import type { AnnouncementAdminItem } from "@/features/announcements/types";
 import { idleResult } from "@/lib/cms/validation";
 
 type DialogState =
-  { mode: "create" } | { mode: "edit"; announcement: AnnouncementAdminItem } | null;
+  | { mode: "create" }
+  | { mode: "edit"; announcement: AnnouncementAdminItem }
+  | null;
+
+type AnnouncementAction = typeof createAnnouncement;
 
 /** ISO timestamp -> "YYYY-MM-DDTHH:MM" for <input type="datetime-local">. */
 function toDatetimeLocal(iso: string | null): string {
@@ -50,7 +54,130 @@ function formatWindow(starts: string | null, expires: string | null): string {
     new Date(value).toLocaleDateString("en-US", { month: "short", day: "numeric" });
   if (starts && expires) return `${fmt(starts)} – ${fmt(expires)}`;
   if (starts) return `From ${fmt(starts)}`;
-  return `Until ${fmt(expires!)}`;
+  return `Until ${expires!}`;
+}
+
+/**
+ * Owns the action state so it can be remounted (via the dialog's key) per open.
+ * Without the remount, useActionState keeps the previous "success" result and a
+ * stale effect immediately closes the next dialog before it is visible.
+ */
+function AnnouncementForm({
+  isEdit,
+  announcement,
+  action,
+  onClose,
+}: {
+  isEdit: boolean;
+  announcement: AnnouncementAdminItem | null;
+  action: AnnouncementAction;
+  onClose: () => void;
+}) {
+  const [result, formAction] = useActionState(action, idleResult);
+
+  useEffect(() => {
+    if (result.status === "success") onClose();
+  }, [result, onClose]);
+
+  return (
+    <form action={formAction} className="space-y-4">
+      {isEdit ? <input type="hidden" name="id" value={announcement!.id} /> : null}
+
+      <div className="space-y-2">
+        <Label htmlFor="message">Message</Label>
+        <Textarea
+          id="message"
+          name="message"
+          rows={2}
+          defaultValue={announcement?.message ?? ""}
+          placeholder="e.g. Muharram programs begin this Friday."
+          required
+        />
+      </div>
+
+      <div className="grid grid-cols-2 gap-3">
+        <div className="space-y-2">
+          <Label htmlFor="link_url">Link URL (optional)</Label>
+          <Input
+            id="link_url"
+            name="link_url"
+            type="url"
+            inputMode="url"
+            placeholder="https://…"
+            defaultValue={announcement?.link_url ?? ""}
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="link_label">Link label (optional)</Label>
+          <Input
+            id="link_label"
+            name="link_label"
+            placeholder="Learn more"
+            defaultValue={announcement?.link_label ?? ""}
+          />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-3">
+        <div className="space-y-2">
+          <Label htmlFor="starts_at">Starts (optional)</Label>
+          <Input
+            id="starts_at"
+            name="starts_at"
+            type="datetime-local"
+            defaultValue={toDatetimeLocal(announcement?.starts_at ?? null)}
+          />
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="expires_at">Expires (optional)</Label>
+          <Input
+            id="expires_at"
+            name="expires_at"
+            type="datetime-local"
+            defaultValue={toDatetimeLocal(announcement?.expires_at ?? null)}
+          />
+        </div>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="sort_order">Sort order</Label>
+        <Input
+          id="sort_order"
+          name="sort_order"
+          type="number"
+          min={0}
+          defaultValue={announcement?.sort_order ?? 0}
+          className="w-28"
+        />
+      </div>
+
+      <div className="flex items-center gap-3">
+        <Switch
+          id="is_active"
+          name="is_active"
+          defaultChecked={announcement ? announcement.is_active : true}
+        />
+        <Label htmlFor="is_active">Active (show on the website)</Label>
+      </div>
+
+      {result.status === "error" ? (
+        <p role="alert" className="text-sm font-medium text-destructive">
+          {result.message}
+        </p>
+      ) : null}
+
+      <DialogFooter>
+        <DialogClose asChild>
+          <Button type="button" variant="outline">
+            Cancel
+          </Button>
+        </DialogClose>
+        <SubmitButton pendingLabel="Saving…">
+          {isEdit ? "Save changes" : "Add announcement"}
+        </SubmitButton>
+      </DialogFooter>
+    </form>
+  );
 }
 
 function AnnouncementDialog({
@@ -63,11 +190,6 @@ function AnnouncementDialog({
   const isEdit = state?.mode === "edit";
   const announcement = isEdit ? state.announcement : null;
   const action = isEdit ? updateAnnouncement : createAnnouncement;
-  const [result, formAction] = useActionState(action, idleResult);
-
-  useEffect(() => {
-    if (result.status === "success") onClose();
-  }, [result, onClose]);
 
   return (
     <Dialog open={state !== null} onOpenChange={(open) => (open ? null : onClose())}>
@@ -77,107 +199,13 @@ function AnnouncementDialog({
           <DialogDescription>Shown in the homepage news ticker.</DialogDescription>
         </DialogHeader>
 
-        <form
-          action={formAction}
-          className="space-y-4"
+        <AnnouncementForm
           key={announcement?.id ?? "create"}
-        >
-          {isEdit ? <input type="hidden" name="id" value={announcement!.id} /> : null}
-
-          <div className="space-y-2">
-            <Label htmlFor="message">Message</Label>
-            <Textarea
-              id="message"
-              name="message"
-              rows={2}
-              defaultValue={announcement?.message ?? ""}
-              placeholder="e.g. Muharram programs begin this Friday."
-              required
-            />
-          </div>
-
-          <div className="grid grid-cols-2 gap-3">
-            <div className="space-y-2">
-              <Label htmlFor="link_url">Link URL (optional)</Label>
-              <Input
-                id="link_url"
-                name="link_url"
-                type="url"
-                inputMode="url"
-                placeholder="https://…"
-                defaultValue={announcement?.link_url ?? ""}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="link_label">Link label (optional)</Label>
-              <Input
-                id="link_label"
-                name="link_label"
-                placeholder="Learn more"
-                defaultValue={announcement?.link_label ?? ""}
-              />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3">
-            <div className="space-y-2">
-              <Label htmlFor="starts_at">Starts (optional)</Label>
-              <Input
-                id="starts_at"
-                name="starts_at"
-                type="datetime-local"
-                defaultValue={toDatetimeLocal(announcement?.starts_at ?? null)}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="expires_at">Expires (optional)</Label>
-              <Input
-                id="expires_at"
-                name="expires_at"
-                type="datetime-local"
-                defaultValue={toDatetimeLocal(announcement?.expires_at ?? null)}
-              />
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="sort_order">Sort order</Label>
-            <Input
-              id="sort_order"
-              name="sort_order"
-              type="number"
-              min={0}
-              defaultValue={announcement?.sort_order ?? 0}
-              className="w-28"
-            />
-          </div>
-
-          <div className="flex items-center gap-3">
-            <Switch
-              id="is_active"
-              name="is_active"
-              defaultChecked={announcement ? announcement.is_active : true}
-            />
-            <Label htmlFor="is_active">Active (show on the website)</Label>
-          </div>
-
-          {result.status === "error" ? (
-            <p role="alert" className="text-sm font-medium text-destructive">
-              {result.message}
-            </p>
-          ) : null}
-
-          <DialogFooter>
-            <DialogClose asChild>
-              <Button type="button" variant="outline">
-                Cancel
-              </Button>
-            </DialogClose>
-            <SubmitButton pendingLabel="Saving…">
-              {isEdit ? "Save changes" : "Add announcement"}
-            </SubmitButton>
-          </DialogFooter>
-        </form>
+          isEdit={isEdit}
+          announcement={announcement}
+          action={action}
+          onClose={onClose}
+        />
       </DialogContent>
     </Dialog>
   );

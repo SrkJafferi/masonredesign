@@ -9,7 +9,6 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { ProgramAdminItem, ProgramCard, ProgramRow } from "./types";
 
 const BUCKET = CMS_BUCKETS.programs;
-const DEFAULT_HREF = "/events-schedule";
 const HOMEPAGE_LIMIT = 9;
 
 function pad(value: number): string {
@@ -53,7 +52,9 @@ function toProgramCard(row: ProgramRow): ProgramCard {
     startDate: row.start_date,
     timeLabel: timeLabel(row.start_time, row.end_time),
     posterSrc: resolveImageSrc(BUCKET, row.poster_path),
-    href: row.link_url ?? DEFAULT_HREF,
+    description: row.description,
+    location: row.location,
+    linkUrl: row.link_url,
   };
 }
 
@@ -71,7 +72,9 @@ function fallbackPrograms(): ProgramCard[] {
           ? `${program.startTime} – ${program.endTime}`
           : (program.startTime ?? null),
       posterSrc: program.image.src,
-      href: program.href,
+      description: program.description ?? null,
+      location: program.location ?? null,
+      linkUrl: program.linkUrl ?? null,
     }));
 }
 
@@ -123,6 +126,56 @@ export async function getAllPrograms(): Promise<ProgramAdminItem[]> {
     const program = row as ProgramRow;
     return { ...program, previewUrl: resolveImageSrc(BUCKET, program.poster_path) };
   });
+}
+
+/**
+ * Published programs whose START date falls in the given month (server-side
+ * filtered so only the selected period is fetched). Multi-day programs are
+ * bucketed by their start date, matching the calendar's month view.
+ */
+export async function getProgramsForMonth(year: number, month: number): Promise<ProgramCard[]> {
+  const start = `${year}-${pad(month)}-01`;
+  const end = `${year}-${pad(month)}-31`;
+
+  try {
+    const supabase = createSupabasePublicClient();
+    const { data, error } = await supabase
+      .from("programs")
+      .select("*")
+      .eq("is_published", true)
+      .gte("start_date", start)
+      .lte("start_date", end)
+      .order("start_date", { ascending: true })
+      .order("sort_order", { ascending: true });
+
+    if (error) throw error;
+    return (data ?? []).map((row) => toProgramCard(row as ProgramRow));
+  } catch (error) {
+    logCmsError("programs:getForMonth", error);
+    return [];
+  }
+}
+
+/** Distinct years that actually contain published programs (calendar year list). */
+export async function getProgramYears(): Promise<number[]> {
+  try {
+    const supabase = createSupabasePublicClient();
+    const { data, error } = await supabase
+      .from("programs")
+      .select("start_date")
+      .eq("is_published", true);
+
+    if (error) throw error;
+    const years = new Set<number>();
+    for (const row of data ?? []) {
+      const match = /^(\d{4})/.exec((row as { start_date: string }).start_date ?? "");
+      if (match) years.add(Number(match[1]));
+    }
+    return [...years].sort((a, b) => a - b);
+  } catch (error) {
+    logCmsError("programs:getYears", error);
+    return [];
+  }
 }
 
 export async function getProgramById(id: string): Promise<ProgramRow | null> {
