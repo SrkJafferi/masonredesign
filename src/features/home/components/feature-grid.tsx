@@ -1,6 +1,7 @@
 import { ArrowRightIcon, ArrowUpRightIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Fragment } from "react";
 
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/website/reveal";
@@ -9,33 +10,41 @@ import {
   featureHighlights,
   featureQuickLinks,
 } from "@/features/home/data/feature-cards";
+import { NextPrayerBanner } from "@/features/prayer-calendar/components/next-prayer-banner";
 
 export function FeatureGrid() {
   return (
     <Container as="section" className="py-16 sm:py-20 lg:py-24">
-      {/* Three primary banner blocks */}
+      {/* Primary banner blocks with the live Next Prayer module in between. */}
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6">
         {featureBanners.map((banner, index) => (
-          <Reveal key={banner.id} delay={index * 0.08}>
-            <Link
-              href={banner.href}
-              className="group relative flex aspect-[16/10] items-center justify-center overflow-hidden rounded-2xl shadow-card transition-shadow duration-300 hover:shadow-elevated"
-            >
-              <Image
-                src={banner.image.src}
-                alt=""
-                fill
-                sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
-                className="object-cover transition-transform duration-[900ms] ease-brand group-hover:scale-[1.05]"
-              />
-              <div className="absolute inset-0 bg-brand-600/70 mix-blend-multiply transition-colors duration-300 group-hover:bg-brand-600/60" />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-900/40 to-transparent" />
-              <h3 className="relative px-6 text-center text-lg font-bold tracking-wide text-white uppercase sm:text-xl">
-                {banner.title}
-                <span className="mx-auto mt-3 block h-0.5 w-10 origin-center scale-x-100 bg-white/70 transition-transform duration-300 group-hover:scale-x-150" />
-              </h3>
-            </Link>
-          </Reveal>
+          <Fragment key={banner.id}>
+            <Reveal delay={index * 0.08}>
+              <Link
+                href={banner.href}
+                className="group relative flex aspect-[16/10] items-center justify-center overflow-hidden rounded-2xl shadow-card transition-shadow duration-300 hover:shadow-elevated"
+              >
+                <Image
+                  src={banner.image.src}
+                  alt=""
+                  fill
+                  sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-[900ms] ease-brand group-hover:scale-[1.05]"
+                />
+                <div className="absolute inset-0 bg-brand-600/70 mix-blend-multiply transition-colors duration-300 group-hover:bg-brand-600/60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink-900/40 to-transparent" />
+                <h3 className="relative px-6 text-center text-lg font-bold tracking-wide text-white uppercase sm:text-xl">
+                  {banner.title}
+                  <span className="mx-auto mt-3 block h-0.5 w-10 origin-center scale-x-100 bg-white/70 transition-transform duration-300 group-hover:scale-x-150" />
+                </h3>
+              </Link>
+            </Reveal>
+            {index === 0 ? (
+              <Reveal delay={0.08}>
+                <NextPrayerBanner />
+              </Reveal>
+            ) : null}
+          </Fragment>
         ))}
       </div>
 

@@ -27,7 +27,16 @@ function bannerSrc(
 }
 
 function toHeroBanner(
-  row: Pick<BannerRow, "id" | "image_source" | "image_path" | "external_url" | "image_alt" | "link_url">,
+  row: Pick<
+    BannerRow,
+    | "id"
+    | "image_source"
+    | "image_path"
+    | "external_url"
+    | "image_alt"
+    | "title"
+    | "link_url"
+  >,
 ): HeroBanner | null {
   const src = bannerSrc(row);
   if (!src) return null;
@@ -36,6 +45,7 @@ function toHeroBanner(
     id: row.id,
     src,
     alt: row.image_alt ?? "",
+    title: row.title ?? null,
     href: row.link_url,
     external: source === "external",
   };
@@ -47,6 +57,7 @@ function fallbackBanners(): HeroBanner[] {
     id: slide.id,
     src: slide.image.src,
     alt: slide.alt,
+    title: null,
     href: null,
     external: false,
   }));
@@ -62,7 +73,7 @@ export async function getActiveBanners(): Promise<HeroBanner[]> {
     const supabase = createSupabasePublicClient();
     const { data, error } = await supabase
       .from("banners")
-      .select("id, image_source, image_path, external_url, image_alt, link_url")
+      .select("id, image_source, image_path, external_url, image_alt, title, link_url")
       .eq("is_active", true)
       .order("sort_order", { ascending: true });
 

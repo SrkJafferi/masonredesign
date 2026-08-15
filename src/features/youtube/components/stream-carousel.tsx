@@ -232,7 +232,7 @@ function StreamCard({ stream }: { stream: YouTubeStream }) {
         {isLive ? (
           <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-danger px-2.5 py-1 text-[10px] font-bold tracking-wider text-white uppercase">
             <span className="relative flex size-1.5" aria-hidden="true">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
+              <span className="absolute inline-flex h-full w-full motion-safe:animate-ping rounded-full bg-white opacity-75" />
               <span className="relative inline-flex size-1.5 rounded-full bg-white" />
             </span>
             <span className="sr-only">This stream is live</span>

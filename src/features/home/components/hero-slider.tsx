@@ -1,8 +1,16 @@
 "use client";
 
-import { ChevronLeftIcon, ChevronRightIcon, PauseIcon, PlayIcon } from "lucide-react";
+import {
+  ArrowRightIcon,
+  CalendarDaysIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  PauseIcon,
+  PlayIcon,
+} from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useCallback, useEffect, useState, type KeyboardEvent } from "react";
 
 import type { HeroBanner } from "@/features/banners/types";
@@ -63,6 +71,11 @@ export function HeroSlider({ slides }: HeroSliderProps) {
     }
   };
 
+  // Banner-driven headline (first slide by sort order) when the CMS provides a
+  // title; otherwise the institution's name keeps the hero stable and branded.
+  const headline =
+    slides[0]?.title?.trim() || "Midwest Association of Shia Organized Muslims";
+
   return (
     <section
       aria-roledescription="carousel"
@@ -74,7 +87,7 @@ export function HeroSlider({ slides }: HeroSliderProps) {
       onBlurCapture={() => setIsInteracting(false)}
       onKeyDown={handleKeyDown}
     >
-      <div className="relative h-[58vh] min-h-[380px] w-full sm:h-[64vh] lg:h-[600px] xl:h-[640px]">
+      <div className="relative h-[58vh] min-h-[400px] w-full sm:h-[64vh] lg:h-[600px] xl:h-[640px]">
         {slides.map((slide, i) => {
           const isActive = i === index;
           return (
@@ -130,7 +143,6 @@ export function HeroSlider({ slides }: HeroSliderProps) {
                   />
                 )}
               </motion.div>
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-900/85 via-ink-900/25 to-ink-900/40" />
               {slide.href ? (
                 <a
                   href={slide.href}
@@ -146,6 +158,65 @@ export function HeroSlider({ slides }: HeroSliderProps) {
           );
         })}
 
+        {/* Static scrims — readable text on the left, legible controls below.
+            Kept outside the slide loop so they never re-animate with slides. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-r from-ink-900/85 via-ink-900/40 to-ink-900/5 sm:via-ink-900/30"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-ink-900/85 via-ink-900/20 to-ink-900/30"
+        />
+
+        {/* Persistent hero content — never shifts between slides. The wrapper
+            is click-through so a CMS-provided banner link still works on the
+            image; only the CTA buttons capture their own clicks. */}
+        <div className="pointer-events-none absolute inset-0 z-[2] flex items-center">
+          <motion.div
+            className="container-page w-full"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: shouldReduceMotion ? 0 : 0.8,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            <div className="max-w-xl pb-16 sm:max-w-2xl sm:pb-20">
+              <p className="flex items-center gap-3 text-[0.7rem] font-bold tracking-[0.22em] text-sand-400 uppercase sm:text-sm">
+                <span
+                  aria-hidden="true"
+                  className="h-px w-8 bg-sand-400/80 sm:w-10"
+                />
+                MASOM · Chicago, Illinois
+              </p>
+              <h1 className="mt-4 text-balance text-3xl leading-[1.12] font-bold text-white sm:text-4xl lg:text-5xl xl:text-[3.35rem]">
+                {headline}
+              </h1>
+              <p className="mt-4 hidden max-w-md text-sm leading-relaxed text-white/85 sm:block sm:text-base">
+                An Imambargah in Chicago serving the Shia community with
+                majalis, Islamic education, programs and services.
+              </p>
+              <div className="pointer-events-auto mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4">
+                <Link
+                  href="/events-schedule"
+                  className="group inline-flex items-center justify-center gap-2 rounded-xl bg-brand-500 px-6 py-3.5 text-sm font-bold text-white shadow-card transition-colors duration-200 hover:bg-brand-600 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-900 focus-visible:outline-none active:scale-[0.98] sm:text-base"
+                >
+                  View Programs
+                  <ArrowRightIcon className="size-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                </Link>
+                <Link
+                  href="/hijricalendar2026"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/5 px-6 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition-colors duration-200 hover:border-white/50 hover:bg-white/15 focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:outline-none active:scale-[0.98] sm:text-base"
+                >
+                  <CalendarDaysIcon className="size-4" />
+                  Prayer Calendar
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
         {/* Previous / next controls */}
         {count > 1 ? (
           <>
@@ -153,7 +224,7 @@ export function HeroSlider({ slides }: HeroSliderProps) {
               type="button"
               onClick={goPrev}
               aria-label="Previous slide"
-              className="absolute top-1/2 left-3 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-ink-900/40 text-white backdrop-blur-sm transition-all duration-200 hover:bg-ink-900/70 focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:outline-none sm:left-6 sm:size-12"
+              className="absolute top-1/2 left-3 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white shadow-lg backdrop-blur-md transition-all duration-200 hover:border-white/30 hover:bg-white/20 active:scale-95 focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:outline-none sm:left-6 sm:size-11"
             >
               <ChevronLeftIcon className="size-5 sm:size-6" />
             </button>
@@ -161,7 +232,7 @@ export function HeroSlider({ slides }: HeroSliderProps) {
               type="button"
               onClick={goNext}
               aria-label="Next slide"
-              className="absolute top-1/2 right-3 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-ink-900/40 text-white backdrop-blur-sm transition-all duration-200 hover:bg-ink-900/70 focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:outline-none sm:right-6 sm:size-12"
+              className="absolute top-1/2 right-3 z-10 flex size-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white shadow-lg backdrop-blur-md transition-all duration-200 hover:border-white/30 hover:bg-white/20 active:scale-95 focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:outline-none sm:right-6 sm:size-11"
             >
               <ChevronRightIcon className="size-5 sm:size-6" />
             </button>
@@ -184,7 +255,9 @@ export function HeroSlider({ slides }: HeroSliderProps) {
                     onClick={() => goTo(i)}
                     className={cn(
                       "h-2 rounded-full transition-all duration-300 focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:outline-none",
-                      isActive ? "w-8 bg-brand-400" : "w-2 bg-white/50 hover:bg-white/80",
+                      isActive
+                        ? "w-9 bg-brand-400 shadow-[0_0_12px_rgba(96,185,183,0.55)]"
+                        : "w-2 bg-white/40 hover:bg-white/70",
                     )}
                   />
                 );
@@ -196,7 +269,7 @@ export function HeroSlider({ slides }: HeroSliderProps) {
                 type="button"
                 onClick={() => setIsPlaying((prev) => !prev)}
                 aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
-                className="flex size-8 items-center justify-center rounded-full border border-white/20 bg-ink-900/40 text-white backdrop-blur-sm transition-colors duration-200 hover:bg-ink-900/70 focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:outline-none"
+                className="flex size-8 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white backdrop-blur-md transition-colors duration-200 hover:border-white/30 hover:bg-white/20 focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:outline-none"
               >
                 {isPlaying ? (
                   <PauseIcon className="size-3.5" />

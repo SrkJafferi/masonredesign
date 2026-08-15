@@ -60,7 +60,7 @@ function parseStoredTime(raw: string): { hour: number; minute: number } | null {
 }
 
 /** Renders a stored time like "12:55p" as "12:55 PM" for display. */
-function formatStoredTime(raw: string): string {
+export function formatStoredTime(raw: string): string {
   const match = /^(\d{1,2}):(\d{2})([ap])$/i.exec(raw.trim());
   if (!match) return raw;
   const hour = Number(match[1]);

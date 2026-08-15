@@ -24,6 +24,8 @@ export type HeroBanner = {
   id: string;
   src: string;
   alt: string;
+  /** Optional CMS-provided title; the slider uses it as the hero headline. */
+  title: string | null;
   href: string | null;
   /**
    * True when src is an external https URL. External images are rendered with

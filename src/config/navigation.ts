@@ -16,7 +16,7 @@ export const mainNavigation: NavItem[] = [
     href: "#",
     children: [
       { label: "Funeral services", href: "/coming-soon" },
-      { label: "MASOM Islamic School", href: "/coming-soon" },
+      { label: "MASOM Islamic School", href: "/MIS" },
       { label: "Matrimonial services", href: "/coming-soon" },
       { label: "Youth Activities", href: "/coming-soon" },
       { label: "Wadi-e-MASOM", href: "/coming-soon" },

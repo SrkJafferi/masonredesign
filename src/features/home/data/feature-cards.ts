@@ -4,19 +4,15 @@ import type {
   FeatureQuickLink,
 } from "@/features/home/types";
 
-/** The three primary teal banner blocks (destinations kept exactly as the source). */
+/** The primary teal banner blocks (destinations kept exactly as the source).
+ * The live "Next Prayer" module is rendered between these in the grid, in
+ * place of the former Hijri Calendar banner. */
 export const featureBanners: FeatureBanner[] = [
   {
     id: "upcoming-programs",
     title: "Upcoming Programs",
     href: "/events-schedule",
     image: { src: "/features/upcoming-programs.webp", width: 500, height: 333 },
-  },
-  {
-    id: "hijri-calendar",
-    title: "Hijri Calendar",
-    href: "/hijricalendar2026",
-    image: { src: "/features/hijri-calendar.jpg", width: 400, height: 266 },
   },
   {
     id: "islamic-school",

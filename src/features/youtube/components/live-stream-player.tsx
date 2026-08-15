@@ -4,6 +4,8 @@ import { CalendarDaysIcon, PlayIcon, RadioIcon } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
+import { cn } from "@/lib/utils";
+
 import type { YouTubeStream } from "@/features/youtube/types";
 
 import { StreamCarousel } from "./stream-carousel";
@@ -48,7 +50,13 @@ export function LiveStreamPlayer({ featured, recent, isLive }: LiveStreamPlayerP
     <div>
       {/* Featured player — a single iframe is mounted only after the user
           clicks Play on the poster. The featured stream never changes. */}
-      <div className="overflow-hidden rounded-2xl border border-white/10 bg-ink-900 shadow-elevated">
+      <div
+        className={cn(
+          "overflow-hidden rounded-2xl border border-white/10 bg-ink-900 shadow-elevated",
+          // Subtle red accent on the player frame while a stream is live.
+          isCurrentLive && "ring-1 ring-danger/50",
+        )}
+      >
         <div className="relative aspect-video w-full">
           {shouldLoad ? (
             <iframe
@@ -82,7 +90,7 @@ export function LiveStreamPlayer({ featured, recent, isLive }: LiveStreamPlayerP
               {isCurrentLive ? (
                 <span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-danger px-3 py-1.5 text-xs font-bold tracking-wider text-white uppercase">
                   <span className="relative flex size-2" aria-hidden="true">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
+                    <span className="absolute inline-flex h-full w-full motion-safe:animate-ping rounded-full bg-white opacity-75" />
                     <span className="relative inline-flex size-2 rounded-full bg-white" />
                   </span>
                   <span className="sr-only">This broadcast is live</span>
@@ -110,7 +118,7 @@ export function LiveStreamPlayer({ featured, recent, isLive }: LiveStreamPlayerP
           {isCurrentLive ? (
             <p className="mb-2 inline-flex items-center gap-2 rounded-full bg-danger px-3 py-1 text-xs font-bold tracking-wider text-white uppercase">
               <span className="relative flex size-2" aria-hidden="true">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
+                <span className="absolute inline-flex h-full w-full motion-safe:animate-ping rounded-full bg-white opacity-75" />
                 <span className="relative inline-flex size-2 rounded-full bg-white" />
               </span>
               <span className="sr-only">This broadcast is live</span>
