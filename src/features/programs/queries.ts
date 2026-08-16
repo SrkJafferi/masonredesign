@@ -30,6 +30,34 @@ function isUpcoming(startDate: string, endDate: string | null): boolean {
   return (endDate ?? startDate) >= chicagoTodayISO();
 }
 
+/**
+ * Minutes since midnight for a stored time. Accepts the CMS's 24-hour
+ * "HH:MM:SS"/"HH:MM" values AND 12-hour display strings ("1:00 PM",
+ * "12:00 AM" = 0, "12:00 PM" = noon) so the fallback data sorts identically.
+ * Invalid/empty values sort first (0), matching Postgres NULL-first ordering.
+ */
+function parseTimeToMinutes(value: string | null): number {
+  if (!value) return 0;
+  const match = /^(\d{1,2}):(\d{2})(?::\d{2})?\s*(AM|PM)?$/i.exec(value.trim());
+  if (!match) return 0;
+  let hours = Number(match[1]);
+  const minutes = Number(match[2]);
+  const period = match[3]?.toUpperCase();
+  if (period === "AM" && hours === 12) hours = 0;
+  if (period === "PM" && hours !== 12) hours += 12;
+  return hours * 60 + minutes;
+}
+
+/** Chronological comparator: date, then start time. Shared by all program lists. */
+function compareByDateAndTime(
+  a: { start_date: string; start_time: string | null },
+  b: { start_date: string; start_time: string | null },
+): number {
+  const byDate = a.start_date.localeCompare(b.start_date);
+  if (byDate !== 0) return byDate;
+  return parseTimeToMinutes(a.start_time) - parseTimeToMinutes(b.start_time);
+}
+
 /** "20:00:00" -> "8:00 PM". */
 function formatClock(value: string | null): string | null {
   if (!value) return null;
@@ -66,6 +94,12 @@ function toProgramCard(row: ProgramRow): ProgramCard {
 function fallbackPrograms(): ProgramCard[] {
   return upcomingPrograms
     .filter((program) => isUpcoming(program.date, null))
+    .sort((a, b) =>
+      compareByDateAndTime(
+        { start_date: a.date, start_time: a.startTime },
+        { start_date: b.date, start_time: b.startTime },
+      ),
+    )
     .map((program) => ({
       id: program.id,
       title: program.title,
@@ -121,6 +155,7 @@ export async function getAllPrograms(): Promise<ProgramAdminItem[]> {
     .from("programs")
     .select("*")
     .order("start_date", { ascending: true })
+    .order("start_time", { ascending: true })
     .order("sort_order", { ascending: true });
 
   if (error) {
@@ -130,7 +165,11 @@ export async function getAllPrograms(): Promise<ProgramAdminItem[]> {
 
   return (data ?? []).map((row) => {
     const program = row as ProgramRow;
-    return { ...program, previewUrl: resolveImageSrc(BUCKET, program.poster_path) };
+    return {
+      ...program,
+      previewUrl: resolveImageSrc(BUCKET, program.poster_path),
+      timeLabel: timeLabel(program.start_time, program.end_time),
+    };
   });
 }
 
@@ -155,6 +194,7 @@ export async function getProgramsForMonth(
       .gte("start_date", start)
       .lte("start_date", end)
       .order("start_date", { ascending: true })
+      .order("start_time", { ascending: true })
       .order("sort_order", { ascending: true });
 
     if (error) throw error;

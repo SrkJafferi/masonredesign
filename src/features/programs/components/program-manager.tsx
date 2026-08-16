@@ -33,7 +33,8 @@ import { createProgram, deleteProgram, updateProgram } from "@/features/programs
 import type { ProgramAdminItem } from "@/features/programs/types";
 import { idleResult } from "@/lib/cms/validation";
 
-type DialogState = { mode: "create" } | { mode: "edit"; program: ProgramAdminItem } | null;
+type DialogState =
+  { mode: "create" } | { mode: "edit"; program: ProgramAdminItem } | null;
 
 type ProgramAction = typeof createProgram;
 
@@ -147,7 +148,11 @@ function ProgramForm({
           Poster {isEdit ? "(leave empty to keep current)" : "(optional)"}
         </Label>
         {isEdit && program?.previewUrl ? (
-          <AdminThumb src={program.previewUrl} alt={program.title} className="h-24 w-20" />
+          <AdminThumb
+            src={program.previewUrl}
+            alt={program.title}
+            className="h-24 w-20"
+          />
         ) : null}
         <Input
           id="poster"
@@ -246,7 +251,9 @@ export function ProgramManager({ programs }: { programs: ProgramAdminItem[] }) {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-foreground">Programs</h1>
-          <p className="mt-1 text-sm text-muted-foreground">Upcoming events and majalis.</p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Upcoming events and majalis.
+          </p>
         </div>
         <Button variant="cta" onClick={() => setDialog({ mode: "create" })}>
           <PlusIcon className="size-4" />
@@ -257,8 +264,8 @@ export function ProgramManager({ programs }: { programs: ProgramAdminItem[] }) {
       {programs.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-border bg-card p-10 text-center">
           <p className="text-sm text-muted-foreground">
-            No programs yet. The homepage is showing the built-in default programs. Add one
-            to take over the Upcoming Programs section.
+            No programs yet. The homepage is showing the built-in default programs. Add
+            one to take over the Upcoming Programs section.
           </p>
         </div>
       ) : (
@@ -269,6 +276,7 @@ export function ProgramManager({ programs }: { programs: ProgramAdminItem[] }) {
                 <TableHead className="w-20">Poster</TableHead>
                 <TableHead>Program</TableHead>
                 <TableHead className="w-32">Date</TableHead>
+                <TableHead className="w-44">Time</TableHead>
                 <TableHead className="w-24">Status</TableHead>
                 <TableHead className="w-24 text-right">Actions</TableHead>
               </TableRow>
@@ -293,6 +301,9 @@ export function ProgramManager({ programs }: { programs: ProgramAdminItem[] }) {
                   </TableCell>
                   <TableCell className="text-muted-foreground">
                     {formatDate(program.start_date)}
+                  </TableCell>
+                  <TableCell className="text-muted-foreground">
+                    {program.timeLabel ?? "—"}
                   </TableCell>
                   <TableCell>
                     <StatusBadge

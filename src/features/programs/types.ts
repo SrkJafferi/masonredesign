@@ -15,8 +15,11 @@ export type ProgramRow = {
   updated_at: string;
 };
 
-/** Admin list row with a resolved poster preview URL. */
-export type ProgramAdminItem = ProgramRow & { previewUrl: string | null };
+/** Admin list row with a resolved poster preview URL and formatted time range. */
+export type ProgramAdminItem = ProgramRow & {
+  previewUrl: string | null;
+  timeLabel: string | null; // "1:00 PM – 2:00 PM" | "1:00 PM" | null
+};
 
 /** Public display model consumed by the Upcoming Programs grid + modal. */
 export type ProgramCard = {
