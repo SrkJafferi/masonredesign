@@ -5,14 +5,19 @@ import {
   ArrowUpRightIcon,
   CalendarDaysIcon,
   CalendarPlusIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
   ClockIcon,
   MapPinIcon,
   XIcon,
 } from "lucide-react";
+import { motion, useReducedMotion } from "motion/react";
 import { Dialog as DialogPrimitive } from "radix-ui";
+import { useEffect, useRef, useState } from "react";
 
 import { Reveal } from "@/components/website/reveal";
 import { titleCase } from "@/lib/format/title-case";
+import { cn } from "@/lib/utils";
 import type { ProgramCard } from "@/features/programs/types";
 
 /** Parses an ISO date as UTC so the displayed day never drifts across timezones. */
@@ -54,28 +59,191 @@ type ProgramCardGridProps = {
   programs: ProgramCard[];
 };
 
+/**
+ * Responsive carousel of upcoming program cards. Shows one card on phones, two
+ * on tablets and three on desktop; every program stays reachable via the arrow
+ * buttons, pagination dots or a swipe. When everything already fits on one page
+ * the carousel collapses to a plain row (no controls), so the section never
+ * becomes an unnecessarily tall block no matter how many programs are upcoming.
+ */
 export function ProgramCardGrid({ programs }: ProgramCardGridProps) {
+  const trackRef = useRef<HTMLUListElement>(null);
+  const measureCardRef = useRef<HTMLLIElement>(null);
+  const reduceMotion = useReducedMotion();
+
+  const [cardWidth, setCardWidth] = useState(0);
+  const [gap, setGap] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(1);
+  const [index, setIndex] = useState(0);
+
+  const maxIndex = Math.max(0, programs.length - visibleCount);
+  const maxOffset = -maxIndex * (cardWidth + gap);
+  const offset = -index * (cardWidth + gap);
+  const canPrev = index > 0;
+  const canNext = index < maxIndex;
+
+  // Measure the first card and derive how many cards fit per breakpoint, so
+  // the slide offset tracks the real rendered width (responsive by nature).
+  // Card widths come from fixed CSS classes, so a plain resize listener plus a
+  // next-frame double-check is all that's needed.
+  useEffect(() => {
+    let frame = 0;
+
+    const measure = () => {
+      const track = trackRef.current;
+      const card = measureCardRef.current;
+      if (!track || !card) return;
+      const width = card.getBoundingClientRect().width;
+      const trackWidth = track.getBoundingClientRect().width;
+      if (width <= 0 || trackWidth <= 0) return;
+      setCardWidth(width);
+      setGap(parseFloat(getComputedStyle(track).columnGap || "0") || 0);
+      setVisibleCount(Math.max(1, Math.round(trackWidth / width)));
+    };
+
+    const measureOnFrame = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(measure);
+    };
+
+    measure();
+    measureOnFrame();
+
+    window.addEventListener("resize", measureOnFrame);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("resize", measureOnFrame);
+    };
+  }, [programs.length]);
+
+  // Clamp the index when the visible count changes (resize/rotation).
+  useEffect(() => {
+    setIndex((i) => Math.min(i, maxIndex));
+  }, [maxIndex]);
+
   return (
-    <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-      {programs.map((program, index) => (
-        <Reveal as="li" key={program.id} delay={(index % 3) * 0.08}>
-          <ProgramDialog program={program} />
-        </Reveal>
-      ))}
-    </ul>
+    <div className="mt-8">
+      <div className="relative">
+        <div className="overflow-hidden">
+          <motion.ul
+            ref={trackRef}
+            aria-label="Upcoming MASOM programs"
+            className="flex gap-4"
+            drag={maxIndex > 0 ? "x" : false}
+            dragConstraints={{ left: maxOffset, right: 0 }}
+            dragElastic={0.12}
+            onDragEnd={(_, info) => {
+              // Swipe: advance a page once the gesture passes a quarter card.
+              const threshold = cardWidth * 0.25;
+              if (info.offset.x < -threshold) {
+                setIndex((i) => Math.min(maxIndex, i + 1));
+              } else if (info.offset.x > threshold) {
+                setIndex((i) => Math.max(0, i - 1));
+              }
+            }}
+            style={{ touchAction: "pan-y" }}
+            animate={{ x: offset }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.5,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            {programs.map((program, itemIndex) => (
+              <li
+                key={program.id}
+                ref={itemIndex === 0 ? measureCardRef : undefined}
+                className="w-full shrink-0 sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.6667rem)]"
+              >
+                <Reveal className="h-full" delay={(itemIndex % 3) * 0.08}>
+                  <ProgramDialog program={program} />
+                </Reveal>
+              </li>
+            ))}
+          </motion.ul>
+        </div>
+
+        {maxIndex > 0 ? (
+          <>
+            <CarouselButton
+              dir="prev"
+              disabled={!canPrev}
+              onClick={() => setIndex((i) => Math.max(0, i - 1))}
+            />
+            <CarouselButton
+              dir="next"
+              disabled={!canNext}
+              onClick={() => setIndex((i) => Math.min(maxIndex, i + 1))}
+            />
+          </>
+        ) : null}
+      </div>
+
+      {/* Pagination dots — only when there is more than one page of cards. */}
+      {maxIndex > 0 ? (
+        <div className="mt-6 flex items-center justify-center gap-1.5">
+          {Array.from({ length: maxIndex + 1 }, (_, dotIndex) => (
+            <button
+              key={dotIndex}
+              type="button"
+              aria-label={`Go to slide ${dotIndex + 1}`}
+              aria-current={dotIndex === index}
+              onClick={() => setIndex(dotIndex)}
+              className={cn(
+                "h-1.5 cursor-pointer rounded-full transition-all duration-300 ease-brand focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-500",
+                dotIndex === index
+                  ? "w-5 bg-white"
+                  : "w-1.5 bg-white/40 hover:bg-white/70",
+              )}
+            />
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function CarouselButton({
+  dir,
+  disabled,
+  onClick,
+}: {
+  dir: "prev" | "next";
+  disabled: boolean;
+  onClick: () => void;
+}) {
+  const Icon = dir === "prev" ? ChevronLeftIcon : ChevronRightIcon;
+  return (
+    <button
+      type="button"
+      disabled={disabled}
+      onClick={onClick}
+      aria-label={dir === "prev" ? "Previous programs" : "Next programs"}
+      className={cn(
+        "absolute top-1/2 z-10 grid size-9 -translate-y-1/2 cursor-pointer place-items-center rounded-full",
+        "border border-white/40 bg-white/15 text-white shadow-card backdrop-blur-sm",
+        "transition-all duration-300 ease-brand hover:bg-white hover:text-brand-700",
+        "disabled:cursor-default disabled:opacity-30 disabled:hover:bg-white/15 disabled:hover:text-white",
+        "focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-500",
+        dir === "prev" ? "left-2" : "right-2",
+      )}
+    >
+      <Icon className="size-4" aria-hidden="true" />
+    </button>
   );
 }
 
 export function ProgramDialog({ program }: { program: ProgramCard }) {
   const { day, month, weekday, year } = formatProgramDate(program.startDate);
-  const displayTitle = program.title ? titleCase(program.title) : fallbackTitle({ day, month, weekday, year });
+  const displayTitle = program.title
+    ? titleCase(program.title)
+    : fallbackTitle({ day, month, weekday, year });
 
   return (
     <DialogPrimitive.Root>
       <DialogPrimitive.Trigger asChild>
         <button
           type="button"
-          className="group flex h-full w-full flex-col overflow-hidden rounded-2xl bg-white text-left shadow-card transition-all duration-300 outline-none cursor-pointer hover:-translate-y-1 hover:shadow-elevated focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-500"
+          className="group flex h-full w-full cursor-pointer flex-col overflow-hidden rounded-2xl bg-white text-left shadow-card transition-all duration-300 outline-none hover:-translate-y-1 hover:shadow-elevated focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-500"
         >
           <div className="relative aspect-[2/3] w-full shrink-0 overflow-hidden">
             {program.posterSrc ? (
@@ -92,7 +260,9 @@ export function ProgramDialog({ program }: { program: ProgramCard }) {
               </div>
             )}
             <div className="absolute top-3 left-3 flex flex-col items-center rounded-xl bg-white/95 px-3 py-1.5 text-center shadow-sm backdrop-blur-sm">
-              <span className="text-lg leading-none font-extrabold text-ink-900">{day}</span>
+              <span className="text-lg leading-none font-extrabold text-ink-900">
+                {day}
+              </span>
               <span className="text-[0.6rem] font-bold tracking-widest text-brand-600 uppercase">
                 {month}
               </span>
@@ -119,10 +289,8 @@ export function ProgramDialog({ program }: { program: ProgramCard }) {
       </DialogPrimitive.Trigger>
 
       <DialogPrimitive.Portal>
-        <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-ink-900/60 backdrop-blur-sm data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0 motion-reduce:animate-none" />
-        <DialogPrimitive.Content
-          className="fixed top-1/2 left-1/2 z-50 flex max-h-[90vh] w-[calc(100%-2rem)] max-w-2xl -translate-x-1/2 -translate-y-1/2 flex-col overflow-y-auto rounded-2xl bg-white shadow-elevated ring-1 ring-ink-900/10 outline-none data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 motion-reduce:animate-none"
-        >
+        <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-ink-900/60 backdrop-blur-sm motion-reduce:animate-none data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0" />
+        <DialogPrimitive.Content className="fixed top-1/2 left-1/2 z-50 flex max-h-[90vh] w-[calc(100%-2rem)] max-w-2xl -translate-x-1/2 -translate-y-1/2 flex-col overflow-y-auto rounded-2xl bg-white shadow-elevated ring-1 ring-ink-900/10 outline-none motion-reduce:animate-none data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95">
           <div className="sticky top-0 z-10 flex justify-end bg-gradient-to-b from-white/90 to-transparent px-3 pt-3 pb-4">
             <DialogPrimitive.Close
               aria-label="Close program details"
@@ -195,7 +363,7 @@ export function ProgramDialog({ program }: { program: ProgramCard }) {
                   href={buildGoogleCalendarUrl(program)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-sand-300 px-4 py-2 text-sm font-semibold text-ink-700 transition-colors hover:border-brand-400 hover:text-brand-600 focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:outline-none"
+                  className="text-ink-700 inline-flex items-center gap-1.5 rounded-lg border border-sand-300 px-4 py-2 text-sm font-semibold transition-colors hover:border-brand-400 hover:text-brand-600 focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:outline-none"
                 >
                   <CalendarPlusIcon className="size-4 text-brand-500" aria-hidden />
                   Add to Google Calendar

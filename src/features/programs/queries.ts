@@ -9,21 +9,25 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import type { ProgramAdminItem, ProgramCard, ProgramRow } from "./types";
 
 const BUCKET = CMS_BUCKETS.programs;
-const HOMEPAGE_LIMIT = 9;
 
 function pad(value: number): string {
   return String(value).padStart(2, "0");
 }
 
-/** Today's date in UTC as "YYYY-MM-DD" (matches how dates are stored/compared). */
-function todayUtc(): string {
-  const now = new Date();
-  return `${now.getUTCFullYear()}-${pad(now.getUTCMonth() + 1)}-${pad(now.getUTCDate())}`;
+/** Today's date in MASOM's local timezone (Chicago) as "YYYY-MM-DD". */
+function chicagoTodayISO(): string {
+  // en-CA formats as YYYY-MM-DD; same convention as the calendar queries.
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/Chicago",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date());
 }
 
 /** An event is upcoming while its end (or start, if single-day) is today or later. */
 function isUpcoming(startDate: string, endDate: string | null): boolean {
-  return (endDate ?? startDate) >= todayUtc();
+  return (endDate ?? startDate) >= chicagoTodayISO();
 }
 
 /** "20:00:00" -> "8:00 PM". */
@@ -62,7 +66,6 @@ function toProgramCard(row: ProgramRow): ProgramCard {
 function fallbackPrograms(): ProgramCard[] {
   return upcomingPrograms
     .filter((program) => isUpcoming(program.date, null))
-    .slice(0, HOMEPAGE_LIMIT)
     .map((program) => ({
       id: program.id,
       title: program.title,
@@ -79,8 +82,11 @@ function fallbackPrograms(): ProgramCard[] {
 }
 
 /**
- * Public upcoming programs. Uses published, still-upcoming CMS rows when
- * present; otherwise falls back to the local reference programs.
+ * Public upcoming programs. Returns EVERY published program that is still
+ * upcoming (started today or later, using MASOM's Chicago timezone), ordered
+ * chronologically with the start time as the same-day tiebreak. Uses the same
+ * `programs` CMS table as the Program Calendar; when the CMS is empty or
+ * unavailable it falls back to the local reference programs.
  */
 export async function getUpcomingPrograms(): Promise<ProgramCard[]> {
   try {
@@ -90,6 +96,7 @@ export async function getUpcomingPrograms(): Promise<ProgramCard[]> {
       .select("*")
       .eq("is_published", true)
       .order("start_date", { ascending: true })
+      .order("start_time", { ascending: true })
       .order("sort_order", { ascending: true });
 
     if (error) throw error;
@@ -97,7 +104,6 @@ export async function getUpcomingPrograms(): Promise<ProgramCard[]> {
     if (data && data.length > 0) {
       const cards = (data as ProgramRow[])
         .filter((row) => isUpcoming(row.start_date, row.end_date))
-        .slice(0, HOMEPAGE_LIMIT)
         .map(toProgramCard);
       if (cards.length > 0) return cards;
     }
@@ -133,7 +139,10 @@ export async function getAllPrograms(): Promise<ProgramAdminItem[]> {
  * filtered so only the selected period is fetched). Multi-day programs are
  * bucketed by their start date, matching the calendar's month view.
  */
-export async function getProgramsForMonth(year: number, month: number): Promise<ProgramCard[]> {
+export async function getProgramsForMonth(
+  year: number,
+  month: number,
+): Promise<ProgramCard[]> {
   const start = `${year}-${pad(month)}-01`;
   const end = `${year}-${pad(month)}-31`;
 
