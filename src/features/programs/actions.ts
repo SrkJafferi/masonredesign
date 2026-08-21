@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 import { requireAdmin } from "@/features/auth/guard";
 import { logAdminActivity } from "@/lib/cms/activity";
@@ -18,6 +18,7 @@ function revalidatePrograms() {
   revalidatePath("/admin/programs");
   revalidatePath("/");
   revalidatePath("/events-schedule");
+  revalidateTag("programs");
 }
 
 function parseProgramForm(formData: FormData) {

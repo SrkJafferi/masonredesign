@@ -3,7 +3,7 @@ import "server-only";
 import { upcomingPrograms } from "@/features/home/data/programs";
 import { logCmsError } from "@/lib/cms/logging";
 import { CMS_BUCKETS, resolveImageSrc } from "@/lib/media/storage";
-import { createSupabasePublicClient } from "@/lib/supabase/public";
+import { createSupabaseProgramClient } from "@/lib/supabase/public";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 import type { ProgramAdminItem, ProgramCard, ProgramRow } from "./types";
@@ -78,12 +78,18 @@ function timeLabel(start: string | null, end: string | null): string | null {
 }
 
 function toProgramCard(row: ProgramRow): ProgramCard {
+  const posterSrc = resolveImageSrc(BUCKET, row.poster_path);
   return {
     id: row.id,
     title: row.title,
     startDate: row.start_date,
     timeLabel: timeLabel(row.start_time, row.end_time),
-    posterSrc: resolveImageSrc(BUCKET, row.poster_path),
+    // Cache-bust on updated_at so browsers / Next.js Image / CDN never serve a
+    // stale poster after an admin replaces the image. The value changes only
+    // when the program record is updated (typically the image itself).
+    posterSrc: posterSrc
+      ? `${posterSrc}?v=${encodeURIComponent(row.updated_at)}`
+      : null,
     description: row.description,
     location: row.location,
     linkUrl: row.link_url,
@@ -124,7 +130,7 @@ function fallbackPrograms(): ProgramCard[] {
  */
 export async function getUpcomingPrograms(): Promise<ProgramCard[]> {
   try {
-    const supabase = createSupabasePublicClient();
+    const supabase = createSupabaseProgramClient();
     const { data, error } = await supabase
       .from("programs")
       .select("*")
@@ -186,7 +192,7 @@ export async function getProgramsForMonth(
   const end = `${year}-${pad(month)}-31`;
 
   try {
-    const supabase = createSupabasePublicClient();
+    const supabase = createSupabaseProgramClient();
     const { data, error } = await supabase
       .from("programs")
       .select("*")
@@ -208,7 +214,7 @@ export async function getProgramsForMonth(
 /** Distinct years that actually contain published programs (calendar year list). */
 export async function getProgramYears(): Promise<number[]> {
   try {
-    const supabase = createSupabasePublicClient();
+    const supabase = createSupabaseProgramClient();
     const { data, error } = await supabase
       .from("programs")
       .select("start_date")
