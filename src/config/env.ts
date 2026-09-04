@@ -51,7 +51,12 @@ export type DonationEmailConfig = {
   apiKey: string;
   from: string;
   to: string;
+  /** Whether the courtesy auto-reply to the donor is enabled (default: true). */
+  autoReplyEnabled: boolean;
 };
+
+// Values that explicitly disable a feature that is on by default.
+const FALSEY_VALUES = new Set(["0", "false", "no", "off"]);
 
 /**
  * Server-only Resend configuration for donation submissions. Returns null when
@@ -66,5 +71,11 @@ export function getDonationEmailConfig(): DonationEmailConfig | null {
   const to = process.env.DONATION_NOTIFICATION_EMAIL?.trim() ?? "";
 
   if (!apiKey || !from || !to) return null;
-  return { apiKey, from, to };
+
+  // Opt-out flag: the auto-reply is on unless explicitly disabled, so MASOM
+  // can turn it off at deploy time without a code change.
+  const autoReplyRaw = process.env.DONATION_AUTO_REPLY_ENABLED?.trim().toLowerCase() ?? "";
+  const autoReplyEnabled = !FALSEY_VALUES.has(autoReplyRaw);
+
+  return { apiKey, from, to, autoReplyEnabled };
 }

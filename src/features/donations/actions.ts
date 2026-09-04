@@ -117,8 +117,59 @@ export async function submitDonation(formData: FormData): Promise<DonationAction
     };
   }
 
+  // Optional courtesy confirmation to the donor. This runs only after the
+  // notification email was accepted by Resend, and it never fails the
+  // submission: the confirmation explicitly states that no payment was
+  // processed on this website — it is not proof of a donation, and it never
+  // claims funds were received. It is on by default and can be disabled via
+  // the DONATION_AUTO_REPLY_ENABLED environment variable (no deploy needed).
+  if (config.autoReplyEnabled) {
+    await sendDonorAutoReply(resend, config.from, data);
+  }
+
   if (lastSubmissionAt.size > MAX_IP_ENTRIES) lastSubmissionAt.clear();
   lastSubmissionAt.set(ip, now);
 
   return { ok: true };
+}
+
+async function sendDonorAutoReply(
+  resend: Resend,
+  from: string,
+  data: {
+    name: string;
+    email: string;
+    amount: string;
+    purpose?: string;
+  },
+): Promise<void> {
+  const replyBody = [
+    `Assalamu Alaykum ${data.name},`,
+    "",
+    "Thank you for contacting MASOM regarding your donation. We have received your submission.",
+    "",
+    "Please note: this confirmation only means we received your information. No payment has been processed or charged through this website — the donation form does not process payments.",
+    "",
+    "To complete a donation, please use Zelle/Quickpay (donate@masom.com) or send a check by regular mail to MASOM, 4353 W Lawrence Ave, Chicago, IL, 60630.",
+    "",
+    "MASOM — Midwest Association of Shia Organized Muslims",
+    "4353 West Lawrence Avenue, Chicago, IL 60630",
+    "(773) 283-9718",
+  ].join("\n");
+
+  try {
+    const { error: replyError } = await resend.emails.send({
+      from,
+      to: [data.email],
+      subject: "Thank you — MASOM received your donation information",
+      text: replyBody,
+    });
+    if (replyError) {
+      // The submission is already safely delivered to MASOM; a failed
+      // confirmation must not surface an error to the donor.
+      console.error("donations:auto-reply — send failed (submission still sent):", replyError);
+    }
+  } catch (replyException) {
+    console.error("donations:auto-reply — exception (submission still sent):", replyException);
+  }
 }
