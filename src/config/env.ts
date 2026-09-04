@@ -46,3 +46,25 @@ export function getSupabaseServiceRoleKey(): string {
 
   return parsed.data;
 }
+
+export type DonationEmailConfig = {
+  apiKey: string;
+  from: string;
+  to: string;
+};
+
+/**
+ * Server-only Resend configuration for donation submissions. Returns null when
+ * any variable is unset so the caller can fail with a friendly message instead
+ * of crashing. Never exposes values to the browser.
+ */
+export function getDonationEmailConfig(): DonationEmailConfig | null {
+  if (typeof window !== "undefined") return null;
+
+  const apiKey = process.env.RESEND_API_KEY?.trim() ?? "";
+  const from = process.env.RESEND_FROM_EMAIL?.trim() ?? "";
+  const to = process.env.DONATION_NOTIFICATION_EMAIL?.trim() ?? "";
+
+  if (!apiKey || !from || !to) return null;
+  return { apiKey, from, to };
+}

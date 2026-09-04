@@ -51,7 +51,7 @@ export const siteConfig = {
     whatsapp: "https://chat.whatsapp.com/LbReeM8ts7VJoC7yMOPqSI",
   },
   links: {
-    donate: "/coming-soon",
+    donate: "/donate",
     constitution: "https://masom.com/org/masomByLaws.pdf",
     newsletterArchive:
       "https://us13.campaign-archive.com/home/?u=01dfc250f2762204df48c0230&id=06a230bfd1",
