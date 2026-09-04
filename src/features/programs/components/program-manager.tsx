@@ -30,8 +30,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { createProgram, deleteProgram, updateProgram } from "@/features/programs/actions";
-import type { ProgramAdminItem } from "@/features/programs/types";
+import type { ProgramAdminItem, ProgramPosterMedia } from "@/features/programs/types";
 import { idleResult } from "@/lib/cms/validation";
+
+import { ProgramPosterField } from "./program-poster-field";
 
 type DialogState =
   { mode: "create" } | { mode: "edit"; program: ProgramAdminItem } | null;
@@ -60,11 +62,13 @@ function ProgramForm({
   isEdit,
   program,
   action,
+  media,
   onClose,
 }: {
   isEdit: boolean;
   program: ProgramAdminItem | null;
   action: ProgramAction;
+  media: ProgramPosterMedia[];
   onClose: () => void;
 }) {
   const [result, formAction] = useActionState(action, idleResult);
@@ -143,25 +147,13 @@ function ProgramForm({
         <Input id="location" name="location" defaultValue={program?.location ?? ""} />
       </div>
 
-      <div className="space-y-2">
-        <Label htmlFor="poster">
-          Poster {isEdit ? "(leave empty to keep current)" : "(optional)"}
-        </Label>
-        {isEdit && program?.previewUrl ? (
-          <AdminThumb
-            src={program.previewUrl}
-            alt={program.title}
-            className="h-24 w-20"
-          />
-        ) : null}
-        <Input
-          id="poster"
-          name="poster"
-          type="file"
-          accept="image/png,image/jpeg,image/webp"
-        />
-        <p className="text-xs text-muted-foreground">JPEG, PNG or WebP · up to 5 MB.</p>
-      </div>
+      <ProgramPosterField
+        isEdit={isEdit}
+        hasCurrentPoster={Boolean(program?.poster_path)}
+        currentPosterUrl={program?.previewUrl ?? null}
+        currentPosterAlt={program?.title ?? "Current poster"}
+        media={media}
+      />
 
       <div className="space-y-2">
         <Label htmlFor="link_url">Link URL (optional)</Label>
@@ -216,7 +208,15 @@ function ProgramForm({
   );
 }
 
-function ProgramDialog({ state, onClose }: { state: DialogState; onClose: () => void }) {
+function ProgramDialog({
+  state,
+  media,
+  onClose,
+}: {
+  state: DialogState;
+  media: ProgramPosterMedia[];
+  onClose: () => void;
+}) {
   const isEdit = state?.mode === "edit";
   const program = isEdit ? state.program : null;
   const action = isEdit ? updateProgram : createProgram;
@@ -236,6 +236,7 @@ function ProgramDialog({ state, onClose }: { state: DialogState; onClose: () => 
           isEdit={isEdit}
           program={program}
           action={action}
+          media={media}
           onClose={onClose}
         />
       </DialogContent>
@@ -243,7 +244,13 @@ function ProgramDialog({ state, onClose }: { state: DialogState; onClose: () => 
   );
 }
 
-export function ProgramManager({ programs }: { programs: ProgramAdminItem[] }) {
+export function ProgramManager({
+  programs,
+  media,
+}: {
+  programs: ProgramAdminItem[];
+  media: ProgramPosterMedia[];
+}) {
   const [dialog, setDialog] = useState<DialogState>(null);
 
   return (
@@ -337,7 +344,7 @@ export function ProgramManager({ programs }: { programs: ProgramAdminItem[] }) {
         </div>
       )}
 
-      <ProgramDialog state={dialog} onClose={() => setDialog(null)} />
+      <ProgramDialog state={dialog} media={media} onClose={() => setDialog(null)} />
     </div>
   );
 }

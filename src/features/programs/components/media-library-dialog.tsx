@@ -1,0 +1,190 @@
+"use client";
+
+import Image from "next/image";
+import { CheckIcon, SearchIcon } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import type { ProgramPosterMedia } from "@/features/programs/types";
+import { cn } from "@/lib/utils";
+
+const PAGE_SIZE = 24;
+
+type MediaLibraryDialogProps = {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  items: ProgramPosterMedia[];
+  /** Storage name currently selected for the program (for the initial ring). */
+  currentName?: string | null;
+  onSelect: (item: ProgramPosterMedia) => void;
+};
+
+/**
+ * Admin media library picker. Lists existing program posters from the
+ * `programs` storage bucket (fetched server-side by the admin page), with a
+ * lightweight client-side filename search and incremental reveal so only a
+ * page of thumbnails is in the DOM at once.
+ */
+export function MediaLibraryDialog({
+  open,
+  onOpenChange,
+  items,
+  currentName,
+  onSelect,
+}: MediaLibraryDialogProps) {
+  const [query, setQuery] = useState("");
+  const [visible, setVisible] = useState(PAGE_SIZE);
+  const [pickedName, setPickedName] = useState<string | null>(null);
+
+  // Reset search/selection each time the dialog opens.
+  useEffect(() => {
+    if (!open) return;
+    setQuery("");
+    setVisible(PAGE_SIZE);
+    setPickedName(
+      currentName && items.some((item) => item.name === currentName)
+        ? currentName
+        : null,
+    );
+  }, [open, items, currentName]);
+
+  const filtered = useMemo(() => {
+    const term = query.trim().toLowerCase();
+    if (!term) return items;
+    return items.filter((item) => {
+      if (item.name.toLowerCase().includes(term)) return true;
+      return item.usedBy.some((title) => title.toLowerCase().includes(term));
+    });
+  }, [items, query]);
+
+  const visibleItems = filtered.slice(0, visible);
+  const picked = pickedName ? items.find((item) => item.name === pickedName) ?? null : null;
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-h-[85vh] overflow-y-auto sm:max-w-2xl">
+        <DialogHeader>
+          <DialogTitle>Choose program poster</DialogTitle>
+          <DialogDescription>
+            Reuse an image already stored in the media library — no new upload is
+            created.
+          </DialogDescription>
+        </DialogHeader>
+
+        <div className="relative">
+          <SearchIcon className="pointer-events-none absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            value={query}
+            onChange={(event) => {
+              setQuery(event.target.value);
+              setVisible(PAGE_SIZE);
+            }}
+            placeholder="Search posters…"
+            aria-label="Search posters"
+            className="pl-8"
+          />
+        </div>
+
+        {filtered.length === 0 ? (
+          <p className="rounded-lg border border-dashed border-border bg-muted/40 p-8 text-center text-sm text-muted-foreground">
+            No posters found
+            {query.trim() ? ` for “${query.trim()}”` : ""}. Upload a poster first and
+            it will appear here.
+          </p>
+        ) : (
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+            {visibleItems.map((item) => {
+              const selected = item.name === pickedName;
+              return (
+                <button
+                  key={item.name}
+                  type="button"
+                  onClick={() => setPickedName(item.name)}
+                  aria-pressed={selected}
+                  aria-label={`Select poster ${item.name}`}
+                  className={cn(
+                    "group overflow-hidden rounded-xl border bg-card text-left outline-none transition-all",
+                    "focus-visible:ring-3 focus-visible:ring-ring/50",
+                    selected
+                      ? "border-ring ring-2 ring-ring/60"
+                      : "border-border/60 hover:border-foreground/30",
+                  )}
+                >
+                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-muted">
+                    <Image
+                      src={item.url}
+                      alt={item.name}
+                      fill
+                      sizes="(min-width: 768px) 200px, 45vw"
+                      loading="lazy"
+                      decoding="async"
+                      className="object-cover"
+                    />
+                    {selected ? (
+                      <span className="absolute top-2 right-2 flex size-6 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-sm">
+                        <CheckIcon className="size-4" />
+                      </span>
+                    ) : null}
+                  </div>
+                  <div className="space-y-0.5 p-2">
+                    <p
+                      className="truncate text-xs font-medium text-foreground"
+                      title={item.name}
+                    >
+                      {item.name}
+                    </p>
+                    {item.usedBy.length > 0 ? (
+                      <p
+                        className="truncate text-[11px] text-muted-foreground"
+                        title={`Used by ${item.usedBy.join(", ")}`}
+                      >
+                        Used by {item.usedBy.length}{" "}
+                        {item.usedBy.length === 1 ? "program" : "programs"}
+                      </p>
+                    ) : null}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        {visible < filtered.length ? (
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full"
+            onClick={() => setVisible((count) => count + PAGE_SIZE)}
+          >
+            Load more posters
+          </Button>
+        ) : null}
+
+        <DialogFooter>
+          <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
+            Cancel
+          </Button>
+          <Button
+            type="button"
+            disabled={!picked}
+            onClick={() => {
+              if (picked) onSelect(picked);
+              onOpenChange(false);
+            }}
+          >
+            Use Selected Image
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}

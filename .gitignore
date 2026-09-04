@@ -47,3 +47,6 @@ supabase/**/.temp/
 
 # freebuff local tooling (logs, preview state, local db)
 .freebuff/
+
+# local backup archives
+masom.zip

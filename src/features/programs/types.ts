@@ -21,6 +21,21 @@ export type ProgramAdminItem = ProgramRow & {
   timeLabel: string | null; // "1:00 PM – 2:00 PM" | "1:00 PM" | null
 };
 
+/** A poster file stored in the `programs` bucket (media library entry). */
+export type ProgramPosterFile = {
+  /** Storage object name — also the value persisted in `programs.poster_path`. */
+  name: string;
+  /** Public URL used for thumbnails/previews. */
+  url: string;
+  createdAt: string | null;
+};
+
+/** Poster file enriched with the programs that currently reference it. */
+export type ProgramPosterMedia = ProgramPosterFile & {
+  /** Titles of CMS programs whose poster_path equals this file (for hints/search). */
+  usedBy: string[];
+};
+
 /** Public display model consumed by the Upcoming Programs grid + modal. */
 export type ProgramCard = {
   id: string;

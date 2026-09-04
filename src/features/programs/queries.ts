@@ -189,7 +189,10 @@ export async function getProgramsForMonth(
   month: number,
 ): Promise<ProgramCard[]> {
   const start = `${year}-${pad(month)}-01`;
-  const end = `${year}-${pad(month)}-31`;
+  // Last day of the month ("-31" is invalid for 30-day months and February,
+  // which makes Postgres reject the range and empties the calendar view).
+  const lastDay = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  const end = `${year}-${pad(month)}-${pad(lastDay)}`;
 
   try {
     const supabase = createSupabaseProgramClient();

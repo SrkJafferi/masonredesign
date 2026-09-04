@@ -14,6 +14,9 @@ import { programFormSchema } from "./schema";
 
 const BUCKET = CMS_BUCKETS.programs;
 
+/** Storage names are root-level files: uuid.ext or a plain basename. */
+const SAFE_POSTER_NAME_RE = /^[A-Za-z0-9][A-Za-z0-9._-]*\.(webp|jpe?g|png)$/i;
+
 function revalidatePrograms() {
   revalidatePath("/admin/programs");
   revalidatePath("/");
@@ -36,6 +39,59 @@ function parseProgramForm(formData: FormData) {
   });
 }
 
+/**
+ * The value of the hidden `poster_ref` field (a storage name chosen from the
+ * media library), or null when the admin uploaded a file / kept the poster.
+ */
+function readPosterRef(formData: FormData): string | null {
+  const value = formData.get("poster_ref");
+  if (typeof value !== "string") return null;
+  const name = value.trim();
+  return name.length > 0 ? name : null;
+}
+
+/** True when the storage object still exists (mirrors what the picker showed). */
+async function posterExists(name: string): Promise<boolean> {
+  const supabase = await createSupabaseServerClient();
+  const { data, error } = await supabase.storage.from(BUCKET).exists(name);
+  if (error) return false;
+  return data === true;
+}
+
+/**
+ * Number of OTHER programs whose poster_path equals `path`. Used before
+ * deleting a storage object so shared images are never removed while another
+ * program still references them.
+ */
+async function countOtherPosterReferences(
+  path: string,
+  excludeProgramId?: string,
+): Promise<number> {
+  const supabase = await createSupabaseServerClient();
+  let query = supabase
+    .from("programs")
+    .select("id", { count: "exact", head: true })
+    .eq("poster_path", path);
+  if (excludeProgramId) query = query.neq("id", excludeProgramId);
+  const { count, error } = await query;
+  if (error) {
+    // Fail closed: if we cannot verify, keep the file.
+    logCmsError("programs:countPosterRefs", error);
+    return 1;
+  }
+  return count ?? 0;
+}
+
+/** Deletes a poster file from storage only when no program references it. */
+async function deletePosterIfUnused(
+  path: string | null | undefined,
+  excludeProgramId?: string,
+): Promise<void> {
+  if (!path) return;
+  const references = await countOtherPosterReferences(path, excludeProgramId);
+  if (references === 0) await deleteImage(BUCKET, path);
+}
+
 export async function createProgram(
   _prev: ActionResult,
   formData: FormData,
@@ -50,14 +106,31 @@ export async function createProgram(
     };
   }
 
+  // Poster: either a brand-new upload or a reference to an existing file.
+  // `uploadedPath` is tracked separately so a failed insert only removes the
+  // file this request created — never a reused image.
+  let uploadedPath: string | null = null;
   let posterPath: string | null = null;
+
   const file = formData.get("poster");
   if (file instanceof File && file.size > 0) {
     const upload = await uploadImage(BUCKET, file);
     if (!upload.ok) {
       return { status: "error", message: upload.error };
     }
+    uploadedPath = upload.path;
     posterPath = upload.path;
+  } else {
+    const reuseName = readPosterRef(formData);
+    if (reuseName) {
+      if (!SAFE_POSTER_NAME_RE.test(reuseName) || !(await posterExists(reuseName))) {
+        return {
+          status: "error",
+          message: "The selected image is no longer available. Please pick another.",
+        };
+      }
+      posterPath = reuseName;
+    }
   }
 
   const supabase = await createSupabaseServerClient();
@@ -80,7 +153,7 @@ export async function createProgram(
     .single();
 
   if (error) {
-    if (posterPath) await deleteImage(BUCKET, posterPath);
+    if (uploadedPath) await deleteImage(BUCKET, uploadedPath);
     logCmsError("programs:create", error);
     return { status: "error", message: "Could not save the program. Please try again." };
   }
@@ -115,7 +188,9 @@ export async function updateProgram(
     };
   }
 
+  // Poster decision. Default: keep whatever the program already references.
   let posterPath = existing.poster_path;
+  let uploadedPath: string | null = null;
   let previousPath: string | null = null;
 
   const file = formData.get("poster");
@@ -124,8 +199,26 @@ export async function updateProgram(
     if (!upload.ok) {
       return { status: "error", message: upload.error };
     }
+    uploadedPath = upload.path;
     posterPath = upload.path;
     previousPath = existing.poster_path;
+  } else {
+    const reuseName = readPosterRef(formData);
+    if (reuseName) {
+      if (reuseName === existing.poster_path) {
+        // Re-selected the current image — treat as "keep current".
+        posterPath = existing.poster_path;
+      } else {
+        if (!SAFE_POSTER_NAME_RE.test(reuseName) || !(await posterExists(reuseName))) {
+          return {
+            status: "error",
+            message: "The selected image is no longer available. Please pick another.",
+          };
+        }
+        posterPath = reuseName;
+        previousPath = existing.poster_path;
+      }
+    }
   }
 
   const supabase = await createSupabaseServerClient();
@@ -147,7 +240,9 @@ export async function updateProgram(
     .eq("id", id);
 
   if (error) {
-    if (previousPath) await deleteImage(BUCKET, posterPath);
+    // Only clean up the file this request uploaded; the previous poster is
+    // still referenced by this program (the update failed).
+    if (uploadedPath) await deleteImage(BUCKET, uploadedPath);
     logCmsError("programs:update", error);
     return {
       status: "error",
@@ -155,7 +250,11 @@ export async function updateProgram(
     };
   }
 
-  if (previousPath) await deleteImage(BUCKET, previousPath);
+  // The DB row now points at posterPath; remove the old image only if no other
+  // program still uses it (shared-image safety).
+  if (previousPath && previousPath !== posterPath) {
+    await deletePosterIfUnused(previousPath, id);
+  }
 
   const action =
     existing.is_published === parsed.data.is_published
@@ -193,7 +292,8 @@ export async function deleteProgram(
     };
   }
 
-  if (existing) await deleteImage(BUCKET, existing.poster_path);
+  // Row is gone — delete the poster only when no remaining program references it.
+  if (existing) await deletePosterIfUnused(existing.poster_path, id);
 
   await logAdminActivity(
     "program",
