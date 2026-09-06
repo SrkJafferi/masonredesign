@@ -8,7 +8,6 @@ import { NewsTicker } from "@/features/home/components/news-ticker";
 import { Newsletter } from "@/features/home/components/newsletter";
 import { StayInTouch } from "@/features/home/components/stay-in-touch";
 import { UpcomingPrograms } from "@/features/home/components/upcoming-programs";
-import { WhatsAppCommunityCta } from "@/features/home/components/whatsapp-community-cta";
 import { getUpcomingPrograms } from "@/features/programs/queries";
 import { getYouTubeStreams } from "@/features/youtube/queries";
 import { LiveStreamsSection } from "@/features/youtube/components/live-streams-section";
@@ -39,7 +38,6 @@ export default async function HomePage() {
       <FeatureGrid />
       <UpcomingPrograms programs={programs} />
       <LiveStreamsSection streams={streams} />
-      <WhatsAppCommunityCta />
       <StayInTouch />
       <Newsletter />
       <LocationMap />

@@ -9,7 +9,7 @@ const { contact } = siteConfig;
 
 export function LocationMap() {
   return (
-    <Container as="section" className="py-16 sm:py-20 lg:py-24">
+    <Container as="section" id="location" className="scroll-mt-24 py-16 sm:py-20 lg:py-24">
       <Reveal>
         <SectionHeading
           eyebrow="Our Location"
