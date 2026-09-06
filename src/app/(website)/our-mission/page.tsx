@@ -132,7 +132,7 @@ export default function OurMissionPage() {
                       className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
                     />
                     <div
-                      className="absolute inset-0 bg-gradient-to-t from-card via-card/10 to-transparent"
+                      className="absolute inset-0 bg-gradient-to-t from-brand-500/50 via-brand-500/10 to-transparent"
                       aria-hidden="true"
                     />
                   </div>
