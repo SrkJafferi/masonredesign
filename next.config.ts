@@ -16,6 +16,12 @@ const nextConfig: NextConfig = {
       // NOT added here — they render via a plain responsive <img> in the hero
       // slider, so no per-domain remotePatterns entry is needed.
     ],
+    // CMS images live at immutable Supabase Storage UUID paths: replacing
+    // artwork through the CMS uploads to a NEW object and a NEW URL, so a
+    // long optimizer cache TTL can never serve a stale replacement. 31 days
+    // keeps unchanged posters/banners/popup artwork cached instead of being
+    // re-fetched and re-transformed every cycle (Hobby quota incident).
+    minimumCacheTTL: 2678400,
   },
 };
 

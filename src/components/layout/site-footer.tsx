@@ -75,11 +75,15 @@ export function SiteFooter() {
             itemClassName="text-white/80 hover:bg-white/10 hover:text-brand-400"
           />
 
+          {/* Served as-is: the 27 KB source is already tiny, and re-encoding
+              a QR through the optimizer risks scan reliability for no real
+              transfer saving at this 64px render size. */}
           <Image
             src={assets.qrCode.src}
             alt={`QR code linking to the ${name} website`}
             width={assets.qrCode.width}
             height={assets.qrCode.height}
+            unoptimized
             className="size-16 rounded-sm bg-white p-0.5"
           />
         </div>
