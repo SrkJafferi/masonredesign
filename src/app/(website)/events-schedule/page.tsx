@@ -84,9 +84,7 @@ export default async function EventsSchedulePage({
       {/* Calendar */}
       <section className="bg-background py-16 sm:py-20 lg:py-24">
         <Container>
-          <Reveal>
-            <ProgramCalendarView year={year} month={month} years={availableYears} programs={programs} />
-          </Reveal>
+          <ProgramCalendarView year={year} month={month} years={availableYears} programs={programs} />
         </Container>
       </section>
     </>
