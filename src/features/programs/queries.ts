@@ -8,6 +8,7 @@ import { CMS_BUCKETS, resolveImageSrc } from "@/lib/media/storage";
 import { createSupabaseProgramClient } from "@/lib/supabase/public";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
+import type { CalendarProgram } from "./calendar-filter";
 import type { ProgramAdminItem, ProgramCard, ProgramRow } from "./types";
 
 const BUCKET = CMS_BUCKETS.programs;
@@ -189,7 +190,7 @@ export async function getAllPrograms(): Promise<ProgramAdminItem[]> {
 export async function getProgramsForMonth(
   year: number,
   month: number,
-): Promise<ProgramCard[]> {
+): Promise<CalendarProgram[]> {
   const start = `${year}-${pad(month)}-01`;
   // Last day of the month ("-31" is invalid for 30-day months and February,
   // which makes Postgres reject the range and empties the calendar view).
@@ -209,7 +210,15 @@ export async function getProgramsForMonth(
       .order("sort_order", { ascending: true });
 
     if (error) throw error;
-    return (data ?? []).map((row) => toProgramCard(row as ProgramRow));
+    return (data ?? []).map((row) => {
+      const program = row as ProgramRow;
+      return {
+        ...toProgramCard(program),
+        endDate: program.end_date,
+        startTime: program.start_time,
+        endTime: program.end_time,
+      };
+    });
   } catch (error) {
     logCmsError("programs:getForMonth", error);
     return [];

@@ -1,6 +1,7 @@
 import { Container } from "@/components/layout/container";
 import { ParallaxBackground } from "@/components/website/parallax-background";
 import { Reveal } from "@/components/website/reveal";
+import { chicagoMonth, parseProgramView } from "@/features/programs/calendar-filter";
 import { ProgramCalendarView } from "@/features/programs/components/program-calendar-view";
 import { getProgramsForMonth, getProgramYears } from "@/features/programs/queries";
 import { createMetadata } from "@/lib/seo/metadata";
@@ -12,34 +13,29 @@ export const metadata = createMetadata({
   path: "/events-schedule",
 });
 
-function currentMonth(): { year: number; month: number } {
-  const now = new Date();
-  return { year: now.getUTCFullYear(), month: now.getUTCMonth() + 1 };
-}
-
 export default async function EventsSchedulePage({
   searchParams,
 }: {
-  searchParams: Promise<{ year?: string; month?: string }>;
+  searchParams: Promise<{ year?: string; month?: string; view?: string; q?: string }>;
 }) {
   const params = await searchParams;
-  const { year: currentYear, month: currentMonthNumber } = currentMonth();
+  const { year: currentYear, month: currentMonthNumber } = chicagoMonth(Date.now());
 
   const years = await getProgramYears();
-  const availableYears = years.length > 0 ? years : [currentYear];
+  const availableYears = [...new Set([...years, currentYear])].sort((a, b) => a - b);
 
   const requestedYear = Number(params.year);
   const requestedMonth = Number(params.month);
 
-  const year = Number.isInteger(requestedYear) && availableYears.includes(requestedYear)
-    ? requestedYear
-    : availableYears.includes(currentYear)
-      ? currentYear
-      : availableYears[0];
+  const year =
+    Number.isInteger(requestedYear) && availableYears.includes(requestedYear)
+      ? requestedYear
+      : currentYear;
 
-  const month = Number.isInteger(requestedMonth) && requestedMonth >= 1 && requestedMonth <= 12
-    ? requestedMonth
-    : currentMonthNumber;
+  const month =
+    Number.isInteger(requestedMonth) && requestedMonth >= 1 && requestedMonth <= 12
+      ? requestedMonth
+      : currentMonthNumber;
 
   const programs = await getProgramsForMonth(year, month);
 
@@ -84,7 +80,16 @@ export default async function EventsSchedulePage({
       {/* Calendar */}
       <section className="bg-background py-16 sm:py-20 lg:py-24">
         <Container>
-          <ProgramCalendarView year={year} month={month} years={availableYears} programs={programs} />
+          <ProgramCalendarView
+            key={`${year}-${month}`}
+            year={year}
+            month={month}
+            years={availableYears}
+            programs={programs}
+            initialNow={Date.now()}
+            initialView={parseProgramView(params.view)}
+            initialQuery={params.q ?? ""}
+          />
         </Container>
       </section>
     </>
