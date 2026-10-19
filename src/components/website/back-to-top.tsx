@@ -1,8 +1,9 @@
 "use client";
 
 import { ArrowUpIcon } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
+import { useSmoothScrollToTop } from "@/components/website/smooth-scroll";
 import { cn } from "@/lib/utils";
 
 const SHOW_AFTER_PX = 450;
@@ -14,14 +15,9 @@ const SHOW_AFTER_PX = 450;
  */
 export function BackToTop() {
   const [visible, setVisible] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
+  const scrollToTop = useSmoothScrollToTop();
 
   useEffect(() => {
-    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReducedMotion(motionQuery.matches);
-    const onMotionChange = (event: MediaQueryListEvent) => setReducedMotion(event.matches);
-    motionQuery.addEventListener("change", onMotionChange);
-
     let frame = 0;
     const onScroll = () => {
       cancelAnimationFrame(frame);
@@ -33,13 +29,8 @@ export function BackToTop() {
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("scroll", onScroll);
-      motionQuery.removeEventListener("change", onMotionChange);
     };
   }, []);
-
-  const scrollToTop = useCallback(() => {
-    window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
-  }, [reducedMotion]);
 
   return (
     <button

@@ -23,7 +23,8 @@ export function PageLoader() {
   const [phase, setPhase] = useState<"visible" | "leaving" | "gone">("visible");
 
   useEffect(() => {
-    const dismiss = () => setPhase((current) => (current === "visible" ? "leaving" : current));
+    const dismiss = () =>
+      setPhase((current) => (current === "visible" ? "leaving" : current));
 
     // Let the logo paint for one frame before listening for readiness.
     const minTimer = window.setTimeout(() => {
@@ -51,7 +52,7 @@ export function PageLoader() {
 
   if (phase === "gone") return null;
 
-  const logo = siteConfig.assets.logoLight;
+  const logo = siteConfig.assets.logoDark;
 
   return (
     <div
@@ -59,7 +60,7 @@ export function PageLoader() {
       aria-label={`Loading ${siteConfig.name}`}
       aria-hidden={phase !== "visible"}
       className={[
-        "pointer-events-none fixed inset-0 z-[999] flex flex-col items-center justify-center gap-6 bg-ink-900",
+        "pointer-events-none fixed inset-0 z-[999] flex flex-col items-center justify-center gap-6 bg-white",
         "transition-opacity duration-300 ease-out motion-reduce:transition-none",
         phase === "leaving" ? "opacity-0" : "opacity-100",
       ].join(" ")}
@@ -73,9 +74,9 @@ export function PageLoader() {
         className="h-16 w-auto animate-loader-logo motion-reduce:animate-none sm:h-20"
       />
 
-      <span className="relative block h-1 w-36 overflow-hidden rounded-full bg-white/10 motion-reduce:hidden">
+      <span className="relative block h-1 w-36 overflow-hidden rounded-full bg-brand-100/70 motion-reduce:hidden">
         <span
-          className="absolute inset-y-0 left-0 w-1/2 rounded-full bg-brand-400 animate-loader-shimmer motion-reduce:hidden"
+          className="absolute inset-y-0 left-0 w-1/2 animate-loader-shimmer rounded-full bg-brand-500 motion-reduce:hidden"
           aria-hidden="true"
         />
       </span>

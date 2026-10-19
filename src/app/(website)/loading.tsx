@@ -9,7 +9,7 @@ import { siteConfig } from "@/config/site";
  * soon as the destination payload arrives — no artificial delay.
  */
 export default function WebsiteLoading() {
-  const logo = siteConfig.assets.logoLight;
+  const logo = siteConfig.assets.logoDark;
 
   return (
     <div
@@ -27,7 +27,7 @@ export default function WebsiteLoading() {
         />
         <span className="relative block h-1 w-36 overflow-hidden rounded-full bg-brand-100/70 motion-reduce:hidden">
           <span
-            className="absolute inset-y-0 left-0 w-1/2 rounded-full bg-brand-500 animate-loader-shimmer motion-reduce:hidden"
+            className="absolute inset-y-0 left-0 w-1/2 animate-loader-shimmer rounded-full bg-brand-500 motion-reduce:hidden"
             aria-hidden="true"
           />
         </span>

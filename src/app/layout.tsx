@@ -4,6 +4,7 @@ import { PT_Sans } from "next/font/google";
 import { JsonLd } from "@/components/seo/json-ld";
 import { BackToTop } from "@/components/website/back-to-top";
 import { PageLoader } from "@/components/website/page-loader";
+import { SmoothScroll } from "@/components/website/smooth-scroll";
 import { siteConfig } from "@/config/site";
 import { createOrganizationSchema, createWebSiteSchema } from "@/lib/seo/structured-data";
 
@@ -74,8 +75,10 @@ export default function RootLayout({
           Skip to content
         </a>
         <PageLoader />
-        {children}
-        <BackToTop />
+        <SmoothScroll>
+          {children}
+          <BackToTop />
+        </SmoothScroll>
         <JsonLd data={createOrganizationSchema()} />
         <JsonLd data={createWebSiteSchema()} />
       </body>
