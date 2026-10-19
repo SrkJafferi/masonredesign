@@ -1,5 +1,7 @@
 "use server";
 
+import { randomUUID } from "node:crypto";
+
 import { revalidatePath, revalidateTag } from "next/cache";
 
 import { requireAdmin } from "@/features/auth/guard";
@@ -11,7 +13,14 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 import { listProgramPosterMedia } from "./media";
 import { getProgramById } from "./queries";
-import { programFormSchema } from "./schema";
+import { programFormSchema, programRecurrenceSchema } from "./schema";
+import {
+  generateDailyOccurrenceDates,
+  generateWeeklyOccurrenceDates,
+  MAX_DAILY_OCCURRENCES,
+  occurrenceEndDate,
+  programOccurrenceKey,
+} from "./recurrence";
 import type { ProgramPosterMedia } from "./types";
 
 const BUCKET = CMS_BUCKETS.programs;
@@ -106,8 +115,7 @@ export async function getProgramPosterMediaAction(): Promise<ProgramPosterMedia[
 }
 
 export type DeletePosterResult =
-  | { ok: true }
-  | { ok: false; error: string; inUse?: boolean; usedBy?: string[] };
+  { ok: true } | { ok: false; error: string; inUse?: boolean; usedBy?: string[] };
 
 /**
  * Deletes ONE poster object from the `programs` bucket.
@@ -119,7 +127,9 @@ export type DeletePosterResult =
  * the image is kept. Storage removal targets only the exact object name (no
  * folder, no partial/prefix matches, no automatic duplicate handling).
  */
-export async function deleteProgramPosterAction(name: string): Promise<DeletePosterResult> {
+export async function deleteProgramPosterAction(
+  name: string,
+): Promise<DeletePosterResult> {
   await requireAdmin();
 
   const target = name.trim();
@@ -184,6 +194,74 @@ export async function createProgram(
     };
   }
 
+  const recurrence = programRecurrenceSchema.safeParse({
+    enabled: formData.get("repeat_enabled"),
+    frequency: formData.get("recurrence_frequency") ?? "weekly",
+    month: formData.get("recurrence_month") ?? "",
+    start_date: parsed.data.start_date,
+    last_date: formData.get("recurrence_last_date") ?? "",
+  });
+  if (!recurrence.success) {
+    return {
+      status: "error",
+      message: recurrence.error.issues[0]?.message ?? "Invalid recurrence.",
+    };
+  }
+
+  let occurrenceDates = [parsed.data.start_date];
+  let skippedCount = 0;
+  if (recurrence.data.enabled) {
+    const daily = recurrence.data.frequency === "daily";
+    occurrenceDates = daily
+      ? generateDailyOccurrenceDates(parsed.data.start_date, recurrence.data.last_date)
+      : generateWeeklyOccurrenceDates(parsed.data.start_date, recurrence.data.month);
+    if (
+      occurrenceDates.length < (daily ? 1 : 4) ||
+      occurrenceDates.length > (daily ? MAX_DAILY_OCCURRENCES : 5)
+    ) {
+      return {
+        status: "error",
+        message: "Could not generate dates for the selected repeat settings.",
+      };
+    }
+    // Preview is advisory: use current database rows before uploading or saving.
+    const supabase = await createSupabaseServerClient();
+    const { data: existing, error } = await supabase
+      .from("programs")
+      .select("title, start_date, start_time")
+      .in("start_date", occurrenceDates);
+    if (error) {
+      logCmsError("programs:create:duplicates", error);
+      return {
+        status: "error",
+        message: "Could not check existing program dates. Please try again.",
+      };
+    }
+    const existingKeys = new Set(
+      (existing ?? []).map((row) =>
+        programOccurrenceKey(
+          row.title as string,
+          row.start_date as string,
+          row.start_time as string | null,
+        ),
+      ),
+    );
+    const beforeFilter = occurrenceDates.length;
+    occurrenceDates = occurrenceDates.filter(
+      (date) =>
+        !existingKeys.has(
+          programOccurrenceKey(parsed.data.title, date, parsed.data.start_time),
+        ),
+    );
+    skippedCount = beforeFilter - occurrenceDates.length;
+    if (!occurrenceDates.length) {
+      return {
+        status: "success",
+        message: `No new programs were needed. ${skippedCount} existing ${skippedCount === 1 ? "occurrence was" : "occurrences were"} skipped.`,
+      };
+    }
+  }
+
   // Poster: either a brand-new upload or a reference to an existing file.
   // `uploadedPath` is tracked separately so a failed insert only removes the
   // file this request created — never a reused image.
@@ -212,23 +290,28 @@ export async function createProgram(
   }
 
   const supabase = await createSupabaseServerClient();
+  const recurrenceGroupId = recurrence.data.enabled ? randomUUID() : null;
+  const rows = occurrenceDates.map((startDate) => ({
+    title: parsed.data.title,
+    description: parsed.data.description,
+    poster_path: posterPath,
+    start_date: startDate,
+    end_date: recurrence.data.enabled
+      ? occurrenceEndDate(parsed.data.start_date, parsed.data.end_date, startDate)
+      : parsed.data.end_date,
+    start_time: parsed.data.start_time,
+    end_time: parsed.data.end_time,
+    location: parsed.data.location,
+    link_url: parsed.data.link_url,
+    is_published: parsed.data.is_published,
+    sort_order: parsed.data.sort_order,
+    ...(recurrenceGroupId ? { recurrence_group_id: recurrenceGroupId } : {}),
+  }));
+  // One statement inserts the complete batch atomically, sharing one poster.
   const { data: inserted, error } = await supabase
     .from("programs")
-    .insert({
-      title: parsed.data.title,
-      description: parsed.data.description,
-      poster_path: posterPath,
-      start_date: parsed.data.start_date,
-      end_date: parsed.data.end_date,
-      start_time: parsed.data.start_time,
-      end_time: parsed.data.end_time,
-      location: parsed.data.location,
-      link_url: parsed.data.link_url,
-      is_published: parsed.data.is_published,
-      sort_order: parsed.data.sort_order,
-    })
-    .select("id")
-    .single();
+    .insert(rows)
+    .select("id");
 
   if (error) {
     if (uploadedPath) await deleteImage(BUCKET, uploadedPath);
@@ -236,10 +319,30 @@ export async function createProgram(
     return { status: "error", message: "Could not save the program. Please try again." };
   }
 
-  await logAdminActivity("program", "created", inserted?.id ?? null, parsed.data.title);
+  await logAdminActivity(
+    "program",
+    recurrence.data.enabled ? "created recurring batch" : "created",
+    inserted?.[0]?.id ?? null,
+    recurrence.data.enabled
+      ? `${parsed.data.title} (${rows.length} occurrences)`
+      : parsed.data.title,
+  );
 
-  revalidatePrograms();
-  return { status: "success", message: "Program added." };
+  try {
+    revalidatePrograms();
+  } catch (error) {
+    // Rows are already saved. Do not report a save failure and encourage retries.
+    logCmsError("programs:create:revalidate", error);
+  }
+  if (!recurrence.data.enabled) return { status: "success", message: "Program added." };
+  const createdCount = rows.length;
+  return {
+    status: "success",
+    message:
+      skippedCount > 0
+        ? `${createdCount} ${createdCount === 1 ? "program" : "programs"} created. ${skippedCount} existing ${skippedCount === 1 ? "occurrence was" : "occurrences were"} skipped.`
+        : `${createdCount} recurring ${createdCount === 1 ? "program" : "programs"} created.`,
+  };
 }
 
 export async function updateProgram(
@@ -373,12 +476,7 @@ export async function deleteProgram(
   // Row is gone — delete the poster only when no remaining program references it.
   if (existing) await deletePosterIfUnused(existing.poster_path, id);
 
-  await logAdminActivity(
-    "program",
-    "deleted",
-    id,
-    existing ? existing.title : undefined,
-  );
+  await logAdminActivity("program", "deleted", id, existing ? existing.title : undefined);
 
   revalidatePrograms();
   return { status: "success", message: "Program deleted." };

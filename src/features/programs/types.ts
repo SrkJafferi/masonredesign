@@ -11,6 +11,7 @@ export type ProgramRow = {
   link_url: string | null;
   is_published: boolean;
   sort_order: number;
+  recurrence_group_id: string | null;
   created_at: string;
   updated_at: string;
 };
