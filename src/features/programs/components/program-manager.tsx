@@ -1,6 +1,7 @@
 "use client";
 
 import { CalendarDaysIcon, PencilIcon, PlusIcon } from "lucide-react";
+import Link from "next/link";
 import { useActionState, useEffect, useMemo, useState } from "react";
 
 import { AdminPageHeader } from "@/components/admin/admin-page-header";
@@ -30,11 +31,20 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { createProgram, deleteProgram, updateProgram } from "@/features/programs/actions";
+import {
+  createProgram,
+  deleteProgram,
+  getProgramOccurrencePreview,
+  updateProgram,
+} from "@/features/programs/actions";
 import type { ProgramAdminItem } from "@/features/programs/types";
 import { idleResult } from "@/lib/cms/validation";
 
 import { ProgramPosterField } from "./program-poster-field";
+import { ProgramListControls } from "./program-list-controls";
+import { adminProgramsUrl } from "../admin-list";
+import type { AdminProgramFilters } from "../admin-list";
+import type { getAdminProgramPage } from "../queries";
 import {
   addCalendarDays,
   generateDailyOccurrenceDates,
@@ -55,7 +65,6 @@ function formatDate(iso: string | null): string {
   const [year, month, day] = iso.split("-").map(Number);
   if (!year || !month || !day) return iso;
   return new Date(Date.UTC(year, month - 1, day)).toLocaleDateString("en-US", {
-    weekday: "long",
     year: "numeric",
     month: "short",
     day: "numeric",
@@ -84,14 +93,12 @@ function ProgramForm({
   program,
   action,
   onClose,
-  existingPrograms,
   onSuccess,
 }: {
   isEdit: boolean;
   program: ProgramAdminItem | null;
   action: ProgramAction;
   onClose: () => void;
-  existingPrograms: ProgramAdminItem[];
   onSuccess: (message: string) => void;
 }) {
   const [result, formAction] = useActionState(action, idleResult);
@@ -149,14 +156,31 @@ function ProgramForm({
       values.start_date,
     ],
   );
+  const previewKey = recurrenceDates.join(",");
+  const [preview, setPreview] = useState<{ dates: string; keys: string[] | null } | null>(
+    null,
+  );
+  useEffect(() => {
+    if (!previewKey) return;
+    let active = true;
+    const timer = setTimeout(() => {
+      void getProgramOccurrencePreview(previewKey.split(","))
+        .then((keys) => {
+          if (active) setPreview({ dates: previewKey, keys });
+        })
+        .catch(() => {
+          if (active) setPreview({ dates: previewKey, keys: null });
+        });
+    }, 350);
+    return () => {
+      active = false;
+      clearTimeout(timer);
+    };
+  }, [previewKey]);
+  const previewResult = preview?.dates === previewKey ? preview : null;
   const existingOccurrenceKeys = useMemo(
-    () =>
-      new Set(
-        existingPrograms.map((item) =>
-          programOccurrenceKey(item.title, item.start_date, item.start_time),
-        ),
-      ),
-    [existingPrograms],
+    () => new Set(previewResult?.keys ?? []),
+    [previewResult],
   );
   const recurrencePreview = useMemo(
     () =>
@@ -376,19 +400,31 @@ function ProgramForm({
                                 : "shrink-0 text-xs font-medium text-brand-700"
                             }
                           >
-                            {item.exists ? "Already exists — skip" : "Will create"}
+                            {previewResult?.keys
+                              ? item.exists
+                                ? "Already exists — skip"
+                                : "Will create"
+                              : "Scheduled date"}
                           </span>
                         </li>
                       ))}
                     </ul>
                     <div className="mt-3 border-t border-border/70 pt-3 text-xs text-muted-foreground">
-                      <p>
-                        {newPreviewCount} new{" "}
-                        {newPreviewCount === 1 ? "program" : "programs"} will be created
-                        {skippedPreviewCount > 0
-                          ? ` · ${skippedPreviewCount} existing ${skippedPreviewCount === 1 ? "occurrence" : "occurrences"} will be skipped`
-                          : ""}
-                      </p>
+                      {previewResult?.keys ? (
+                        <p>
+                          {newPreviewCount} new{" "}
+                          {newPreviewCount === 1 ? "program" : "programs"} will be created
+                          {skippedPreviewCount > 0
+                            ? ` · ${skippedPreviewCount} existing ${skippedPreviewCount === 1 ? "occurrence" : "occurrences"} will be skipped`
+                            : ""}
+                        </p>
+                      ) : (
+                        <p>
+                          {previewResult
+                            ? "Preview unavailable. Duplicates will still be checked on save."
+                            : "Checking existing occurrences…"}
+                        </p>
+                      )}
                     </div>
                   </>
                 ) : (
@@ -484,12 +520,10 @@ function ProgramForm({
 function ProgramDialog({
   state,
   onClose,
-  existingPrograms,
   onSuccess,
 }: {
   state: DialogState;
   onClose: () => void;
-  existingPrograms: ProgramAdminItem[];
   onSuccess: (message: string) => void;
 }) {
   const isEdit = state?.mode === "edit";
@@ -512,7 +546,6 @@ function ProgramDialog({
           program={program}
           action={action}
           onClose={onClose}
-          existingPrograms={existingPrograms}
           onSuccess={onSuccess}
         />
       </DialogContent>
@@ -520,20 +553,39 @@ function ProgramDialog({
   );
 }
 
-export function ProgramManager({ programs }: { programs: ProgramAdminItem[] }) {
-  const [successMessage, setSuccessMessage] = useState("");
-  // "?create=1" (from the dashboard Create-new dropdown / quick actions) opens
-  // the create dialog immediately — the existing form, no duplicated CRUD logic.
-  const [dialog, setDialog] = useState<DialogState>(() =>
-    typeof window !== "undefined" &&
-    new URLSearchParams(window.location.search).has("create")
-      ? { mode: "create" }
-      : null,
+export function ProgramManager({
+  listing,
+  filters,
+  currentMonth,
+  openCreate,
+}: {
+  listing: Awaited<ReturnType<typeof getAdminProgramPage>>;
+  filters: AdminProgramFilters;
+  currentMonth: string;
+  openCreate: boolean;
+}) {
+  const { programs, summary, count, page, pages, offset, failed } = listing;
+  const [dialog, setDialog] = useState<DialogState>(
+    openCreate ? { mode: "create" } : null,
+  );
+  useEffect(() => {
+    if (openCreate) setDialog({ mode: "create" });
+  }, [openCreate]);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const url = (patch: Partial<AdminProgramFilters>) =>
+    adminProgramsUrl({ ...filters, page: 1, ...patch });
+  const firstPageLink = Math.max(1, Math.min(page - 1, pages - 2));
+  const pageLinks = Array.from(
+    { length: Math.min(pages, 3) },
+    (_, index) => firstPageLink + index,
   );
 
   return (
     <div className="space-y-6">
-      <AdminPageHeader title="Programs" description="Upcoming events and majalis.">
+      <AdminPageHeader
+        title="Programs"
+        description="Manage upcoming and historical MASOM programs."
+      >
         <Button variant="cta" onClick={() => setDialog({ mode: "create" })}>
           <PlusIcon className="size-4" />
           Add program
@@ -546,86 +598,224 @@ export function ProgramManager({ programs }: { programs: ProgramAdminItem[] }) {
         </p>
       ) : null}
 
-      {programs.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-border bg-card p-10 text-center">
-          <p className="text-sm text-muted-foreground">
-            No programs yet. The homepage is showing the built-in default programs. Add
-            one to take over the Upcoming Programs section.
+      <ProgramListControls filters={filters} currentMonth={currentMonth} />
+      {!failed && (
+        <div className="space-y-2">
+          <p className="text-xs text-muted-foreground">
+            Selected month
+            {filters.query || filters.status !== "all"
+              ? " · matching search and status filters"
+              : ""}{" "}
+            · Chicago time
           </p>
+          <dl className="grid grid-cols-3 gap-2">
+            {(
+              [
+                ["Programs", summary.total],
+                ["Upcoming", summary.upcoming],
+                ["Completed", summary.past],
+              ] as const
+            ).map(([label, value]) => (
+              <div
+                key={label}
+                className="min-w-0 rounded-lg border border-border/60 bg-card px-3 py-2"
+              >
+                <dt className="text-xs text-muted-foreground">{label}</dt>
+                <dd className="text-lg font-semibold tabular-nums">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      )}
+      {failed ? (
+        <p role="alert" className="rounded-xl border border-border bg-card p-4 text-sm">
+          Could not load programs. Refresh the page to try again.
+        </p>
+      ) : count === 0 ? (
+        <div className="space-y-3 rounded-xl border border-dashed border-border bg-card p-6 text-center">
+          <p role="status" className="text-sm text-muted-foreground">
+            {filters.query
+              ? "No matching programs found."
+              : filters.view === "upcoming"
+                ? "No upcoming programs scheduled for this month."
+                : filters.view === "past"
+                  ? "No past programs found for this month."
+                  : "No programs found for this month."}
+          </p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {filters.view !== "all" && (
+              <Button asChild variant="outline" size="sm">
+                <Link href={url({ view: "all" })} prefetch={false} scroll={false}>
+                  View All Programs
+                </Link>
+              </Button>
+            )}
+            {filters.query && (
+              <Button asChild variant="ghost" size="sm">
+                <Link href={url({ query: "" })} prefetch={false} scroll={false}>
+                  Clear search
+                </Link>
+              </Button>
+            )}
+            {filters.status !== "all" && (
+              <Button asChild variant="ghost" size="sm">
+                <Link href={url({ status: "all" })} prefetch={false} scroll={false}>
+                  Clear publication filter
+                </Link>
+              </Button>
+            )}
+          </div>
         </div>
       ) : (
-        <div className="overflow-hidden rounded-2xl border border-border/60 bg-card">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead className="w-20">Poster</TableHead>
-                <TableHead>Program</TableHead>
-                <TableHead className="w-44">Date</TableHead>
-                <TableHead className="w-44">Time</TableHead>
-                <TableHead className="w-24">Status</TableHead>
-                <TableHead className="w-24 text-right">Actions</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {programs.map((program) => (
-                <TableRow key={program.id}>
-                  <TableCell>
-                    <AdminThumb
-                      src={program.previewUrl}
-                      alt={program.title}
-                      className="h-16 w-12"
-                    />
-                  </TableCell>
-                  <TableCell>
-                    <p className="font-medium text-foreground">{program.title}</p>
-                    {program.location ? (
-                      <p className="truncate text-xs text-muted-foreground">
-                        {program.location}
-                      </p>
-                    ) : null}
-                  </TableCell>
-                  <TableCell className="text-muted-foreground">
-                    {formatDate(program.start_date)}
-                  </TableCell>
-                  <TableCell className="text-muted-foreground">
-                    {program.timeLabel ?? "—"}
-                  </TableCell>
-                  <TableCell>
-                    <StatusBadge
-                      active={program.is_published}
-                      activeLabel="Published"
-                      inactiveLabel="Draft"
-                    />
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex items-center justify-end gap-1">
-                      <Button
-                        variant="ghost"
-                        size="icon-sm"
-                        aria-label="Edit program"
-                        onClick={() => setDialog({ mode: "edit", program })}
-                      >
-                        <PencilIcon className="size-4" />
-                      </Button>
-                      <DeleteConfirm
-                        action={deleteProgram}
-                        id={program.id}
-                        entityLabel="program"
-                        name={program.title}
-                      />
-                    </div>
-                  </TableCell>
+        <div className="space-y-2">
+          <p className="text-xs text-muted-foreground sm:hidden">
+            Scroll the table to see more columns.
+          </p>
+          <div
+            role="region"
+            aria-label="Programs table"
+            tabIndex={0}
+            className="overflow-x-auto rounded-xl border border-border/60 bg-card focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none [&_[data-slot=table-container]]:overflow-visible"
+          >
+            <Table className="min-w-[640px]">
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-20">Poster</TableHead>
+                  <TableHead>Program</TableHead>
+                  <TableHead className="w-44">Date</TableHead>
+                  <TableHead className="w-44">Time</TableHead>
+                  <TableHead className="w-24">Status</TableHead>
+                  <TableHead className="w-24 text-right">Actions</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHeader>
+              <TableBody>
+                {programs.map((program) => (
+                  <TableRow key={program.id}>
+                    <TableCell>
+                      <AdminThumb
+                        src={program.previewUrl}
+                        alt={program.title}
+                        className="h-12 w-9"
+                      />
+                    </TableCell>
+                    <TableCell>
+                      <p className="max-w-sm font-medium break-words whitespace-normal text-foreground">
+                        {program.title}
+                      </p>
+                      {program.location ? (
+                        <p
+                          className="max-w-52 truncate text-xs text-muted-foreground"
+                          title={program.location}
+                        >
+                          {program.location}
+                        </p>
+                      ) : null}
+                    </TableCell>
+                    <TableCell className="text-muted-foreground">
+                      {formatDate(program.start_date)}
+                      {program.end_date && program.end_date !== program.start_date && (
+                        <span className="block text-xs">
+                          to {formatDate(program.end_date)}
+                        </span>
+                      )}
+                    </TableCell>
+                    <TableCell className="text-muted-foreground">
+                      {program.timeLabel ?? "—"}
+                    </TableCell>
+                    <TableCell>
+                      <StatusBadge
+                        active={program.is_published}
+                        activeLabel="Published"
+                        inactiveLabel="Draft"
+                      />
+                      {filters.view === "all" && (
+                        <span className="mt-1 block text-xs text-muted-foreground">
+                          {program.past ? "Completed" : "Upcoming"}
+                        </span>
+                      )}
+                    </TableCell>
+                    <TableCell>
+                      <div className="flex items-center justify-end gap-1">
+                        <Button
+                          variant="ghost"
+                          size="icon-sm"
+                          aria-label={`Edit ${program.title}`}
+                          onClick={() => setDialog({ mode: "edit", program })}
+                        >
+                          <PencilIcon className="size-4" />
+                        </Button>
+                        <DeleteConfirm
+                          action={deleteProgram}
+                          id={program.id}
+                          entityLabel="program"
+                          name={program.title}
+                        />
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+          <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
+            <p role="status" className="text-sm text-muted-foreground">
+              Showing {offset + 1}–{offset + programs.length} of {count}{" "}
+              {count === 1 ? "program" : "programs"}
+            </p>
+            {pages > 1 && (
+              <nav
+                aria-label="Program pages"
+                className="flex flex-wrap items-center gap-1"
+              >
+                {page > 1 ? (
+                  <Button asChild variant="outline" size="sm">
+                    <Link href={url({ page: page - 1 })} prefetch={false} scroll={false}>
+                      Previous
+                    </Link>
+                  </Button>
+                ) : (
+                  <Button variant="outline" size="sm" disabled>
+                    Previous
+                  </Button>
+                )}
+                {pageLinks.map((number) => (
+                  <Button
+                    key={number}
+                    asChild
+                    variant={number === page ? "default" : "outline"}
+                    size="sm"
+                  >
+                    <Link
+                      href={url({ page: number })}
+                      aria-label={`Page ${number}`}
+                      aria-current={number === page ? "page" : undefined}
+                      prefetch={false}
+                      scroll={false}
+                    >
+                      {number}
+                    </Link>
+                  </Button>
+                ))}
+                {page < pages ? (
+                  <Button asChild variant="outline" size="sm">
+                    <Link href={url({ page: page + 1 })} prefetch={false} scroll={false}>
+                      Next
+                    </Link>
+                  </Button>
+                ) : (
+                  <Button variant="outline" size="sm" disabled>
+                    Next
+                  </Button>
+                )}
+              </nav>
+            )}
+          </div>
         </div>
       )}
 
       <ProgramDialog
         state={dialog}
         onClose={() => setDialog(null)}
-        existingPrograms={programs}
         onSuccess={setSuccessMessage}
       />
     </div>

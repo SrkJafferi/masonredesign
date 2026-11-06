@@ -9,6 +9,8 @@ import { createSupabaseProgramClient } from "@/lib/supabase/public";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 import type { CalendarProgram } from "./calendar-filter";
+import { programMonthBounds, selectAdminProgramPage } from "./admin-list";
+import type { AdminProgramFilters, AdminProgramIndexRow } from "./admin-list";
 import type { ProgramAdminItem, ProgramCard, ProgramRow } from "./types";
 
 const BUCKET = CMS_BUCKETS.programs;
@@ -157,29 +159,81 @@ export async function getUpcomingPrograms(): Promise<ProgramCard[]> {
   return fallbackPrograms();
 }
 
-/** Admin: every program (including past/unpublished), with poster previews. */
-export async function getAllPrograms(): Promise<ProgramAdminItem[]> {
-  const supabase = await createSupabaseServerClient();
-  const { data, error } = await supabase
-    .from("programs")
-    .select("*")
-    .order("start_date", { ascending: true })
-    .order("start_time", { ascending: true })
-    .order("sort_order", { ascending: true });
+/** Admin listing only. Caller must pass the existing admin guard before querying. */
+export async function getAdminProgramPage(filters: AdminProgramFilters, now: number) {
+  try {
+    const supabase = await createSupabaseServerClient();
+    const { start, end } = programMonthBounds(filters.month);
+    const rows: AdminProgramIndexRow[] = [];
+    // Read a narrow month projection, then reuse the Chicago completion rules.
+    // PostgREST cannot order by this computed instant without a database change.
+    const batchSize = 500;
+    let available: number | null = null;
+    for (;;) {
+      const query = supabase
+        .from("programs")
+        .select(
+          filters.query
+            ? "id,title,description,location,start_date,end_date,start_time,end_time,is_published,sort_order"
+            : "id,title,start_date,end_date,start_time,end_time,is_published,sort_order",
+          { count: rows.length === 0 ? "exact" : undefined },
+        )
+        .gte("start_date", start)
+        .lte("start_date", end)
+        .order("id")
+        .range(rows.length, rows.length + batchSize - 1);
+      if (filters.status !== "all")
+        query.eq("is_published", filters.status === "published");
+      const { data, error, count } = await query.overrideTypes<
+        (Omit<AdminProgramIndexRow, "description" | "location"> &
+          Partial<Pick<AdminProgramIndexRow, "description" | "location">>)[],
+        { merge: false }
+      >();
+      if (error) throw error;
+      available ??= count;
+      if (!data?.length) break;
+      for (const row of data) {
+        rows.push({ description: null, location: null, ...row });
+      }
+      if (available !== null && rows.length >= available) break;
+    }
 
-  if (error) {
-    logCmsError("programs:getAll", error);
-    return [];
-  }
-
-  return (data ?? []).map((row) => {
-    const program = row as ProgramRow;
+    const { entries, ...listing } = selectAdminProgramPage(rows, filters, now);
+    const programs: Array<ProgramAdminItem & { past: boolean }> = [];
+    if (entries.length) {
+      const { data, error } = await supabase
+        .from("programs")
+        .select("*")
+        .in(
+          "id",
+          entries.map(({ row }) => row.id),
+        );
+      if (error) throw error;
+      const byId = new Map((data ?? []).map((row) => [row.id, row as ProgramRow]));
+      for (const entry of entries) {
+        const program = byId.get(entry.row.id);
+        if (!program) continue;
+        programs.push({
+          ...program,
+          past: entry.past,
+          previewUrl: resolveImageSrc(BUCKET, program.poster_path),
+          timeLabel: timeLabel(program.start_time, program.end_time),
+        });
+      }
+    }
+    return { ...listing, programs, failed: false };
+  } catch (error) {
+    logCmsError("programs:getAdminPage", error);
     return {
-      ...program,
-      previewUrl: resolveImageSrc(BUCKET, program.poster_path),
-      timeLabel: timeLabel(program.start_time, program.end_time),
+      summary: { total: 0, upcoming: 0, past: 0 },
+      count: 0,
+      pages: 1,
+      page: 1,
+      offset: 0,
+      programs: [],
+      failed: true,
     };
-  });
+  }
 }
 
 /**

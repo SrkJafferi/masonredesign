@@ -5,6 +5,7 @@ import { randomUUID } from "node:crypto";
 import { revalidatePath, revalidateTag } from "next/cache";
 
 import { requireAdmin } from "@/features/auth/guard";
+import { getAuthContext } from "@/features/auth/session";
 import { logAdminActivity } from "@/lib/cms/activity";
 import { logCmsError } from "@/lib/cms/logging";
 import type { ActionResult } from "@/lib/cms/validation";
@@ -27,6 +28,43 @@ const BUCKET = CMS_BUCKETS.programs;
 
 /** Storage names are root-level files: uuid.ext or a plain basename. */
 const SAFE_POSTER_NAME_RE = /^[A-Za-z0-9][A-Za-z0-9._-]*\.(webp|jpe?g|png)$/i;
+
+/** Advisory duplicate preview, scoped to the requested occurrence dates. */
+export async function getProgramOccurrencePreview(
+  dates: unknown,
+): Promise<string[] | null> {
+  if (
+    !Array.isArray(dates) ||
+    dates.length === 0 ||
+    dates.length > MAX_DAILY_OCCURRENCES ||
+    !dates.every((date) => typeof date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(date))
+  )
+    return null;
+
+  try {
+    if (!(await getAuthContext()).isAdmin) return null;
+    const supabase = await createSupabaseServerClient();
+    const keys = new Set<string>();
+    const batchSize = 500;
+    for (let offset = 0; ; offset += batchSize) {
+      const { data, error } = await supabase
+        .from("programs")
+        .select("title,start_date,start_time")
+        .in("start_date", [...new Set<string>(dates)])
+        .order("id")
+        .range(offset, offset + batchSize - 1);
+      if (error) throw error;
+      for (const row of data ?? []) {
+        keys.add(programOccurrenceKey(row.title, row.start_date, row.start_time));
+      }
+      if (!data || data.length < batchSize) break;
+    }
+    return [...keys];
+  } catch (error) {
+    logCmsError("programs:occurrencePreview", error);
+    return null;
+  }
+}
 
 function revalidatePrograms() {
   revalidatePath("/admin/programs");

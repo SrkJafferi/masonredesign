@@ -77,7 +77,9 @@ function timeSeconds(time: string | null): number | null {
   return Number(h) * 3600 + Number(m) * 60 + Number(s);
 }
 
-export function programEndInstant(program: CalendarProgram): number {
+export function programEndInstant(
+  program: Pick<CalendarProgram, "startDate" | "endDate" | "startTime" | "endTime">,
+): number {
   const endDate = program.endDate ?? program.startDate;
   const [year, month, day] = endDate.split("-").map(Number);
   const end = timeSeconds(program.endTime);

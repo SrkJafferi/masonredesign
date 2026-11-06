@@ -62,6 +62,7 @@ function actionHarness(existing = []) {
   };
   const actions = loadTs("../src/features/programs/actions.ts", {
     "@/features/auth/guard": { requireAdmin: async () => {} },
+    "@/features/auth/session": { getAuthContext: async () => ({ isAdmin: true }) },
     "next/cache": {
       revalidatePath: (path) => revalidations.push(path),
       revalidateTag: (tag) => revalidations.push(tag),
